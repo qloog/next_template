@@ -2,10 +2,10 @@ import themes from "daisyui/src/theming/themes.js";
 
 const config = {
   // REQUIRED
-  appName: "ShipFast",
+  appName: "Findrr",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app.",
+    "Findrr: Your Shortcut to Networking Success",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "shipfa.st",
   crisp: {
@@ -26,18 +26,18 @@ const config = {
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Starter",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "Perfect for small projects",
+        description: "Ideal for short-term networking",
         // The price you want to display, the one user will be charged on Stripe.
         price: 79,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 99,
         features: [
           {
-            name: "NextJS boilerplate",
+            name: "Basic Networking Features",
           },
-          { name: "User oauth" },
-          { name: "Database" },
-          { name: "Emails" },
+          { name: "Local Matching" },
+          { name: "Basic Profile" },
+          { name: "6 months of updates" },
         ],
       },
       {
@@ -53,13 +53,13 @@ const config = {
         priceAnchor: 149,
         features: [
           {
-            name: "NextJS boilerplate",
+            name: "Comprehensive Networking Features",
           },
-          { name: "User oauth" },
-          { name: "Database" },
-          { name: "Emails" },
-          { name: "1 year of updates" },
-          { name: "24/7 support" },
+          { name: "Local and Global Matching" },
+          { name: "Advanced Profile" },
+          { name: "1 Year of Updates" },
+          { name: "Exclusive Networking Insights" },
+          { name: "Priority 24/7 Support" },
         ],
       },
     ],

@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 const faqList = [
   {
     question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
+    answer: <div className="space-y-2 leading-relaxed">Unlock the full potential of networking with our Advanced Plan. Connect effortlessly with like-minded individuals, locally and globally. Craft a standout profile to leave a lasting impression. Stay up-to-date with one year of continuous updates and enjoy top-tier, round-the-clock customer support. Gain exclusive insights to elevate your networking game and make the most of your connections</div>,
   },
   {
     question: "Can I get a refund?",
