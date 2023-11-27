@@ -16,7 +16,7 @@ const CTA = () => {
           Empower Your Networking, Connect, Succeed
           </h2>
           <p className="text-lg opacity-80 mb-12 md:mb-16">
-          Don't spend hours on networking challenges. With Findrr, streamline your path to building connections and achieving success.
+          Don&apos;t spend hours on networking challenges. With Findrr streamline your path to building connections and achieving success.
           </p>
 
           <button className="btn btn-primary btn-wide">Join Findrr</button>

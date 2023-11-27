@@ -8,6 +8,7 @@ import ButtonSignin from "./ButtonSignin";
 import logo from "@/app/icon.png";
 import config from "@/config";
 
+
 const links = [
   {
     href: "/#pricing",

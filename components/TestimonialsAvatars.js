@@ -63,7 +63,7 @@ const TestimonialsAvatars = ({ priority = false }) => {
         </div>
 
         <div className="text-base text-base-content/80">
-          <span className="font-semibold text-base-content">32</span> Forward-Thinking Minds Thrive Faster
+          <span className="font-semibold text-base-content">300</span> Forward-Thinking Minds Thrive Faster
         </div>
       </div>
     </div>
