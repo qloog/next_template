@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
       <div className="lg:w-full">
         <Image
-          src="findrr/app/grow.jpg"
+          src="https://www.google.com/search?q=business+growth&sca_esv=585680499&tbm=isch&sxsrf=AM9HkKlDwuBc2XYCADWEwdsL9VuQdsM-Cg:1701111165846&source=lnms&sa=X&ved=2ahUKEwjnxI327OSCAxWZM1kFHTVxAPsQ_AUoAXoECAMQAw&biw=1340&bih=538&dpr=2#imgrc=5g_StdKED1voZM"
           alt="Product Demo"
           className="w-full"
           priority={true}
