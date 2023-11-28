@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
       <div className="lg:w-full">
         <Image
-          src="/findrr/components/img.webp"
+          src="/components/img.webp"
           alt="Growth"
           className="w-full"
           priority={true}
