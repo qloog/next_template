@@ -35,8 +35,8 @@ const Hero = () => {
       </div>
       <div className="lg:w-full">
         <Image
-          src=""
-          alt="Product Demo"
+          src="components/img.webp"
+          alt="Growth"
           className="w-full"
           priority={true}
           width={500}
