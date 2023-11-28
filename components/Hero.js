@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
       <div className="lg:w-full">
         <Image
-          src="/components/img.webp"
+          src="https://www.istockphoto.com/photo/businessman-draws-increase-arrow-graph-corporate-future-growth-year-2022-to-2023-gm1406742992-458188112?phrase=business+growth&searchscope=image%2Cfilm"
           alt="Growth"
           className="w-full"
           priority={true}
