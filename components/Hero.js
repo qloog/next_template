@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
       <div className="lg:w-full">
         <Image
-          src="Images/cBjfbusinessman-point-increase-arrow-graph-corporate-future-growth-planning-goal-target-challenge-and-business-strategy-finance-investment-development-concept-free-photo.jpg"
+          src=".next/cache/images/1syd54446RwbwSLnncY59rghhl7a6iIhTmduiuq6MSE=/31536000.1732130147158.frpiy6U7bpQgxFikylaVFtj7YZt-LTR9+nLxq5ydm4A=.webp"
           alt="Growth"
           className="w-full"
           priority={true}
