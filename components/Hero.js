@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
       <div className="lg:w-full">
         <Image
-          src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80"
+          src="https://unsplash.com/photos/people-sitting-on-chair-in-front-of-table-while-holding-pens-during-daytime-KdeqA3aTnBY"
           alt="Product demo"
           className="w-full"
           priority={true}
@@ -46,5 +46,5 @@ const Hero = () => {
     </section>
   );
 };
-
+//src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80"
 export default Hero;
