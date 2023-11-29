@@ -4,7 +4,7 @@ const CTA = () => {
   return (
     <section className="relative hero overflow-hidden min-h-screen">
       <Image
-        src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80"
+        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY4MTg1NDEwNw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
         alt="Background"
         className="object-cover w-full"
         fill
@@ -16,7 +16,7 @@ const CTA = () => {
           Empower Your Networking, Connect, Succeed
           </h2>
           <p className="text-lg opacity-80 mb-12 md:mb-16">
-          Don&apos;t spend hours on networking challenges. With Findrr streamline your path to building connections and achieving success.
+          Don&apos;t spend hours on networking challenges. With Findrr, streamline your path to building connections and achieving success.
           </p>
 
           <button className="btn btn-primary btn-wide">Join Findrr</button>
