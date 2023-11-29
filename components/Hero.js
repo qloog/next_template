@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
       <div className="lg:w-full">
         <Image
-          src="https://unsplash.com/photos/people-sitting-on-chair-in-front-of-table-while-holding-pens-during-daytime-KdeqA3aTnBY"
+          src="https://images.unsplash.com/photos/people-sitting-on-chair-in-front-of-table-while-holding-pens-during-daytime-KdeqA3aTnBY"
           alt="Product demo"
           className="w-full"
           priority={true}
