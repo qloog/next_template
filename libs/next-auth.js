@@ -13,6 +13,7 @@ export const authOptions = {
       // Follow the "Login with Google" tutorial to get your credentials
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+      issuer: process.env.NEXTAUTH_CLIENT_ISSUER,
       async profile(profile) {
         return {
           id: profile.sub,
