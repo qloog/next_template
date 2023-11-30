@@ -7,7 +7,7 @@ import connectMongo from "./mongo";
 export const authOptions = {
   // Set any random key in .env.local
   //secret: process.env.NEXTAUTH_SECRET,
-  secret: process.env.SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
       // Follow the "Login with Google" tutorial to get your credentials
