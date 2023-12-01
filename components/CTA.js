@@ -1,4 +1,5 @@
 import Image from "next/image";
+import CTA from "@/components/CTA";
 
 const CTA = () => {
   return (
@@ -19,7 +20,7 @@ const CTA = () => {
           Don&apos;t spend hours on networking challenges. With Findrr, streamline your path to building connections and achieving success.
           </p>
 
-          <button className="btn btn-primary btn-wide">Join Findrr</button>
+          <button className="btn btn-primary btn-wide">Join Waitlist</button>
         </div>
       </div>
     </section>
