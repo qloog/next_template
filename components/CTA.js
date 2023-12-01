@@ -27,5 +27,4 @@ const CTA = () => {
   );
 };
 
-import CTA from "@/components/CTA";
 export default CTA;
