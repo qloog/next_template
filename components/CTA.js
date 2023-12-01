@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CTA from "@/components/CTA";
+
 
 const CTA = () => {
   return (
@@ -27,4 +27,5 @@ const CTA = () => {
   );
 };
 
+import CTA from "@/components/CTA";
 export default CTA;
