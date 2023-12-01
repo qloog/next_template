@@ -1,6 +1,7 @@
 import Image from "next/image";
 import TestimonialsAvatars from "./TestimonialsAvatars";
 import config from "@/config";
+import CTA from "@/components/CTA";
 
 const Hero = () => {
   return (
