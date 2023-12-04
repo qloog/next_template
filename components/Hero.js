@@ -1,7 +1,6 @@
 import Image from "next/image";
 import TestimonialsAvatars from "./TestimonialsAvatars";
 import ButtonLead from "./ButtonLead";
-import { useRouter } from "./Landing";
 
 
   
