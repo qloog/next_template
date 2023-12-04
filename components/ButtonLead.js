@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
 
 
+
 // This component is used to collect the emails from the landing page
 // You'd use this if your product isn't ready yet or you want to collect leads
 // For instance: A popup to send a freebie, joining a waitlist, etc.
@@ -14,6 +15,7 @@ const ButtonLead = ({ extraStyle }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
+  
   const handleSubmit = async (e) => {
     e?.preventDefault();
 

@@ -20,7 +20,7 @@ const CTA = () => {
           Don&apos;t spend hours on networking challenges. With Findrr, streamline your path to building connections and achieving success.
           </p>
 
-          <button className="btn btn-primary btn-wide">Join Waitlist</button>
+          <ButtonLead>Join Waitlist</ButtonLead>
         </div>
       </div>
     </section>
