@@ -29,7 +29,7 @@ const Hero = () => {
         Unlock local connections and endless opportunities with our platform. Connect, collaborate, and prosper together effortlessly. Your gateway to meaningful business relationships starts here
         </p>
         <button className="btn btn-primary btn-wide">
-          Join {config.appName}
+         Join Waitlist
         </button>
 
         <TestimonialsAvatars priority={true} />
