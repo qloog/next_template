@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
-import ButtonLead from "./ButtonLead";
 
-const ButtonLead = () => {
+
+const ButtonLead= () => {
   const router = useRouter();
 
   const redirectToExistingPage = () => {
