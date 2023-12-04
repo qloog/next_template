@@ -1,8 +1,10 @@
 import Image from "next/image";
 import TestimonialsAvatars from "./TestimonialsAvatars";
 import config from "@/config";
+import ButtonLead from "./ButtonLead";
 
 
+  
 const Hero = () => {
   return (
     <section className="max-w-7xl mx-auto bg-base-100 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
@@ -28,8 +30,8 @@ const Hero = () => {
         <p className="text-lg opacity-80 leading-relaxed">
         Unlock local connections and endless opportunities with our platform. Connect, collaborate, and prosper together effortlessly. Your gateway to meaningful business relationships starts here
         </p>
-        <button onclick="redirectToLandingPage()" class="btn btn-primary btn-wide">Join Waitlist</button>
-
+        
+        <ButtonLead>Join Waitlist</ButtonLead>
 
         <TestimonialsAvatars priority={true} />
       </div>
