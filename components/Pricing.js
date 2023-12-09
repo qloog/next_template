@@ -23,7 +23,7 @@ const Pricing = () => {
               {plan.isFeatured && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                   <span
-                    className={`badge text-xs text-primary-content font-semibold border-0 bg-primary`}
+                    className={`badge text-xs text-primary-content font-semibold border-0 bg-white`}
                   >
                     POPULAR
                   </span>
@@ -32,11 +32,11 @@ const Pricing = () => {
 
               {plan.isFeatured && (
                 <div
-                  className={`absolute -inset-[1px] rounded-[9px] bg-primary z-10`}
+                  className={`absolute -inset-[1px] rounded-[9px] bg-white z-10`}
                 ></div>
               )}
 
-              <div className="relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-base-100 p-8 rounded-lg">
+              <div className="relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-white p-8 rounded-lg">
                 <div className="flex justify-between items-center gap-4">
                   <div>
                     <p className="text-lg lg:text-xl font-bold">{plan.name}</p>
