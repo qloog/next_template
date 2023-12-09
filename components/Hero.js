@@ -24,7 +24,7 @@ function Hero() {
         </a>
 
         <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4">
-        Upload, Create, Ink with Custom Tattoos from Your Images
+        Upload, Create, and Ink with Custom Tattoos from Your Images
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
         Your Tattoo, Your Way: Upload Your Favorite Images, Receive Custom Artwork, and Visualize Your Ideal Tattoo
