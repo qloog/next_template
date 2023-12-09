@@ -23,10 +23,10 @@ function Hero() {
           </svg>
         </a>
 
-        <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4">
+        <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 text-black">
         Upload, Create, and Ink with Custom Tattoos from Your Images
         </h1>
-        <p className="text-lg opacity-80 leading-relaxed">
+        <p className="text-lg opacity-80 leading-relaxed text-black">
         Upload Your Favorite Images, Receive Custom Artwork, and Visualize Your Ideal Tattoo
         </p>
 
