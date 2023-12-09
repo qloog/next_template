@@ -22,7 +22,7 @@ const ButtonSignin = ({ text = "Login", extraStyle }) => {
 
   return (
     <button
-      className={`btn ${extraStyle ? extraStyle : ""}`}
+      className={`btn ${extraStyle ? extraStyle : ""} bg-black`}
       onClick={handleClick}
     >
       {status === "authenticated" ? (
