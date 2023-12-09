@@ -52,7 +52,7 @@ const ButtonLead = ({ extraStyle }) => {
       />
 
       <button
-        className="btn btn-primary btn-block"
+        className="btn btn-primary btn-block bg-black"
         type="submit"
         disabled={isDisabled}
       >
