@@ -26,11 +26,11 @@ const config = {
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Starter",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "Ideal for short-term networking",
+        description: "Perfect for tattoo beginners embarking on their journey",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 79,
+        price: 0,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 99,
+        priceAnchor: 49,
         features: [
           {
             name: "Basic Networking Features",
@@ -48,9 +48,9 @@ const config = {
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_456",
         name: "Advanced",
-        description: "You need more power",
-        price: 99,
-        priceAnchor: 149,
+        description: "Ideal for experienced ink seekers diving deeper into personalized exploration",
+        price: 0,
+        priceAnchor: 69,
         features: [
           {
             name: "Comprehensive Networking Features",
