@@ -12,7 +12,7 @@ const Pricing = () => {
         <div className="flex flex-col text-center w-full mb-20">
           <p className="font-medium text-primary mb-8">Pricing</p>
           <h2 className="font-bold text-3xl lg:text-5xl tracking-tight">
-          Revolutionize Your Path to Success: Turbocharge Growth, Save Time with Us!
+          The Perfect Price for Every Tattoo Vision
           </h2>
         </div>
 
