@@ -27,7 +27,7 @@ function Hero() {
         Upload, Create, and Ink with Custom Tattoos from Your Images
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
-        Your Tattoo, Your Way: Upload Your Favorite Images, Receive Custom Artwork, and Visualize Your Ideal Tattoo
+        Upload Your Favorite Images, Receive Custom Artwork, and Visualize Your Ideal Tattoo
         </p>
 
         <ButtonLead>Join Waitlist</ButtonLead>
