@@ -30,14 +30,14 @@ const config = {
         // The price you want to display, the one user will be charged on Stripe.
         price: 0,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 49,
+        priceAnchor: 19,
         features: [
           {
-            name: "Basic Networking Features",
+            name: "20 Image Uploads",
           },
-          { name: "Local Matching" },
-          { name: "Basic Profile" },
-          { name: "6 months of updates" },
+          { name: "Basic Customization" },
+          { name: "Inspiration Gallery" },
+          { name: "User-Friendly Interface" },
         ],
       },
       {
@@ -50,16 +50,16 @@ const config = {
         name: "Advanced",
         description: "Ideal for experienced ink seekers diving deeper into personalized exploration",
         price: 0,
-        priceAnchor: 69,
+        priceAnchor: 79,
         features: [
           {
-            name: "Comprehensive Networking Features",
+            name: "Unlimited Image Uploads",
           },
-          { name: "Local and Global Matching" },
-          { name: "Advanced Profile" },
-          { name: "1 Year of Updates" },
+          { name: "Advanced Customization Tools:" },
+          { name: "Exclusive Design Library" },
+          { name: "Priority Support" },
           { name: "Exclusive Networking Insights" },
-          { name: "Priority 24/7 Support" },
+          { name: "Collaboration Features" },
         ],
       },
     ],
