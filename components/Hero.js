@@ -9,10 +9,10 @@ function Hero() {
     <section className="max-w-7xl mx-auto bg-base-100 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-left lg:items-start">
         <a
-          href="https://www.producthunt.com/posts/shipfast-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-shipfast&#0045;2"
+          //href="https://www.producthunt.com/posts/shipfast-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-shipfast&#0045;2"
           target="_blank"
           className=" -mb-4 md:-mb-6 group"
-          title="Product Hunt link"
+          //title="Product Hunt link"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,10 +24,10 @@ function Hero() {
         </a>
 
         <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4">
-          Connect Locally, Prosper Together
+        Upload, Create, Ink with Custom Tattoo Designs from Your Images
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
-          Unlock local connections and endless opportunities with our platform. Connect, collaborate, and prosper together effortlessly. Your gateway to meaningful business relationships starts here
+        Your Tattoo, Your Way: Upload Your Favorite Images, Receive Custom Artwork, and Visualize Your Ideal Tattoo
         </p>
 
         <ButtonLead>Join Waitlist</ButtonLead>
