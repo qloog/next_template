@@ -47,7 +47,7 @@ const ButtonLead = ({ extraStyle }) => {
         ref={inputRef}
         autoComplete="email"
         placeholder="tom@cruise.com"
-        className="input input-bordered w-full placeholder:opacity-60"
+        className="input input-bordered w-full" //placeholder:opacity-60
         onChange={(e) => setEmail(e.target.value)}
       />
 
