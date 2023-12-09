@@ -23,7 +23,7 @@ const Pricing = () => {
               {plan.isFeatured && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                   <span
-                    className={`badge text-xs text-primary-content font-semibold border-0 bg-white`}
+                    className={`badge text-xs text-primary-content font-semibold border-0 bg-white text-black`}
                   >
                     POPULAR
                   </span>
