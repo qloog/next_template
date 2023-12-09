@@ -40,14 +40,14 @@ const ButtonLead = ({ extraStyle }) => {
       className={`w-full max-w-xs space-y-3 ${extraStyle ? extraStyle : ""}`}
       onSubmit={handleSubmit}
     >
-      <input
+      <input 
         required
         type="email"
         value={email}
         ref={inputRef}
         autoComplete="email"
         placeholder="tom@cruise.com"
-        className="input input-bordered w-full placeholder:opacity-60"
+        className="input input-bordered w-full placeholder:opacity-60 bg-white"
         onChange={(e) => setEmail(e.target.value)}
       />
 
