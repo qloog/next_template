@@ -8,12 +8,12 @@ import { useRef, useState } from "react";
 const faqList = [
   {
     question: "What is Findrr?",
-    answer: <div className="space-y-2 leading-relaxed">Your Easy Ink Adventure. Just upload a picture, and discover custom tattoos like never before. Simple, unique, and all yours with Findrr - redefining your ink journey effortlessly.</div>,
+    answer: <div className="space-y-2 leading-relaxed text-black">Your Easy Ink Adventure. Just upload a picture, and discover custom tattoos like never before. Simple, unique, and all yours with Findrr - redefining your ink journey effortlessly.</div>,
   },
   {
     question: "Can I get a refund?",
     answer: (
-      <p>
+      <p className="text-black">
         If for a certain reason Findrr isn&apos;t for you, request a refund within 7 days of your purchase. Reach out
         by email at Rajvirnahar6667@gmail.com.
       </p>
@@ -22,31 +22,31 @@ const faqList = [
   {
     question: "How does Findrr work for someone getting their first tattoo?",
     answer: (
-      <div className="space-y-2 leading-relaxed">Findrr allows you to easily upload images to discover unique tattoo designs the market has never seen. It&apos;s a simple way to explore and find the perfect ink for your first tattoo</div>
+      <div className="space-y-2 leading-relaxed text-black">Findrr allows you to easily upload images to discover unique tattoo designs the market has never seen. It&apos;s a simple way to explore and find the perfect ink for your first tattoo</div>
     ),
   },
   {
     question: "How can Findrr benefit tattoo artists in working with clients?",
     answer: (
-      <div className="space-y-2 leading-relaxed">Findrr offers a diverse range of unique designs that artists can use as inspiration or customize for their clients. It&apos;s a valuable resource for expanding creative possibilities.</div>
+      <div className="space-y-2 leading-relaxed text-black">Findrr offers a diverse range of unique designs that artists can use as inspiration or customize for their clients. It&apos;s a valuable resource for expanding creative possibilities.</div>
     ),
   },
   {
     question: "Is Findrr only for specific tattoo styles?",
     answer: (
-      <div className="space-y-2 leading-relaxed">No, Findrr covers a wide range of tattoo styles. Whether you&apos;re into traditional, modern, or unique designs, you can find anything that suits your taste.</div>
+      <div className="space-y-2 leading-relaxed text-black">No, Findrr covers a wide range of tattoo styles. Whether you&apos;re into traditional, modern, or unique designs, you can find anything that suits your taste.</div>
     ),
   },
   {
     question: "How can I be sure the designs I find on Findrr are unique?",
     answer: (
-      <div className="space-y-2 leading-relaxed">Findrr focuses on delivering fresh and unique designs. The platform aims to provide a variety of options, ensuring a distinct and personalized experience that cannot be found on google, pinterest, or anywhere on the net.</div>
+      <div className="space-y-2 leading-relaxed text-black">Findrr focuses on delivering fresh and unique designs. The platform aims to provide a variety of options, ensuring a distinct and personalized experience that cannot be found on google, pinterest, or anywhere on the net.</div>
     ),
   },
   {
     question: "Can I use Findrr to find designs that complement my existing tattoos?",
     answer: (
-      <div className="space-y-2 leading-relaxed">Absolutely! Findrr is designed to help you discover tattoos that match your style, whether you&apos;re getting your first or adding to existing ink.</div>
+      <div className="space-y-2 leading-relaxed text-black">Absolutely! Findrr is designed to help you discover tattoos that match your style, whether you&apos;re getting your first or adding to existing ink.</div>
     ),
   },
   
