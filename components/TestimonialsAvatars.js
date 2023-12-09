@@ -63,7 +63,7 @@ const TestimonialsAvatars = ({ priority = false }) => {
         </div>
 
         <div className="text-base text-base-content/80">
-          <span className="font-semibold text-base-content">300</span> Rebels Crafting Tomorrow's Tattoos Today.
+          <span className="font-semibold text-base-content">300</span> Rebels Crafting Tomorrow&apos;s Tattoos Today.
         </div>
       </div>
     </div>
