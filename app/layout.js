@@ -9,7 +9,7 @@ const font = Inter({ subsets: ["latin"] });
 
 export const viewport = {
   // Will use the primary color of your theme to show a nice theme color in the URL bar of supported browsers
-  themeColor: white, //config.colors.main
+  themeColor, //config.colors.main
   width: "device-width",
   initialScale: 1,
 };
@@ -21,7 +21,7 @@ export const metadata = getSEOTags();
 export default function RootLayout({ children }) {
   return (
     //data-theme={config.colors.theme}
-    <html lang="en" data-theme={white}  className={font.className}> 
+    <html lang="en"  className={font.className}> 
       {config.domainName && (
         <head>
           <PlausibleProvider domain={config.domainName} />
