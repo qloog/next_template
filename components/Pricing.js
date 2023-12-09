@@ -14,7 +14,7 @@ const Pricing = () => {
           <h2 className="font-bold text-3xl lg:text-5xl tracking-tight text-black">
           The Perfect Price for Every Tattoo Vision
           </h2>
-          <p className="text-black">Unleash Personalized Tattoos with Your Uploads - Affordable, Unique, and Exclusively Yours.</p>
+          <p className="text-black">Unleash Personalized Tattoos with Your Uploads - Affordable, Unique, and Exclusively Yours</p>
         </div>
 
         <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
