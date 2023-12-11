@@ -9,7 +9,7 @@ import logo from "@/app/icon.png";
 import config from "@/config";
 
 
-const links = [
+/*const links = [
   {
     href: "/#pricing",
     label: "Pricing",
@@ -23,7 +23,7 @@ const links = [
     label: "FAQ",
   },
 ];
-
+*/
 const cta = <ButtonSignin extraStyle="btn-primary" />;
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
