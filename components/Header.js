@@ -50,15 +50,7 @@ const Header = () => {
             href="/"
             title={`${config.appName} hompage`}
           >   
-            <Image
-              //src={logo}
-              //alt={`${config.appName} logo`}
-              className="w-8"
-              placeholder="blur"
-              priority={true}
-              width={32}
-              height={32}
-            />
+            
           
             <span className="font-extrabold text-lg">{config.appName}</span>
           </Link>
@@ -91,15 +83,9 @@ const Header = () => {
         {/* Your links on large screens */}
         <div className="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center">
           {links.map((link) => (
-            <Link
-             // href={link.href}
-              //key={link.href}
-              className="link link-hover"
-              //title={link.label}
-            >
-              {link.label}
-            </Link>
-          ))}
+           
+           
+          {}))}
         </div>
 
         {/* CTA on large screens */}
