@@ -35,7 +35,7 @@ function Hero() {
         
 
       <Image
-        src="https://interiorai.com/assets/featured-nyt.png?1666362875"
+        src="/components/featuref-nyt.png"
         alt="NYT"
         height={25}
         
