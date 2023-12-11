@@ -31,28 +31,6 @@ function Hero() {
 			<p style="font-size:10px;opacity:0.5;margin:0;margin-right:7px;display:inline-block;vertical-align:middle;">
 				as seen in
 			</p>
-			<a target="_blank" href="https://www.nytimes.com/2022/10/21/technology/ai-generated-art-jobs-dall-e-2.html" style="text-decoration: none;">
-				<img height="25" style="margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;" alt="New York Times" src="/assets/featured-nyt.png?1666362875" loading="lazy">
-			</a>
-			<a target="_blank" href="https://techcrunch.com/2023/07/25/wayfairs-new-app-uses-generative-ai-to-transform-your-space/amp/" style="text-decoration: none;">
-				<img height="25" style="margin-left: 14px;margin-right: 14px;mix-blend-mode: lighten;vertical-align: middle;" alt="TechCrunch" src="/assets/techcrunch.png?1695837841" loading="lazy">
-			</a>
-			<a target="_blank" href="https://www.fastcompany.com/90793736/snap-a-photo-of-your-living-room-and-interiorai-will-redesign-it" style="text-decoration: none;">
-				<img height="25" style="margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;" alt="FastC omapny" src="/assets/featured-fastcompany.png?1668015726" loading="lazy">
-			</a>
-			<a target="_blank" href="https://businessofhome.com/articles/we-had-designers-test-an-ai-design-tool-here-s-how-it-went" style="text-decoration: none;">
-				<img height="25" style="margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;" alt="Business of Home" src="/assets/featured-boh.png?1668015343" loading="lazy">
-			</a>
-			<a href="https://www.diamandis.com/podcast/emad-mostaque">
-				<img height="25" loading="lazy" style="margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;" src="https://avatarai.me/cdn-cgi/image/format=auto,fit=cover,height=50,quality=50/assets/stability-ai.png?">
-			</a>
-			<a target="_blank" href="https://www.archdaily.com/990043/new-ai-image-generator-can-help-users-redesign-their-own-spaces/633d4c64dd0b8954dd1d630a-new-ai-image-generator-can-help-users-redesign-their-own-spaces-photo" style="text-decoration: none;">
-				<img height="25" style="margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;" alt="ArchDaily" src="/assets/featured-archdaily.png?1697470424" loading="lazy">
-			</a>
-
-			<a target="_blank" href="https://www.msn.com/pt-br/estilo-de-vida/casa-e-decoracao/site-gratuito-decora-qualquer-c%C3%B4modo-da-sua-casa-a-partir-de-uma-foto/ar-AA138NqE?li=AAggNbi" style="text-decoration: none;">
-				<img height="25" style="margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;" alt="MSN" src="/assets/featured-msn.png?1668015905" loading="lazy">
-			</a>
 		</div>
 
         <div class="hero_footer_logos">
@@ -64,24 +42,24 @@ function Hero() {
         src="https://interiorai.com/assets/featured-nyt.png?1666362875"
         alt="NYT"
         height={25}
-        style="text-decoration: none"
-        style="margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;"
+        style="text-decoration: none margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;"
+    
       />
 
       <Image
         src="https://interiorai.com/assets/techcrunch.png?1695837841"
         alt="Tech Crunch"
         height={25}
-        style="text-decoration: none"
-        style="margin-left: 14px;margin-right: 14px;mix-blend-mode: lighten;vertical-align: middle;"
+        style="text-decoration: none margin-left: 14px;margin-right: 14px;mix-blend-mode: lighten;vertical-align: middle;"
+
       />
 
       <Image
         src="https://interiorai.com/assets/featured-fastcompany.png?1668015726"
         alt="fastcompany"
         height={25}
-        style="text-decoration: none"
-        style="margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;"
+        style="text-decoration: none margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;"
+        
         />
 
 			
