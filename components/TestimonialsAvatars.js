@@ -2,7 +2,9 @@ import Image from "next/image";
 
 const avatars = [
   {
-    
+    alt: "User",
+    // Ideally, load from a statically generated image for better SEO performance (import userImage from "@/public/userImage.png")
+    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3276&q=80",
   },
   {
     alt: "User",
@@ -59,12 +61,8 @@ const TestimonialsAvatars = ({ priority = false }) => {
             </svg>
           ))}
         </div>
-
-        <div className="text-base text-base-content/80 text-black">
-          <span className="font-semibold text-base-content text-black">300</span> Rebels Crafting Tomorrow&apos;s Tattoos Today.
         </div>
       </div>
-    </div>
   );
 };
 
