@@ -17,7 +17,7 @@ function Hero() {
         </a>
 
         <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 text-white">
-        Fire your tattoo consulter
+        💉Fire your tattoo consulter
         </h1>
         <p className="text-lg opacity-80 leading-relaxed text-white">
         Design your own tattoo with the first AI Tattoo Consulter
