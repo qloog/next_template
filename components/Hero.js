@@ -35,7 +35,7 @@ function Hero() {
         
 
       <Image
-        src=".next/cache/images/featured-nyt.png"
+        src="https://cdn.freebiesupply.com/images/large/2x/new-york-times-logo-png-transparent.png"
         alt="NYT"
         height={25}
         
