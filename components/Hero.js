@@ -29,7 +29,7 @@ function Hero() {
      
 
          
-        <TestimonialsAvatars priority={true} />
+       
       </div>
       <div className="lg:w-full">
         <Image
