@@ -42,24 +42,21 @@ function Hero() {
         src="https://interiorai.com/assets/featured-nyt.png?1666362875"
         alt="NYT"
         height={25}
-        style="text-decoration: none margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;"
-    
+        
       />
 
       <Image
         src="https://interiorai.com/assets/techcrunch.png?1695837841"
         alt="Tech Crunch"
         height={25}
-        style="text-decoration: none margin-left: 14px;margin-right: 14px;mix-blend-mode: lighten;vertical-align: middle;"
-
+       
       />
 
       <Image
         src="https://interiorai.com/assets/featured-fastcompany.png?1668015726"
         alt="fastcompany"
         height={25}
-        style="text-decoration: none margin-left: 14px;margin-right: 14px;filter: invert(1);mix-blend-mode: lighten;vertical-align: middle;"
-        
+
         />
 
 			
