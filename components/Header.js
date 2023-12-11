@@ -42,23 +42,24 @@ const Header = () => {
       <nav
         className="container flex items-center justify-between px-8 py-4 mx-auto"
         aria-label="Global"
-      >
+      >  
         {/* Your logo/name on large screens */}
-        <div className="flex lg:flex-1">
+        <div className="flex lg:flex-1"> 
           <Link
             className="flex items-center gap-2 shrink-0 "
             href="/"
             title={`${config.appName} hompage`}
-          >
+          >   
             <Image
-              src={logo}
-              alt={`${config.appName} logo`}
+              //src={logo}
+              //alt={`${config.appName} logo`}
               className="w-8"
               placeholder="blur"
               priority={true}
               width={32}
               height={32}
             />
+          
             <span className="font-extrabold text-lg">{config.appName}</span>
           </Link>
         </div>
@@ -91,10 +92,10 @@ const Header = () => {
         <div className="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center">
           {links.map((link) => (
             <Link
-              href={link.href}
-              key={link.href}
+             // href={link.href}
+              //key={link.href}
               className="link link-hover"
-              title={link.label}
+              //title={link.label}
             >
               {link.label}
             </Link>
