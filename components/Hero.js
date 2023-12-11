@@ -6,7 +6,7 @@ import ButtonLead from "./ButtonLead";
   
 function Hero() {
   return (
-    <section className="max-w-7xl mx-auto  flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
+    <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-left lg:items-start">
         <a
           //href="https://www.producthunt.com/posts/shipfast-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-shipfast&#0045;2"
@@ -16,10 +16,10 @@ function Hero() {
         >  
         </a>
 
-        <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 text-black">
+        <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 text-white">
         Fire your tattoo consulter
         </h1>
-        <p className="text-lg opacity-80 leading-relaxed text-black">
+        <p className="text-lg opacity-80 leading-relaxed text-white">
         Design your own tattoo with the first AI Tattoo Consulter
         </p>
 
