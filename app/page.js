@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="bg-#111">
+      <main className="bg-black">
         <Hero />
         <Pricing />
         <FAQ />
