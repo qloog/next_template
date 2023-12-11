@@ -1,6 +1,5 @@
 
 import Hero from "@/components/Hero";
-import CTA from "@/components/CTA";
 
 
 
@@ -11,7 +10,6 @@ export default function Home() {
     
       <main className="bg-black text-white">
         <Hero />
-        <CTA />
       </main>
   
     </>
