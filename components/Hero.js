@@ -24,8 +24,9 @@ function Hero() {
         </p>
 
         <ButtonLead>Join Waitlist</ButtonLead>
+     
 
-
+         
         <TestimonialsAvatars priority={true} />
       </div>
       <div className="lg:w-full">
