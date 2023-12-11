@@ -32,23 +32,23 @@ function Hero() {
 				as seen in
 			</p>
 
-      <Image>
+      <Image
         src="https://interiorai.com/assets/featured-nyt.png?1666362875"
         alt="NYT"
         height={25}
-      </Image>
+      />
 
-      <Image>
+      <Image
         src="https://interiorai.com/assets/techcrunch.png?1695837841"
         alt="Tech Crunch"
         height={25}
-      </Image>
+      />
 
-      <Image>
+      <Image
         src="https://interiorai.com/assets/featured-fastcompany.png?1668015726"
         alt="fastcompany"
         height={25}
-      </Image>
+        />
 
 			
 		</div>
