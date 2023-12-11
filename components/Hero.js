@@ -27,7 +27,31 @@ function Hero() {
         <ButtonLead>Join Waitlist</ButtonLead>
      
 
-         
+        <div class="hero_footer_logos">
+			<p style="font-size:10px;opacity:0.5;margin:0;margin-right:7px;display:inline-block;vertical-align:middle;">
+				as seen in
+			</p>
+
+      <Image>
+        src="https://www.nytimes.com/2022/10/21/technology/ai-generated-art-jobs-dall-e-2.html"
+        alt="Product demo"
+        height={25}
+      </Image>
+
+      <Image>
+        src="https://techcrunch.com/2023/07/25/wayfairs-new-app-uses-generative-ai-to-transform-your-space/amp/"
+        alt="Product demo"
+        height={25}
+      </Image>
+
+      <Image>
+        src="https://www.fastcompany.com/90793736/snap-a-photo-of-your-living-room-and-interiorai-will-redesign-it"
+        alt="Product demo"
+        height={25}
+      </Image>
+
+			
+		</div>
        
       </div>
       <div className="lg:w-full">
