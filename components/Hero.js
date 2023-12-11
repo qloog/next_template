@@ -33,20 +33,20 @@ function Hero() {
 			</p>
 
       <Image>
-        src="https://www.nytimes.com/2022/10/21/technology/ai-generated-art-jobs-dall-e-2.html"
-        alt="Product demo"
+        src="https://interiorai.com/assets/featured-nyt.png?1666362875"
+        alt="NYT"
         height={25}
       </Image>
 
       <Image>
-        src="https://techcrunch.com/2023/07/25/wayfairs-new-app-uses-generative-ai-to-transform-your-space/amp/"
-        alt="Product demo"
+        src="https://interiorai.com/assets/techcrunch.png?1695837841"
+        alt="Tech Crunch"
         height={25}
       </Image>
 
       <Image>
-        src="https://www.fastcompany.com/90793736/snap-a-photo-of-your-living-room-and-interiorai-will-redesign-it"
-        alt="Product demo"
+        src="https://interiorai.com/assets/featured-fastcompany.png?1668015726"
+        alt="fastcompany"
         height={25}
       </Image>
 
