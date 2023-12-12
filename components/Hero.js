@@ -35,7 +35,7 @@ function Hero() {
         
 
       <Image
-        src="/Users/rajvirnahar/Desktop/Findrr/.next/cache/images/PpSQfeatured-nyt.jpg"
+        src=".next/cache/images/PpSQfeatured-nyt.jpg"
         alt="NYT"
         height={25}
         
