@@ -63,8 +63,8 @@ function Hero() {
           alt="Product demo"
           className="w-full"
           priority={true}
-          layout="fill"
-          objectFit="cover" />
+          width={500}
+          height={500} />
       </div>
     </section>
   );
