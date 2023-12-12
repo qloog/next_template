@@ -53,7 +53,9 @@ function Hero() {
         </div>
 
 
-        <script src="components/Script.js" />
+      
+
+      
 
       <div className="lg:w-full">
         <Image
