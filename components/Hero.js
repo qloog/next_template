@@ -35,7 +35,7 @@ function Hero() {
         
 
       <Image
-        src=".next/cache/images/PpSQfeatured-nyt.jpg"
+        src="/app/featured-nyt.png"
         alt="NYT"
         height={25}
         
