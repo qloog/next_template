@@ -37,7 +37,9 @@ function Hero() {
       <Image
         src="https://interiorai.com/assets/featured-nyt.png?1666362875"
         alt="NYT"
-        height={25}
+          priority={true}
+          width={500}
+          height={500}
         
       />
 
