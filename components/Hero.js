@@ -38,8 +38,7 @@ function Hero() {
         src="https://interiorai.com/assets/featured-nyt.png?1666362875"
         alt="NYT"
           priority={true}
-          width={500}
-          height={500}
+          height={25}
         
       />
 
