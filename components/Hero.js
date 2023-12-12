@@ -35,7 +35,7 @@ function Hero() {
         
 
       <Image
-        src="https://cdn.freebiesupply.com/images/large/2x/new-york-times-logo-png-transparent.png"
+        src="https://cdn.discordapp.com/attachments/984272107569545227/1184166368371822693/featured-nyt.jpg?ex=658afbde&is=657886de&hm=cfe4b03b2ccbbf522b27088ccafe797e7a2c47d7977857004e5432a95aaf882a&"
         alt="NYT"
         height={25}
         
