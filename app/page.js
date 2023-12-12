@@ -11,9 +11,7 @@ export default function Home() {
     
       <main className="bg-black text-white">
         <Hero />
-        <script src="components/Script.js" />
          
-      
       
       </main>
   

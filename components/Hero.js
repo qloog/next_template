@@ -29,7 +29,7 @@ function Hero() {
 			<p>as seen in
 			</p>
 		</div>
-
+  
     
       <Image
         src="https://source.interiorai.com/1666362875"
@@ -53,6 +53,7 @@ function Hero() {
         </div>
 
 
+        <script src="components/Script.js" />
 
       <div className="lg:w-full">
         <Image
