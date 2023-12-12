@@ -35,7 +35,7 @@ function Hero() {
         
 
       <Image
-        src="/app/featured-nyt.png"
+        src="app/featured-nyt.png"
         alt="NYT"
         height={25}
         
