@@ -23,33 +23,6 @@ function Hero() {
       <p>Findrr is the first AI Tattoo Consulter in the world.</p>
       <p>Upload photos of your own, and then use Findrr to transform it into a custom design. Get Tattoo design inspiration and new ideas for your tattoo.</p>
         <ButtonLead>Join Waitlist</ButtonLead>
-     
-
-        <div class="hero_footer_logos">
-			<p>as seen in
-			</p>
-		</div>
-  
-    
-      <Image
-        src="https://source.interiorai.com/1666362875"
-        alt="NYT"
-        priority={true}
-        height={25}
-        
-      />
-
-      <Image
-        src="https://interiorai.com/assets/techcrunch.png?1695837841"
-        alt="Tech Crunch"
-        height={25}
-       
-      />
-
-      <Image
-        src="https://interiorai.com/assets/featured-fastcompany.png?1668015726"
-        alt="fastcompany"
-        height={25} />
         </div>
 
 
