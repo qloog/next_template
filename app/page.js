@@ -2,7 +2,7 @@
 import Hero from "@/components/Hero";
 const { POKEMON_ATTRIBUTES } = require('@/data/pokemon');
 
-export const config = {
+export const runtime = "edge" = {
   runtime: 'edge',
 }
 
