@@ -9,7 +9,7 @@ const openai = new OpenAI();
 export default async function handler(req, res) {
     async function main() {
         const completion = await openai.chat.completions.create({
-          messages: [{ role: "system", content: "Create a new Custom Tattoo Design ." }],
+          messages: [{ role: "system", content: "Create a new Custom Tattoo Design with the followung attributes: -Short description less than 80 characters -Type of tattoo" }],
           model: "gpt-3.5-turbo",
         });
       
