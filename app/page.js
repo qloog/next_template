@@ -29,7 +29,7 @@ export default function Home() {
 <body>
 	<div class="drop-zone">
 		<span class="drop-zone__prompt">Drop file here or click to upload</span>
-		<Input type="file" name="myFile" class="drop-zone__input"></Input> 
+		<input type="file" name="myFile" class="drop-zone__input"></input> 
 	</div>
 </body>
       
