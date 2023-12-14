@@ -20,7 +20,7 @@ export default function Home() {
       <link rel="stylesheet" href="style.css"></link>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/></head>
      
-  
+      <script src="/main.js" defer></script>
    <body>
       <div class="container">
          <div class="wrapper">
@@ -45,7 +45,6 @@ export default function Home() {
          <button onclick="defaultBtnActive()" id="custom-btn">Choose or drag a image</button>
          <input id="default-btn" type="file" hidden></input>
       </div>
-      <script src="/app/main.js" defer></script>
    </body>
    
     </>
