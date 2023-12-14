@@ -32,7 +32,5 @@ useEffect(() => {
         fileName.textContent = valueStore;
       }
     });
-
-     };
   }, [])
 
