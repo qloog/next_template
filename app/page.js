@@ -20,7 +20,7 @@ export default function Home() {
         
       
       </main>
-      <title>Drag and Drop File Upload</title>
+      <h3>Drag and Drop File Upload</h3>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <meta charset="utf-8"></meta>
         <link rel="shortcut icon" href="/assets/favicon.ico"></link>
@@ -30,7 +30,7 @@ export default function Home() {
  
 <body>
 	<div class="drop-zone">
-		<span class="drop-zone__prompt">Drop file here or click to upload</span>
+		<span class="drop-zone__prompt">Drop an image or tap to select</span>
 		<input type="file" name="myFile" class="drop-zone__input"></input> 
 	</div>
 </body>
