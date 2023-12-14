@@ -18,7 +18,9 @@ export default function Home() {
         <Hero />
         <script src="../vendor/snow.js" defer></script>
         
-        <title>Drag and Drop File Upload</title>
+      
+      </main>
+      <title>Drag and Drop File Upload</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <meta charset="utf-8"></meta>
         <link rel="shortcut icon" href="/assets/favicon.ico"></link>
@@ -32,10 +34,10 @@ export default function Home() {
 		<input type="file" name="myFile" class="drop-zone__input"></input> 
 	</div>
 </body>
-      
-      </main>
    
     </>
+
+    
   );
 }
 
