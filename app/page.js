@@ -31,8 +31,6 @@ export default function Home() {
 		<span class="drop-zone__prompt">Drop file here or click to upload</span>
 		<Input type="file" name="myFile" class="drop-zone__input"></Input> 
 	</div>
-
-	<script src="./src/main.js"></script>
 </body>
       
       </main>
