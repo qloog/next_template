@@ -46,6 +46,7 @@ export default function Home() {
          <button onclick="defaultBtnActive()" id="custom-btn">Choose or drag a image</button>
          <input id="default-btn" type="file" hidden></input>
       </div>
+      <script type="text/javascript" src="/app/main.js"></script>
    </body>
    
     </>
