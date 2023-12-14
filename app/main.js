@@ -10,7 +10,7 @@ useEffect(() => {
     const cancelBtn = document.querySelector("#cancel-btn i");
     const img = document.querySelector("img");
     let regExp = /[0-9a-zA-Z ]+$/;
-    function defaultBtnActive(){
+  async function defaultBtnActive(){
       defaultBtn.click();
     }
     defaultBtn.addEventListener("change", function(){
