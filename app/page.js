@@ -20,7 +20,6 @@ export default function Home() {
         
       
       </main>
-      <h3>Drag and Drop File Upload</h3>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <meta charset="utf-8"></meta>
         <link rel="shortcut icon" href="/assets/favicon.ico"></link>
