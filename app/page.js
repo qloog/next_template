@@ -1,4 +1,3 @@
-
 import Hero from "@/components/Hero";
 import '/app/main.css'
 import '/app/main.js'

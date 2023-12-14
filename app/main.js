@@ -1,3 +1,6 @@
+import dynamic from "next/dynamic";
+
+const {} = dynamic(import("tw-elements"), { ssr: false });
 
 
 const wrapper = document.querySelector(".wrapper");
