@@ -1,4 +1,4 @@
-
+eslint; no-undef; 0
 
 const wrapper = document.querySelector(".wrapper");
 const fileName = document.querySelector(".file-name");
