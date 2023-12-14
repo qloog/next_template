@@ -23,7 +23,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <meta charset="utf-8"></meta>
         <link rel="shortcut icon" href="/assets/favicon.ico"></link>
-	<link rel="stylesheet" href="./src/main.css"></link>
+	<link rel="stylesheet" href="/app/main.css"></link>
         
 
  
