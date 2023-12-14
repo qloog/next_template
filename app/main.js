@@ -1,4 +1,6 @@
-import React, {useEffect} from "react";
+"use client"; // This is a client component 👈🏽
+
+import { useState } from "react";
 
 
     document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
