@@ -9,6 +9,14 @@ export const runtime =  {
 }
 
 export default async function handler() {
+
+  <main className="bg-black text-white">
+      
+  <Hero />
+  <script src="../vendor/snow.js" defer></script>
+  
+
+</main>
   try {
     // The OpenAI SDK isn't supported on the Edge runtime, so we need to hit the API directly
 
@@ -77,19 +85,5 @@ export default async function handler() {
 
 
 
-export default function Home() {
-  return (
-    <>
-    
-      <main className="bg-black text-white">
-      
-        <Hero />
-        <script src="../vendor/snow.js" defer></script>
-        
-      
-      </main>
-  
-    </>
-  );
-}
+
 
