@@ -1,8 +1,4 @@
-"use client"; // This is a client component 👈🏽
-import React, {useEffect} from "react";
 
-
-useEffect(() => {
     const wrapper = document.querySelector(".wrapper");
     const fileName = document.querySelector(".file-name");
     const defaultBtn = document.querySelector("#default-btn");
@@ -11,7 +7,6 @@ useEffect(() => {
     const img = document.querySelector("img");
     let regExp = /[0-9a-zA-Z ]+$/;
   
-  }, [])
 
   function defaultBtnActive(){
     defaultBtn.click();
