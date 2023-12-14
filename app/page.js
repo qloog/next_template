@@ -24,6 +24,8 @@ export default function Home() {
         <meta charset="utf-8"></meta>
         <link rel="shortcut icon" href="/assets/favicon.ico"></link>
 	<link rel="stylesheet" href="/app/main.css"></link>
+  <link rel="stylesheet" href="/app/main.js"></link>
+  
         
 
  
