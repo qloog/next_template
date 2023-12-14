@@ -1,6 +1,6 @@
 
 import Hero from "@/components/Hero";
-
+import '../main.css'
 
 
 
