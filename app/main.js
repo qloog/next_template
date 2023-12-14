@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 
 useEffect(() => {
     document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
