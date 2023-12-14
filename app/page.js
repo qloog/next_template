@@ -16,7 +16,7 @@ export default function Home() {
       
         <Hero />
         <script src="../vendor/snow.js" defer></script>
-        
+        <title>Drag and Drop File Upload</title>
       
       </main>
   
