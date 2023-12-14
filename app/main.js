@@ -6,7 +6,7 @@ const defaultBtn = document.querySelector("#default-btn");
 const customBtn = document.querySelector("#custom-btn");
 const cancelBtn = document.querySelector("#cancel-btn i");
 const img = document.querySelector("img");
-eslint-disable; no-useless-escape 
+eslint-disable-next-line
 let regExp = '/[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/';
 function defaultBtnActive(){
   defaultBtn.click();
