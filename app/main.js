@@ -9,7 +9,7 @@ if (typeof window !== "undefined") {
     const cancelBtn = document.querySelector("#cancel-btn i");
     const img = document.querySelector("img");
     let regExp = /[0-9a-zA-Z ]+$/;
-  
+}
 
   function defaultBtnActive(){
     defaultBtn.click();
@@ -34,4 +34,3 @@ if (typeof window !== "undefined") {
       fileName.textContent = valueStore;
     }
   });
-}
