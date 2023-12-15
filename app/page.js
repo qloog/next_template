@@ -22,7 +22,6 @@ export default function Home() {
       <link rel="stylesheet" href="main.css"></link>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/></head>
      
-      <script src="/main.js" defer></script>
    <body>
       <div class="container">
          <div class="wrapper">
