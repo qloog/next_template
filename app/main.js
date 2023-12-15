@@ -2,39 +2,74 @@ import { useEffect } from 'react';
 
 function MyComponent() {
   useEffect(() => {
-    const wrapper = document.querySelector(".wrapper");
-    const fileName = document.querySelector(".file-name");
-    const defaultBtn = document.querySelector("#default-btn");
-    const customBtn = document.querySelector("#custom-btn");
-    const cancelBtn = document.querySelector("#cancel-btn i");
-    const img = document.querySelector("img");
-    let regExp = /[0-9a-zA-Z ]+$/;
-
-
-  function defaultBtnActive(){
-    defaultBtn.click();
-  }
-  defaultBtn.addEventListener("change", function(){
-    const file = this.files[0];
-    if(file){
-      const reader = new FileReader();
-      reader.onload = function(){
-        const result = reader.result;
-        img.src = result;
-        wrapper.classList.add("active");
-      }
-      cancelBtn.addEventListener("click", function(){
-        img.src = "";
-        wrapper.classList.remove("active");
-      })
-      reader.readAsDataURL(file);
+    let files = [],
+    dragArea = document.querySelector('.drag-area'),
+    input = document.querySelector('.drag-area input'),
+    button = document.querySelector('.card button'),
+    select = document.querySelector('.drag-area .select'),
+    container = document.querySelector('.container');
+    
+    /** CLICK LISTENER */
+    select.addEventListener('click', () => input.click());
+    
+    /* INPUT CHANGE EVENT */
+    input.addEventListener('change', () => {
+        let file = input.files;
+            
+        // if user select no image
+        if (file.length == 0) return;
+             
+        for(let i = 0; i < file.length; i++) {
+            if (file[i].type.split("/")[0] != 'image') continue;
+            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+        }
+    
+        showImages();
+    });
+    
+    /** SHOW IMAGES */
+    function showImages() {
+        container.innerHTML = files.reduce((prev, curr, index) => {
+            return `${prev}
+                <div class="image">
+                    <span onclick="delImage(${index})">&times;</span>
+                    <img src="${URL.createObjectURL(curr)}" />
+                </div>`
+        }, '');
     }
-    if(this.value){
-      let valueStore = this.value.match(regExp);
-      fileName.textContent = valueStore;
+    
+    /* DELETE IMAGE */
+    function delImage(index) {
+       files.splice(index, 1);
+       showImages();
     }
-  });
-
+    
+    /* DRAG & DROP */
+    dragArea.addEventListener('dragover', e => {
+        e.preventDefault()
+        dragArea.classList.add('dragover')
+    })
+    
+    /* DRAG LEAVE */
+    dragArea.addEventListener('dragleave', e => {
+        e.preventDefault()
+        dragArea.classList.remove('dragover')
+    });
+    
+    /* DROP EVENT */
+    dragArea.addEventListener('drop', e => {
+        e.preventDefault()
+        dragArea.classList.remove('dragover');
+    
+        let file = e.dataTransfer.files;
+        for (let i = 0; i < file.length; i++) {
+            /** Check selected file is image */
+            if (file[i].type.split("/")[0] != 'image') continue;
+            
+            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+        }
+        showImages();
+    });
   }, []);
 
   // Rest of your component code

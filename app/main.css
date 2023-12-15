@@ -1,99 +1,148 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap');
+
+*,::after,::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-html,body{
-  display: grid;
-  height: 100%;
-  place-items: center;
-  text-align: center;
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+    background: #dfe3f2;
 }
-.container{
-  height: 350px;
-  width: 430px;
-  position: relative;
+
+/* MAIN STYLE */
+
+.card {
+    width: 400px;
+    height: auto;
+    padding: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fafbff;
 }
-.container .wrapper{
-  position: relative;
-  height: 300px;
-  width: 100%;
-  border-radius: 10px;
-  background: #222;
-  border: 2px dashed #8c8c8c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+
+.card .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
-.wrapper.active{
-  border: none;
+
+.card p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #878a9a;
 }
-.wrapper .image{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+.card button {
+    outline: 0;
+    border: 0;
+        -webkit-appearence: none;
+	background: #5256ad;
+	color: #fff;
+	border-radius: 4px;
+	transition: 0.3s;
+	cursor: pointer;
+	font-weight: 400;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+	font-size: 0.8rem;
+	padding: 8px 13px;
 }
-.wrapper img{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+
+.card button:hover {
+	opacity: 0.8;
 }
-.wrapper .icon{
-  font-size: 100px;
-  color: #fff;
+
+.card button:active {
+	transform: translateY(5px);
 }
-.wrapper .text{
-  font-size: 20px;
-  font-weight: 500;
-  color: #8c8c8c;
+
+.card .drag-area {
+	width: 100%;
+	height: 160px;
+	border-radius: 5px;
+	border: 2px dashed #d5d5e1;
+	color: #c8c9dd;
+	font-size: 0.9rem;
+	font-weight: 500;
+	position: relative;
+	background: #dfe3f259;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	-webkit-user-select: none;
+	margin-top: 10px;
 }
-.wrapper #cancel-btn i{
-  position: absolute;
-  font-size: 20px;
-  right: 15px;
-  top: 15px;
-  color: #9658fe;
-  cursor: pointer;
-  display: none;
+
+.card .drag-area .visible {
+	font-size: 18px;
 }
-.wrapper.active:hover #cancel-btn i{
-  display: block;
+.card .select {
+    color: #5256ad;
+	margin-left: 5px;
+	cursor: pointer;
+	transition: 0.4s;
 }
-.wrapper #cancel-btn i:hover{
-  color: #e74c3c;
+
+.card .select:hover {
+	opacity: 0.6;
 }
-.wrapper .file-name{
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  padding: 8px 0;
-  font-size: 18px;
-  color: #fff;
-  display: none;
-  background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+
+.card .container {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	max-height: 200px;
+	overflow-y: auto;
+	margin-top: 10px;
 }
-.wrapper.active:hover .file-name{
-  display: block;
+
+.card .container .image {
+	width: calc(26% - 19px);
+	margin-right: 15px;
+	height: 75px;
+	position: relative;
+	margin-bottom: 8px;
 }
-.container #custom-btn{
-  margin-top: 30px;
-  display: block;
-  width: 100%;
-  height: 50px;
-  border: none;
-  outline: none;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+
+.card .container .image img {
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.card .container .image span {
+	position: absolute;
+	top: -2px;
+	right: 9px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+/* dragover class will used in drag and drop system */
+.card .drag-area.dragover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.card .drag-area.dragover .on-drop {
+	display: inline;
+	font-size: 28px;
+}
+
+.card input,
+.card .drag-area .on-drop, 
+.card .drag-area.dragover .visible {
+	display: none;
 }
