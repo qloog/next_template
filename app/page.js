@@ -13,7 +13,7 @@ export default function Home() {
 
       <head>
         <meta charset="utf-8"></meta>
-        <link rel="stylesheet" type="text/css" href="main.css"></link>
+        <link rel="stylesheet" href="main.css"></link>
         <meta http-equiv="X-UA-Compatible" content="IE=7"></meta>
         <meta
           http-equiv="Content-Type"
@@ -26,24 +26,15 @@ export default function Home() {
       </head>
 
       <body>
-        <div class="card">
-          <div class="top">
-            <p>Drag & drop image uploading</p>
-            <button type="button">Upload</button>
-          </div>
-          <div class="drag-area">
-            <span class="visible">
-              Drag & drop image here or
-              <span class="select" role="button">
-                Browse
-              </span>
-            </span>
-            <span class="on-drop">Drop images here</span>
-            <input name="file" type="file" class="file" multiple />
-          </div>
-          <div class="container"></div>
-        </div>
-      </body>
+    <main>
+        <section class="droparea">
+            <i class="far fa-images"></i>
+            <p>Drop your .png or .jpg files here!</p>
+            <p><small>Up to 20 images, No max file size.</small></p>
+        </section>
+    </main>
+</body>
+
     </>
   );
 }

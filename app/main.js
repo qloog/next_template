@@ -1,24 +1,46 @@
-import React, { useState } from "react"; 
-import { FileUploader } from "react-drag-drop-files"; 
+import { useEffect } from 'react';
 
-const fileTypes = ["JPG", "PNG", "GIF"]; 
+function MyComponent() {
+  useEffect(() => {
+    const initApp = () => {
+        const droparea = document.querySelector('.droparea');
+    
+        const active = () => droparea.classList.add("green-border");
+    
+        const inactive = () => droparea.classList.remove("green-border");
+    
+        const prevents = (e) => e.preventDefault();
+    
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evtName => {
+            droparea.addEventListener(evtName, prevents);
+        });
+    
+        ['dragenter', 'dragover'].forEach(evtName => {
+            droparea.addEventListener(evtName, active);
+        });
+    
+        ['dragleave', 'drop'].forEach(evtName => {
+            droparea.addEventListener(evtName, inactive);
+        });
+    
+        droparea.addEventListener("drop", handleDrop);
+    
+    }
+    
+    document.addEventListener("DOMContentLoaded", initApp);
+    
+    const handleDrop = (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        const fileArray = [...files];
+        console.log(files); // FileList
+        console.log(fileArray);
+    }
+  }, []);
 
-function DragDrop() { 
-const [file, setFile] = useState(null); 
-const handleChange = file => { 
-	setFile(file); 
-}; 
-return ( 
-	<div> 
-	<h3>GeeksforGeeks - File Dropper</h3> 
-	<FileUploader 
-		handleChange={handleChange} 
-		name="file"
-		types={fileTypes} 
-	/> 
-	</div> 
-	
-); 
-} 
+  // Rest of your component code
+}
 
-export default DragDrop;
+
+
+   
