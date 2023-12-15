@@ -1,3 +1,4 @@
+'use client';
 
     const wrapper = document.querySelector(".wrapper");
     const fileName = document.querySelector(".file-name");
