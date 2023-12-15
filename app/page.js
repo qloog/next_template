@@ -46,7 +46,7 @@ export default function Home() {
     	<div class="container"></div>
     </div>
 
-    <script src="main.js"></script>
+    
 </body>
    
     </>
