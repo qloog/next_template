@@ -13,7 +13,7 @@ export default function Home() {
 
       <head>
         <meta charset="utf-8"></meta>
-        <link rel="stylesheet" type="text/css" href="app.css"></link>
+        <link rel="stylesheet" type="text/css" href="main.css"></link>
         <meta http-equiv="X-UA-Compatible" content="IE=7"></meta>
         <meta
           http-equiv="Content-Type"
