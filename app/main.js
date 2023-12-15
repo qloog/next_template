@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 
 function MyComponent() {
   useEffect(() => {
-   
     const wrapper = document.querySelector(".wrapper");
     const fileName = document.querySelector(".file-name");
     const defaultBtn = document.querySelector("#default-btn");
@@ -10,7 +9,7 @@ function MyComponent() {
     const cancelBtn = document.querySelector("#cancel-btn i");
     const img = document.querySelector("img");
     let regExp = /[0-9a-zA-Z ]+$/;
-  }, []);
+
 
   function defaultBtnActive(){
     defaultBtn.click();
@@ -36,10 +35,11 @@ function MyComponent() {
     }
   });
 
+  }, []);
+
+  // Rest of your component code
 }
 
 
 
-
-
-  
+   
