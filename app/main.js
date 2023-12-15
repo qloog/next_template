@@ -1,5 +1,7 @@
-'use client';
 
+
+'use client';
+if (typeof window !== "undefined") {
     const wrapper = document.querySelector(".wrapper");
     const fileName = document.querySelector(".file-name");
     const defaultBtn = document.querySelector("#default-btn");
@@ -32,3 +34,4 @@
       fileName.textContent = valueStore;
     }
   });
+}
