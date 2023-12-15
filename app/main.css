@@ -21,7 +21,7 @@ html,body{
   height: 300px;
   width: 100%;
   border-radius: 10px;
-  background: #fff;
+  background: #222;
   border: 2px dashed #c2cdda;
   display: flex;
   align-items: center;
@@ -46,7 +46,7 @@ html,body{
 }
 .wrapper .icon{
   font-size: 100px;
-  color: #9658fe;
+  color: #fff;
 }
 .wrapper .text{
   font-size: 20px;
