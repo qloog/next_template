@@ -30,21 +30,19 @@ export default function Home() {
 
     <div class="card">
     	<div class="top">
-    		<p>Drag & drop image uploading</p>
-    		<button type="button">Upload</button>
+    	<p>Drag & drop image uploading</p>
+    	<button type="button">Upload</button>
     	</div>
     	<div class="drag-area">
-    		<span class="visible">
-				Drag & drop image here or
-				<span class="select" role="button">Browse</span>
+    	<span class="visible">
+			Drag & drop image here or
+			<span class="select" role="button">Browse</span>
 			</span>
 			<span class="on-drop">Drop images here</span>
-    		<input name="file" type="file" class="file" multiple />
+    	<input name="file" type="file" class="file" multiple />
     	</div>
     	<div class="container"></div>
     </div>
-
-    
 </body>
    
     </>
