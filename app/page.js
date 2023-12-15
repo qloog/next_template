@@ -1,3 +1,4 @@
+
 'use client';
 
 import Hero from "@/components/Hero";
@@ -28,7 +29,8 @@ export default function Home() {
   </head>
 	
      
-  <body>
+eslint no-mixed-spaces-and-tabs: "off"
+  <body >
 
     <div class="card">
     	<div class="top">
