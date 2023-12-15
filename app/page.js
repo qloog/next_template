@@ -18,13 +18,15 @@ export default function Home() {
         
   
  
-      <head>
-	<meta charset="utf-8"></meta>
+  <head>
+  <meta charset="utf-8"></meta>
 	<link rel="stylesheet" type="text/css" href="app.css"></link>
 	<meta http-equiv="X-UA-Compatible" content="IE=7"></meta>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta></head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 
+  </head>
+	
      
   <body>
 
