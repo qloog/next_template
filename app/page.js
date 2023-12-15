@@ -41,8 +41,6 @@ export default function Home() {
 			<span class="on-drop">Drop images here</span>
     		<input name="file" type="file" class="file" multiple />
     	</div>
-
-	    
     	<div class="container"></div>
     </div>
 
