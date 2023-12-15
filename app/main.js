@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 
-
-'use client';
-if (typeof window !== "undefined") {
+function MyComponent() {
+  useEffect(() => {
+   
     const wrapper = document.querySelector(".wrapper");
     const fileName = document.querySelector(".file-name");
     const defaultBtn = document.querySelector("#default-btn");
@@ -9,7 +10,7 @@ if (typeof window !== "undefined") {
     const cancelBtn = document.querySelector("#cancel-btn i");
     const img = document.querySelector("img");
     let regExp = /[0-9a-zA-Z ]+$/;
-}
+  }, []);
 
   function defaultBtnActive(){
     defaultBtn.click();
@@ -34,3 +35,11 @@ if (typeof window !== "undefined") {
       fileName.textContent = valueStore;
     }
   });
+
+}
+
+
+
+
+
+  
