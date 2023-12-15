@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-function MyComponent() {
-  useEffect(() => {
+
     let files = [],
     dragArea = document.querySelector('.drag-area'),
     input = document.querySelector('.drag-area input'),
@@ -70,10 +69,10 @@ function MyComponent() {
         }
         showImages();
     });
-  }, []);
+  
 
   // Rest of your component code
-}
+
 
 
 
