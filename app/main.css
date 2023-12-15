@@ -6,16 +6,6 @@
     box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-family: 'Mulish', sans-serif;
-    background: #dfe3f2;
-}
 
 /* MAIN STYLE */
 
