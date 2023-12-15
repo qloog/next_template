@@ -51,7 +51,7 @@ html,body{
 .wrapper .text{
   font-size: 20px;
   font-weight: 500;
-  color: #5B5B7B;
+  color: #fff;
 }
 .wrapper #cancel-btn i{
   position: absolute;
