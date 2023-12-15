@@ -13,7 +13,7 @@ export default function Home() {
     
       <main className="bg-black text-white">
         <Hero />
-        <script src="../vendor/snow.js" defer></script>
+        
       </main>
         
   
