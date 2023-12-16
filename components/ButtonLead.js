@@ -52,8 +52,8 @@ const ButtonLead = ({ extraStyle }) => {
       />
 
       <ButtonGradient>
-        className="btn btn-primary btn-block"
-        type="submit"
+        className=&quot;btn btn-primary btn-block&quot;
+        type=&quot;submit&quot;
         disabled={isDisabled}
     
         Start using Findrr now
