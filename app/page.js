@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <main className="bg-black text-white">
         <Hero />
-        <ButtonGradient></ButtonGradient>
+        <ButtonGradient className="items-center justify-center"></ButtonGradient>
       </main>
 
       
