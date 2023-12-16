@@ -51,11 +51,11 @@ const ButtonLead = ({ extraStyle }) => {
         onChange={(e) => setEmail(e.target.value)}
       />
 
-      <button
+      <ButtonGradient>
         className="btn btn-gradient animate-shimmer"
         type="submit"
         disabled={isDisabled}
-      >
+    
         Start using Findrr now
         {isLoading ? (
           <span className="loading loading-spinner loading-xs"></span>
@@ -73,7 +73,7 @@ const ButtonLead = ({ extraStyle }) => {
             />
           </svg>
         )}
-      </button>
+      </ButtonGradient>
     </form>
   );
 };
