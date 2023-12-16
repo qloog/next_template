@@ -1,10 +1,9 @@
 import Image from "next/image";
 import ButtonLead from "./ButtonLead";
-import ButtonGradient from "@/components/ButtonGradient";
   
 function Hero() {
   return (
-    <section className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
+    <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
         <a
           //href="https://www.producthunt.com/posts/shipfast-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-shipfast&#0045;2"
@@ -23,12 +22,9 @@ function Hero() {
   
       <p>Findrr is the first AI Tattoo Consulter in the world.</p>
       <p>Upload photos of your own, and then use Findrr to transform it into a custom design. Get Tattoo design inspiration and new ideas for your tattoo.</p>
-        
-        </div>
+       
 
-      
-        <ButtonGradient>
-        className=&quot;btn btn-gradient animate-shimmer&quot;
+      <ButtonGradient className="btn btn-gradient animate-shimmer">
         type=&quot;submit&quot;
         disabled={isDisabled}
     
@@ -50,16 +46,16 @@ function Hero() {
           </svg>
         )}
       </ButtonGradient>
+
+
+        </div>
+
+
+      
+
+      
+
   
-    
-
-      
-
-      
-
-      <div className="lg:w-full">
-       
-      </div>
     </section>
   );
 }
