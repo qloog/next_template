@@ -49,7 +49,7 @@ const ButtonLead = ({ extraStyle }) => {
       />
 
       <button
-        className="btn btn-gradient animate-shimmer"
+        className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
         type="submit"
         disabled={isDisabled}
       >
