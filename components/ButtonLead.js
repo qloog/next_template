@@ -34,7 +34,7 @@ const ButtonLead = ({ extraStyle }) => {
   };
   return (
     <form
-      className={`w-full max-w-xs space-y-3 ${extraStyle ? extraStyle : ""}`}
+      className={`w-full max-w-xs space-y-3 text-black ${extraStyle ? extraStyle : ""}`}
       onSubmit={handleSubmit}
     >
       <input
