@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
-
+import ButtonGradient from "@/components/ButtonGradient";
 
 
 // This component is used to collect the emails from the landing page
