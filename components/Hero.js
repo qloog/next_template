@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ButtonLead from "./ButtonLead";
+
   
 function Hero() {
   return (
@@ -22,7 +23,7 @@ function Hero() {
   
       <p>Findrr is the first AI Tattoo Consulter in the world.</p>
       <p>Upload photos of your own, and then use Findrr to transform it into a custom design. Get Tattoo design inspiration and new ideas for your tattoo.</p>
-        <ButtonLead>Join Waitlist</ButtonLead>
+        
         </div>
 
 
