@@ -2,7 +2,7 @@
 
 const ButtonGradient = ({ title = "Start using Findrr now", onClick = () => {} }) => {
   return (
-    <button className="btn btn-gradient animate-shimmer items-center justify-center" onClick={onClick}>
+    <button className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3" onClick={onClick}>
       {title}
     </button>
   );
