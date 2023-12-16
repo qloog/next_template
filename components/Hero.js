@@ -26,6 +26,11 @@ function Hero() {
         
         </div>
 
+      
+    <button className="btn btn-gradient animate-shimmer" onClick={onClick}>
+      {title}
+    </button>
+  
 
       
 
