@@ -9,7 +9,14 @@ export default function Home() {
       <main className="bg-black text-white">
         <Hero />
       </main>
+ <section>
+<h3>Your current design</h3>
 
+
+
+
+
+ </section>
       
     </>
   );
