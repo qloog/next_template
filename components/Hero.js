@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ButtonLead from "./ButtonLead";
-
+import ButtonGradient from "@/components/ButtonGradient";
   
 function Hero() {
   return (

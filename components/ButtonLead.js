@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
-import ButtonGradient from "@/components/ButtonGradient";
+
 
 
 // This component is used to collect the emails from the landing page
@@ -51,11 +51,11 @@ const ButtonLead = ({ extraStyle }) => {
         onChange={(e) => setEmail(e.target.value)}
       />
 
-      <ButtonGradient>
-        className=&quot;btn btn-primary btn-block&quot;
-        type=&quot;submit&quot;
+      <button
+        className="btn btn-gradient animate-shimmer"
+        type="submit"
         disabled={isDisabled}
-    
+      >
         Start using Findrr now
         {isLoading ? (
           <span className="loading loading-spinner loading-xs"></span>
@@ -73,7 +73,7 @@ const ButtonLead = ({ extraStyle }) => {
             />
           </svg>
         )}
-     </ButtonGradient>
+      </button>
     </form>
   );
 };
