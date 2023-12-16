@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ButtonLead from "./ButtonLead";
-import ButtonGradient from "@/components/ButtonGradient";  
+  
 function Hero() {
   return (
     <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
@@ -24,30 +24,12 @@ function Hero() {
       <p>Upload photos of your own, and then use Findrr to transform it into a custom design. Get Tattoo design inspiration and new ideas for your tattoo.</p>
        
 
-      <ButtonGradient className="btn btn-gradient animate-shimmer">
-        type=&quot;submit&quot;
-        disabled={isDisabled}
-    
-        Start using Findrr now
-        {isLoading ? (
-          <span className="loading loading-spinner loading-xs"></span>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-              clipRule="evenodd"
-            />
-          </svg>
-        )}
-      </ButtonGradient>
+       <button className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
+       Start using Findrr now
+        
+       </button>
 
-
+       
         </div>
 
 
