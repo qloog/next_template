@@ -52,8 +52,8 @@ const ButtonLead = ({ extraStyle }) => {
       />
 
       <ButtonGradient>
-        className="btn btn-gradient animate-shimmer"
-        type="submit"
+        className=&quot;btn btn-gradient animate-shimmer&quot;
+        type=&quot;submit&quot;
         disabled={isDisabled}
     
         Start using Findrr now
