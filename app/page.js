@@ -8,7 +8,6 @@ export default function Home() {
     <>
       <main className="bg-black text-white">
         <Hero />
-        <ButtonGradient className="w-full max-w-xs space-y-3"></ButtonGradient>
       </main>
 
       
