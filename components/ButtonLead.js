@@ -50,7 +50,7 @@ const ButtonLead = ({ extraStyle }) => {
       />
 
       <button className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
-        Start using Findrr now type="submit"
+        Start using Findrr now 
       </button>
     </form>
   );
