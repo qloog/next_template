@@ -25,27 +25,7 @@ function Hero() {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <form
-          className={`w-full max-w-xs space-y-3 ${
-            extraStyle ? extraStyle : ""
-          }`}
-          onSubmit={handleSubmit}
-        >
-          <input
-            required
-            type="email"
-            value={email}
-            ref={inputRef}
-            autoComplete="email"
-            placeholder="Type your email..."
-            className="input input-bordered w-full placeholder:opacity-60 bg-white"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <button className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
-            Start using Findrr now type="submit"
-          </button>
-        </form>
+       
       </div>
     </section>
   );
