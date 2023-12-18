@@ -37,7 +37,6 @@ export default function Home() {
 		<button class="select-image">Select Image</button>
 	</div>
 	
-  <script defer src="main.js"></script> 
 </body>
  </section>
 

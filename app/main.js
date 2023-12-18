@@ -1,4 +1,9 @@
-const selectImage = document.querySelector('.select-image');
+
+import { useEffect } from 'react';
+
+function MyComponent() {
+  useEffect(() => {
+    const selectImage = document.querySelector('.select-image');
 const inputFile = document.querySelector('#file');
 const imgArea = document.querySelector('.img-area');
 
@@ -25,3 +30,10 @@ inputFile.addEventListener('change', function () {
 		alert("Image size more than 2MB");
 	}
 })
+  }, []);
+
+  // Rest of your component code
+}
+
+
+
