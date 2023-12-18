@@ -1,8 +1,8 @@
 "use client";
 
 import Hero from "@/components/Hero";
-import "/main.css"
-import "/main.js"
+import ".//main.css"
+import ".//main.js"
 
 export default function Home() {
   return (
