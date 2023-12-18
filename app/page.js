@@ -21,8 +21,7 @@ export default function Home() {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'></link>
 	<link rel="stylesheet" href="main.css"></link>
-	<title>Input Image With Preview Image</title>
-  <script defer src="main.js"></script>   
+	<title>Input Image With Preview Image</title>  
   </head>
 	
 
@@ -38,7 +37,7 @@ export default function Home() {
 		<button class="select-image">Select Image</button>
 	</div>
 	
-
+  <script defer src="main.js"></script> 
 </body>
  </section>
 
