@@ -36,7 +36,7 @@ export default function Home() {
 		<button class="select-image">Select Image</button>
 	</div>
 	
-	<script src="script.js"></script>
+
 </body>
  </section>
 
