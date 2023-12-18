@@ -7,54 +7,7 @@ import Output from '@/components/Output';
 import RadioButtonGroup from '@/components/RadioButtonGroup';
 import { useState } from 'react'
 
-const HomePage = () => {
-  const [formData, setFormData] = useState({
-    contentType: '',
-    prompt: ''
-  });
-
-  const [results, setResults] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const radioButtonOptions = [
-    {
-      id: 'text',
-      value: 'text',
-      label: 'Text'
-    },
-    {
-      id: 'image',
-      value: 'image',
-      label: 'Image'
-    },
-  ];
-
-  const handleChange = (e) => {
-    setResults(null);
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setResults(null);
-    setLoading(true);
-
-    const res = await fetch(`http://localhost:3000/api/${formData.contentType}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    });
-
-    setResults(await res.json());
-    setLoading(false);
-  };
-
-  export default function Home() {
+export default function Home() {
   return (
     <>
       <main className="bg-black text-white">
@@ -119,4 +72,52 @@ const HomePage = () => {
     </>
   );
 }
+
+const HomePage = () => {
+  const [formData, setFormData] = useState({
+    contentType: '',
+    prompt: ''
+  });
+
+  const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const radioButtonOptions = [
+    {
+      id: 'text',
+      value: 'text',
+      label: 'Text'
+    },
+    {
+      id: 'image',
+      value: 'image',
+      label: 'Image'
+    },
+  ];
+
+  const handleChange = (e) => {
+    setResults(null);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setResults(null);
+    setLoading(true);
+
+    const res = await fetch(`http://localhost:3000/api/${formData.contentType}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+
+    setResults(await res.json());
+    setLoading(false);
+  };
+
 }
