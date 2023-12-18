@@ -10,7 +10,7 @@ const SimpleTextarea = () => {
 
     const handleButtonClick = () => {
         // Define your idea generation logic here
-        setIdea('New idea generated!');
+        setIdea('Generating...');
     };
 
     return (
