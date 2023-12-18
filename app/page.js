@@ -54,9 +54,8 @@ const HomePage = () => {
     setLoading(false);
   };
 
-   function Home() {
+  function Home() {
   return (
-    
     <>
       <main className="bg-black text-white">
         <Hero />
@@ -121,3 +120,4 @@ const HomePage = () => {
   );
 }
 }
+export default HomePage
