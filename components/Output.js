@@ -1,6 +1,6 @@
 'use client';
 
-import Loading from "@app/loading";
+import Loading from "app/loading";
 
 const Output = (props) => {
     const { contentType, results, loading } = props;
