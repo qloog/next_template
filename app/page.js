@@ -2,6 +2,9 @@
 
 import Hero from "@/components/Hero";
 import UploadForm from "@/components/UploadForm"
+import Output from '@/components/Output';
+import RadioButtonGroup from '@/components/RadioButtonGroup';
+import { useState } from 'react'
 
 export default function Home() {
   return (
@@ -69,9 +72,6 @@ export default function Home() {
   );
 }
 
-import Output from '@/components/Output';
-import RadioButtonGroup from '@/components/RadioButtonGroup';
-import { useState } from 'react'
 
 const HomePage = () => {
   const [formData, setFormData] = useState({
