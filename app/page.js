@@ -54,7 +54,7 @@ const HomePage = () => {
     setLoading(false);
   };
 
-  function Home() {
+  export default function Home() {
   return (
     <>
       <main className="bg-black text-white">
@@ -120,4 +120,3 @@ const HomePage = () => {
   );
 }
 }
-export default HomePage
