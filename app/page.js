@@ -96,10 +96,10 @@ const HomePage = () => {
   )
 }
 
+export default HomePage
 
 
-
-export default function Home() {
+ function Home() {
   return (
     <>
       <main className="bg-black text-white">
