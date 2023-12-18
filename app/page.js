@@ -2,7 +2,7 @@
 
 import Hero from "@/components/Hero";
 import UploadForm from "@/components/UploadForm"
-import styles from './page.module.css'
+
 
 export default function Home() {
   return (
