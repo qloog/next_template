@@ -3,8 +3,8 @@
 import Hero from "@/components/Hero";
 import UploadForm from "@/components/UploadForm"
 
-import Output from './components/Output';
-import RadioButtonGroup from './components/RadioButtonGroup';
+import Output from '@/components/Output';
+import RadioButtonGroup from '@/components/RadioButtonGroup';
 import { useState } from 'react'
 
 const HomePage = () => {
