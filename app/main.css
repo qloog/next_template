@@ -19,14 +19,13 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background: var(--light-blue);
+	
 }
 
 
 .container {
-	max-width: 400px;
+	max-width: 200px;
 	width: 100%;
-	background: #fff;
 	padding: 30px;
 	border-radius: 30px;
 }
