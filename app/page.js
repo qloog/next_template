@@ -54,7 +54,7 @@ const HomePage = () => {
     setLoading(false);
   };
 
-  require: function Home() {
+  export default function Home() {
   return (
     <>
       <main className="bg-black text-white">
