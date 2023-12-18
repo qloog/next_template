@@ -2,9 +2,60 @@
 
 import Hero from "@/components/Hero";
 import UploadForm from "@/components/UploadForm"
+'use client';
 
+import Output from './components/Output';
+import RadioButtonGroup from './components/RadioButtonGroup';
+import { useState } from 'react'
 
-export default function Home() {
+const HomePage = () => {
+  const [formData, setFormData] = useState({
+    contentType: '',
+    prompt: ''
+  });
+
+  const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const radioButtonOptions = [
+    {
+      id: 'text',
+      value: 'text',
+      label: 'Text'
+    },
+    {
+      id: 'image',
+      value: 'image',
+      label: 'Image'
+    },
+  ];
+
+  const handleChange = (e) => {
+    setResults(null);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setResults(null);
+    setLoading(true);
+
+    const res = await fetch(`http://localhost:3000/api/${formData.contentType}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+
+    setResults(await res.json());
+    setLoading(false);
+  };
+
+ function Home() {
   return (
     <>
       <main className="bg-black text-white">
@@ -22,6 +73,7 @@ export default function Home() {
 <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
   Your Custom-made Design 
   </h3>
+  
   <div className='space-y-5'>
       <h1>AI Content Generator</h1>
       <div className='flex justify-between gap-10 min-h-screen'>
@@ -68,3 +120,5 @@ export default function Home() {
     </>
   );
 }
+}
+export default Home
