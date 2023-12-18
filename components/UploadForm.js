@@ -34,7 +34,7 @@ const UploadForm = () => {
 
   return (
     <>
-      <h1>Upload Files to S3 Bucket</h1>
+
 
       <form onSubmit={handleSubmit}>
         <input type="file" accept="image/*" onChange={handleFileChange} />
