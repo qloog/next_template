@@ -16,6 +16,8 @@ export default function Home() {
           Your Tattoo Idea
         </h3>
         <UploadForm></UploadForm>
+        <p>Generate Design through text instead?</p>
+        <SimpleTextarea></SimpleTextarea>
       </section>
 
       <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
@@ -23,7 +25,6 @@ export default function Home() {
           Your Custom-made Design
         </h3>
 
-        <SimpleTextarea></SimpleTextarea>
       </section>
     </>
   );
