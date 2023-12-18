@@ -2,7 +2,6 @@
 
 import Hero from "@/components/Hero";
 import UploadForm from "@/components/UploadForm"
-'use client';
 
 import Output from './components/Output';
 import RadioButtonGroup from './components/RadioButtonGroup';
