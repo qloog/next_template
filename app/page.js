@@ -2,7 +2,7 @@
 
 import Hero from "@/components/Hero";
 import UploadForm from "@/components/UploadForm";
-import SimpleTextarea from "@/components/SimpleTextarea";
+import SimpleTextarea from "@/components/Textbox";
 
 export default function Home() {
   return (
