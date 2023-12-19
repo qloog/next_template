@@ -18,11 +18,33 @@ const TattooGenerator = () => {
         }
     };
 
-    const renderNewIdea = () => {
-        // Implement logic to generate a tattoo based on text or uploaded image
-        // This is a placeholder action; replace with actual image generation logic
-        setTattooImage('path/to/generated/tattoo/image.png');
+    const renderNewIdea = async () => {
+        try {
+            let requestBody = { prompt: text }; // Use the text state for the prompt
+    
+            // If there's an uploaded image, handle accordingly (this is simplified)
+            // In a real scenario, you would need to handle the image data properly
+            if (uploadedImage) {
+                requestBody = { image: uploadedImage }; // Placeholder for image handling
+            }
+    
+            const response = await fetch('/api/generateImage', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestBody),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const data = await response.json();
+            setTattooImage(data.imageUrl); // Update the state with the generated image URL
+        } catch (error) {
+            console.error('Error generating tattoo:', error);
+        }
     };
+    
 
     return (
         <div>
