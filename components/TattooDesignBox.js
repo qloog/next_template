@@ -1,53 +1,71 @@
 import React, { useState } from 'react';
 
 const TattooGenerator = () => {
-    const [description, setDescription] = useState('');
+    const [text, setText] = useState('');
     const [uploadedImage, setUploadedImage] = useState(null);
-    const [generatedTattoo, setGeneratedTattoo] = useState('');
+    const [tattooImage, setTattooImage] = useState('');
 
-    const handleGenerateTattoo = async () => {
-        try {
-            let requestBody;
+    const handleTextChange = (e) => {
+        setText(e.target.value);
+        setUploadedImage(null); // Reset uploaded image if text is entered
+    };
 
-            if (uploadedImage) {
-                // Assuming the image is handled as a base64 string or similar
-                // This is placeholder logic; actual implementation depends on how you handle image data
-                requestBody = { image: 'base64_or_other_format_data' };
-            } else {
-                requestBody = { prompt: description };
-            }
-
-            const response = await fetch('/api/generateImage', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestBody),
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const data = await response.json();
-            setGeneratedTattoo(data.imageUrl);
-        } catch (error) {
-            console.error('Error generating tattoo:', error);
-            // Handle errors appropriately in the UI
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setUploadedImage(URL.createObjectURL(file));
+            setText(''); // Reset text if image is uploaded
         }
+    };
+
+    const renderNewIdea = () => {
+        // Implement logic to generate a tattoo based on text or uploaded image
+        // This is a placeholder action; replace with actual image generation logic
+        setTattooImage('path/to/generated/tattoo/image.png');
     };
 
     return (
         <div>
             <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Describe your tattoo idea here"
+                value={text}
+                onChange={handleTextChange}
+                placeholder="Describe your tattoo idea..."
+                rows={4}
+                style={{ width: '100%', maxWidth: '500px', marginBottom: '10px' }}
+                disabled={uploadedImage !== null}
             />
-            <input
-                type="file"
-                onChange={(e) => setUploadedImage(e.target.files[0])}
-            />
-            <button onClick={handleGenerateTattoo}>Render new idea</button>
-            {generatedTattoo && <img src={generatedTattoo} alt="Generated Tattoo" />}
+            <br />
+            <input type="file" onChange={handleImageUpload} disabled={text !== ''} style={{ marginBottom: '10px' }} />
+            <br />
+            <button
+                onClick={renderNewIdea}
+                style={{
+                    backgroundColor: 'white',
+                    border: '1px solid #ccc',
+                    borderRadius: '30px',
+                    padding: '10px 20px',
+                    cursor: 'pointer',
+                    display: 'block',
+                    color: 'black'
+                }}
+            >
+                Render new idea
+            </button>
+            {tattooImage && (
+                <div 
+                    style={{ 
+                        width: '300px', 
+                        height: '300px', 
+                        marginTop: '20px',
+                        border: '1px dashed rgba(255,255,255,0.2)', // Dashed border added
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}
+                >
+                    <img src={tattooImage} alt="Generated Tattoo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                </div>
+            )}
         </div>
     );
 };
