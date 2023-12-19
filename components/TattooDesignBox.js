@@ -18,11 +18,24 @@ const TattooGenerator = () => {
         }
     };
 
-    const renderNewIdea = () => {
-        // Implement logic to generate a tattoo based on text or uploaded image
-        // This is a placeholder action; replace with actual image generation logic
-        setTattooImage('path/to/generated/tattoo/image.png');
-    };
+    // In your TattooGenerator component
+
+const renderNewIdea = async () => {
+    try {
+        const response = await fetch('/api/generateImage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt: text }), // Send the text as a prompt
+        });
+        const data = await response.json();
+        setTattooImage(data.imageUrl); // Update the state with the generated image URL
+    } catch (error) {
+        console.error('Error generating image:', error);
+    }
+};
+
 
     return (
         <div>
