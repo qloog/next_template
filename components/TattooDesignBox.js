@@ -20,7 +20,7 @@ const TattooGenerator = () => {
 
     const renderNewIdea = () => {
         // Implement logic to generate a tattoo based on text or uploaded image
-        // Placeholder action for now
+        // This is a placeholder action; replace with actual image generation logic
         setTattooImage('path/to/generated/tattoo/image.png');
     };
 
@@ -45,15 +45,17 @@ const TattooGenerator = () => {
                     borderRadius: '30px',
                     padding: '10px 20px',
                     cursor: 'pointer',
-                    display: 'block', // Ensure the button starts on a new line
-                    color: 'black' // Set text color to black
+                    display: 'block',
+                    color: 'black'
                 }}
             >
                 Render new idea
             </button>
-            <div>
-                {tattooImage && <img src={tattooImage} alt="Custom Tattoo" />}
-            </div>
+            {tattooImage && (
+                <div style={{ width: '300px', height: '300px', marginTop: '20px' }}>
+                    <img src={tattooImage} alt="Generated Tattoo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                </div>
+            )}
         </div>
     );
 };
