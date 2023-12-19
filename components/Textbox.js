@@ -10,7 +10,7 @@ const SimpleTextarea = () => {
 
     const handleButtonClick = () => {
         // Define your idea generation logic here
-        setIdea('Generating...');
+        setIdea('New idea generated!');
     };
 
     return (
@@ -20,8 +20,12 @@ const SimpleTextarea = () => {
                 onChange={handleChange}
                 placeholder="Type here..."
                 rows={4}
-                cols={50}
-                style={{ marginBottom: '10px' }}
+                style={{ 
+                    width: '100%', // Adjust the width as needed
+                    maxWidth: '500px', // Ensures textarea doesn't go beyond this width
+                    marginBottom: '10px',
+                    resize: 'vertical' // Allows vertical resizing only
+                }}
             />
             <br />
             <button
