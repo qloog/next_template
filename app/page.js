@@ -5,6 +5,7 @@ import UploadForm from "@/components/UploadForm";
 //import SimpleTextarea from "@/components/Textbox";
 //import handleButtonClick from "@/components/Textbox"
 import TattooGenerator from "@/components/TattooDesignBox"
+
 export default function Home() {
   return (
     <>

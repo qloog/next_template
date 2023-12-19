@@ -13,15 +13,14 @@ const TattooGenerator = () => {
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
-            // Assuming URL.createObjectURL is used for preview; adjust based on your method
             setUploadedImage(URL.createObjectURL(file));
             setText(''); // Reset text if image is uploaded
         }
     };
 
-    const generateTattoo = () => {
+    const renderNewIdea = () => {
         // Implement logic to generate a tattoo based on text or uploaded image
-        // For now, this is a placeholder action
+        // Placeholder action for now
         setTattooImage('path/to/generated/tattoo/image.png');
     };
 
@@ -33,12 +32,23 @@ const TattooGenerator = () => {
                 placeholder="Describe your tattoo idea..."
                 rows={4}
                 style={{ width: '100%', maxWidth: '500px', marginBottom: '10px' }}
-                disabled={uploadedImage !== null} // Disable if an image is uploaded
+                disabled={uploadedImage !== null}
             />
             <br />
-            <input type="file" onChange={handleImageUpload} disabled={text !== ''} /> {/* Disable if text is entered */}
+            <input type="file" onChange={handleImageUpload} disabled={text !== ''} />
             <br />
-            <button onClick={generateTattoo}>Generate Tattoo</button>
+            <button
+                onClick={renderNewIdea}
+                style={{
+                    backgroundColor: 'white', // White background color
+                    border: '1px solid #ccc',
+                    borderRadius: '30px', // Oval shape
+                    padding: '10px 20px',
+                    cursor: 'pointer'
+                }}
+            >
+                Render new idea
+            </button>
             <div>
                 {tattooImage && <img src={tattooImage} alt="Custom Tattoo" />}
             </div>
