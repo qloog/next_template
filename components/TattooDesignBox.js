@@ -35,16 +35,17 @@ const TattooGenerator = () => {
                 disabled={uploadedImage !== null}
             />
             <br />
-            <input type="file" onChange={handleImageUpload} disabled={text !== ''} />
+            <input type="file" onChange={handleImageUpload} disabled={text !== ''} style={{ marginBottom: '10px' }} />
             <br />
             <button
                 onClick={renderNewIdea}
                 style={{
-                    backgroundColor: 'white', // White background color
+                    backgroundColor: 'white',
                     border: '1px solid #ccc',
-                    borderRadius: '30px', // Oval shape
+                    borderRadius: '30px',
                     padding: '10px 20px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    display: 'block' // Ensure the button starts on a new line
                 }}
             >
                 Render new idea
