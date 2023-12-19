@@ -45,7 +45,8 @@ const TattooGenerator = () => {
                     borderRadius: '30px',
                     padding: '10px 20px',
                     cursor: 'pointer',
-                    display: 'block' // Ensure the button starts on a new line
+                    display: 'block', // Ensure the button starts on a new line
+                    color: 'black' // Set text color to black
                 }}
             >
                 Render new idea
