@@ -17,7 +17,7 @@ export default function Home() {
           Your Tattoo Idea
         </h3>
         <UploadForm></UploadForm>
-        <p>Generate Design through text instead?</p>
+        <p className="text-white opacity-80">Generate Design through text instead?</p>
         <SimpleTextarea></SimpleTextarea>
        <handleButtonClick className="text-black"></handleButtonClick>
       </section>
