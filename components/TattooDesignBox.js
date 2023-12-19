@@ -63,7 +63,7 @@ const TattooGenerator = () => {
                         alignItems: 'center'
                     }}
                 >
-                    <img src={tattooImage} alt="Generated Tattoo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    <img src={tattooImage} alt="Your Custom-made Design" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
             )}
         </div>
