@@ -31,7 +31,7 @@ const TattooGenerator = () => {
             const response = await fetch('/api/generateImage', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestBody),
+                body: JSON.stringify({prompt: text}),
             });
     
             if (!response.ok) {
