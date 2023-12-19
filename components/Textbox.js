@@ -21,10 +21,14 @@ const SimpleTextarea = () => {
                 placeholder="Type here..."
                 rows={4}
                 style={{ 
-                    width: '100%', // Adjust the width as needed
-                    maxWidth: '500px', // Ensures textarea doesn't go beyond this width
+                    width: '100%',
+                    maxWidth: '500px',
                     marginBottom: '10px',
-                    resize: 'vertical' // Allows vertical resizing only
+                    resize: 'vertical',
+                    backgroundColor: '#f5f5f5', // Very light grey background
+                    color: 'white', // White text color
+                    border: 'none',
+                    padding: '10px'
                 }}
             />
             <br />
