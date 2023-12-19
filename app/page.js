@@ -5,6 +5,7 @@ import UploadForm from "@/components/UploadForm";
 //import SimpleTextarea from "@/components/Textbox";
 //import handleButtonClick from "@/components/Textbox"
 import TattooGenerator from "@/components/TattooDesignBox"
+import tattooImage from "@/components/TattooDesignBox"
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
           Your Custom-made Design
         </h3>
 
+        <tattooImage></tattooImage>
       </section>
     </>
   );
