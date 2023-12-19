@@ -52,7 +52,17 @@ const TattooGenerator = () => {
                 Render new idea
             </button>
             {tattooImage && (
-                <div style={{ width: '300px', height: '300px', marginTop: '20px' }}>
+                <div 
+                    style={{ 
+                        width: '300px', 
+                        height: '300px', 
+                        marginTop: '20px',
+                        border: '1px dashed rgba(255,255,255,0.2)', // Dashed border added
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}
+                >
                     <img src={tattooImage} alt="Generated Tattoo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
             )}
