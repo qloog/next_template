@@ -1,9 +1,7 @@
 "use client";
 
 import Hero from "@/components/Hero";
-import UploadForm from "@/components/UploadForm";
-import ImageUploadAndDisplay from "@/components/ImageUploadAndDisplay"
-
+import ImageUploadComponent from '@/components/ImageUploadComponent';
 
 
 export default function Home() {
@@ -17,7 +15,7 @@ export default function Home() {
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
-        <ImageUploadAndDisplay></ImageUploadAndDisplay>
+        <ImageUploadComponent></ImageUploadComponent>
       </section>
 
     </>

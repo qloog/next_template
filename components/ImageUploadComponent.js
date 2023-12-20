@@ -1,6 +1,7 @@
+// components/ImageUploadComponent.js
 import React, { useState } from 'react';
 
-const ImageUploadAndDisplay = () => {
+const ImageUploadComponent = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [generatedImage, setGeneratedImage] = useState(null);
 
@@ -13,7 +14,7 @@ const ImageUploadAndDisplay = () => {
         formData.append('image', selectedFile);
 
         try {
-            const response = await fetch('/api/openai/generateImage', {
+            const response = await fetch('/api/generateImage', {
                 method: 'POST',
                 body: formData,
             });
@@ -23,7 +24,7 @@ const ImageUploadAndDisplay = () => {
             }
 
             const data = await response.json();
-            setGeneratedImage(data.imageUrl);
+            setGeneratedImage(data.message); // Adjust based on response
         } catch (error) {
             console.error('Error:', error);
         }
@@ -31,15 +32,11 @@ const ImageUploadAndDisplay = () => {
 
     return (
         <div>
-            <input type="file" onChange={handleFileChange} accept="image/*" />
-            <button onClick={handleUploadAndGenerate}>Render new design</button>
-            {generatedImage && (
-                <div style={{ marginTop: '20px' }}>
-                    <img src={generatedImage} alt="Generated Tattoo" style={{ maxWidth: '100%', maxHeight: '400px' }} />
-                </div>
-            )}
+            <input type="file" onChange={handleFileChange} />
+            <button onClick={handleUploadAndGenerate}>Upload and Generate</button>
+            {generatedImage && <img src={generatedImage} alt="Generated Image" />}
         </div>
     );
 };
 
-export default ImageUploadAndDisplay
+export default ImageUploadComponent;
