@@ -2,9 +2,8 @@
 
 import Hero from "@/components/Hero";
 import UploadForm from "@/components/UploadForm";
-//import SimpleTextarea from "@/components/Textbox";
-//import handleButtonClick from "@/components/Textbox"
-import TattooGenerator from "@/components/TattooDesignBox"
+import ImageUploadAndDisplay from "@/components/ImageUploadAndDisplay"
+
 
 
 export default function Home() {
@@ -18,8 +17,7 @@ export default function Home() {
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
-        
-        <TattooGenerator></TattooGenerator>
+        <ImageUploadAndDisplay></ImageUploadAndDisplay>
       </section>
 
     </>
