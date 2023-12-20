@@ -24,7 +24,7 @@ const ImageUploadComponent = () => {
             }
 
             const data = await response.json();
-            setGeneratedImage(data.message); // Adjust based on response
+            setGeneratedImage(data.imageUrl);
         } catch (error) {
             console.error('Error:', error);
         }
