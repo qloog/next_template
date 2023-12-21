@@ -3,7 +3,6 @@
 import React, {useState} from 'react'; 
 import Hero from "@/components/Hero";
 import ImageCard from "@/components/ImageCard"
-import parsedData from "@/pages/api/generateImage/index"
 
 export default function Home() {
   const [parsedData, setParsedData] = useState()
