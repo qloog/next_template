@@ -6,7 +6,7 @@ import ImageCard from "@/components/ImageCard"
 import parsedData from "@/pages/api/generateImage/index"
 
 export default function Home() {
-  async function onGenerate(e) {
+  async function OnGenerate(e) {
     e.preventDefault();
     const [parsedData, setParsedData] = useState()
     const results = await fetch('/api/generateImage').then(r => r.json());
@@ -23,7 +23,7 @@ export default function Home() {
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
-        <button onClick={onGenerate}>Render new Tattoo</button>
+        <button onClick={OnGenerate}>Render new Tattoo</button>
         <ImageCard parsedData={parsedData}></ImageCard>
       </section>
     </>
