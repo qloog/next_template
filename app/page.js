@@ -1,7 +1,7 @@
 "use client";
 
 import Hero from "@/components/Hero";
-import handleOnGenerate from "@/components/Generator"
+import RenderButton from "@/components/RenderButton"
 
 export default function Home() {
   return (
@@ -14,8 +14,9 @@ export default function Home() {
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
+        <RenderButton></RenderButton>
       </section>
-      <button onClick={handleOnGenerate}>Render New Tattoo</button>
+    
     </>
   );
 }
