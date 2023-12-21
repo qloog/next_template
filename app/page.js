@@ -1,11 +1,17 @@
 "use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 import Hero from "@/components/Hero";
-import RenderButton from "@/components/RenderButton"
 import ImageCard from "@/components/ImageCard"
 
 export default function Home() {
+  async function onGenerate(e) {
+    e.preventDefault();
+    const [parsedData, setParsedData] = useState()
+    const results = await fetch('/api/generateImage').then(r => r.json());
+    setParsedData[results.parsedData]
+  }
+
   return (
     <>
       <main className="bg-black text-white">
@@ -16,10 +22,9 @@ export default function Home() {
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
-        <RenderButton></RenderButton>
-        <ImageCard></ImageCard>
+        <Button onClick={onGenerate}>Render new Tattoo</Button>
+        <ImageCard parsedData={parsedData}></ImageCard>
       </section>
-    
     </>
   );
 }
