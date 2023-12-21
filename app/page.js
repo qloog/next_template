@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, {useState} from 'react'; 
 import Hero from "@/components/Hero";
 import ImageCard from "@/components/ImageCard"
 import parsedData from "@/pages/api/generateImage/index"
