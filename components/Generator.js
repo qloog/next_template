@@ -7,7 +7,8 @@ export default function Home() {
 
   async function handleOnGenerate(e) {
     e.preventDefault();
-
+   const results = await fetch('/api/generateImage').then(res => res.json());
+   setImage(results.image)
     setIsLoading(true);
     setImage(undefined);
     setError(undefined);
