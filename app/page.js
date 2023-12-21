@@ -6,9 +6,9 @@ import ImageCard from "@/components/ImageCard"
 import parsedData from "@/pages/api/generateImage/index"
 
 export default function Home() {
+  const [parsedData, setParsedData] = useState()
   async function onGenerate(e) {
     e.preventDefault();
-    const [parsedData, setParsedData] = useState()
     const results = await fetch('/api/generateImage').then(r => r.json());
     setParsedData[results.parsedData]
   }
