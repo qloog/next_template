@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from 'react'
 import Hero from "@/components/Hero";
 import RenderButton from "@/components/RenderButton"
+import ImageCard from "@/components/ImageCard"
 
 export default function Home() {
   return (
@@ -15,6 +17,7 @@ export default function Home() {
           Your Tattoo Idea
         </h3>
         <RenderButton></RenderButton>
+        <ImageCard></ImageCard>
       </section>
     
     </>
