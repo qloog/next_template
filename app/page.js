@@ -23,7 +23,7 @@ export default function Home() {
           Your Tattoo Idea
         </h3>
         <button onClick={onGenerate}>Render new Tattoo</button>
-        <ImageDisplay></ImageDisplay>
+        <ImageDisplay parsedData={setParsedData}>?</ImageDisplay>
       </section>
     </>
   );
