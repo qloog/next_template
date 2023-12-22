@@ -1,12 +1,9 @@
 import React from 'react';
 
-const ImageDisplay = ({ imageUrl }) => {
-    if (!imageUrl) {
-        return null; // Don't render anything if no image URL is provided
-    }
-
-    const containerStyle = {
+const GeneratedImageCard = ({ imageUrl }) => {
+    const cardStyle = {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         border: '1px solid rgba(255, 255, 255, 0.8)', // White border with 80% opacity
@@ -23,10 +20,14 @@ const ImageDisplay = ({ imageUrl }) => {
     };
 
     return (
-        <div style={containerStyle}>
-            <img src={imageUrl} alt="Generated Content" style={imageStyle} />
+        <div style={cardStyle}>
+            {imageUrl ? (
+                <img src={imageUrl} alt="Generated Tattoo" style={imageStyle} />
+            ) : (
+                <p>No image generated yet</p>
+            )}
         </div>
     );
 };
 
-export default ImageDisplay;
+export default GeneratedImageCard;

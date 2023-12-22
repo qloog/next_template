@@ -2,14 +2,15 @@
 
 import React, {useState} from 'react'; 
 import Hero from "@/components/Hero";
-import ImageDisplay from "@/components/ImageBox"
+import GeneratedImageCard from "@/components/ImageBox"
 
 export default function Home() {
-  const [parsedData, setParsedData] = useState()
+  //const [parsedData, setParsedData] = useState();
+  const [imageUrl, setImageUrl] = useState('');
   async function onGenerate(e) {
     e.preventDefault();
     const results = await fetch('/api/generateImage').then(r => r.json());
-    setParsedData[results.parsedData]
+    setImageUrl[results.imageUrl]
   }
 
   return (
@@ -23,7 +24,7 @@ export default function Home() {
           Your Tattoo Idea
         </h3>
         <button onClick={onGenerate}>Render new Tattoo</button>
-        <ImageDisplay parsedData={setParsedData}>?</ImageDisplay>
+        <GeneratedImageCard imageUrl={imageUrl}></GeneratedImageCard>
       </section>
     </>
   );

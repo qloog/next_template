@@ -7,7 +7,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 export default async function handler(req, res) {
-    const image = await openai.images.generate({ model: "dall-e-3", prompt: "A sikh warrior but in JSON format" });
+    const image = await openai.images.generate({ model: "dall-e-3", prompt: "A sikh warrior" });
     const jsonString = `{
         "created": 1703186049,
         "data": [
@@ -17,13 +17,13 @@ export default async function handler(req, res) {
           }
         ]
       }`;
-      const parsedData = JSON.parse(jsonString);
-      console.log(parsedData);
+      const imageUrl = JSON.parse(jsonString);
+      console.log(imageUrl);
  
       
 
 
-    res.status(200).json({ parsedData })
+    res.status(200).json({ imageUrl })
     console.log(image.data);
     console.log('image', image)
 }
