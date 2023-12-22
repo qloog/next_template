@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react'; 
 import Hero from "@/components/Hero";
-import ImageCard from "@/components/ImageCard"
+import ImageDisplay from "@/components/ImageBox"
 
 export default function Home() {
   const [parsedData, setParsedData] = useState()
@@ -23,7 +23,7 @@ export default function Home() {
           Your Tattoo Idea
         </h3>
         <button onClick={onGenerate}>Render new Tattoo</button>
-        <ImageCard></ImageCard>
+        <ImageDisplay></ImageDisplay>
       </section>
     </>
   );
