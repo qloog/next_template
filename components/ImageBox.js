@@ -1,6 +1,8 @@
 import React from 'react';
 
-const GeneratedImageCard = ({ imageUrl }) => {
+
+
+const GeneratedImageCard = ({ finalData }) => {
     const cardStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -10,24 +12,31 @@ const GeneratedImageCard = ({ imageUrl }) => {
         padding: '20px',
         marginTop: '20px',
         borderRadius: '10px',
-        backgroundColor: '#f0f0f0', // Light grey background
+        backgroundColor: 'transparent',
+
     };
+   
+
 
     const imageStyle = {
         maxWidth: '100%',
         maxHeight: '400px', // Set a max height for the image
         borderRadius: '8px',
     };
-
+    
     return (
         <div style={cardStyle}>
-            {imageUrl ? (
-                <img src={imageUrl} alt="Generated Tattoo" style={imageStyle} />
+            {finalData ? (
+                <img src={finalData} alt="Generated Tattoo" style={imageStyle} />
             ) : (
                 <p>No image generated yet</p>
             )}
         </div>
+        
     );
+
 };
+
+
 
 export default GeneratedImageCard;

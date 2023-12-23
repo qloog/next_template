@@ -13,15 +13,15 @@ function Hero() {
         ></a>
 
         <h1 className="font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-white text-align:left">
-          Fire your tattoo consulter
+          Fire your tattoo Designer
         </h1>
         <p className="text-lg opacity-80 leading-relaxed text-white">
-          Design your own tattoo with the first AI Tattoo Consulter
+          Design your own tattoo with the first AI Tattoo Designer
         </p>
 
-        <p>Findrr is the first AI Tattoo Consulter in the world.</p>
+        <p>Findrr is the first AI Tattoo Designer in the world.</p>
         <p>
-          Upload photos of your own, and then use Findrr to transform it into a
+          Write your wildest tattoo ideas, and then use Findrr to transform it into a
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>

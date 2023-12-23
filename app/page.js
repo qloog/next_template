@@ -5,13 +5,23 @@ import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
 
 export default function Home() {
-  //const [parsedData, setParsedData] = useState();
-  const [imageUrl, setImageUrl] = useState('');
+  const [finalData, setFinalData] = useState();
+
   async function onGenerate(e) {
     e.preventDefault();
-    const results = await fetch('/api/generateImage').then(r => r.json());
-    setImageUrl[results.imageUrl]
+    const results = await fetch('/api/generateImage/').then(r => r.json());
+    setFinalData(results.imageUrl)
   }
+
+  const buttonStyle = {
+    backgroundColor: 'white',
+    border: 'none',
+    borderRadius: '20px', // This makes the button oval-shaped
+    padding: '10px 20px',
+    cursor: 'pointer',
+    color: 'black',
+    // Add any other styles you need for the button
+  };
 
   return (
     <>
@@ -23,9 +33,10 @@ export default function Home() {
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
-        <button onClick={onGenerate}>Render new Tattoo</button>
-        <GeneratedImageCard imageUrl={imageUrl}></GeneratedImageCard>
+        <button style={buttonStyle} onClick={onGenerate}>Render new Tattoo</button>
+        <GeneratedImageCard finalData={finalData} />
       </section>
     </>
+    
   );
 }
