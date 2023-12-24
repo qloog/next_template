@@ -5,11 +5,17 @@ import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
 
 export default function Home() {
+  const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
 
   async function onGenerate(e) {
     e.preventDefault();
-    const results = await fetch('/api/generateImage/').then(r => r.json());
+    const results = await fetch('/api/generateImage/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+      
+    }).then(r => r.json());
     setFinalData(results.imageUrl)
   }
 
@@ -33,6 +39,12 @@ export default function Home() {
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
+        <input 
+                type="text" 
+                value={prompt} 
+                onChange={(e) => setPrompt(e.target.value)}
+                placeholder="Enter your tattoo idea" 
+            />
         <button style={buttonStyle} onClick={onGenerate}>Render new Tattoo</button>
         <GeneratedImageCard finalData={finalData} />
       </section>
