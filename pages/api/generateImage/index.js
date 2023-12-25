@@ -12,19 +12,27 @@ export default async function handler(req, res) {
     if (!prompt) {
         return res.status(400).json({ error: "Prompt is required" });
     }
-
-    const image = await openai.images.generate({
-         model: "dall-e-3", 
-         prompt: prompt});
+    try {
+        const image = await openai.images.generate({
+            model: "dall-e-3", 
+            prompt: prompt});
+       
+         const imageUrl = image.data[0].url;
+         const finalData = image.data
+         
+   
+       res.status(200).json({ imageUrl, finalData })
+    }
+    catch (error) {
+        console.error('OpenAI API Error:', error);
+        res.status(500).json({ error: 'Error generating image', details: error.message });
+    }
     
-      const imageUrl = image.data[0].url;
-      const finalData = image.data
-      
 
-    res.status(200).json({ imageUrl, finalData })
-    console.log(image.data);
-    console.log('image', image)
+  
 }
+
+
 
 
 

@@ -10,13 +10,19 @@ export default function Home() {
 
   async function onGenerate(e) {
     e.preventDefault();
-    const results = await fetch('/api/generateImage/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
-      
-    }).then(r => r.json());
-    setFinalData(results.imageUrl)
+    try {
+      const results = await fetch('/api/generateImage/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+        
+      }).then(r => r.json());
+      setFinalData(results.imageUrl)
+    }
+    catch (error) {
+      console.error("Error fetching data:", error);
+  }
+    
   }
 
   const buttonStyle = {
