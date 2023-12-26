@@ -11,7 +11,7 @@ export default function Home() {
   async function onGenerate(e) {
     e.preventDefault();
     try {
-      const results = await fetch('https://www.findrr.ca', {
+      const results = await fetch('http://localhost:3000/api/generateImage', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: prompt })
