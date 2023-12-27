@@ -13,7 +13,7 @@ export default function Home() {
     try {
       const results = await fetch('/api/generateImage', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }.then(r => r.json()),
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: prompt })
         
       }).then(r => r.json());
