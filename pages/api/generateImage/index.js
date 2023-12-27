@@ -20,9 +20,11 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: "Prompt is required" });
     }
     try {
+        console.log("Calling OpenAI API");
         const image = await openai.images.generate({
             model: "dall-e-3", 
             prompt: prompt});
+            console.log("OpenAI API response received");
        
          const imageUrl = image.data[0].url;
          const finalData = image.data
