@@ -16,7 +16,7 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: prompt })
         
-      })
+      }).then(r => r.json());
       setFinalData(results.imageUrl)
     }
     catch (error) {
