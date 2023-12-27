@@ -1,21 +1,15 @@
 
-import { json } from "express";
 import OpenAI from "openai";
-import NextCors from 'nextjs-cors';
 
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
 
-export default async function handler(req, res) {
+   
 
-    await NextCors(req, res, {
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        origin: '*', // Adjust the origin to be more restrictive if needed
-        optionsSuccessStatus: 200,
-    });
-    
+
+export default async function handler(req, res) {
     if (req.method !== 'POST') {
         res.setHeader('Allow', ['POST']);
         return res.status(405).json({ error: 'Method Not Allowed' });
