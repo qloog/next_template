@@ -10,7 +10,7 @@ export default function Home() {
 
   async function onGenerate(e) {
     e.preventDefault();
-    try {
+  
       const results = await fetch('/api/generateImage', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -18,10 +18,6 @@ export default function Home() {
         
       }).then(r => r.json());
       setFinalData(results.imageUrl)
-    }
-    catch (error) {
-      console.error("Error fetching data:", error);
-  }
     
   }
 
