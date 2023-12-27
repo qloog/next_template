@@ -28,7 +28,7 @@ export default async function handler(req, res) {
             model: "dall-e-3", 
             prompt: prompt});
        
-         const imageUrl = JSON.parse(image.data[0].url);
+         const imageUrl = image.data[0].url;
          const finalData = image.data
          
    
