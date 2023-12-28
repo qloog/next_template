@@ -5,6 +5,9 @@ import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
 
 export default function Home() {
+  if (!process.env.NEXTAUTH_URL) {
+    return null;
+  }
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
 
