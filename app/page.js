@@ -10,7 +10,7 @@ export default function Home() {
 
   async function onGenerate(e) {
     e.preventDefault();
-      const results = await fetch('/api/generateImage', {
+      const results = await fetch(`${process.env.NEXTAUTH_URL}/api/generateImage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: prompt })
