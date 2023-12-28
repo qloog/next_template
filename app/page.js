@@ -1,5 +1,5 @@
 "use client";
-export const runtime = 'edge' // 'nodejs' (default) | 'edge'
+
 import React, {useState} from 'react'; 
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
@@ -54,3 +54,6 @@ export default function Home() {
     
   );
 }
+export const config = {
+  runtime: "edge",
+};
