@@ -21,14 +21,11 @@ function Hero() {
 
         <p>Findrr is the first AI Tattoo Designer in the world.</p>
         <p>
-          Write your wildest tattoo ideas, and then use Findrr to transform it into a
+          Write your tattoo idea, and then use Findrr to transform it into a
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <ButtonLead className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
-        Start using Findrr now
-        </ButtonLead>
-    
+        
       </div>
     </section>
   );

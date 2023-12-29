@@ -18,11 +18,15 @@ export default function Home() {
         
       }).then(r => r.json());
       setFinalData(results.imageUrl)
-    
-    
   }
 
+  const textboxStyle = {
+    backgroundColor: 'white', // White background for the textbox
+    // Add other necessary styles
+  };
+
   const buttonStyle = {
+    backgroundColor: isButtonActive ? 'rgba(255, 255, 255, 0.8)' : 'white',
     backgroundColor: 'white',
     border: 'none',
     borderRadius: '20px', // This makes the button oval-shaped
@@ -32,13 +36,19 @@ export default function Home() {
     // Add any other styles you need for the button
   };
 
+  const handleMouseDown = () => {
+    setIsButtonActive(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsButtonActive(false);
+  };
+
   return (
     <>
       <main className="bg-black text-white">
         <Hero />
-      </main>
-
-      <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
+        <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
@@ -47,10 +57,14 @@ export default function Home() {
                 value={prompt} 
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="Enter your tattoo idea" 
+                style={textboxStyle} 
             />
-        <button style={buttonStyle} onClick={onGenerate}>Render new Tattoo</button>
+        <button style={buttonStyle} onClick={onGenerate} onMouseDown={handleMouseDown}  onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>Render new Tattoo</button>
         <GeneratedImageCard finalData={finalData} />
       </section>
+      </main>
+
+      
     </>
     
   );
