@@ -23,6 +23,7 @@ export default function Home() {
 
   const textboxStyle = {
     backgroundColor: 'white', // White background for the textbox
+    color: 'black'
     // Add other necessary styles
   };
 
