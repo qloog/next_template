@@ -9,7 +9,6 @@ export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
   const [isButtonActive, setIsButtonActive] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   async function onGenerate(e) {
     e.preventDefault();
@@ -62,7 +61,7 @@ export default function Home() {
                 placeholder="Enter your tattoo idea" 
                 style={textboxStyle} 
             />
-        <button style={buttonStyle} onClick={onGenerate} onMouseDown={handleMouseDown}  onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>{isLoading ? "Loading..." : "Render new Tattoo"}</button>
+        <button style={buttonStyle} onClick={onGenerate} onMouseDown={handleMouseDown}  onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>Render new Tattoo</button>
         <GeneratedImageCard finalData={finalData} />
       </section>
       </main>
