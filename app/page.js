@@ -9,8 +9,10 @@ export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
   const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function onGenerate(e) {
+    setIsLoading(true);
     e.preventDefault();
       const results = await fetch('/api/generateImage', {
         method: 'POST',
@@ -62,7 +64,7 @@ export default function Home() {
                 style={textboxStyle} 
             />
         <button style={buttonStyle} onClick={onGenerate} onMouseDown={handleMouseDown}  onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>Render new Tattoo</button>
-        <GeneratedImageCard finalData={finalData} />
+        <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
       </section>
       </main>
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const GeneratedImageCard = ({ finalData }) => {
+const GeneratedImageCard = ({ finalData, isLoading }) => {
     const cardStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -26,13 +26,14 @@ const GeneratedImageCard = ({ finalData }) => {
     
     return (
         <div style={cardStyle}>
-            {finalData ? (
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : finalData ? (
                 <img src={finalData} alt="Generated Tattoo" style={imageStyle} />
             ) : (
                 <p>No image generated yet</p>
             )}
         </div>
-        
     );
 
 };
