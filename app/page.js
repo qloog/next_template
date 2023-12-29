@@ -8,6 +8,7 @@ export default function Home() {
  
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
+  const [isButtonActive, setIsButtonActive] = useState(false);
 
   async function onGenerate(e) {
     e.preventDefault();
