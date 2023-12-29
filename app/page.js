@@ -28,7 +28,6 @@ export default function Home() {
 
   const buttonStyle = {
     backgroundColor: isButtonActive ? 'rgba(255, 255, 255, 0.8)' : 'white',
-    backgroundColor: 'white',
     border: 'none',
     borderRadius: '20px', // This makes the button oval-shaped
     padding: '10px 20px',
