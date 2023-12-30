@@ -6,6 +6,7 @@ import GeneratedImageCard from "@/components/ImageBox"
 
 export default function Home() {
  
+  const [style, setStyle] = useState('tattoo');
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
   const [isButtonActive, setIsButtonActive] = useState(false);
@@ -14,15 +15,26 @@ export default function Home() {
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
+     const fullPrompt = `${style}: ${prompt}`;
       const results = await fetch('/api/generateImage', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: prompt })
+        body: JSON.stringify({ prompt: fullPrompt })
         
       }).then(r => r.json());
       setFinalData(results.imageUrl)
       setIsLoading(false); // End loading
   }
+
+  const handleStyleChange = (newStyle) => {
+    setStyle(newStyle);
+};
+
+const buttonStyle1 = {
+  backgroundColor: '#161616',
+  color: 'rgba(255, 255, 255, 0.8)', // White text with 80% opacity
+  // Other styles...
+};
 
   const textboxStyle = {
     backgroundColor: 'white', // White background for the textbox
@@ -53,6 +65,12 @@ export default function Home() {
       <main className="bg-black text-white">
         <Hero />
         <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
+        <select value={style} onChange={(e) => setStyle(e.target.value)} style={buttonStyle1}>
+                        <option value="tattoo">Tattoo</option>
+                        <option value="sketch">Sketch</option>
+                        <option value="lineart">Line Art</option>
+                        <option value="painting">Painting</option>
+                    </select>
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
