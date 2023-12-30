@@ -65,12 +65,6 @@ const buttonStyle1 = {
       <main className="bg-black text-white">
         <Hero />
         <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
-        <select value={style} onChange={(e) => setStyle(e.target.value)} style={buttonStyle1}>
-                        <option value="tattoo">Tattoo</option>
-                        <option value="sketch">Sketch</option>
-                        <option value="lineart">Line Art</option>
-                        <option value="painting">Painting</option>
-                    </select>
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
         </h3>
@@ -81,6 +75,12 @@ const buttonStyle1 = {
                 placeholder="Enter your tattoo idea" 
                 style={textboxStyle} 
             />
+            <select value={style} onChange={(e) => setStyle(e.target.value)} style={buttonStyle1}>
+                        <option value="tattoo">Tattoo</option>
+                        <option value="sketch">Sketch</option>
+                        <option value="lineart">Line Art</option>
+                        <option value="painting">Painting</option>
+                    </select>
         <button style={buttonStyle} onClick={onGenerate} onMouseDown={handleMouseDown}  onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>Render new Tattoo</button>
         <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
       </section>
