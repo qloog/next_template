@@ -25,15 +25,6 @@ function Hero() {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        
-        <div className="flex justify-center items-center gap-6 mt-6">
-          <Image src="https://toppng.com/uploads/preview/new-york-times-logo-white-png-transparent-11563028567xgsn0x1sph.png"  alt="New York Times Logo" width={100} height={50} />
-          <Image src="/path/to/stability-ai-logo.png" alt="Stability.ai Logo" width={100} height={50} />
-          <Image src="/path/to/fastcompany-logo.png" alt="Fast Company Logo" width={100} height={50} />
-          <Image src="/path/to/techcrunch-logo.png" alt="TechCrunch Logo" width={100} height={50} />
-          <Image src="/path/to/archdaily-logo.png" alt="ArchDaily Logo" width={100} height={50} />
-        </div>
-        
       </div>
     </section>
   );
