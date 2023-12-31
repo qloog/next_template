@@ -26,7 +26,7 @@ function Hero() {
           tattoo.
         </p>
         <ButtonLead className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
-        Join waitlist for launch date
+        Join waitlist for launch day
         </ButtonLead>
     
       </div>
