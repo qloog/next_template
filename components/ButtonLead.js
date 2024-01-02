@@ -12,6 +12,7 @@ const ButtonLead = ({ extraStyle, showError, onUserSignUp  }) => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
+  const inputClass = `input input-bordered w-full placeholder:opacity-60 bg-white ${showError ? 'border-red-500' : ''}`;
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
@@ -45,7 +46,7 @@ const ButtonLead = ({ extraStyle, showError, onUserSignUp  }) => {
         ref={inputRef}
         autoComplete="email"
         placeholder="Type your email..."
-        className={`input input-bordered w-full placeholder:opacity-60 bg-white ${showError ? "border-2 border-red-500" : ""}`}
+        className={inputClass}
         onChange={(e) => setEmail(e.target.value)}
       />
 
