@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ButtonLead from "./ButtonLead";
 import React, { useState, useRef } from 'react'; 
+import ButtonSignin from "./components/ButtonSignin";
 
 function Hero( showError, onUserSignUp) {
 
@@ -27,9 +28,7 @@ function Hero( showError, onUserSignUp) {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <ButtonLead showError={showError} onUserSignUp={onUserSignUp} className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
-        Start using Findrr
-        </ButtonLead>
+        <ButtonSignin></ButtonSignin>
     
       </div>
     </section>
