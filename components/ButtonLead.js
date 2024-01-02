@@ -7,13 +7,14 @@ import apiClient from "@/libs/api";
 // You'd use this if your product isn't ready yet or you want to collect leads
 // For instance: A popup to send a freebie, joining a waitlist, etc.
 // It calls the /api/lead/route.js route and store a Lead document in the database
-const ButtonLead = ({ extraStyle }) => {
+const ButtonLead = ({ extraStyle, onUserSignUp }) => {
   const inputRef = useRef(null);
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e?.preventDefault();
 
     setIsLoading(true);

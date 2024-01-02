@@ -3,9 +3,10 @@
 import React, {useState} from 'react'; 
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
+import ButtonLead from "@/components/ButtonLead";
 
 export default function Home() {
- 
+  const [isUserSignedUp, setIsUserSignedUp] = useState(false); // Assume user is not signed up initially
   const [style, setStyle] = useState('tattoo');
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
@@ -15,6 +16,15 @@ export default function Home() {
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
+    if (!isUserSignedUp) {
+      // Scroll to top and highlight the email input field
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Indicate that the user needs to sign up
+      setIsUserSignedUp(false);
+    } else {
+      // Logic to render new tattoo
+    }
+
      const fullPrompt = `${style}: ${prompt}`;
       const results = await fetch('/api/generateImage', {
         method: 'POST',

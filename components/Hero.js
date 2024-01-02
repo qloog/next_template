@@ -26,10 +26,10 @@ function Hero() {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <ButtonLead className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
-        Start using Findrr now
-        </ButtonLead>
-    
+        <ButtonLead
+        extraStyle={!isUserSignedUp ? "border-2 border-red-500" : ""}
+        onUserSignUp={() => setIsUserSignedUp(true)}
+      />
       </div>
     </section>
   );
