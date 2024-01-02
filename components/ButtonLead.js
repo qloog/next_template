@@ -7,23 +7,33 @@ import apiClient from "@/libs/api";
 // You'd use this if your product isn't ready yet or you want to collect leads
 // For instance: A popup to send a freebie, joining a waitlist, etc.
 // It calls the /api/lead/route.js route and store a Lead document in the database
-const ButtonLead = ({ showError, onUserSignUp   }) => {
+
+const ButtonLead = ({ showError, onUserSignUp }) => {
   const inputRef = useRef(null);
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-   const inputClass = showError ? "input-bordered border-red-500" : "input-bordered";
+  const inputClass = showError
+    ? "input-bordered border-red-500"
+    : "input-bordered";
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
-
     setIsLoading(true);
-    if (response_is_successful) {
-      onUserSignUp();  // Update user sign-up status
-    }
+
     try {
-      await apiClient.post("/lead", { email });
+      const response = await apiClient.post("/lead", { email });
+      if (response.status === 200 || response.status === 201) {
+        // Adjust according to your API's success response
+        toast.success("Thanks for subscribing! We won't spam.");
+        inputRef.current.blur();
+        setEmail("");
+        setIsDisabled(true);
+        onUserSignUp(); // Notify that user has signed up
+      } else {
+        // Handle failure (optional)
+      }
 
       toast.success("Thanks for subscribing! We won't spam.");
 
@@ -40,7 +50,9 @@ const ButtonLead = ({ showError, onUserSignUp   }) => {
   };
   return (
     <form
-      className={`w-full max-w-xs space-y-3 text-black ${extraStyle ? extraStyle : ""}`}
+      className={`w-full max-w-xs space-y-3 text-black ${
+        extraStyle ? extraStyle : ""
+      }`}
       onSubmit={handleSubmit}
     >
       <input
@@ -50,7 +62,7 @@ const ButtonLead = ({ showError, onUserSignUp   }) => {
         ref={inputRef}
         autoComplete="email"
         placeholder="Type your email..."
-        className={inputClass}
+        className={`input ${inputClass} w-full placeholder:opacity-60 bg-white`}
         onChange={(e) => setEmail(e.target.value)}
       />
 
