@@ -53,7 +53,7 @@ const ButtonLead = ({ extraStyle }) => {
         type="submit"
         disabled={isDisabled}
       >
-        Join waitlist for launch day
+        Start using Findrr now
         {isLoading ? (
           <span className="loading loading-spinner loading-xs"></span>
         ) : (
