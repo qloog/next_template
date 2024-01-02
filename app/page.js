@@ -11,7 +11,8 @@ export default function Home() {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [generatedImagesCount, setGeneratedImagesCount] = useState(0);
-
+  const [isUserSignedUp, setIsUserSignedUp] = useState(false);
+  
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
