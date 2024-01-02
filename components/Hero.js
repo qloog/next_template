@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ButtonLead from "./ButtonLead";
 import React, { useState, useRef } from 'react'; 
-import ButtonSignin from "./components/ButtonSignin";
+import ButtonSignin from "@/components/ButtonSignIn";
 
 function Hero( showError, onUserSignUp) {
 
