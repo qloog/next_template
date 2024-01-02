@@ -6,7 +6,7 @@ import GeneratedImageCard from "@/components/ImageBox"
 import ButtonLead from "@/components/ButtonLead";
 
 export default function Home() {
-  const [isUserSignedUp, setIsUserSignedUp] = useState(false); // Assume user is not signed up initially
+  const [showError, setShowError] = useState(false);
   const [style, setStyle] = useState('tattoo');
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
@@ -16,11 +16,10 @@ export default function Home() {
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
-    if (!isUserSignedUp) {
-      // Scroll to top and highlight the email input field
+    if (!isUserSignedUp()) {
+      // Scroll to top and indicate that user needs to sign up
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Indicate that the user needs to sign up
-      setIsUserSignedUp(false);
+      setShowError(true); // Show the red border on the input
     } else {
       // Logic to render new tattoo
     }
@@ -35,6 +34,10 @@ export default function Home() {
       setFinalData(results.imageUrl)
       setIsLoading(false); // End loading
   }
+  const isUserSignedUp = () => {
+    // Implement your logic to check if the user is signed up
+    return false; // Assuming user is not signed up for this example
+  };
 
   const handleStyleChange = (newStyle) => {
     setStyle(newStyle);
@@ -74,10 +77,6 @@ const buttonStyle1 = {
     <>
       <main className="bg-black text-white">
         <Hero/>
-          <ButtonLead
-        extraStyle={!isUserSignedUp ? "border-2 border-red-500" : ""}
-        onUserSignUp={() => setIsUserSignedUp(true)}
-      />
         <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea

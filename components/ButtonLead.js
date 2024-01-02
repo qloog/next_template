@@ -2,19 +2,19 @@
 import { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
+import React, {useState} from 'react'; 
 
 // This component is used to collect the emails from the landing page
 // You'd use this if your product isn't ready yet or you want to collect leads
 // For instance: A popup to send a freebie, joining a waitlist, etc.
 // It calls the /api/lead/route.js route and store a Lead document in the database
-const ButtonLead = ({ extraStyle, onUserSignUp }) => {
+const ButtonLead = ({ extraStyle, showError }) => {
   const inputRef = useRef(null);
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
   const handleSubmit = async (e) => {
-    setIsLoading(true);
     e?.preventDefault();
 
     setIsLoading(true);
@@ -45,7 +45,7 @@ const ButtonLead = ({ extraStyle, onUserSignUp }) => {
         ref={inputRef}
         autoComplete="email"
         placeholder="Type your email..."
-        className="input input-bordered w-full placeholder:opacity-60 bg-white"
+        className={`input input-bordered w-full placeholder:opacity-60 bg-white ${showError ? "border-2 border-red-500" : ""}`}
         onChange={(e) => setEmail(e.target.value)}
       />
 
