@@ -5,30 +5,15 @@ import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
 
 export default function Home() {
-  const [showError, setShowError] = useState(false);
-  const [isSignedUp, setIsSignedUp] = useState(false);
   const [style, setStyle] = useState('tattoo');
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleUserSignUp = () => {
-    setIsSignedUp(true);
-    setShowError(false); // Remove the red border on successful sign-up
-  };
-
-
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
-    if (!isSignedUp) {
-      // Scroll to top and indicate that user needs to sign up
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setShowError(true); // Show the red border on the input
-    } else {
-      // Logic to render new tattoo
-    }
 
      const fullPrompt = `${style}: ${prompt}`;
       const results = await fetch('/api/generateImage', {
@@ -77,7 +62,7 @@ const buttonStyle1 = {
   return (
     <>
       <main className="bg-black text-white">
-      <Hero onUserSignUp={handleUserSignUp} />
+      <Hero />
         <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea

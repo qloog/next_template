@@ -8,16 +8,13 @@ import apiClient from "@/libs/api";
 // For instance: A popup to send a freebie, joining a waitlist, etc.
 // It calls the /api/lead/route.js route and store a Lead document in the database
 
-const ButtonLead = ({ showError, onUserSignUp }) => {
-  const [isSignedUp, setIsSignedUp] = useState(false);
+const ButtonLead = ({}) => {
   const inputRef = useRef(null);
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const inputClass = showError
-    ? "input-bordered border-red-500"
-    : "input-bordered";
+
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
@@ -29,11 +26,7 @@ const ButtonLead = ({ showError, onUserSignUp }) => {
         // Adjust according to your API's success response
         toast.success("Thanks for subscribing! We won't spam.");
         inputRef.current.blur();
-        setEmail("");
         setIsDisabled(true);
-        onUserSignUp(); // Notify that user has signed up
-      } else {
-        // Handle failure (optional)
       }
 
       toast.success("Thanks for subscribing! We won't spam.");
@@ -42,7 +35,7 @@ const ButtonLead = ({ showError, onUserSignUp }) => {
       inputRef.current.blur();
       setEmail("");
       setIsDisabled(true);
-      isSignedUp(); // Call this function when the user signs up
+      
     } catch (error) {
       console.error(error);
     } finally {
@@ -61,7 +54,7 @@ const ButtonLead = ({ showError, onUserSignUp }) => {
         ref={inputRef}
         autoComplete="email"
         placeholder="Type your email..."
-        className={`input ${inputClass} w-full placeholder:opacity-60 bg-white`}
+        className={`input w-full placeholder:opacity-60 bg-white`}
         onChange={(e) => setEmail(e.target.value)}
       />
 
