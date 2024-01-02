@@ -29,7 +29,7 @@ function Hero() {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <ButtonLead showError={showError} onUserSignUp={handleUserSignUp}  className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
+        <ButtonLead showError={showError} isSignedUp={handleUserSignUp}  className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
         Start using Findrr
         </ButtonLead>
     
