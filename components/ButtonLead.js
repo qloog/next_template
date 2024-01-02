@@ -7,17 +7,21 @@ import apiClient from "@/libs/api";
 // You'd use this if your product isn't ready yet or you want to collect leads
 // For instance: A popup to send a freebie, joining a waitlist, etc.
 // It calls the /api/lead/route.js route and store a Lead document in the database
-const ButtonLead = ({ extraStyle, showError, onUserSignUp  }) => {
+const ButtonLead = ({ showError, onUserSignUp   }) => {
   const inputRef = useRef(null);
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
-  const inputClass = `input input-bordered w-full placeholder:opacity-60 bg-white ${showError ? 'border-red-500' : ''}`;
+
+   const inputClass = showError ? "input-bordered border-red-500" : "input-bordered";
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
 
     setIsLoading(true);
+    if (response_is_successful) {
+      onUserSignUp();  // Update user sign-up status
+    }
     try {
       await apiClient.post("/lead", { email });
 
@@ -27,9 +31,9 @@ const ButtonLead = ({ extraStyle, showError, onUserSignUp  }) => {
       inputRef.current.blur();
       setEmail("");
       setIsDisabled(true);
-      onUserSignUp();
+      isSignedUp(); // Call this function when the user signs up
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }

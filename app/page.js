@@ -33,14 +33,16 @@ export default function Home() {
       }).then(r => r.json());
       setFinalData(results.imageUrl)
       setIsLoading(false); // End loading
+
+      const handleUserSignUp = () => {
+        setIsSignedUp(true);
+        setShowError(false); // Remove the red border on successful sign-up
+      };
+    
   }
   
 
-  const handleUserSignUp = () => {
-    setIsSignedUp(true);
-    setShowError(false); // Remove the red border on successful sign-up
-  };
-
+ 
 const buttonStyle1 = {
   backgroundColor: '#161616',
   color: 'rgba(255, 255, 255, 0.8)', // White text with 80% opacity
@@ -74,7 +76,7 @@ const buttonStyle1 = {
   return (
     <>
       <main className="bg-black text-white">
-        <Hero/>
+      <Hero showError={showError} onUserSignUp={() => setIsSignedUp(true)} />
         <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
