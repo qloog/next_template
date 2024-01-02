@@ -10,10 +10,24 @@ export default function Home() {
   const [finalData, setFinalData] = useState();
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [generatedImagesCount, setGeneratedImagesCount] = useState(0);
 
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
+    
+    if (generatedImagesCount >= 3) {
+      // Show popup with ButtonCheckout (implement this logic)
+    } else if (!isUserSignedUp) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Show red border logic in ButtonLead
+    } else {
+      // Image generation logic
+      setIsLoading(true);
+      // ... existing image generation logic ...
+      setGeneratedImagesCount(prevCount => prevCount + 1);
+      setIsLoading(false);
+    }
 
      const fullPrompt = `${style}: ${prompt}`;
       const results = await fetch('/api/generateImage', {
