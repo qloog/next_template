@@ -3,7 +3,6 @@ import ButtonLead from "./ButtonLead";
 import ButtonCheckout from "@/components/ButtonCheckout";
 
 function Hero() {
-  const [isUserSignedUp, setIsUserSignedUp] = useState(false);
   return (
     
     <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
@@ -28,10 +27,6 @@ function Hero() {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <ButtonLead
-        extraStyle={!isUserSignedUp ? "border-2 border-red-500" : ""}
-        onUserSignUp={() => setIsUserSignedUp(true)}
-      />
       </div>
     </section>
   );
