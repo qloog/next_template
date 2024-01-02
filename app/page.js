@@ -3,10 +3,10 @@
 import React, {useState} from 'react'; 
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
-import ButtonLead from "@/components/ButtonLead";
 
 export default function Home() {
   const [showError, setShowError] = useState(false);
+  const [isSignedUp, setIsSignedUp] = useState(false);
   const [style, setStyle] = useState('tattoo');
   const [prompt, setPrompt] = useState('');
   const [finalData, setFinalData] = useState();
@@ -16,7 +16,7 @@ export default function Home() {
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
-    if (!isUserSignedUp()) {
+    if (!isSignedUp) {
       // Scroll to top and indicate that user needs to sign up
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setShowError(true); // Show the red border on the input
@@ -34,14 +34,12 @@ export default function Home() {
       setFinalData(results.imageUrl)
       setIsLoading(false); // End loading
   }
-  const isUserSignedUp = () => {
-    // Implement your logic to check if the user is signed up
-    return false; // Assuming user is not signed up for this example
-  };
+  
 
-  const handleStyleChange = (newStyle) => {
-    setStyle(newStyle);
-};
+  const handleUserSignUp = () => {
+    setIsSignedUp(true);
+    setShowError(false); // Remove the red border on successful sign-up
+  };
 
 const buttonStyle1 = {
   backgroundColor: '#161616',
