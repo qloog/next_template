@@ -9,6 +9,7 @@ import apiClient from "@/libs/api";
 // It calls the /api/lead/route.js route and store a Lead document in the database
 
 const ButtonLead = ({ showError, onUserSignUp }) => {
+  const [isSignedUp, setIsSignedUp] = useState(false);
   const inputRef = useRef(null);
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -50,9 +51,7 @@ const ButtonLead = ({ showError, onUserSignUp }) => {
   };
   return (
     <form
-      className={`w-full max-w-xs space-y-3 text-black ${
-        extraStyle ? extraStyle : ""
-      }`}
+      className={`w-full max-w-xs space-y-3 text-black`}
       onSubmit={handleSubmit}
     >
       <input
