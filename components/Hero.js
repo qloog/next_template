@@ -1,11 +1,16 @@
 import Image from "next/image";
 import ButtonLead from "./ButtonLead";
-import ButtonCheckout from "@/components/ButtonCheckout";
-import React, {useState} from 'react'; 
+import React, { useState, useRef } from 'react'; 
 
 function Hero() {
   const [showError, setShowError] = useState(false);
   const [isSignedUp, setIsSignedUp] = useState(false);
+
+  const handleUserSignUp = () => {
+    setIsSignedUp(true);
+    setShowError(false); // Remove the red border on successful sign-up
+  };
+
   return (
     <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
@@ -29,7 +34,7 @@ function Hero() {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <ButtonLead showError={showError} isSignedUp={handleUserSignUp}  className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
+        <ButtonLead showError={showError} onUserSignUp={handleUserSignUp}  className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
         Start using Findrr
         </ButtonLead>
     
