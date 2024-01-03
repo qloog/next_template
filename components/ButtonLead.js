@@ -8,9 +8,8 @@ import apiClient from "@/libs/api";
 // For instance: A popup to send a freebie, joining a waitlist, etc.
 // It calls the /api/lead/route.js route and store a Lead document in the database
 
-const ButtonLead = ({ onUserSignUp }) => {
+const ButtonLead = ({ }) => {
   const inputRef = useRef(null);
-  const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -26,9 +25,7 @@ const ButtonLead = ({ onUserSignUp }) => {
         // Adjust according to your API's success response
         toast.success("Thanks for subscribing! We won't spam.");
         inputRef.current.blur();
-        setEmail("");
         setIsDisabled(true);
-        onUserSignUp(true);
       }
 
       toast.success("Thanks for subscribing! We won't spam.");
