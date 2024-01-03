@@ -3,7 +3,7 @@ import ButtonLead from "./ButtonLead";
 import React, { useState, useRef } from 'react'; 
 import ButtonCheckout from "@/components/ButtonCheckout";
 import config from '@/config';
-
+import SigninButton from "@/components/ButtonSignIn"
 const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
 function Hero() {
