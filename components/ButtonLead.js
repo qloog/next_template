@@ -8,7 +8,7 @@ import apiClient from "@/libs/api";
 // For instance: A popup to send a freebie, joining a waitlist, etc.
 // It calls the /api/lead/route.js route and store a Lead document in the database
 
-const ButtonLead = ({ }) => {
+const ButtonLead = () => {
   const inputRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
@@ -20,19 +20,11 @@ const ButtonLead = ({ }) => {
     setIsLoading(true);
 
     try {
-      const response = await apiClient.post("/lead", { email });
-      if (response.status === 200 || response.status === 201) {
-        // Adjust according to your API's success response
-        toast.success("Thanks for subscribing! We won't spam.");
-        inputRef.current.blur();
-        setIsDisabled(true);
-      }
-
+      const response = await apiClient.post("/lead");
       toast.success("Thanks for subscribing! We won't spam.");
 
       // just remove the focus on the input
       inputRef.current.blur();
-      setEmail("");
       setIsDisabled(true);
       
     } catch (error) {
