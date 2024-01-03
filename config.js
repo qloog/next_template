@@ -20,17 +20,18 @@ const config = {
       {
         // REQUIRED — we use this to find the plan in the webhook (for instance if you want to update the user's credits based on the plan)
         priceId: 
+
           process.env.NODE_ENV === "development"
             ? "price_1OUIuVHa8820Uqe5xny0meUl"
-            : "price_1OUIuVHa8820Uqe5xny0meUl",
+            : "price_456",
         //  REQUIRED - Name of the plan, displayed on the pricing page
-        name: "Starter",
+        name: "Premium",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
         description: "Perfect for tattoo beginners embarking on their journey",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 0,
+        price: 20,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 19,
+        priceAnchor: 32,
         features: [
           {
             name: "20 Image Uploads",
