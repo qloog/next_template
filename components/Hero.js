@@ -30,7 +30,7 @@ function Hero() {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <SigninButton></SigninButton>
+        <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
     
       </div>
     </section>
