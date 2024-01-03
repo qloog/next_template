@@ -12,23 +12,20 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [generatedImagesCount, setGeneratedImagesCount] = useState(0);
   const [isUserSignedUp, setIsUserSignedUp] = useState(false);
-  
+
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
     
-    if (generatedImagesCount >= 3) {
-      // Show popup with ButtonCheckout (implement this logic)
-    } else if (!isUserSignedUp) {
+    if (!isUserSignedUp) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Show red border logic in ButtonLead
+      // Here you should implement the logic to show a red border around the email input in ButtonLead
+    } else if (generatedImagesCount >= 3) {
+      // Here you should show a popup with ButtonCheckout
+      // For simplicity, I'm just logging to console
+      console.log('Show ButtonCheckout Popup');
     } else {
-      // Image generation logic
       setIsLoading(true);
-      // ... existing image generation logic ...
-      setGeneratedImagesCount(prevCount => prevCount + 1);
-      setIsLoading(false);
-    }
 
      const fullPrompt = `${style}: ${prompt}`;
       const results = await fetch('/api/generateImage', {
@@ -38,8 +35,9 @@ export default function Home() {
         
       }).then(r => r.json());
       setFinalData(results.imageUrl)
+      setGeneratedImagesCount(count => count + 1);
       setIsLoading(false); // End loading
-
+    }
   }
   
 
@@ -77,7 +75,7 @@ const buttonStyle1 = {
   return (
     <>
       <main className="bg-black text-white">
-      <Hero />
+      <Hero onUserSignUp={setIsUserSignedUp} />
         <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
