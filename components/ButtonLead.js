@@ -10,6 +10,7 @@ import apiClient from "@/libs/api";
 
 const ButtonLead = () => {
   const inputRef = useRef(null);
+  const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -20,11 +21,12 @@ const ButtonLead = () => {
     setIsLoading(true);
 
     try {
-      const response = await apiClient.post("/lead");
-      toast.success("Thanks for subscribing! We won't spam.");
+      const response = await apiClient.post("/lead", { email });
 
+      toast.success("Thanks for subscribing! We won't spam.");
       // just remove the focus on the input
       inputRef.current.blur();
+      setEmail("");
       setIsDisabled(true);
       
     } catch (error) {
