@@ -19,16 +19,16 @@ const config = {
     plans: [
       {
         // REQUIRED — we use this to find the plan in the webhook (for instance if you want to update the user's credits based on the plan)
-        isFeatured: true,
         priceId: "price_1OUIuVHa8820Uqe5xny0meUl",
+         
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Starter",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
         description: "Perfect for tattoo beginners embarking on their journey",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 20,
+        price: 0,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 32,
+        priceAnchor: 19,
         features: [
           {
             name: "20 Image Uploads",
@@ -40,10 +40,11 @@ const config = {
       },
       {
         // This plan will look different on the pricing page, it will be highlighted. You can only have one plan with isFeatured: true
-        priceId: 
+        isFeatured: true,
+        priceId:
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
-            : "price_1OUIuVHa8820Uqe5xny0meUl",
+            : "price_456",
         name: "Advanced",
         description: "Ideal for experienced ink seekers diving deeper into personalized exploration",
         price: 0,
