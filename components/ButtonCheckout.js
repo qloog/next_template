@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import apiClient from "@/libs/api";
-import config from "@/config";
+import config from '@/config';
+
+const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
+
 
 // This component is used to create Stripe Checkout Sessions
 // It calls the /api/stripe/create-checkout route with the priceId, successUrl and cancelUrl
