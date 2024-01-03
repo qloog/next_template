@@ -30,6 +30,14 @@ const ButtonLead = ({ onUserSignUp }) => {
         setIsDisabled(true);
         onUserSignUp(true);
       }
+
+      toast.success("Thanks for subscribing! We won't spam.");
+
+      // just remove the focus on the input
+      inputRef.current.blur();
+      setEmail("");
+      setIsDisabled(true);
+      
     } catch (error) {
       console.error(error);
     } finally {
