@@ -5,12 +5,11 @@ const config = {
   appName: "Findrr",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "Findrr: Your Shortcut to Networking Success",
+    "Write your tattoo idea, then use Findrr to transform it into a custom design. Get Tattoo design inspiration and new ideas for your tattoo.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "findrr.ca",
   crisp: {
     // Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (mailgun.supportEmail) otherwise customer support won't work.
-    id: "",
     // Hide Crisp by default, except on route "/". Crisp is toggled with <ButtonSupport/>. If you want to show Crisp on every routes, just remove this below
     onlyShowOnRoutes: ["/"],
   },
@@ -19,25 +18,25 @@ const config = {
     plans: [
       {
         // REQUIRED — we use this to find the plan in the webhook (for instance if you want to update the user's credits based on the plan)
-        priceId: 
+        priceId:
           process.env.NODE_ENV === "development"
-            ? "price_1ju5GD464564"
+            ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
             : "price_1OUXGWHa8820Uqe5sLy8HThD",
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Starter",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "Perfect for tattoo beginners embarking on their journey",
+        description: "Perfect for small projects",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 0,
+        price: 79,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 19,
+        priceAnchor: 99,
         features: [
           {
-            name: "20 Image Uploads",
+            name: "NextJS boilerplate",
           },
-          { name: "Basic Customization" },
-          { name: "Inspiration Gallery" },
-          { name: "User-Friendly Interface" },
+          { name: "User oauth" },
+          { name: "Database" },
+          { name: "Emails" },
         ],
       },
       {
@@ -46,20 +45,20 @@ const config = {
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
-            : "price_456",
+            : "price_1OUXGWHa8820Uqe5sLy8HThD",
         name: "Advanced",
-        description: "Ideal for experienced ink seekers diving deeper into personalized exploration",
-        price: 0,
-        priceAnchor: 79,
+        description: "You need more power",
+        price: 99,
+        priceAnchor: 149,
         features: [
           {
-            name: "Unlimited Image Uploads",
+            name: "NextJS boilerplate",
           },
-          { name: "Advanced Customization Tools:" },
-          { name: "Exclusive Design Library" },
-          { name: "Priority Support" },
-          { name: "Exclusive Networking Insights" },
-          { name: "Collaboration Features" },
+          { name: "User oauth" },
+          { name: "Database" },
+          { name: "Emails" },
+          { name: "1 year of updates" },
+          { name: "24/7 support" },
         ],
       },
     ],
@@ -72,15 +71,15 @@ const config = {
   },
   mailgun: {
     // subdomain to use when sending emails, if you don't have a subdomain, just remove it. Highly recommended to have one (i.e. mg.yourdomain.com or mail.yourdomain.com)
-    subdomain: "rajvirnahar6667@gmail.com",
+    subdomain: "mg",
     // REQUIRED — Email 'From' field to be used when sending magic login links
-    fromNoReply: `rajvirnahar6667@gmail.com`,
+    fromNoReply: `Findrr <noreply@mg.findrr.ca>`,
     // REQUIRED — Email 'From' field to be used when sending other emails, like abandoned carts, updates etc..
-    fromAdmin: `rajvirnahar6667@gmail.com`,
+    fromAdmin: `Rajvir at Findrr <rajvir@mg.findrr.ca>`,
     // Email shown to customer if need support. Leave empty if not needed => if empty, set up Crisp above, otherwise you won't be able to offer customer support."
-    supportEmail: "rajvirnahar6667@gmail.com",
+    supportEmail: "rajvir@mg.findrr.ca",
     // When someone replies to supportEmail sent by the app, forward it to the email below (otherwise it's lost). If you set supportEmail to empty, this will be ignored.
-    forwardRepliesTo: "rajvirnahar6667@gmail.com",
+    forwardRepliesTo: "rajvir.nahar@gmail.com",
   },
   colors: {
     // REQUIRED — The DaisyUI theme to use (added to the main layout.js). Leave blank for default (light & dark mode). If you any other theme than light/dark, you need to add it in config.tailwind.js in daisyui.themes.
@@ -98,4 +97,3 @@ const config = {
 };
 
 export default config;
-
