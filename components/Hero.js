@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ButtonLead from "./ButtonLead";
 import React, { useState, useRef } from 'react'; 
+import ButtonCheckout from "@/components/ButtonCheckout";
 
 function Hero() {
   return (
@@ -26,9 +27,7 @@ function Hero() {
           custom design. Get Tattoo design inspiration and new ideas for your
           tattoo.
         </p>
-        <ButtonLead className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
-        Start using Findrr
-        </ButtonLead>
+        <ButtonCheckout btn btn-gradient animate-shimmer w-full max-w-xs space-y-3></ButtonCheckout>
     
       </div>
     </section>
