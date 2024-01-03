@@ -6,10 +6,10 @@ import config from "@/config";
 const SigninButton = () => {
   return (
     <button
-      className="btn btn-primary"
+    className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
       onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
     >
-      Login
+      Start using Findrr now
     </button>
   );
 };
