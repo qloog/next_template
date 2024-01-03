@@ -25,7 +25,6 @@ export default function Home() {
         
       }).then(r => r.json());
       setFinalData(results.imageUrl)
-      setGeneratedImagesCount(count => count + 1);
       setIsLoading(false); // End loading
     }
   
@@ -65,7 +64,7 @@ const buttonStyle1 = {
   return (
     <>
       <main className="bg-black text-white">
-      <Hero onUserSignUp={setIsUserSignedUp} />
+      <Hero />
         <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
         <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
           Your Tattoo Idea
