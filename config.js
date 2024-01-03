@@ -19,7 +19,7 @@ const config = {
     plans: [
       {
         // REQUIRED — we use this to find the plan in the webhook (for instance if you want to update the user's credits based on the plan)
-        priceId: 
+        priceId: price_1OUIuVHa8820Uqe5xny0meUl .
           process.env.NODE_ENV === "development"
             ? "price_1ju5GD464564"
             : "price_456",
