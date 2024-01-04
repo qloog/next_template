@@ -8,7 +8,7 @@ const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
 function Hero() {
   return (
-<section className={`${styles.heroBackground} max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20`}>
+<section className="heroBackground max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
 
 
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
