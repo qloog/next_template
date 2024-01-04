@@ -1,24 +1,14 @@
-import Image from "next/image";
-import ButtonLead from "./ButtonLead";
+
 import React, { useState, useRef } from 'react'; 
-import ButtonCheckout from "@/components/ButtonCheckout";
 import config from '@/config';
 import SigninButton from "@/components/ButtonSignIn"
+import styles from '../app/main.css'
 const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
-const backgroundImageUrl = '/images/Khalsa fauj.jpeg'; 
 
 function Hero() {
-  const sectionStyle = {
-    backgroundImage: `url(${backgroundImageUrl})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  }
-
   return (
-    <section className="max-w-7xl mx-auto bg-black flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black">
-    style={sectionStyle}
+<section className={`${styles.heroBackground} max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20`}>
 
 
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
