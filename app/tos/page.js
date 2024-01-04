@@ -87,7 +87,7 @@ These Terms are governed by the laws of France.
 
 We may update these Terms from time to time. Users will be notified of any changes via email.
 
-For any questions or concerns regarding these Terms of Service, please contact us at marc@shipfa.st.
+For any questions or concerns regarding these Terms of Service, please contact us at rajvirnahar6667@gmail.com.
 
 Thank you for using Findrr!`}
         </pre>
