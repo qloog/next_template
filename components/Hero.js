@@ -2,7 +2,6 @@
 import React, { useState, useRef } from 'react'; 
 import config from '@/config';
 import SigninButton from "@/components/ButtonSignIn"
-import styles from '../app/main.css'
 const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
 
