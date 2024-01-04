@@ -24,11 +24,9 @@ function Hero() {
           Design your own tattoo with the first AI Tattoo Designer
         </p>
 
-        <p>Findrr is the first AI Tattoo Designer in the world.</p>
         <p>
-          Write your tattoo idea, and then use Findrr to transform it into a
-          custom design. Get Tattoo design inspiration and new ideas for your
-          tattoo.
+          Write your tattoo idea, and Findrr will transform it into a
+          custom design.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
     
