@@ -3,6 +3,7 @@
 import React, {useState} from 'react'; 
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const [style, setStyle] = useState('tattoo');
@@ -85,6 +86,9 @@ const buttonStyle1 = {
         <button style={buttonStyle} onClick={onGenerate} onMouseDown={handleMouseDown}  onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>Render new Tattoo</button>
         <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
       </section>
+
+      <Footer></Footer>
+
       </main>
 
       
