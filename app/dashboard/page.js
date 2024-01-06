@@ -25,7 +25,7 @@ export default async function Dashboard() {
         </Link>
 
         <ButtonCheckout
-         mode="subscription"
+         mode="payment"
           priceId={config.stripe.plans[0].priceId}
        />
         
