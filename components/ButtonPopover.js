@@ -61,7 +61,6 @@ const ButtonPopover = () => {
                     </span>
                     <div className="">
                       <p className="font-bold">Beginner</p>
-                      //
                       <ButtonCheckout
                         mode="payment"
                         priceId={config.stripe.plans[0].priceId}
