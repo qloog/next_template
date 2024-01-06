@@ -29,7 +29,7 @@ function Hero() {
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
 
 
-        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', margin: '0 20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginright: '20px' }}>
     <Image src="/media/The-New-York-Times-logo-whiteWEB-1.png" alt="NYT" priority={true} width={200} height={200} />
     <Image src="/media/tech crunch.png" alt="TC" priority={true} width={200} height={200} />
     <Image src="/media/fastcompany.png" alt="FC" priority={true} width={200} height={200} />
