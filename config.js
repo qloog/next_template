@@ -18,7 +18,7 @@ const config = {
     plans: [
       {
         // REQUIRED — we use this to find the plan in the webhook (for instance if you want to update the user's credits based on the plan)
-        priceId1:
+        priceId:
           process.env.NODE_ENV === "development"
             ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
             : "price_1OVejZHa8820Uqe5fy8GwklO",
@@ -42,7 +42,7 @@ const config = {
       {
         // This plan will look different on the pricing page, it will be highlighted. You can only have one plan with isFeatured: true
         isFeatured: true,
-        priceId2:
+        priceId:
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_1OVen5Ha8820Uqe5wcM3IqYX",
@@ -60,7 +60,7 @@ const config = {
           { name: "1 year of updates" },
           { name: "24/7 support" },
         ],
-        priceId3:
+        priceId:
         process.env.NODE_ENV === "development"
           ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
           : "price_1OVes1Ha8820Uqe58XZvzsxf",
