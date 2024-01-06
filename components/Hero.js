@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import config from "@/config";
 import SigninButton from "@/components/ButtonSignIn";
 import Image from "next/image";
+
 const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
 function Hero() {
@@ -14,7 +15,7 @@ function Hero() {
           className=" -mb-4 md:-mb-6 group"
           //title="Product Hunt link"
         ></a>
-        <BackgroundImage
+        <backgroundimage
         
           src="/media/Khalsa.png"
           alt="NYT"
