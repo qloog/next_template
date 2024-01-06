@@ -14,13 +14,15 @@ function Hero() {
           className=" -mb-4 md:-mb-6 group"
           //title="Product Hunt link"
         ></a>
-        <Image
+        <BackgroundImage
+        
           src="/media/Khalsa.png"
           alt="NYT"
           priority={true}
           className="w-full"
           height={500}
           width={500}
+      
         />
 
         <h1 className="font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-white text-align:left">
