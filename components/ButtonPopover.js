@@ -3,6 +3,7 @@
 import { Popover, Transition } from "@headlessui/react";
 import ButtonCheckout from "@/components/ButtonCheckout";
 import config from "@/config";
+import Pricing from "@/components/Pricing";
 
 const ButtonPopover = () => {
   const plans = config.stripe.plans;
@@ -38,6 +39,7 @@ const ButtonPopover = () => {
              <Popover.Panel className="absolute left-0 z-10 mt-3 w-screen max-w-full sm:max-w-sm lg:max-w-2xl transform">
              <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-base-content ring-opacity-5">
                 <div className="relative grid gap-4 bg-base-100 p-4 lg:grid-cols-2">
+                <Pricing />
                   {plans.map(plan => (
                     <div key={plan.name} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
                       <div>
