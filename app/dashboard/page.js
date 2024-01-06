@@ -17,8 +17,8 @@ export default async function Dashboard() {
           You have 3/3 credits left on your free trial
         </h1>
 
-        <Link href="/" passHref>
-        <button className="btn btn-primary" style={{ paddingTop: '20px' }}>
+        <Link href="/" passHref style={{ paddingTop: '20px' }}>
+          <button className="btn btn-primary">
             Start Designing
           </button>
         </Link>
