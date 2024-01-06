@@ -44,7 +44,7 @@ const ButtonPopover = () => {
                       <p className="font-bold">Beginner</p>
                       <ButtonCheckout
                         mode="payment"
-                        priceId={config.stripe.plans[0].priceId}
+                        const priceId = {config.stripe.plans[0].priceId}
                       />
                     </div>
                   </div>
@@ -55,7 +55,7 @@ const ButtonPopover = () => {
                       <p className="font-bold">Veteran</p>
                       <ButtonCheckout
                         mode="payment"
-                        priceId={config.stripe.plans[1].priceId}
+                        const priceId ={config.stripe.plans[1].priceId}
                       />
                     </div>
                   </div>
@@ -66,7 +66,7 @@ const ButtonPopover = () => {
                       <p className="font-bold">Premium</p>
                       <ButtonCheckout
                         mode="payment"
-                        priceId={config.stripe.plans[2].priceId}
+                        const priceId ={config.stripe.plans[2].priceId}
                       />
                     </div>
                   </div>
