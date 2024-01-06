@@ -30,11 +30,11 @@ function Hero() {
 
 
         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-    <Image src="/media/The-New-York-Times-logo-whiteWEB-1.png" alt="NYT" priority={true} width={80} height={80} />
-    <Image src="/media/tech crunch.png" alt="TC" priority={true} width={80} height={80} />
-    <Image src="/media/fastcompany.png" alt="FC" priority={true} width={80} height={80} />
-    <Image src="/media/stability.png" alt="ST.AI" priority={true} width={80} height={80} />
-    <Image src="/media/archdaily.png" alt="AD" priority={true} width={80} height={80} />
+    <Image src="/media/The-New-York-Times-logo-whiteWEB-1.png" alt="NYT" priority={true} width={75} height={75} />
+    <Image src="/media/tech crunch.png" alt="TC" priority={true} width={75} height={75} />
+    <Image src="/media/fastcompany.png" alt="FC" priority={true} width={75} height={75} />
+    <Image src="/media/stability.png" alt="ST.AI" priority={true} width={75} height={75} />
+    <Image src="/media/archdaily.png" alt="AD" priority={true} width={75} height={75} />
 </div>
 
       </div>
