@@ -33,7 +33,6 @@ function Hero() {
          <image
           src="/media/newyorktimes Small.png"
           alt="NYT"
-          className='w-full'
           priority={true}
           width={200}
           height={200}
