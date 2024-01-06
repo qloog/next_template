@@ -2,6 +2,8 @@ import Link from 'next/link';
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
 import config from "@/config";
+
+
 export const dynamic = "force-dynamic";
 
 export default async function Dashboard() {
