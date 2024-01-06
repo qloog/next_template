@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
-import ButtonGradient from "@/components/ButtonGradient"
 
 export const dynamic = "force-dynamic";
 
