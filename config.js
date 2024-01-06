@@ -21,15 +21,15 @@ const config = {
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
-            : "price_1OUXGWHa8820Uqe5sLy8HThD",
+            : "price_1OVejZHa8820Uqe5fy8GwklO",
         //  REQUIRED - Name of the plan, displayed on the pricing page
-        name: "Starter",
+        name: "Beginner",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
         description: "Perfect for small projects",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 79,
+        price: 10,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 99,
+        priceAnchor: 24,
         features: [
           {
             name: "NextJS boilerplate",
@@ -45,8 +45,8 @@ const config = {
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
-            : "price_1OUXGWHa8820Uqe5sLy8HThD",
-        name: "Advanced",
+            : "price_1OVen5Ha8820Uqe5wcM3IqYX",
+        name: "Veteran",
         description: "You need more power",
         price: 99,
         priceAnchor: 149,
@@ -60,6 +60,26 @@ const config = {
           { name: "1 year of updates" },
           { name: "24/7 support" },
         ],
+        priceId:
+        process.env.NODE_ENV === "development"
+          ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
+          : "price_1OVes1Ha8820Uqe58XZvzsxf",
+      //  REQUIRED - Name of the plan, displayed on the pricing page
+      name: "Premium",
+      // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
+      description: "Perfect for small projects",
+      // The price you want to display, the one user will be charged on Stripe.
+      price: 10,
+      // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
+      priceAnchor: 24,
+      features: [
+        {
+          name: "NextJS boilerplate",
+        },
+        { name: "User oauth" },
+        { name: "Database" },
+        { name: "Emails" },
+      ],
       },
     ],
   },
