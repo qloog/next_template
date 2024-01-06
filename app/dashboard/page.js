@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
-
+import ButtonGradient from "@/components/ButtonGradient"
 
 export const dynamic = "force-dynamic";
 
@@ -17,8 +17,8 @@ export default async function Dashboard() {
           You have 3/3 credits left on your free trial
         </h1>
 
-        <Link href="/" passHref style={{ paddingTop: '20px' }}>
-          <button className="btn btn-primary">
+        <Link href="/" passHref>
+          <button className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
             Start Designing
           </button>
         </Link>
