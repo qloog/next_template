@@ -60,6 +60,8 @@ const config = {
           { name: "1 year of updates" },
           { name: "24/7 support" },
         ],
+      },
+      {
         priceId:
         process.env.NODE_ENV === "development"
           ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
