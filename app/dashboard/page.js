@@ -1,4 +1,4 @@
-import { useNavigation } from 'next/navigation';
+import Link from 'next/link';
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
 
@@ -6,10 +6,7 @@ import ButtonCheckout from "@/components/ButtonCheckout";
 export const dynamic = "force-dynamic";
 
 export default async function Dashboard() {
-  const navigation = useNavigation();
-
-  const goToHomePage = () => {
-    navigation.navigate('/');
+ 
   };
   return (
     <main className="min-h-screen p-8 pb-24">
@@ -20,17 +17,17 @@ export default async function Dashboard() {
           You have 3/3 credits left on your free trial
         </h1>
 
-        <button 
-          onClick={goToHomePage} 
-          className="btn btn-primary">
-          Start Designing
-        </button>
+        <Link href="/" passHref>
+          <button className="btn btn-primary">
+            Start Designing
+          </button>
+        </Link>
         
         
       </section>
     </main>
   );
-}
+
 //<ButtonCheckout
       //    mode="subscription"
         //  priceId={config.stripe.plans[0].priceId}
