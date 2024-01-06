@@ -31,9 +31,7 @@ const config = {
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 24,
         features: [
-          {
-           
-          },
+          
           { name: "Create 20 Custom Designs" },
           { name: "Lifetime access" },
           { name: "Pay once" },
@@ -51,9 +49,6 @@ const config = {
         price: 20,
         priceAnchor: 46,
         features: [
-          {
-            name: "NextJS boilerplate",
-          },
           { name: "Create 50 Custom Designs" },
           { name: "Lifetime access" },
           { name: "Pay once" },
@@ -73,9 +68,6 @@ const config = {
       // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
       priceAnchor: 66,
       features: [
-        {
-         
-        },
         { name: "Create 100 Custom Designs" },
         { name: "Lifetime access" },
         { name: "Pay once" },
