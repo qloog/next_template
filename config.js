@@ -25,18 +25,18 @@ const config = {
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Beginner",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "Perfect for small projects",
+        description: "Create 20 Custom Designs",
         // The price you want to display, the one user will be charged on Stripe.
         price: 10,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 24,
         features: [
           {
-            name: "NextJS boilerplate",
+           
           },
-          { name: "User oauth" },
-          { name: "Database" },
-          { name: "Emails" },
+          { name: "Create 20 Custom Designs" },
+          { name: "Lifetime access" },
+          { name: "Pay once" },
         ],
       },
       {
@@ -47,18 +47,16 @@ const config = {
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_1OVen5Ha8820Uqe5wcM3IqYX",
         name: "Veteran",
-        description: "You need more power",
+        description: "Create 50 Custom Designs",
         price: 20,
         priceAnchor: 46,
         features: [
           {
             name: "NextJS boilerplate",
           },
-          { name: "User oauth" },
-          { name: "Database" },
-          { name: "Emails" },
-          { name: "1 year of updates" },
-          { name: "24/7 support" },
+          { name: "Create 50 Custom Designs" },
+          { name: "Lifetime access" },
+          { name: "Pay once" },
         ],
       },
       {
@@ -69,18 +67,18 @@ const config = {
       //  REQUIRED - Name of the plan, displayed on the pricing page
       name: "Premium",
       // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-      description: "Perfect for small projects",
+      description: "Create 100 Custom Designs",
       // The price you want to display, the one user will be charged on Stripe.
       price: 30,
       // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
       priceAnchor: 66,
       features: [
         {
-          name: "NextJS boilerplate",
+         
         },
-        { name: "User oauth" },
-        { name: "Database" },
-        { name: "Emails" },
+        { name: "Create 100 Custom Designs" },
+        { name: "Lifetime access" },
+        { name: "Pay once" },
       ],
       },
     ],
