@@ -25,9 +25,10 @@ const config = {
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Beginner",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "Create 20 Custom Designs",
+      
         // The price you want to display, the one user will be charged on Stripe.
         price: 10,
+        description: "Create 20 Custom Designs",
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 24,
         features: [
