@@ -31,7 +31,6 @@ function Hero() {
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
        
-        
          
       </div>
     </section>
