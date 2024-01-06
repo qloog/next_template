@@ -40,17 +40,6 @@ const ButtonPopover = () => {
              <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-base-content ring-opacity-5">
                 <div className="relative grid gap-4 bg-base-100 p-4 lg:grid-cols-2">
                 <Pricing />
-                  {plans.map(plan => (
-                    <div key={plan.name} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
-                      <div>
-                        <p className="font-bold">{plan.name}</p>
-                        <ButtonCheckout
-                          mode="payment"
-                          priceId={plan.priceId}
-                        />
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </div>
         </Popover.Panel>
