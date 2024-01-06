@@ -3,7 +3,6 @@ import React, { useState, useRef } from 'react';
 import config from '@/config';
 import SigninButton from "@/components/ButtonSignIn"
 const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
-import Image from "@/public/media/newyorktimes Small.png"
 
 function Hero() {
   return (
@@ -31,13 +30,13 @@ function Hero() {
           tattoo.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
-         <Image
+         <image
           src="/media/newyorktimes Small.png"
           alt="NYT"
           priority={true}
           width={200}
           height={200}
-          ></Image>
+          ></image>
 
 
       </div>
