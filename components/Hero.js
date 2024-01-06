@@ -29,7 +29,7 @@ function Hero() {
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
 
         <Image
-          src="/media/newyorktimes Small.png"
+          src="/media/nyt.png"
           alt="NYT"
           priority={true}
           width={200}
