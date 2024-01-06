@@ -2,7 +2,7 @@ import Link from 'next/link';
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
 import config from "@/config";
-
+import ButtonPopover from "@/components/ButtonPopover";
 
 export const dynamic = "force-dynamic";
 
@@ -24,10 +24,7 @@ export default async function Dashboard() {
           </button>
         </Link>
 
-        <ButtonCheckout
-         mode="payment"
-          priceId={config.stripe.plans[0].priceId}
-       />
+        <ButtonPopover></ButtonPopover>
         
         
       </section>
@@ -35,3 +32,7 @@ export default async function Dashboard() {
   );
 }
 
+//<ButtonCheckout
+//mode="payment"
+//priceId={config.stripe.plans[0].priceId}
+///>
