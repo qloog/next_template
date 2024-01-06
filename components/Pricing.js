@@ -9,9 +9,8 @@ const Pricing = () => {
       <section className="bg-base-200 overflow-hidden" id="pricing">
         <div className="py-8 px-4">
           <div className="flex flex-col text-center w-full mb-8">
-            <p className="font-medium text-primary mb-4">Pricing</p>
+
             <h2 className="font-bold text-2xl lg:text-4xl tracking-tight">
-              Choose Your Plan
             </h2>
           </div>
   
