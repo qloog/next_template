@@ -31,7 +31,15 @@ function Hero() {
           tattoo.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
-    
+         <Image
+          src="/media/newyorktimes Small.png"
+          alt="NYT"
+          priority={true}
+          width={200}
+          height={200}
+          ></Image>
+
+
       </div>
     </section>
   );
