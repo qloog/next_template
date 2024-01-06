@@ -1,6 +1,7 @@
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
 import config from "@/config";
+import ButtonPopover from "@/components/ButtonPopover";
 
 export const dynamic = "force-dynamic";
 
@@ -11,14 +12,16 @@ export default async function Dashboard() {
         <ButtonAccount />
 
         <h1 className="text-3xl md:text-4xl font-extrabold">
-          Subscribe to get access:
+          You have 3/3 credits left on your free trial
         </h1>
 
-        <ButtonCheckout
-          mode="subscription"
-          priceId={config.stripe.plans[0].priceId}
-        />
+        <ButtonPopover></ButtonPopover>
+        
       </section>
     </main>
   );
 }
+//<ButtonCheckout
+      //    mode="subscription"
+        //  priceId={config.stripe.plans[0].priceId}
+      //  />
