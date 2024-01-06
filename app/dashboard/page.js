@@ -21,6 +21,11 @@ export default async function Dashboard() {
             Start Designing
           </button>
         </Link>
+
+        <ButtonCheckout
+         mode="subscription"
+          priceId={config.stripe.plans[0].priceId}
+       />
         
         
       </section>
@@ -28,7 +33,3 @@ export default async function Dashboard() {
   );
 }
 
-//<ButtonCheckout
-      //    mode="subscription"
-        //  priceId={config.stripe.plans[0].priceId}
-      //  />
