@@ -5,7 +5,14 @@ import ButtonCheckout from "@/components/ButtonCheckout";
 import config from "@/config";
 
 const ButtonPopover = () => {
-  const stripePlans = config.stripe?.plans || [];
+  const { plans } = config.stripe || {};
+
+  const uniquePlans = Array.isArray(plans)
+    ? plans.filter((value, index, self) => 
+        index === self.findIndex((t) => t.name === value.name)
+      )
+    : [];
+
   return (
     <Popover className="relative z-10">
       {({ open }) => (
@@ -38,7 +45,7 @@ const ButtonPopover = () => {
             <Popover.Panel className="absolute left-0 z-10 mt-3 w-screen max-w-full sm:max-w-sm lg:max-w-2xl transform">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-base-content ring-opacity-5">
                 <div className="relative grid gap-4 bg-base-100 p-4 lg:grid-cols-2">
-                {stripePlans.map((plan, index) => (
+               {uniquePlans.map((plan, index) => (
                     <div key={index} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
                       <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-orange-500/20">
                         {/* ... existing content ... */}
@@ -52,7 +59,7 @@ const ButtonPopover = () => {
                       </div>
                     </div>
                   ))}
-                  {stripePlans.map((plan, index) => (
+                  {uniquePlans.map((plan, index) => (
                     <div key={index} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
                       <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-orange-500/20">
                         {/* ... existing content ... */}
@@ -66,7 +73,7 @@ const ButtonPopover = () => {
                       </div>
                     </div>
                   ))}
-                  {stripePlans.map((plan, index) => (
+                 {uniquePlans.map((plan, index) => (
                     <div key={index} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
                       <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-orange-500/20">
                         {/* ... existing content ... */}
