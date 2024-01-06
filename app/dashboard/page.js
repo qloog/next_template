@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router';
+import { useNavigation } from 'next/navigation';
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
-import { useRouter } from 'next/router';
+
 
 export const dynamic = "force-dynamic";
 
 export default async function Dashboard() {
-  const router = useRouter();
+  const navigation = useNavigation();
 
   const goToHomePage = () => {
-    router.push('/');
+    navigation.navigate('/');
   };
   return (
     <main className="min-h-screen p-8 pb-24">
