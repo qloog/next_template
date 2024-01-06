@@ -40,8 +40,6 @@ const ButtonPopover = () => {
                 <div className="relative grid gap-4 bg-base-100 p-4 lg:grid-cols-2">
                   {plans.map(plan => (
                     <div key={plan.name} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
-                      <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-orange-500/20">
-                      </span>
                       <div>
                         <p className="font-bold">{plan.name}</p>
                         <ButtonCheckout
