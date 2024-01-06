@@ -39,7 +39,15 @@ function Hero() {
           width={200}
           height={200}
          />
-
+      
+      <Image
+          src="/media/tech crunch.png"
+          alt="NYT"
+          priority={true}
+          width={200}
+          height={200}
+         />
+         
          
       </div>
     </section>
