@@ -1,6 +1,8 @@
 "use client";
 
 import { Popover, Transition } from "@headlessui/react";
+import ButtonCheckout from "@/components/ButtonCheckout";
+import config from "@/config";
 
 const ButtonPopover = () => {
   return (
