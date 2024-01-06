@@ -18,7 +18,7 @@ export default async function Dashboard() {
         </h1>
 
         <Link href="/" passHref>
-          <button className="btn btn-primary">
+        <button className="btn btn-primary" style={{ paddingTop: '20px' }}>
             Start Designing
           </button>
         </Link>
