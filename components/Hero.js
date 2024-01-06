@@ -51,6 +51,22 @@ function Hero() {
           width={200}
           height={200}
         />
+
+        <Image
+          src="/media/stability.png"
+          alt="ST.AI"
+          priority={true}
+          width={200}
+          height={200}
+        />
+
+        <Image
+          src="/media/archdaily.png"
+          alt="FC"
+          priority={true}
+          width={200}
+          height={200}
+        />
       </div>
     </section>
   );
