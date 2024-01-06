@@ -5,6 +5,7 @@ import ButtonCheckout from "@/components/ButtonCheckout";
 import config from "@/config";
 
 const ButtonPopover = () => {
+  const stripePlans = config.stripe?.plans || [];
   return (
     <Popover className="relative z-10">
       {({ open }) => (
@@ -37,39 +38,48 @@ const ButtonPopover = () => {
             <Popover.Panel className="absolute left-0 z-10 mt-3 w-screen max-w-full sm:max-w-sm lg:max-w-2xl transform">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-base-content ring-opacity-5">
                 <div className="relative grid gap-4 bg-base-100 p-4 lg:grid-cols-2">
-                  <div className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
-                    <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-orange-500/20">
-                    </span>
-                    <div className="">
-                      <p className="font-bold">Beginner</p>
-                      <ButtonCheckout
-                        mode="payment"
-                        priceId={config.stripe.plans[0].priceId}
-                      />
+                {stripePlans.map((plan, index) => (
+                    <div key={index} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
+                      <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-orange-500/20">
+                        {/* ... existing content ... */}
+                      </span>
+                      <div className="">
+                        <p className="font-bold">{plan.name}</p>
+                        <ButtonCheckout
+                          mode="payment"
+                          priceId={plan.priceId}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
-                    <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-yellow-500/20">
-                    </span>
-                    <div className="">
-                      <p className="font-bold">Veteran</p>
-                      <ButtonCheckout
-                        mode="payment"
-                        priceId={config.stripe.plans[1].priceId}
-                      />
+                  ))}
+                  {stripePlans.map((plan, index) => (
+                    <div key={index} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
+                      <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-orange-500/20">
+                        {/* ... existing content ... */}
+                      </span>
+                      <div className="">
+                        <p className="font-bold">{plan.name}</p>
+                        <ButtonCheckout
+                          mode="payment"
+                          priceId={plan.priceId}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
-                    <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-green-500/20">
-                    </span>
-                    <div className="">
-                      <p className="font-bold">Premium</p>
-                      <ButtonCheckout
-                        mode="payment"
-                        priceId={config.stripe.plans[2].priceId}
-                      />
+                  ))}
+                  {stripePlans.map((plan, index) => (
+                    <div key={index} className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
+                      <span className="flex items-center justify-center w-12 h-12 shrink-0 rounded-lg bg-orange-500/20">
+                        {/* ... existing content ... */}
+                      </span>
+                      <div className="">
+                        <p className="font-bold">{plan.name}</p>
+                        <ButtonCheckout
+                          mode="payment"
+                          priceId={plan.priceId}
+                        />
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </Popover.Panel>
