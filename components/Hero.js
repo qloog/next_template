@@ -37,8 +37,6 @@ function Hero() {
           width={200}
           height={200}
           ></image>
-
-
       </div>
     </section>
   );
