@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
 import { useRouter } from 'next/router';
