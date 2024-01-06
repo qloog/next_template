@@ -8,7 +8,7 @@ const ButtonPopover = () => {
       {({ open }) => (
         <>
           <Popover.Button className="btn">
-            Popover Button
+            Choose a plan
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -58,10 +58,12 @@ const ButtonPopover = () => {
                       </svg>
                     </span>
                     <div className="">
-                      <p className="font-bold">Join waitlist</p>
-                      <p className="opacity-70">
-                        Loreum ipseum de la madre de papa
-                      </p>
+                      <p className="font-bold">Beginner</p>
+                      //
+                      <ButtonCheckout
+                        mode="payment"
+                        priceId={config.stripe.plans[0].priceId}
+                      />
                     </div>
                   </div>
                   <div className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
@@ -82,10 +84,11 @@ const ButtonPopover = () => {
                       </svg>
                     </span>
                     <div className="">
-                      <p className="font-bold">Rewards</p>
-                      <p className="opacity-70">
-                        Loreum ipseum de el papi de la mama
-                      </p>
+                      <p className="font-bold">Veteran</p>
+                      <ButtonCheckout
+                        mode="payment"
+                        priceId={config.stripe.plans[1].priceId}
+                      />
                     </div>
                   </div>
                   <div className="text-sm flex items-center gap-3 p-2 cursor-pointer hover:bg-base-200 rounded-lg duration-200">
@@ -106,10 +109,11 @@ const ButtonPopover = () => {
                       </svg>
                     </span>
                     <div className="">
-                      <p className="font-bold">Academics</p>
-                      <p className="opacity-70">
-                        Loreum ipseum de la madre de papa
-                      </p>
+                      <p className="font-bold">Premium</p>
+                      <ButtonCheckout
+                        mode="payment"
+                        priceId={config.stripe.plans[2].priceId}
+                      />
                     </div>
                   </div>
                 </div>
