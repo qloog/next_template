@@ -1,6 +1,6 @@
 import { json } from "express";
 import OpenAI from "openai";
-
+import User from '@/models/User';
 
 const openai = new OpenAI
    
