@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState} from 'react'; 
+import React, { useState, useEffect } from 'react';
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
 import Footer from '@/components/Footer';
@@ -13,16 +13,38 @@ export default function Home() {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
+  const [userSubscription, setUserSubscription] = useState(null);
 
+  useEffect(() => {
+    async function fetchUserSubscription() {
+      try {
+        const response = await fetch('/api/userSubscription');
+        if (!response.ok) {
+          throw new Error('Failed to fetch user subscription');
+        }
+        const data = await response.json();
+        setUserSubscription(data);
+      } catch (error) {
+        console.error("Error fetching user subscription:", error);
+      }
+    }
 
+    fetchUserSubscription();
+  }, []);
   
 
   async function onGenerate(e) {
+    
     setIsLoading(true);
     e.preventDefault();
     
-
      const fullPrompt = `${style}: ${prompt}`;
+
+     if (!userSubscription?.hasAccess || userSubscription?.imageCount <= 0) {
+      setShowPopup(true); // Show payment required popup
+      return;
+     }
+     
      
       const results = await fetch('/api/generateImage', {
         method: 'POST',
@@ -34,9 +56,14 @@ export default function Home() {
       
       setFinalData(results.imageUrl)
       setIsLoading(false); // End loading
+
+      const data = await results.json();
+    if (data.error && data.error === "Access denied or limit reached") {
+      setShowPopup(true); // Show popup
+    } else {
+      setFinalData(data.imageUrl);
     }
-  
-  
+  }
 
  
 const buttonStyle1 = {
@@ -71,6 +98,12 @@ const buttonStyle1 = {
 
   return (
     <>
+    {showPopup && 
+        <div>
+          <h2>Oops, you've run out of free credits</h2>
+          <ButtonPopover />
+        </div>
+      }
       <main className="bg-black text-white">
     <ButtonAccount></ButtonAccount>
       <Hero />

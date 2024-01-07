@@ -36,7 +36,18 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    imageCount: {
+      type: Number,
+      default: 0,
+    },
+    planType: {
+      type: String,
+      enum: ['beginner', 'veteran', 'premium'],
+      default: 'beginner',
+    },
   },
+
+  
   {
     timestamps: true,
     toJSON: { virtuals: true },
