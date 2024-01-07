@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
 import Footer from '@/components/Footer';
 import ButtonAccount from '@/components/ButtonAccount'
+import ButtonPopover from '@/components/ButtonPopover';
 
 export default function Home() {
   const [style, setStyle] = useState('tattoo');
@@ -100,7 +101,7 @@ const buttonStyle1 = {
     <>
     {showPopup && 
         <div>
-          <h2>Oops, you've run out of free credits</h2>
+          <h2>Oops, you&apos;ve run out of free credits</h2>
           <ButtonPopover />
         </div>
       }
