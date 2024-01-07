@@ -24,8 +24,8 @@ function Hero() {
         </p>
 
         <p>
-          Write your tattoo idea, and Findrr will transform it into a custom
-          design. Get Tattoo design inspiration and new ideas for your tattoo.
+          Write your tattoo idea, and transform it into a custom
+          design that has never been inked before
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
         <p className="text-white">as seen in</p>
