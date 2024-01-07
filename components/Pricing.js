@@ -38,7 +38,7 @@ const Pricing = () => {
                   </ul>
                 )}
                 <div className="mt-6 text-center">
-                  <ButtonCheckout className="bg-rgb(244, 68, 37)" priceId={plan.priceId} />
+                  <ButtonCheckout className="bg-#f44425" priceId={plan.priceId} />
                 </div>
               </div>
             ))}
