@@ -1,5 +1,5 @@
 // /api/userSubscription.js
-import User from '../models/User';// Adjust the path as necessary
+import User from '@/models/User';// Adjust the path as necessary
 
 export default async function handler(req, res) {
   // Assuming user ID is stored in the session or similar
