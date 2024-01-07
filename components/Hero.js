@@ -28,7 +28,7 @@ function Hero() {
           design that has never been inked before
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
-        <p className="text-white">as seen in</p>
+        <p className="text-white text-left">as seen in</p>
         <div
           style={{
             display: "flex",
@@ -40,22 +40,22 @@ function Hero() {
             src="/media/The-New-York-Times-logo-whiteWEB-1.png"
             alt="NYT"
             priority={true}
-            width={80}
-            height={80}
+            width={120}
+            height={120}
           />
           <Image
             src="/media/tech crunch.png"
             alt="TC"
             priority={true}
-            width={80}
-            height={80}
+            width={120}
+            height={120}
           />
           <Image
             src="/media/fastcompany.png"
             alt="FC"
             priority={true}
-            width={80}
-            height={80}
+            width={120}
+            height={120}
           />
         </div>
       </div>
