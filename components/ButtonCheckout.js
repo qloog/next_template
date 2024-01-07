@@ -31,7 +31,7 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
   };
   return (
     <button
-    className="custom-button-checkout"
+    className="bg-white"
       onClick={() => handlePayment()}
     >
       {isLoading ? (
