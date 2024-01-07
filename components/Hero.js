@@ -41,22 +41,22 @@ function Hero() {
             src="/media/The-New-York-Times-logo-whiteWEB-1.png"
             alt="NYT"
             priority={true}
-            width={120}
-            height={120}
+            width={80}
+            height={80}
           />
           <Image
             src="/media/tech crunch.png"
             alt="TC"
             priority={true}
-            width={120}
-            height={120}
+            width={80}
+            height={80}
           />
           <Image
             src="/media/fastcompany.png"
             alt="FC"
             priority={true}
-            width={120}
-            height={120}
+            width={80}
+            height={80}
           />
         </div>
       </div>
