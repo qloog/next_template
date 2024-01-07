@@ -29,9 +29,10 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
 
     setIsLoading(false);
   };
+
   return (
     <button
-    className="bg-white"
+      className="bg-red w-full max-w-xs space-y-3"
       onClick={() => handlePayment()}
     >
       {isLoading ? (
