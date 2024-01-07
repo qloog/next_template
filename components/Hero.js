@@ -36,6 +36,7 @@ function Hero() {
             alignItems: "center",
           }}
         >
+          <p className="text-white">as seen in</p>
           <Image
             src="/media/The-New-York-Times-logo-whiteWEB-1.png"
             alt="NYT"
