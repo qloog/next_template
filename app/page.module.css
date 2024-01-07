@@ -7,6 +7,11 @@
     min-height: 100vh;
   }
   
+  .custom-button-color {
+    background-color: rgb(244, 68, 37);
+  }
+  
+  
   .description {
     display: inherit;
     justify-content: inherit;
