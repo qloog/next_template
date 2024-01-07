@@ -16,7 +16,11 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
   const [userSubscription, setUserSubscription] = useState(null);
 
-  useEffect(() => {
+  
+  
+
+  async function onGenerate(e) {
+
     async function fetchUserSubscription() {
       try {
         const response = await fetch('/api/userSubscription');
@@ -31,10 +35,6 @@ export default function Home() {
     }
 
     fetchUserSubscription();
-  }, []);
-  
-
-  async function onGenerate(e) {
     
     setIsLoading(true);
     e.preventDefault();
