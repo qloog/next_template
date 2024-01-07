@@ -28,7 +28,7 @@ function Hero() {
           design. Get Tattoo design inspiration and new ideas for your tattoo.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
-
+        <p className="text-white">as seen in</p>
         <div
           style={{
             display: "flex",
@@ -36,7 +36,6 @@ function Hero() {
             alignItems: "center",
           }}
         >
-          <p className="text-white text-small">as seen in</p>
           <Image
             src="/media/The-New-York-Times-logo-whiteWEB-1.png"
             alt="NYT"
