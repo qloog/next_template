@@ -1,3 +1,5 @@
+"use server"
+
 import { json } from "express";
 import OpenAI from "openai";
 import { getServerSession } from "next-auth/next";
