@@ -14,9 +14,7 @@ export default async function Dashboard() {
       <section className="max-w-xl mx-auto space-y-8">
         <ButtonAccount />
 
-        <h1 className="text-3xl md:text-4xl font-extrabold">
-          You have 3/3 credits left on your free trial
-        </h1>
+        
 
         <Link href="/#tattoo-generator" passHref>
           <button className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
