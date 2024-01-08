@@ -26,16 +26,22 @@ export default function Home() {
 
      const fullPrompt = `${style}: ${prompt}`;
      
-      const results = await fetch('/api/generateImage', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: fullPrompt })
-        
-      }).then(r => r.json());
+     const res = await fetch('/api/generateImage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: fullPrompt })
 
-      
-      setFinalData(results.imageUrl)
-      setIsLoading(false); // End loading
+    })
+
+    if (res.status !== 200) {
+      console.log('Error: ', res.status)
+      return
+    }
+
+    const results = await res.json();
+
+    setFinalData(results.imageUrl)
+    setIsLoading(false); // End loading
     }
   
   
