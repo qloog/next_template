@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/libs/next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 import connectMongo from "@/libs/mongoose";
 import User from "@/models/User";
 
