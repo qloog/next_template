@@ -2,6 +2,7 @@
 
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import ButtonPopover from "@components/ButtonPopover";
 
 // A simple modal component which can be shown/hidden with a boolean and a function
 // Because of the setIsModalOpen function, you can't use it in a server component.
@@ -56,7 +57,7 @@ const Modal = ({ isModalOpen, setIsModalOpen }) => {
                   </button>
                 </div>
 
-                <section>And here is my content</section>
+                <section><ButtonPopover></ButtonPopover></section>
               </Dialog.Panel>
             </Transition.Child>
           </div>
