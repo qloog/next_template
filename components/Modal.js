@@ -57,7 +57,7 @@ const Modal = ({ isModalOpen, setIsModalOpen }) => {
                   </button>
                 </div>
 
-                <section><ButtonPopover></ButtonPopover></section>
+                <section><Link className="btn btn-primary" href="/dashboard">Choose a Plan</Link></section>
               </Dialog.Panel>
             </Transition.Child>
           </div>
