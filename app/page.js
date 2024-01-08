@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox"
 import Footer from '@/components/Footer';
 import ButtonAccount from '@/components/ButtonAccount'
+import Modal from '@/components/Modal'
 
 export default function Home() {
   const [style, setStyle] = useState('tattoo');
@@ -77,6 +78,7 @@ const buttonStyle1 = {
 
   return (
     <>
+      <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-black text-white">
     <ButtonAccount></ButtonAccount>
       <Hero />
