@@ -16,7 +16,7 @@ export async function POST(req) {
 
   const user = await User.findById(id)
 
-  if (!user || user.currentCredits === 0) {
+  if (!user || !user.currentCredits || user.currentCredits === 0) {
     return NextResponse.json({ error: 'Not enough credits' }, { status: 403 })
   }
 
