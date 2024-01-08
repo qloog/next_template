@@ -50,6 +50,9 @@ export async function POST(req) {
 
         if (!plan) break;
 
+        const newCredits = plan.credits
+        user.currentCredits = user.currentCredits + newCredits
+
         const customer = await stripe.customers.retrieve(customerId);
 
         let user;
@@ -77,6 +80,7 @@ export async function POST(req) {
         user.priceId = priceId;
         user.customerId = customerId;
         user.hasAccess = true;
+        user.curentCredits = user.curentCredits + plan.credits;
         await user.save();
 
         // Extra: send email with user link, product page, etc...

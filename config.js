@@ -28,6 +28,7 @@ const config = {
         description: "+20 Credits to your account",
         // The price you want to display, the one user will be charged on Stripe.
         price: 10,
+        credits: 20,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 24,
         features: [
@@ -47,6 +48,7 @@ const config = {
         name: "Veteran",
         description: "+50 Credits to your account",
         price: 20,
+        credits: 50,
         priceAnchor: 46,
         features: [
           { name: "Create 50 Custom Designs" },
@@ -65,6 +67,7 @@ const config = {
       description: "+100 Credits to your account",
       // The price you want to display, the one user will be charged on Stripe.
       price: 30,
+      credits: 100,
       // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
       priceAnchor: 66,
       features: [

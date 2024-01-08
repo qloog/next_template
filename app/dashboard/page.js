@@ -7,14 +7,17 @@ import ButtonPopover from "@/components/ButtonPopover";
 export const dynamic = "force-dynamic";
 
 export default async function Dashboard() {
- 
+  await connectMongo()
+
+  const session = await getServerSession(authOptions)
+  const user = await User.findById(session.user.id)
   
   return (
     <main className="min-h-screen p-8 pb-24">
       <section className="max-w-xl mx-auto space-y-8">
         <ButtonAccount />
 
-        
+        <p>{User.currentCredits}</p>
 
         <Link href="/#tattoo-generator" passHref>
         </Link>

@@ -36,9 +36,9 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    imageCount: {
+    currentCredits: {
       type: Number,
-      default: 0,
+      default: 3,
     },
     planType: {
       type: String,
