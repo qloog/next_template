@@ -4,7 +4,8 @@ import ButtonCheckout from "@/components/ButtonCheckout";
 import config from "@/config";
 import ButtonPopover from "@/components/ButtonPopover";
 import connectMongo from "@/libs/mongoose";
-import configFile from "@/config";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/libs/next-auth";
 import User from "@/models/User";
 
 export const dynamic = "force-dynamic";
