@@ -20,12 +20,9 @@ export default function Home() {
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
-    
-
-    
 
      const fullPrompt = `${style}: ${prompt}`;
-     
+
      const res = await fetch('/api/generateImage', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -35,6 +32,8 @@ export default function Home() {
 
     if (res.status !== 200) {
       console.log('Error: ', res.status)
+      setIsLoading(false);
+      showPopup(true)
       return
     }
 
@@ -43,7 +42,6 @@ export default function Home() {
     setFinalData(results.imageUrl)
     setIsLoading(false); // End loading
     }
-  
   
 
  
