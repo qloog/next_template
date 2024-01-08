@@ -27,10 +27,11 @@ export default async function Dashboard() {
 
         <Link href="/#tattoo-generator" passHref>
         </Link>
+
+        <ButtonPopover></ButtonPopover>
         
         
       </section>
-      <ButtonPopover></ButtonPopover>
     </main>
   );
 }
