@@ -17,9 +17,6 @@ export default async function Dashboard() {
         
 
         <Link href="/#tattoo-generator" passHref>
-          <button className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
-            Start Designing
-          </button>
         </Link>
 
         <ButtonPopover></ButtonPopover>
@@ -34,3 +31,7 @@ export default async function Dashboard() {
 //mode="payment"
 //priceId={config.stripe.plans[0].priceId}
 ///>
+
+//<button className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3">
+//Start Designing
+//</button>
