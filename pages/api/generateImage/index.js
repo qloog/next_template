@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
   const user = await User.findById(id);
   if (!user || user.currentCredits === 0) {
-    res.status(403).json({ error: "Not enough credits" });
+    return res.status(403).json({ error: "Not enough credits" });
   }
 
   const { prompt } = req.body;
