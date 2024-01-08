@@ -62,12 +62,6 @@ export default function Home() {
 
   return (
     <>
-      {showPopup && (
-        <div>
-          <h2>Oops, you&apos;ve run out of free credits</h2>
-          <ButtonPopover />
-        </div>
-      )}
       <main className="bg-black text-white">
         <ButtonAccount></ButtonAccount>
         <Hero />
