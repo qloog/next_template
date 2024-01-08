@@ -1,4 +1,4 @@
-"use server"
+
 
 import { json } from "express";
 import OpenAI from "openai";
