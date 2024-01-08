@@ -10,7 +10,7 @@ const openai = new OpenAI();
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", ["POST"]);
-    return res.status(405).json({ error: "Method Not Allowed" });
+    return res.status(403).json({ error: "Method Not Allowed" });
   }
 
   const session = await getServerSession(authOptions);
