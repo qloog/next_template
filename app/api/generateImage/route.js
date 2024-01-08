@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../auth/[...nextauth]'
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/libs/next-auth";
 import connectMongo from '@/libs/mongoose'
 import User from '@/models/User'
 
