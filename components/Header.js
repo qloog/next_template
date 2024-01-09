@@ -11,7 +11,7 @@ import ButtonAccount from "./ButtonAccount";
 
 const links = [
   {
-    href: "/#dashboard",
+    href:<Link href="/dashboard">Dashboard</Link>,
     label: "Dashboard",
   },
   
