@@ -15,7 +15,7 @@ export default async function Dashboard() {
   const user = await User.findById(session.user.id)
   
   return (
-    <main className="min-h-screen p-8 pb-24">
+    <main className="bg-white text-black min-h-screen p-8 pb-24">
       <section className="max-w-xl mx-auto space-y-8">
         <ButtonAccount />
 
