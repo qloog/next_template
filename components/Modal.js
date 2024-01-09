@@ -2,7 +2,6 @@
 
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import ButtonPopover from "@/components/ButtonPopover";
 import Link from "next/link";
 
 // A simple modal component which can be shown/hidden with a boolean and a function
@@ -57,7 +56,6 @@ const Modal = ({ isModalOpen, setIsModalOpen }) => {
                     </svg>
                   </button>
                 </div>
-
                 <section><Link className="btn btn-primary" href="/dashboard">Choose a Plan</Link></section>
               </Dialog.Panel>
             </Transition.Child>
