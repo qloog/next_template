@@ -16,7 +16,7 @@ function Hero() {
           //title="Product Hunt link"
         ></a>
 
-        <h1 className="font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
+        <h1 className="font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
           Fire your Tattoo Designer
         </h1>
         <p className="text-lg opacity-80 leading-relaxed text-black">
