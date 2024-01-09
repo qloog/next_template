@@ -19,7 +19,7 @@ function Hero() {
         <h1 className="animate-shimmer font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
           Fire your tattoo Designer
         </h1>
-        <p className="text-lg opacity-80 leading-relaxed text-white">
+        <p className="text-lg opacity-80 leading-relaxed text-black">
           Design your own tattoo with the first AI Tattoo Designer
         </p>
 
@@ -28,7 +28,7 @@ function Hero() {
           design that has never been inked before
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
-        <p className="text-white text-align:left opacity-80">as seen in</p>
+        <p className="text-black text-align:left opacity-80">as seen in</p>
         <div
           style={{
             display: "flex",
