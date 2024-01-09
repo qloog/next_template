@@ -19,7 +19,7 @@ export default async function Dashboard() {
       <section className="max-w-xl mx-auto space-y-8">
         <ButtonAccount />
 
-        <p>{user.currentCredits}</p>
+        <p>You have {user.currentCredits} left</p>
 
 
         <ButtonPopover></ButtonPopover>
