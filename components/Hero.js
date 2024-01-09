@@ -21,7 +21,7 @@ function Hero() {
 
         <p className="font-medium ">
           Write your tattoo idea, and transform it into a custom
-          design that has never been inked before
+          design that has never been designed before
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
         <p className="text-black text-align:left opacity-80"></p>
