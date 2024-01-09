@@ -28,7 +28,7 @@ function Hero() {
           design that has never been inked before
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
-        <p className="text-black text-align:left opacity-80">as seen in</p>
+        <p className="text-black text-align:left opacity-80"></p>
         <div
           style={{
             display: "flex",
