@@ -12,15 +12,13 @@ function Hero() {
        
     
 
-        <h1 className="font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
-          Fire your Tattoo Designer
-        </h1>
+      <span class="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight">Fire your Tattoo Designer</span>
         <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
-          Custom Tattoo Designs from the comfort of your home within seconds
+          Custom Tattoo Designs printed from the comfort of your home
         </p>
 
         <p className="font-medium ">
-          Transform any tattoo idea into a unique piece that will keep your artist interested during the session
+          Transform any tattoo idea into a custom tattoo for less than 3x the price from a Designer
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
         <p className="text-black text-align:left opacity-80"></p>
