@@ -20,7 +20,7 @@ function Hero() {
         </p>
 
         <p className="font-medium ">
-          Stand apart from the crowd and show off something appealing
+          Transform any tattoo idea into a unique piece that will keep your artist interested during the session
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
         <p className="text-black text-align:left opacity-80"></p>
