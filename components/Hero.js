@@ -16,12 +16,11 @@ function Hero() {
           Fire your Tattoo Designer
         </h1>
         <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
-          Design your own tattoo with the first AI Tattoo Designer
+          Powered by Dall-E 3
         </p>
 
         <p className="font-medium ">
-          Write your tattoo idea, and transform it into a custom
-          design that has never been designed before
+          Transform your tattoo idea into a never seen before custom design
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
         <p className="text-black text-align:left opacity-80"></p>
