@@ -56,7 +56,7 @@ const ButtonLead = () => {
         type="submit"
         disabled={isDisabled}
       >
-        Start using Findrr now
+        Generate Free Tattoo
         {isLoading ? (
           <span className="loading loading-spinner loading-xs"></span>
         ) : (
