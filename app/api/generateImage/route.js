@@ -38,6 +38,7 @@ export async function POST(req) {
 
     const imageUrl = image.data[0].url
     const finalData = image.data
+    console.log(imageUrl)
 
     user.currentCredits = user.currentCredits - 1
     await user.save()
