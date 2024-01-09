@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <>
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
-      <main className="bg-white text-black">
+      <main className="bg-base-100 text-black">
         <Header></Header>
         <Hero />
         <section
