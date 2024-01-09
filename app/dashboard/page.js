@@ -25,8 +25,7 @@ export default async function Dashboard() {
 
         <p>{User.currentCredits}</p>
 
-        <Link href="/#tattoo-generator" passHref>
-        </Link>
+        
 
         <ButtonPopover></ButtonPopover>
         
