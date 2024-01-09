@@ -80,7 +80,6 @@ export default function Home() {
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
         <Header></Header>
-        <ButtonAccount></ButtonAccount>
         <Hero />
         <section
           id="tattoo-generator"
