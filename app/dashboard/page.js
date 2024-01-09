@@ -1,13 +1,10 @@
-"use server"
-
 import Link from 'next/link';
 import ButtonAccount from "@/components/ButtonAccount";
 import ButtonCheckout from "@/components/ButtonCheckout";
 import config from "@/config";
 import ButtonPopover from "@/components/ButtonPopover";
 import connectMongo from "@/libs/mongoose";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/libs/next-auth";
+import configFile from "@/config";
 import User from "@/models/User";
 
 export const dynamic = "force-dynamic";
