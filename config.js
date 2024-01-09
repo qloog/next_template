@@ -5,7 +5,7 @@ const config = {
   appName: "Findrr",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "Write your tattoo idea, then use Findrr to transform it into a custom design. Get Tattoo design inspiration and new ideas for your tattoo.",
+    "Transform any Tattoo idea into a custom-made design.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "findrr.ca",
   crisp: {
