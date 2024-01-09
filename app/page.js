@@ -58,7 +58,7 @@ export default function Home() {
   };
 
   const buttonStyle = {
-    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "black",
+    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "animate-shimmer",
     border: "none",
     borderRadius: "20px", // This makes the button oval-shaped
     padding: "10px 20px",
