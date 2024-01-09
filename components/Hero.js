@@ -16,7 +16,7 @@ function Hero() {
           Fire your Tattoo Designer
         </h1>
         <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
-          Powered by Dall-E 3
+          Custom Tattoo Designs at the comfort of your home within seconds
         </p>
 
         <p className="font-medium ">
