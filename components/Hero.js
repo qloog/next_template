@@ -16,8 +16,8 @@ function Hero() {
           //title="Product Hunt link"
         ></a>
 
-        <h1 className="animate-shimmer font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
-          Fire your tattoo Designer
+        <h1 className="font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
+          Fire your Tattoo Designer
         </h1>
         <p className="text-lg opacity-80 leading-relaxed text-black">
           Design your own tattoo with the first AI Tattoo Designer
