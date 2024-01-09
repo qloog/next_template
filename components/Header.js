@@ -9,9 +9,13 @@ import logo from "@/app/icon.png";
 import config from "@/config";
 import ButtonAccount from "./ButtonAccount";
 
-<Link href="/dashboard">
-  <a className="text-black">Dashboard</a>
-</Link>
+const links = [
+  {
+    href:<Link href="/dashboard">Dashboard</Link>,
+    label: "Dashboard",
+  },
+  
+];
 
 
 
