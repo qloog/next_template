@@ -16,11 +16,11 @@ function Hero() {
           Fire your Tattoo Designer
         </h1>
         <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
-          Custom Tattoo Designs at the comfort of your home within seconds
+          Custom Tattoo Designs from the comfort of your home within seconds
         </p>
 
         <p className="font-medium ">
-          Transform your tattoo idea into a never seen before custom design
+          Stand apart from the crowd and show off something appealing
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
         <p className="text-black text-align:left opacity-80"></p>
