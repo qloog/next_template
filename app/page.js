@@ -100,10 +100,10 @@ export default function Home() {
             onChange={(e) => setStyle(e.target.value)}
             style={buttonStyle1}
           >
-            <option value="tattoo">Tattoo</option>
-            <option value="sketch">Sketch</option>
-            <option value="lineart">Line Art</option>
-            <option value="painting">Painting</option>
+            <option className="bg-white text-black" value="tattoo">Tattoo</option>
+            <option className="bg-white text-black" value="sketch">Sketch</option>
+            <option className="bg-white text-black" value="lineart">Line Art</option>
+            <option className="bg-white text-black" value="painting">Painting</option>
           </select>
           <button
             style={buttonStyle}
