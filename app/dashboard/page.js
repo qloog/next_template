@@ -22,7 +22,7 @@ export default async function Dashboard() {
       <section className="max-w-xl mx-auto space-y-8">
         <ButtonAccount />
 
-        <p>{User.currentCredits}</p>
+        <p>{user.currentCredits}</p>
 
         <Link href="/#tattoo-generator" passHref>
         </Link>
