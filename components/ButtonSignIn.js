@@ -11,7 +11,9 @@ const SigninButton = () => {
     >
       Generate Free Tattoo
     </button>
+    
   );
 };
+
                 
 export default SigninButton;
