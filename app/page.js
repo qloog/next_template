@@ -46,8 +46,8 @@ export default function Home() {
   }
 
   const buttonStyle1 = {
-    backgroundColor: "#161616",
-    color: "rgba(255, 255, 255, 0.8)", // White text with 80% opacity
+    backgroundColor: "white",
+    color: "black", // White text with 80% opacity
     // Other styles...
   };
 
