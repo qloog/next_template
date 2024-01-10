@@ -17,10 +17,10 @@ function Hero() {
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
        
        
-        <p className="font-medium text-lg opacity-80 leading-relaxed text-white">
+        <p className="font-medium text-lg leading-relaxed text-white">
         Findrr is the first AI Tattoo Designer in the world.
         </p>
-        <p className="font-medium text-lg opacity-80 leading-relaxed text-white">
+        <p className="font-medium text-lg leading-relaxed text-white">
         Write your tattoo idea, and then use Findrr to transform it into a custom design. Get tattoo design inspiration and new ideas for your tattoo.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
