@@ -265,7 +265,7 @@ export default function Home() {
       
         
         </section>
-        <section className="bg-white">
+        <section className=" font-semibold text-base-content text-lg opacity-80 text-black bg-white">
       <h2>Affordable Artistry: Tattoo Designs for Less Dough!</h2>
      <Pricing></Pricing>
 
