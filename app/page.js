@@ -119,7 +119,7 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
         <section>
-          <h3>Latest Designs</h3>
+          <h3 className="font-semibold text-base-content text-lg opacity-80 text-black">Latest Designs</h3>
         </section>
 
         <Footer></Footer>
