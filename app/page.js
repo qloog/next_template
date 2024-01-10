@@ -179,7 +179,7 @@ export default function Home() {
         </section>
         <section className="bg-black">
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-black">
-            Latest Designs
+            Latest Designs Gallery
           </h3>
 
           <div
