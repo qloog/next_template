@@ -34,7 +34,6 @@ const config = {
         features: [
           
           { name: "Create 20 Custom Designs" },
-          { name: "Lifetime access" },
           { name: "Pay once" },
         ],
       },
@@ -52,7 +51,6 @@ const config = {
         priceAnchor: 46,
         features: [
           { name: "Create 50 Custom Designs" },
-          { name: "Lifetime access" },
           { name: "Pay once" },
         ],
       },
@@ -72,7 +70,6 @@ const config = {
       priceAnchor: 66,
       features: [
         { name: "Create 100 Custom Designs" },
-        { name: "Lifetime access" },
         { name: "Pay once" },
       ],
       },
