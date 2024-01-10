@@ -191,6 +191,7 @@ export default function Home() {
             height={120}
           />
           <Image
+           className="w-full"
             src="/media/IMG_5420 Small.png"
             alt="tattoo"
             priority={true}
