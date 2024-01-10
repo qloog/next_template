@@ -16,7 +16,7 @@ function Hero() {
         <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
        Forget Designing, Spend that time to Focus on showing off your talent to clients
         </p>
-
+        No more stress for your client&apos;s next session
         <p className="font-medium ">
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
