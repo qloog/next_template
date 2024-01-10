@@ -199,6 +199,7 @@ export default function Home() {
             height={120}
           />
           <Image
+           className="w-full"
             src="/media/IMG_5414 Small.png"
             alt="tattoo"
             priority={true}
@@ -206,6 +207,7 @@ export default function Home() {
             height={120}
           />
           <Image
+           className="w-full"
             src="/media/IMG_5417 Small.png"
             alt="tattoo"
             priority={true}
@@ -213,6 +215,7 @@ export default function Home() {
             height={120}
           />
           <Image
+           className="w-full"
             src="/media/IMG_5412 Small.png"
             alt="tattoo"
             priority={true}
