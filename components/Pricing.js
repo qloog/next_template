@@ -11,7 +11,7 @@ const Pricing = () => {
           <div className="flex flex-col text-center w-full mb-8">
 
             <h2 className="font-bold text-2xl lg:text-4xl tracking-tight">
-            Save on Designs with Us, Shine with Your Artist's Ink!
+            Save on Designs with Us, Shine with Your Artist&apos;s Ink!
             </h2>
           </div>
   
