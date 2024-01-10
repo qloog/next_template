@@ -1,0 +1,9 @@
+/* components/MyComponent.module.css */
+.background {
+    background-image: url('/media/Khalsa Small.jpeg');
+    background-size: cover; /* or contain, depending on what you need */
+    background-position: center;
+    height: 100vh; /* or set a specific height */
+    width: 100%; /* Adjust width as needed */
+  }
+  
