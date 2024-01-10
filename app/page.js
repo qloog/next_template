@@ -8,6 +8,7 @@ import ButtonAccount from "@/components/ButtonAccount";
 import Modal from "@/components/Modal";
 import Header from "@/components/Header";
 import Image from "next/image";
+import Pricing from "@/components/Pricing";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -263,6 +264,11 @@ export default function Home() {
       </div>
       
         
+        </section>
+        <section>
+     <Pricing></Pricing>
+
+
         </section>
         <Footer></Footer>
       </main>
