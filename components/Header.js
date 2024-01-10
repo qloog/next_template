@@ -52,7 +52,9 @@ const Header = () => {
               width={32}
               height={32}
             />
-            <span className="font-extrabold text-lg">{config.appName}</span>
+            <span className="font-extrabold text-lg">
+            <span class="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight">{config.appName}</span>
+            </span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
