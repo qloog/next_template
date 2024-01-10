@@ -177,7 +177,7 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
-        <section>
+        <section className="bg-black">
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-black">
             Latest Designs
           </h3>
