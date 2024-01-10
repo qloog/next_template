@@ -267,8 +267,6 @@ export default function Home() {
         </section>
         <section className=" font-semibold text-base-content text-lg opacity-80 text-black bg-white">
      <Pricing></Pricing>
-
-
         </section>
         <Footer></Footer>
       </main>
