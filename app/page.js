@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import ButtonAccount from "@/components/ButtonAccount";
 import Modal from "@/components/Modal";
 import Header from "@/components/Header";
+import Image from 'next/image'
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -121,7 +122,13 @@ export default function Home() {
         <section>
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-black">Latest Designs</h3>
         </section>
-
+       <Image
+        src="/media/IMG_5415 Small.png"
+        alt="tattoo"
+        priority={true}
+        width={120}
+        height={120}
+       />
         <Footer></Footer>
       </main>
     </>
