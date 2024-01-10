@@ -183,7 +183,7 @@ export default function Home() {
           </h3>
 
           <Image
-          className="w-full"
+          className="w-screen max-w-[16rem]"
             src="/media/IMG_5415 Small.png"
             alt="tattoo"
             priority={true}
