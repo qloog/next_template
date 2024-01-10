@@ -11,7 +11,7 @@ const Pricing = () => {
           <div className="flex flex-col text-center w-full mb-8">
 
             <h2 className="font-bold text-2xl lg:text-4xl tracking-tight">
-            Affordable Artistry: Tattoo Designs for Less Dough!
+            More Ink, Less Ouch: Tattoos That Wow Without the Ow!
             </h2>
           </div>
   
