@@ -181,43 +181,43 @@ export default function Home() {
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-black">
             Latest Designs
           </h3>
-        </section>
-        <Image
-          src="/media/IMG_5415 Small.png"
-          alt="tattoo"
-          priority={true}
-          width={120}
-          height={120}
-        />
-        <Image
-          src="/media/IMG_5420 Small.png"
-          alt="tattoo"
-          priority={true}
-          width={120}
-          height={120}
-        />
-        <Image
-          src="/media/IMG_5414 Small.png"
-          alt="tattoo"
-          priority={true}
-          width={120}
-          height={120}
-        />
-        <Image
-          src="/media/IMG_5417 Small.png"
-          alt="tattoo"
-          priority={true}
-          width={120}
-          height={120}
-        />
-        <Image
-          src="/media/IMG_5412 Small.png"
-          alt="tattoo"
-          priority={true}
-          width={120}
-          height={120}
-        />
 
+          <Image
+            src="/media/IMG_5415 Small.png"
+            alt="tattoo"
+            priority={true}
+            width={120}
+            height={120}
+          />
+          <Image
+            src="/media/IMG_5420 Small.png"
+            alt="tattoo"
+            priority={true}
+            width={120}
+            height={120}
+          />
+          <Image
+            src="/media/IMG_5414 Small.png"
+            alt="tattoo"
+            priority={true}
+            width={120}
+            height={120}
+          />
+          <Image
+            src="/media/IMG_5417 Small.png"
+            alt="tattoo"
+            priority={true}
+            width={120}
+            height={120}
+          />
+          <Image
+            src="/media/IMG_5412 Small.png"
+            alt="tattoo"
+            priority={true}
+            width={120}
+            height={120}
+          />
+        </section>
         <Footer></Footer>
       </main>
     </>
