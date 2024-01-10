@@ -183,7 +183,7 @@ export default function Home() {
           </h3>
 
           <Image
-          className="w-screen max-w-[22rem]"
+          className="w-screen max-w-[22rem] flex flex-col justify-center items-center "
             src="/media/IMG_5415 Small.png"
             alt="tattoo"
             priority={true}
