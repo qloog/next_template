@@ -191,7 +191,7 @@ export default function Home() {
             height={120}
           />
           <Image
-           className="w-full"
+            className="w-screen max-w-[22rem]"
             src="/media/IMG_5420 Small.png"
             alt="tattoo"
             priority={true}
@@ -199,7 +199,7 @@ export default function Home() {
             height={120}
           />
           <Image
-           className="w-full"
+            className="w-screen max-w-[22rem]"
             src="/media/IMG_5414 Small.png"
             alt="tattoo"
             priority={true}
@@ -207,7 +207,7 @@ export default function Home() {
             height={120}
           />
           <Image
-           className="w-full"
+            className="w-screen max-w-[22rem]"
             src="/media/IMG_5417 Small.png"
             alt="tattoo"
             priority={true}
@@ -215,7 +215,7 @@ export default function Home() {
             height={120}
           />
           <Image
-           className="w-full"
+            className="w-screen max-w-[22rem]"
             src="/media/IMG_5412 Small.png"
             alt="tattoo"
             priority={true}
