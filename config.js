@@ -34,7 +34,6 @@ const config = {
         features: [
           { name: "Unlimited tattoo history" },
           { name: "Generate 20 unique designs" },
-          { name: "Save and download your designs in high-resolution"},
         ],
       },
       {
@@ -52,7 +51,6 @@ const config = {
         features: [
           { name: "Unlimited tattoo history" },
           { name: "Generate 50 unique designs" },
-          { name: "Save and download your designs in high-resolution"}
         ],
       },
       {
@@ -71,8 +69,7 @@ const config = {
       priceAnchor: 66,
       features: [
         { name: "Unlimited tattoo history" },
-        { name: "Generate 1000 unique designs" },
-        { name: "Save and download your designs in high-resolution"}
+        { name: "Generate 100 unique designs" },
       ],
       },
     ],
