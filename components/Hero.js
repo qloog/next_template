@@ -19,10 +19,10 @@ function Hero() {
         <h1 className="font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
           <span class="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight">Fire your tattoo designer</span>
         </h1>
-        <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
+        <p className="font-medium text-lg opacity-80 leading-relaxed text-white">
         Findrr is the first AI Tattoo Designer in the world.
         </p>
-        <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
+        <p className="font-medium text-lg opacity-80 leading-relaxed text-white">
         Write your tattoo idea, and then use Findrr to transform it into a custom design. Get tattoo design inspiration and new ideas for your tattoo.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
