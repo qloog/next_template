@@ -9,7 +9,7 @@ const SigninButton = () => {
     className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
       onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
     >
-      Generate Free Tattoo
+      Sign up for 3 free credits
     </button>
     
   );
