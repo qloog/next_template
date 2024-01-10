@@ -182,14 +182,23 @@ export default function Home() {
             Latest Designs
           </h3>
 
-          <Image
-          className="w-screen max-w-[22rem] flex flex-col justify-center items-center "
+          <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Image
+          className="w-screen max-w-[22rem]"
             src="/media/IMG_5415 Small.png"
             alt="tattoo"
             priority={true}
             width={120}
             height={120}
           />
+      </div>
+
+         
           <Image
             className="w-screen max-w-[22rem]"
             src="/media/IMG_5420 Small.png"
