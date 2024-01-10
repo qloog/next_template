@@ -118,6 +118,9 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
+        <section>
+          <h3>Latest Designs</h3>
+        </section>
 
         <Footer></Footer>
       </main>
