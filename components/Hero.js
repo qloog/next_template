@@ -22,10 +22,10 @@ function Hero() {
           </span>
         </h1>
 
-        <p className="font-medium text-lg leading-relaxed text-black">
+        <p className="font-medium text-lg leading-relaxed text-white">
           Findrr is the first AI Tattoo Designer in the world.
         </p>
-        <p className="font-medium text-lg leading-relaxed text-black">
+        <p className="font-medium text-lg leading-relaxed text-white">
           Write your tattoo idea, and then use Findrr to transform it into a
           custom design. Get tattoo design inspiration and new ideas for your
           tattoo.
