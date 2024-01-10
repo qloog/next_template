@@ -12,7 +12,7 @@ import ButtonAccount from "./ButtonAccount";
 const links = [
   {
     href:<Link href="/#pricing">Pricing</Link>,
-    
+    label: "Pricing",
   },
   
 ];
