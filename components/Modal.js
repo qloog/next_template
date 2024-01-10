@@ -56,7 +56,7 @@ const Modal = ({ isModalOpen, setIsModalOpen }) => {
                     </svg>
                   </button>
                 </div>
-                <section><Link className="btn btn-primary" href="/pricing">Choose a Plan</Link></section>
+                <section><Link className="btn btn-primary" href="/#pricing">Choose a Plan</Link></section>
               </Dialog.Panel>
             </Transition.Child>
           </div>
