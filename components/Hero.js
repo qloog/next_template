@@ -16,9 +16,7 @@ function Hero() {
     }}>
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
        
-        <h1 className="font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
-          <span class="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight">Fire your tattoo designer</span>
-        </h1>
+       
         <p className="font-medium text-lg opacity-80 leading-relaxed text-white">
         Findrr is the first AI Tattoo Designer in the world.
         </p>
