@@ -198,8 +198,13 @@ export default function Home() {
           />
       </div>
 
-         
-          <Image
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Image
             className="w-screen max-w-[22rem]"
             src="/media/IMG_5420 Small.png"
             alt="tattoo"
@@ -207,7 +212,15 @@ export default function Home() {
             width={120}
             height={120}
           />
-          <Image
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+         <Image
             className="w-screen max-w-[22rem]"
             src="/media/IMG_5414 Small.png"
             alt="tattoo"
@@ -215,7 +228,15 @@ export default function Home() {
             width={120}
             height={120}
           />
-          <Image
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+         <Image
             className="w-screen max-w-[22rem]"
             src="/media/IMG_5417 Small.png"
             alt="tattoo"
@@ -223,7 +244,15 @@ export default function Home() {
             width={120}
             height={120}
           />
-          <Image
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+         <Image
             className="w-screen max-w-[22rem]"
             src="/media/IMG_5412 Small.png"
             alt="tattoo"
@@ -231,6 +260,9 @@ export default function Home() {
             width={120}
             height={120}
           />
+      </div>
+      
+        
         </section>
         <Footer></Footer>
       </main>
