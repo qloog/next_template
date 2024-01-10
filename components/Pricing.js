@@ -15,9 +15,9 @@ const Pricing = () => {
             </h2>
           </div>
   
-          <div className="flex flex-col items-center justify-center gap-8">
+          <div className="bg-white flex flex-col items-center justify-center gap-8">
             {config.stripe.plans.map((plan) => (
-              <div key={plan.priceId} className="w-full max-w-2xl bg-white p-6 rounded-lg">
+              <div key={plan.priceId} className="w-full max-w-2xl bg-base-100 p-6 rounded-lg shadow-md">
                 <div>
                   <p className="text-lg font-bold text-center">{plan.name}</p>
                   {plan.description && (
