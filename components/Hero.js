@@ -14,9 +14,9 @@ function Hero() {
           <span class="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight">Spend less time designing, more on inking with AI</span>
         </h1>
         <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
-       Forget Designing, Spend that time to Focus on showing off your talent to clients
+       Forget designing, spend that time to focus on showing your talent off to clients
         </p>
-        <p className="font-medium ">
+        <p className="font-medium text-lg opacity-80 leading-relaxed text-black">
         No more stress for your client&apos;s next session
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
