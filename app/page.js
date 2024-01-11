@@ -17,11 +17,23 @@ export default function Home() {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
-
+  const isAuthenticated = false;
   
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
+
+    if (!isAuthenticated) {
+      // Scroll to top where the SignInButton is located
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Optionally, you can also set a state to show a message or highlight the sign-in button
+      // setShowSignInPrompt(true);
+    } else {
+      // User is authenticated, proceed with generating the tattoo
+      // Your existing logic for image generation
+    }
+  
 
     const fullPrompt = `${style}: ${prompt}`;
 
