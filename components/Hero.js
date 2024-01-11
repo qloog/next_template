@@ -16,7 +16,7 @@ function Hero() {
     }}
     >
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
-        <h1 className="font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
+        <h1 className="text-white font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
             Fire your tattoo designer
         </h1>
 
