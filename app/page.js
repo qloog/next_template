@@ -17,21 +17,11 @@ export default function Home() {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); // State to track if the user is logged in
-  const emailSectionRef = useRef(null);
 
-  const redirectToEmail = () => {
-    if (!isUserLoggedIn) {
-      emailSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      renderTattooImage();
-    }
-  };
   
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
-    redirectToEmail()
 
     const fullPrompt = `${style}: ${prompt}`;
 
@@ -95,9 +85,6 @@ export default function Home() {
         <Header></Header>
 
         <Hero />
-        <section>
-        <div ref={emailSectionRef} id="email-section"></div>
-        </section>
         <section
           id="tattoo-generator"
           className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white"
