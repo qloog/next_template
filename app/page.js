@@ -27,37 +27,36 @@ export default function Home() {
       // Scroll to top where the SignInButton is located
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Optionally, you can also set a state to show a message or highlight the sign-in button
-      // setShowSignInPrompt(true);
+       setShowSignInPrompt(true);
+
     } else {
-      // User is authenticated, proceed with generating the tattoo
-      // Your existing logic for image generation
+      const fullPrompt = `${style}: ${prompt}`;
+
+      const res = await fetch("/api/generateImage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: fullPrompt }),
+      });
+  
+      if (res.status !== 200) {
+        console.log("Error: ", res.status);
+        setIsLoading(false);
+  
+        if (res.status === 403) {
+          setShowPopup(true);
+        }
+  
+        return;
+      }
+  
+      const results = await res.json();
+  
+      setFinalData(results.imageUrl);
+      setIsLoading(false); // End loading
     }
   
 
-    const fullPrompt = `${style}: ${prompt}`;
-
-    const res = await fetch("/api/generateImage", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: fullPrompt }),
-    });
-
-    if (res.status !== 200) {
-      console.log("Error: ", res.status);
-      setIsLoading(false);
-
-      if (res.status === 403) {
-        setShowPopup(true);
-      }
-
-      return;
-    }
-
-    const results = await res.json();
-
-    setFinalData(results.imageUrl);
-    setIsLoading(false); // End loading
+    
   }
 
   const buttonStyle1 = {
