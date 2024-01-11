@@ -27,7 +27,6 @@ export default function Home() {
       // Scroll to top where the SignInButton is located
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-       setShowSignInPrompt(true);
 
     } else {
       const fullPrompt = `${style}: ${prompt}`;
