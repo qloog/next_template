@@ -17,45 +17,36 @@ export default function Home() {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
-  const isAuthenticated = false;
   
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
 
-    if (!isAuthenticated) {
-      // Scroll to top where the SignInButton is located
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-
-    } else {
-      const fullPrompt = `${style}: ${prompt}`;
-
-      const res = await fetch("/api/generateImage", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: fullPrompt }),
-      });
-  
-      if (res.status !== 200) {
-        console.log("Error: ", res.status);
-        setIsLoading(false);
-  
-        if (res.status === 403) {
-          setShowPopup(true);
-        }
-  
-        return;
-      }
-  
-      const results = await res.json();
-  
-      setFinalData(results.imageUrl);
-      setIsLoading(false); // End loading
-    }
-  
-
     
+
+    const fullPrompt = `${style}: ${prompt}`;
+
+    const res = await fetch("/api/generateImage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: fullPrompt }),
+    });
+
+    if (res.status !== 200) {
+      console.log("Error: ", res.status);
+      setIsLoading(false);
+
+      if (res.status === 403) {
+        setShowPopup(true);
+      }
+
+      return;
+    }
+
+    const results = await res.json();
+
+    setFinalData(results.imageUrl);
+    setIsLoading(false); // End loading
   }
 
   const buttonStyle1 = {
