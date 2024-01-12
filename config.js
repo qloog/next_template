@@ -21,19 +21,19 @@ const config = {
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
-            : "price_1OVejZHa8820Uqe5fy8GwklO",
+            : "price_1OXnr6Ha8820Uqe5FUV7i6ag",
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Beginner",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "+20 Credits to your account",
+        description: "10 Credits to your account",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 10,
-        credits: 20,
+        price: 4.99,
+        credits: 10,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 24,
         features: [
           { name: "Unlimited tattoo history" },
-          { name: "Generate 20 unique designs" },
+          { name: "Generate 10 unique designs" },
         ],
       },
       {
@@ -42,34 +42,34 @@ const config = {
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
-            : "price_1OVen5Ha8820Uqe5wcM3IqYX",
+            : "price_1OXnshHa8820Uqe5dOQdkXfI",
         name: "Veteran",
-        description: "+50 Credits to your account",
-        price: 20,
-        credits: 50,
+        description: "20 Credits to your account",
+        price: 9.99,
+        credits: 20,
         priceAnchor: 46,
         features: [
           { name: "Unlimited tattoo history" },
-          { name: "Generate 50 unique designs" },
+          { name: "Generate 20 unique designs" },
         ],
       },
       {
         priceId:
         process.env.NODE_ENV === "development"
           ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
-          : "price_1OVes1Ha8820Uqe58XZvzsxf",
+          : "price_1OXnugHa8820Uqe5AO4tkDW1",
       //  REQUIRED - Name of the plan, displayed on the pricing page
       name: "Premium",
       // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-      description: "+100 Credits to your account",
+      description: "50 Credits to your account",
       // The price you want to display, the one user will be charged on Stripe.
-      price: 30,
-      credits: 100,
+      price: 18.99,
+      credits: 50,
       // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
       priceAnchor: 66,
       features: [
         { name: "Unlimited tattoo history" },
-        { name: "Generate 100 unique designs" },
+        { name: "Generate 50 unique designs" },
       ],
       },
     ],
