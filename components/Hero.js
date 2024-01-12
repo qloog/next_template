@@ -24,7 +24,8 @@ function Hero() {
           Findrr is the first AI Tattoo Designer in the world.
         </p>
         <p className="font-medium text-lg leading-relaxed text-white">
-        Rethink Your Tattoo Journey! Why Overpay for Just Designing When You Can Discover Unique, Ready-to-Ink Designs Instantly? Save Time and Money on Art, Then Bring Your Dream Tattoo to Life with Your Favorite Artist!"
+        Unleash Ink-spiration! Find Unique, Never-Inked Designs Without Overpaying for Just the Sketch. Be Bold, Be Different, and Bring Your Exclusive Tattoo to Life with Your Trusted Tattoo Artist!
+
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
         <p className="text-black text-align:left opacity-80"></p>
