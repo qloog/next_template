@@ -24,7 +24,7 @@ function Hero() {
           
         </p>
         <p className="font-medium text-lg leading-relaxed text-white">
-        Save money and let AI turn your tattoo ideas into reality, right from your phone or laptop. No need for expensive designers, just your imagination and findrr
+        Save money and use AI to turn your tattoo ideas into custom designs, right from your phone or laptop. No need for expensive designers, just your imagination and findrr
 
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
