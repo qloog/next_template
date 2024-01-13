@@ -56,7 +56,7 @@ const ButtonLead = () => {
         type="submit"
         disabled={isDisabled}
       >
-       Sign up for 3 free credits
+       Get 3 free renders for your tattoo
         {isLoading ? (
           <span className="loading loading-spinner loading-xs"></span>
         ) : (
