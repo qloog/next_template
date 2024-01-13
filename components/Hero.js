@@ -21,10 +21,10 @@ function Hero() {
         </h1>
 
         <p className="font-medium text-lg leading-relaxed text-white">
-          Findrr is the first AI Tattoo Designer in the world.
+          
         </p>
         <p className="font-medium text-lg leading-relaxed text-white">
-        Unleash Ink-spiration! Find Unique, Never-Inked Designs Without Overpaying for Just the Sketch. Be Bold, Be Different, and Bring Your Exclusive Tattoo to Life with Your Trusted Tattoo Artist!
+        Save big and let AI turn your tattoo ideas into reality, right from your phone or laptop. No need for expensive designers, just your imagination and findrr
 
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
