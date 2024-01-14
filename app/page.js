@@ -52,13 +52,13 @@ export default function Home() {
 
   const buttonStyle1 = {
     backgroundColor: "gray",
-    color: "black", // White text with 80% opacity
+    color: "white", // White text with 80% opacity
     // Other styles...
   };
 
   const textboxStyle = {
     backgroundColor: "gray", // White background for the textbox
-    color: "black",
+    color: "white",
     // Add other necessary styles
   };
 
