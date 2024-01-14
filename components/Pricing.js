@@ -6,7 +6,7 @@ import ButtonCheckout from "./ButtonCheckout";
 // <ButtonCheckout /> renders a button that will redirect the user to Stripe checkout called the /api/stripe/create-checkout API endpoint with the correct priceId
 const Pricing = () => {
     return (
-      <section className="bg-white" id="pricing">
+      <section className="bg-black" id="pricing">
         <div className="py-8 px-4">
           <div className="flex flex-col text-center w-full mb-8">
 
