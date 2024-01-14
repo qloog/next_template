@@ -36,14 +36,23 @@ function Hero() {
           </svg>
         </a>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
+        <p className="text-white text-align:left opacity-80">as seen in</p>
         <Image 
        src='/media/fastcompany.png'
-       width={200}
-       height={200}
+       width={120}
+       height={120}
        alt="fastcompany"
        priority={true}
         />
-        <p className="text-black text-align:left opacity-80"></p>
+
+<Image 
+       src='/media/archdaily.png'
+       width={120}
+       height={120}
+       alt="fastcompany"
+       priority={true}
+        />
+    
         <div
           style={{
             display: "flex",
