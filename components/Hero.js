@@ -7,24 +7,25 @@ const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
 function Hero() {
   return (
-    <section className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20"
-    style={{ 
-      backgroundImage: "url('/media/photo-1568515045052-f9a854d70bfd.avif')",
-      backgroundSize: 'cover', // Ensures the image covers the whole section
-      backgroundPosition: 'center', // Centers the image
-      backgroundRepeat: 'no-repeat' // Prevents the image from repeating
-    }}
+    <section
+      className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20"
+      style={{
+        backgroundImage: "url('/media/photo-1568515045052-f9a854d70bfd.avif')",
+        backgroundSize: "cover", // Ensures the image covers the whole section
+        backgroundPosition: "center", // Centers the image
+        backgroundRepeat: "no-repeat", // Prevents the image from repeating
+      }}
     >
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
         <h1 className="text-white font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
-        Create beautiful AI custom tattoos without overpaying an artist
+          Create beautiful AI custom tattoos without overpaying an artist
         </h1>
 
+        <p className="font-medium text-lg leading-relaxed text-white"></p>
         <p className="font-medium text-lg leading-relaxed text-white">
-          
-        </p>
-        <p className="font-medium text-lg leading-relaxed text-white">
-        Save money and use AI to turn your tattoo ideas into custom designs, right from your phone or laptop. No need for expensive designers, just your imagination
+          Save money and use AI to turn your tattoo ideas into custom designs,
+          right from your phone or laptop. No need for expensive designers, just
+          your imagination
         </p>
         <a>
           <svg
@@ -37,30 +38,30 @@ function Hero() {
         </a>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
         <p className="text-white text-align:left opacity-80">as seen in</p>
-        <Image 
-       src='/media/fastcompany.png'
-       width={120}
-       height={120}
-       alt="fastcompany"
-       priority={true}
+        <Image
+          src="/media/fastcompany.png"
+          width={120}
+          height={120}
+          alt="fastcompany"
+          priority={true}
         />
 
-<Image 
-       src='/media/archdaily.png'
-       width={120}
-       height={120}
-       alt="fastcompany"
-       priority={true}
+        <Image
+          src="/media/archdaily.png"
+          width={120}
+          height={120}
+          alt="fastcompany"
+          priority={true}
         />
 
-<Image 
-       src='/media/stability.png'
-       width={120}
-       height={120}
-       alt="fastcompany"
-       priority={true}
+        <Image
+          src="/media/stability.png"
+          width={120}
+          height={120}
+          alt="fastcompany"
+          priority={true}
         />
-    
+
         <div
           style={{
             display: "flex",
