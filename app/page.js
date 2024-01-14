@@ -51,24 +51,24 @@ export default function Home() {
   }
 
   const buttonStyle1 = {
-    backgroundColor: "white",
+    backgroundColor: "gray",
     color: "black", // White text with 80% opacity
     // Other styles...
   };
 
   const textboxStyle = {
-    backgroundColor: "white", // White background for the textbox
+    backgroundColor: "gray", // White background for the textbox
     color: "black",
     // Add other necessary styles
   };
 
   const buttonStyle = {
-    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "gray",
+    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "white",
     border: "none",
     borderRadius: "20px", // This makes the button oval-shaped
     padding: "10px 20px",
     cursor: "pointer",
-    color: "white",
+    color: "black",
     // Add any other styles you need for the button
   };
 
