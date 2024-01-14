@@ -62,7 +62,7 @@ function Hero() {
           priority={true}
         />
         <Image
-          src="/media/techcrunch.png"
+          src="/media/logo-techcrunch.png"
           width={120}
           height={120}
           alt="fastcompany"
