@@ -9,7 +9,7 @@ import Modal from "@/components/Modal";
 import Header from "@/components/Header";
 import Image from "next/image";
 import Pricing from "@/components/Pricing";
-
+import config from "@/config";
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
   const [prompt, setPrompt] = useState("");
@@ -92,7 +92,7 @@ export default function Home() {
            <span className="font-extrabold text-lg">
          <span class="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight">{config.appName}</span>
          </span>
-         
+
           <div class="flex items-center gap-2.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
