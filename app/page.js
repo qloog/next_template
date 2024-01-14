@@ -83,13 +83,16 @@ export default function Home() {
     <>
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
-        <Header></Header>
 
         <Hero />
         <section
           id="tattoo-generator"
           className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white"
         >
+           <span className="font-extrabold text-lg">
+         <span class="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight">{config.appName}</span>
+         </span>
+         
           <div class="flex items-center gap-2.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
