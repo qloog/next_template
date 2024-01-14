@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import Pricing from "@/components/Pricing";
 import config from "@/config";
+
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
   const [prompt, setPrompt] = useState("");
