@@ -61,6 +61,13 @@ function Hero() {
           alt="fastcompany"
           priority={true}
         />
+        <Image
+          src="/media/techcrunch.png"
+          width={120}
+          height={120}
+          alt="fastcompany"
+          priority={true}
+        />
 
         <div
           style={{
