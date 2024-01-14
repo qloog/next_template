@@ -271,7 +271,7 @@ export default function Home() {
       
         
         </section>
-        <section className=" font-semibold text-base-content text-lg opacity-80 text-black bg-white">
+        <section className=" font-semibold text-base-content text-lg opacity-80 text-white bg-black">
      <Pricing></Pricing>
         </section>
         <Footer></Footer>
