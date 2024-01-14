@@ -36,6 +36,13 @@ function Hero() {
           </svg>
         </a>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
+        <Image 
+       src='/media/fastcompany.png'
+       width={200}
+       height={200}
+       alt="fastcompany"
+       priority={true}
+        />
         <p className="text-black text-align:left opacity-80"></p>
         <div
           style={{
