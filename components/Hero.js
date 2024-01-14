@@ -54,7 +54,7 @@ function Hero() {
         />
 
 <Image 
-       src='/media/featured-nyt.png'
+       src='/media/stability.png'
        width={120}
        height={120}
        alt="fastcompany"
