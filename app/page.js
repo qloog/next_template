@@ -184,7 +184,7 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
-        <section className="bg-white">
+        <section className="bg-black">
           <h3 style={{ marginLeft: '20px' }} className="font-semibold text-base-content text-lg opacity-80 text-white">
             Latest Designs Gallery
           </h3>
