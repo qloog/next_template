@@ -63,7 +63,7 @@ export default function Home() {
   };
 
   const buttonStyle = {
-    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "black",
+    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "gray",
     border: "none",
     borderRadius: "20px", // This makes the button oval-shaped
     padding: "10px 20px",
@@ -88,7 +88,7 @@ export default function Home() {
         <Hero />
         <section
           id="tattoo-generator"
-          className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white"
+          className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black"
         >
            <span className="font-extrabold text-lg">
          <span class="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight">{config.appName}</span>
@@ -122,8 +122,8 @@ export default function Home() {
                 </linearGradient>
               </defs>
             </svg>
-            <p class="font-medium text-center">
-              Used by 1k+ tattooed rebels
+            <p class="font-medium text-center text-white">
+              1k+ customers find the right custom design for them 
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +153,7 @@ export default function Home() {
               </defs>
             </svg>
           </div>
-          <h3 className="font-semibold text-base-content text-lg opacity-80 text-black">
+          <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
             Generate Your Tattoo
           </h3>
           <input
@@ -185,7 +185,7 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
         <section className="bg-white">
-          <h3 style={{ marginLeft: '20px' }} className="font-semibold text-base-content text-lg opacity-80 text-black">
+          <h3 style={{ marginLeft: '20px' }} className="font-semibold text-base-content text-lg opacity-80 text-white">
             Latest Designs Gallery
           </h3>
 

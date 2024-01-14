@@ -10,7 +10,7 @@ const Pricing = () => {
         <div className="py-8 px-4">
           <div className="flex flex-col text-center w-full mb-8">
 
-            <h2 className="font-bold text-2xl lg:text-4xl tracking-tight">
+            <h2 className="font-bold text-2xl lg:text-4xl tracking-tight text-white">
             Save on Designs with Us, Shine with Your Artist&apos;s Ink!
             </h2>
           </div>
