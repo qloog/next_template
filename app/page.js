@@ -116,7 +116,6 @@ export default function Home() {
             <option value="Traditional">Traditional</option>
             <option value="Watercolor">Watercolor</option>
             <option value="Tribal">Tribal</option>
-            <option value="Blackwork">Blackwork</option>
             <option value="Japanese">Japanese</option>
             <option value="Realism">Realism</option>
           </select>
