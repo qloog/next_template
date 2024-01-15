@@ -57,6 +57,7 @@ export default function Home() {
   };
 
   const textboxStyle = {
+    backgroundColor: 'black',
     border: '2px dotted gray', // White background for the textbox
     color: "white",
     padding: '10px', // Example padding, adjust as needed
