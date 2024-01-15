@@ -84,7 +84,7 @@ export default function Home() {
 
   return (
     <>
-    <ButtonAccount></ButtonAccount>
+      <ButtonAccount></ButtonAccount>
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
         <Hero />
@@ -113,12 +113,12 @@ export default function Home() {
             onChange={(e) => setStyle(e.target.value)}
             style={buttonStyle1}
           >
-            <option value="Shoulder Tattoo">Shoulder Tattoo</option>
-            <option value="Leg Tattoo">Leg Tattoo</option>
-            <option value="Forearm Tattoo">Forearm Tattoo</option>
-            <option value="Neck Tattoo">Neck Tattoo</option>
-            <option value="Hand Tattoo">Hand Tattoo</option>
-            <option value="Back Tattoo">Back Tattoo</option>
+            <option value="Traditional">Traditional</option>
+            <option value="Watercolor">Watercolor</option>
+            <option value="Tribal">Tribal</option>
+            <option value="New School">New School</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Realism">Realism</option>
           </select>
           <button
             style={buttonStyle}
