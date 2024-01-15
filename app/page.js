@@ -57,8 +57,10 @@ export default function Home() {
   };
 
   const textboxStyle = {
-    backgroundColor: "gray", // White background for the textbox
+    border: '2px dotted gray', // White background for the textbox
     color: "white",
+    padding: '10px', // Example padding, adjust as needed
+    fontSize: '1rem'
     // Add other necessary styles
   };
 
