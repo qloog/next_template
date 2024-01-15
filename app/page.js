@@ -18,12 +18,10 @@ export default function Home() {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
-  
+
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
-
-    
 
     const fullPrompt = `${style}: ${prompt}`;
 
@@ -51,18 +49,18 @@ export default function Home() {
   }
 
   const buttonStyle1 = {
-    border: '2px dotted gray',
+    border: "2px dotted gray",
     backgroundColor: "black",
     color: "white", // White text with 80% opacity
     // Other styles...
   };
 
   const textboxStyle = {
-    backgroundColor: 'black',
-    border: '2px dotted gray', // White background for the textbox
+    backgroundColor: "black",
+    border: "2px dotted gray", // White background for the textbox
     color: "white",
-    padding: '10px', // Example padding, adjust as needed
-    fontSize: '1rem'
+    padding: "10px", // Example padding, adjust as needed
+    fontSize: "1rem",
     // Add other necessary styles
   };
 
@@ -88,17 +86,17 @@ export default function Home() {
     <>
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
-
         <Hero />
         <section
           id="tattoo-generator"
           className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black"
         >
-           <span className="font-extrabold text-lg">
-         <h1 className="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight  text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">{config.appName}</h1>
-         </span>
+          <span className="font-extrabold text-lg">
+            <h1 className="bg-clip-text text-transparent bg-gradient-to-br from-[#007880] to-[#9C009F] leading-tight  text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
+              {config.appName}
+            </h1>
+          </span>
 
-  
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
             Generate Your Tattoo
           </h3>
@@ -114,10 +112,12 @@ export default function Home() {
             onChange={(e) => setStyle(e.target.value)}
             style={buttonStyle1}
           >
-            <option value="tattoo">Tattoo</option>
-            <option value="sketch">Sketch</option>
-            <option value="lineart">Line Art</option>
-            <option value="painting">Painting</option>
+            <option value="Shoulder Tattoo">Shoulder Tattoo</option>
+            <option value="Leg Tattoo">Leg Tattoo</option>
+            <option value="Forearm Tattoo">Forearm Tattoo</option>
+            <option value="Neck Tattoo">Neck Tattoo</option>
+            <option value="Hand Tattoo">Hand Tattoo</option>
+            <option value="Back Tattoo">Back Tattoo</option>
           </select>
           <button
             style={buttonStyle}
@@ -131,94 +131,95 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
         <section className="bg-black">
-          <h3 style={{ marginLeft: '20px' }} className="font-semibold text-base-content text-lg opacity-80 text-white">
+          <h3
+            style={{ marginLeft: "20px" }}
+            className="font-semibold text-base-content text-lg opacity-80 text-white"
+          >
             Latest Designs Gallery
           </h3>
 
           <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Image
-          className="w-screen max-w-[22rem]"
-            src="/media/IMG_5415 Small.png"
-            alt="tattoo"
-            priority={true}
-            width={120}
-            height={120}
-          />
-      </div>
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              className="w-screen max-w-[22rem]"
+              src="/media/IMG_5415 Small.png"
+              alt="tattoo"
+              priority={true}
+              width={120}
+              height={120}
+            />
+          </div>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Image
-            className="w-screen max-w-[22rem]"
-            src="/media/IMG_5420 Small.png"
-            alt="tattoo"
-            priority={true}
-            width={120}
-            height={120}
-          />
-      </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              className="w-screen max-w-[22rem]"
+              src="/media/IMG_5420 Small.png"
+              alt="tattoo"
+              priority={true}
+              width={120}
+              height={120}
+            />
+          </div>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-         <Image
-            className="w-screen max-w-[22rem]"
-            src="/media/IMG_5414 Small.png"
-            alt="tattoo"
-            priority={true}
-            width={120}
-            height={120}
-          />
-      </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              className="w-screen max-w-[22rem]"
+              src="/media/IMG_5414 Small.png"
+              alt="tattoo"
+              priority={true}
+              width={120}
+              height={120}
+            />
+          </div>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-         <Image
-            className="w-screen max-w-[22rem]"
-            src="/media/IMG_5417 Small.png"
-            alt="tattoo"
-            priority={true}
-            width={120}
-            height={120}
-          />
-      </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              className="w-screen max-w-[22rem]"
+              src="/media/IMG_5417 Small.png"
+              alt="tattoo"
+              priority={true}
+              width={120}
+              height={120}
+            />
+          </div>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-         <Image
-            className="w-screen max-w-[22rem]"
-            src="/media/IMG_5412 Small.png"
-            alt="tattoo"
-            priority={true}
-            width={120}
-            height={120}
-          />
-      </div>
-      
-        
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              className="w-screen max-w-[22rem]"
+              src="/media/IMG_5412 Small.png"
+              alt="tattoo"
+              priority={true}
+              width={120}
+              height={120}
+            />
+          </div>
         </section>
         <section className=" font-semibold text-base-content text-lg opacity-80 text-white bg-black">
-     <Pricing></Pricing>
+          <Pricing></Pricing>
         </section>
         <Footer></Footer>
       </main>
