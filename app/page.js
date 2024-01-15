@@ -95,7 +95,7 @@ export default function Home() {
           className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black"
         >
            <span className="font-extrabold text-lg">
-         <h1 className="bg-clip-text text-transparent bg-linear-gradient(60deg,#f79533,#f37055,#ef4e7b,#a166ab,#5073b8,#1098ad,#07b39b,#6fba82) leading-tight  text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">{config.appName}</h1>
+         <h1 className="bg-clip-text text-transparent animate-shimmer bg-linear-gradient(60deg,#f79533,#f37055,#ef4e7b,#a166ab,#5073b8,#1098ad,#07b39b,#6fba82) leading-tight  text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">{config.appName}</h1>
          </span>
 
   
