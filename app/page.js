@@ -113,11 +113,11 @@ export default function Home() {
             onChange={(e) => setStyle(e.target.value)}
             style={buttonStyle1}
           >
-            <option value="Traditional">Traditional</option>
+            <option value="Original">Original</option>
             <option value="Watercolor">Watercolor</option>
             <option value="Tribal">Tribal</option>
             <option value="Japanese">Japanese</option>
-            <option value="Original">Original</option>
+            <option value="Traditional">Traditional</option>
             <option value="Realism">Realism</option>
           </select>
           <button
