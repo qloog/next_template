@@ -8,7 +8,7 @@ const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 function Hero() {
   return (
     <section
-      className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20"
+      className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-black"
       style={{
         backgroundImage: "url('/media/photo-1568515045052-f9a854d70bfd.avif')",
         backgroundSize: "cover", // Ensures the image covers the whole section
