@@ -80,7 +80,7 @@ const Testimonials3 = () => {
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
-            <h2 className="sm:text-5xl text-4xl font-extrabold text-base-content">
+            <h2 className="sm:text-5xl text-4xl font-extrabold text-base-content text-white">
             Customers can&apos;t stop raving about the tattoos they generated
             </h2>
           </div>
