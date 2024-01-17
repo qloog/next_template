@@ -7,11 +7,11 @@ import { useRef, useState } from "react";
 
 const faqList = [
   {
-    question: <div className="text-white">"How does Findrr's AI work?"</div>,
+    question: <div className="text-white">How does Findrr's AI work?</div>,
     answer: <div className="space-y-2 leading-relaxed text-white">Findrr&apos;s AI taps into the power of textual input to generate custom tattoo designs. You input your tattoo concept through text, and the AI, trained on a vast array of tattoo art, interprets your words to create a unique design. It&apos;s a seamless blend of your ideas and AI creativity, offering personalized tattoos without the need for complex software or design skills. With findrr, envisioning your next tattoo is as simple as typing a description.</div>,
   },
   {
-    question: "What AI model do you use?",
+    question: <div className="text-white">What AI model do you use?</div>,
     answer: (
       <p>
        Findrr is powered by DALL-E 3
