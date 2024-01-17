@@ -40,7 +40,7 @@ const Pricing = () => {
                   <div>
                     <p className="text-lg lg:text-xl font-bold">{plan.name}</p>
                     {plan.description && (
-                      <p className="text-base-content/80 mt-2">
+                      <p className="text-white">
                         {plan.description}
                       </p>
                     )}
