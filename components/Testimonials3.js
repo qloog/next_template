@@ -32,7 +32,7 @@ const Testimonial = ({ i }) => {
   if (!testimonial) return null;
 
   return (
-    <li key={i}>
+    <li className="bg-black text-white" key={i}>
       <figure className="relative max-w-lg h-full p-6 md:p-10 bg-base-200 rounded-2xl max-md:text-sm flex flex-col">
         <blockquote className="relative flex-1">
           <p className="text-base-content/80 leading-relaxed">
@@ -76,7 +76,7 @@ const Testimonial = ({ i }) => {
 
 const Testimonials3 = () => {
   return (
-    <section id="testimonials">
+    <section className="bg-black text-white" id="testimonials">
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
