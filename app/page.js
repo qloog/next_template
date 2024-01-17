@@ -217,8 +217,8 @@ export default function Home() {
               src="/media/IMG_5412 Small.png"
               alt="tattoo"
               priority={true}
-              width={120}
-              height={120}
+              width={600}
+              height={600}
             />
           </div>
         </section>
