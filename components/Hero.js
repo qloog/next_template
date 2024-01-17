@@ -9,7 +9,7 @@ const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 function Hero() {
   return (
     <section
-      className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-black"
+      className="max-w-7xl mx-auto flex flex-col lg:flex-row items-left justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-black"
       style={{
         backgroundImage: "url('/media/photo-1568515045052-f9a854d70bfd.avif')",
         backgroundSize: "cover", // Ensures the image covers the whole section
@@ -17,7 +17,7 @@ function Hero() {
         backgroundRepeat: "no-repeat", // Prevents the image from repeating
       }}
     >
-      <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
+      <div className="flex flex-col gap-10 lg:gap-14 items-left justify-center text-left lg:text-left lg:items-start">
         <h1 className="text-white font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
           Create beautiful AI custom tattoos without overpaying an artist
         </h1>
