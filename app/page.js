@@ -12,6 +12,7 @@ import Pricing from "@/components/Pricing";
 import config from "@/config";
 import Testimonials3 from "@/components/Testimonials3";
 import FAQ from "@/components/FAQ";
+import CTA from "@/components/CTA"
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -226,6 +227,7 @@ export default function Home() {
         <section className=" font-semibold text-base-content text-lg text-white bg-black">
           <Pricing></Pricing>
         </section>
+        <CTA></CTA>
         <Footer></Footer>
       </main>
     </>
