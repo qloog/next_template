@@ -30,7 +30,7 @@ const config = {
         price: 4.99,
         credits: 10,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 24,
+        priceAnchor: 12.99,
         features: [
           { name: "Unlimited tattoo history" },
           { name: "Generate 10 unique designs" },
@@ -47,7 +47,7 @@ const config = {
         description: "20 Credits to your account",
         price: 9.99,
         credits: 20,
-        priceAnchor: 46,
+        priceAnchor: 16.99,
         features: [
           { name: "Unlimited tattoo history" },
           { name: "Generate 20 unique designs" },
@@ -66,7 +66,7 @@ const config = {
       price: 18.99,
       credits: 50,
       // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-      priceAnchor: 66,
+      priceAnchor: 32.99,
       features: [
         { name: "Unlimited tattoo history" },
         { name: "Generate 50 unique designs" },
