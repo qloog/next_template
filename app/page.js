@@ -153,8 +153,8 @@ export default function Home() {
               src="/media/IMG_5415 Small.png"
               alt="tattoo"
               priority={true}
-              width={120}
-              height={120}
+              width={500}
+              height={500}
             />
           </div>
 
