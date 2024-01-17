@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import Pricing from "@/components/Pricing";
 import config from "@/config";
+import Testimonials3 from "@/components/Testimonials3";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -131,6 +132,7 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
+        <Testimonials3></Testimonials3>
         <section className="bg-black">
           <h3
             style={{ marginLeft: "20px" }}
