@@ -9,19 +9,19 @@ const list = [
     // REQUIRED
     name: "Everaldo C.",
     // REQUIRED
-    text: "Findrr is just fantastic! I generated designs for myself, my wife, and some friends. As someomne tattoo-obsessed being, I love this!",
+    text: "'Findrr is just fantastic! I generated designs for myself, my wife, and some friends. As someomne tattoo-obsessed being, I love this!'",
     // Optional, a statically imported image (usually from your public folder—recommended) or a link to the person's avatar. Shows a fallback letter if not provided
     img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
   },
   {
     username: "the_irynak",
     name: "Iryna K.",
-    text: "Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my friends loved mt tattoo! ",
+    text: "'Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my friends loved mt tattoo!'",
   },
   {
     username: "jordantheman",
     name: "Jordan D.",
-    text: "Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. Findrr was very responsive to my questions",
+    text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. Findrr was very responsive to my questions'",
   },
 ];
 
