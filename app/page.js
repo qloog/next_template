@@ -182,7 +182,7 @@ export default function Home() {
           >
             <Image
               className="w-screen max-w-[22rem]"
-              src="/media/IMG_5414 Small.png"
+              src="/media/lion.JPG"
               alt="tattoo"
               priority={true}
               width={120}
