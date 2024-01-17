@@ -9,7 +9,7 @@ const list = [
     // REQUIRED
     name: "Everaldo C.",
     // REQUIRED
-    text: "'Findrr is just fantastic! I generated designs for myself, my wife, and some friends. As someomne tattoo-obsessed being, I love this!'",
+    text: "'Findrr is just fantastic! I generated designs for myself, my wife, and some friends. As someone who is a tattoo-obsessed being, I love this!'",
     // Optional, a statically imported image (usually from your public folder—recommended) or a link to the person's avatar. Shows a fallback letter if not provided
     img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
   },
