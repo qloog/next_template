@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 const faqList = [
   {
     question: "How does Findrr's AI work?",
-    answer: <div className="space-y-2 leading-relaxed">Findrr's AI taps into the power of textual input to generate custom tattoo designs. You input your tattoo concept through text, and the AI, trained on a vast array of tattoo art, interprets your words to create a unique design. It's a seamless blend of your ideas and AI creativity, offering personalized tattoos without the need for complex software or design skills. With findrr, envisioning your next tattoo is as simple as typing a description.</div>,
+    answer: <div className="space-y-2 leading-relaxed">Findrr&apos;s AI taps into the power of textual input to generate custom tattoo designs. You input your tattoo concept through text, and the AI, trained on a vast array of tattoo art, interprets your words to create a unique design. It&apos;s a seamless blend of your ideas and AI creativity, offering personalized tattoos without the need for complex software or design skills. With findrr, envisioning your next tattoo is as simple as typing a description.</div>,
   },
   {
     question: "What AI model do you use?",
@@ -64,7 +64,7 @@ const faqList = [
     question: "How do these payments work?",
     answer: (
       <p>
-       You only pay once to gain credits to generate custom tattoo designs. We have Beginner, Veteran, and Premium plans. You choose which one best suits you and pay once, and when you've run out of credits, you must choose a plan again.
+       You only pay once to gain credits to generate custom tattoo designs. We have Beginner, Veteran, and Premium plans. You choose which one best suits you and pay once, and when you&apos;ve run out of credits, you must choose a plan again.
       </p>
     ),
   },
