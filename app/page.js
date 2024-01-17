@@ -150,11 +150,11 @@ export default function Home() {
           >
             <Image
               className="w-screen max-w-[22rem]"
-              src="/media/IMG_5415 Small.png"
+              src="/media/IMG_5579.WEBP"
               alt="tattoo"
               priority={true}
-              width={500}
-              height={500}
+              width={120}
+              height={120}
             />
           </div>
 
@@ -166,7 +166,7 @@ export default function Home() {
           >
             <Image
               className="w-screen max-w-[22rem]"
-              src="/media/IMG_5420 Small.png"
+              src="/media/IMG_5573.WEBP"
               alt="tattoo"
               priority={true}
               width={120}
@@ -198,7 +198,7 @@ export default function Home() {
           >
             <Image
               className="w-screen max-w-[22rem]"
-              src="/media/IMG_5417 Small.png"
+              src="/media/IMG_5351.WEBP"
               alt="tattoo"
               priority={true}
               width={120}
@@ -217,8 +217,8 @@ export default function Home() {
               src="/media/IMG_5412 Small.png"
               alt="tattoo"
               priority={true}
-              width={600}
-              height={600}
+              width={120}
+              height={120}
             />
           </div>
         </section>
