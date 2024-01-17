@@ -60,6 +60,14 @@ const faqList = [
       </p>
     ),
   },
+  {
+    question: "How do these payments work?",
+    answer: (
+      <p>
+       You only pay once to gain credits to generate custom tattoo designs. We have Beginner, Veteran, and Premium plans. You choose which one best suits you and pay once, and when you've run out of credits, you must choose a plan again.
+      </p>
+    ),
+  },
 ];
 
 const Item = ({ item }) => {
