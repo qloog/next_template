@@ -84,7 +84,7 @@ const Testimonials3 = () => {
             Customers can&apos;t stop raving about the tattoos they generated
             </h2>
           </div>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80">
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80 text-white">
             Don&apos;t take our word for it. Here&apos;s what they have to say
             about Findrr.
           </p>
