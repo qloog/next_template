@@ -13,15 +13,23 @@ const CTA = () => {
       <div className="relative hero-overlay bg-neutral bg-opacity-70"></div>
       <div className="relative hero-content text-center text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
-          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12">
+          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left">
             Start generating never-seen-before unique tattoos now
           </h2>
-          <p className="text-lg opacity-80 mb-12 md:mb-16">
-          Generate custom tattoo designs that no one owns or seen before with AI. Save money and use AI to turn your tattoo ideas into custom designs, right from your phone or laptop. No need for expensive designers, just your imagination
+          <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left">
+            Generate custom tattoo designs that no one owns or seen before with
+            AI. Save money and use AI to turn your tattoo ideas into custom
+            designs, right from your phone or laptop. No need for expensive
+            designers, just your imagination
           </p>
 
-          <button className="btn btn-primary btn-wide">
-            Get {config.appName}
+          <button
+            className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
+            onClick={() =>
+              signIn(undefined, { callbackUrl: config.auth.callbackUrl })
+            }
+          >
+            Start using Findrr now
           </button>
         </div>
       </div>
