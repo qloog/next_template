@@ -7,22 +7,57 @@ import { useRef, useState } from "react";
 
 const faqList = [
   {
-    question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
+    question: "How does Findrr's AI work?",
+    answer: <div className="space-y-2 leading-relaxed">Findrr's AI taps into the power of textual input to generate custom tattoo designs. You input your tattoo concept through text, and the AI, trained on a vast array of tattoo art, interprets your words to create a unique design. It's a seamless blend of your ideas and AI creativity, offering personalized tattoos without the need for complex software or design skills. With findrr, envisioning your next tattoo is as simple as typing a description.</div>,
+  },
+  {
+    question: "What AI model do you use?",
+    answer: (
+      <p>
+       Findrr is powered by DALL-E 3
+      </p>
+    ),
+  },
+  {
+    question: "How long will it take to generate my tattoo?",
+    answer: <div className="space-y-2 leading-relaxed">It takes between 5-10 seconds maximum to generate your custom design.</div>,
+  },
+  {
+    question: "What will you do with my AI tattoo ideas?",
+    answer: (
+      <p>
+      We only use your ideas to create a custom tattoo design. Your data privacy and security are our top priorities.
+      </p>
+    ),
+  },
+  {
+    question: "Who built and is behind Findrr?",
+    answer: (
+      <p>
+     This service was built by me, Rajvir Singh Nahar. You can contact for support at Rajvirnahar6667@gmail.com.
+      </p>
+    ),
+  },
+  {
+    question: "Is the payment service secure?",
+    answer: (
+      <p>
+    Yes, our payment service is secure. We use Stripe for financial processing, and we do not store any information about your card. Stripe ensures bank-level security standards.
+      </p>
+    ),
+  },
+  {
+    question: "How much does Findrr cost?",
+    answer: (
+      <div className="space-y-2 leading-relaxed">Right now the beginner plan costs $4.99, the Veteran plan $9.99 and the Premium plan $18.99. You get 3 credits for free when you sign up. Only one time payments</div>
+    ),
   },
   {
     question: "Can I get a refund?",
     answer: (
       <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
+       Unfortunately, we cannot offer refunds as costs incurred for creating AI tatooos are extremely high. Each time you generate a design, we get charged. 
       </p>
-    ),
-  },
-  {
-    question: "I have another question",
-    answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
     ),
   },
 ];

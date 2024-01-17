@@ -11,6 +11,7 @@ import Image from "next/image";
 import Pricing from "@/components/Pricing";
 import config from "@/config";
 import Testimonials3 from "@/components/Testimonials3";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -221,6 +222,7 @@ export default function Home() {
             />
           </div>
         </section>
+        <FAQ></FAQ>
         <section className=" font-semibold text-base-content text-lg opacity-80 text-white bg-black">
           <Pricing></Pricing>
         </section>
