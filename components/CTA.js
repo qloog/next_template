@@ -25,9 +25,7 @@ const CTA = () => {
 
           <button
             className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
-            onClick={() =>
-              signIn(undefined, { callbackUrl: config.auth.callbackUrl })
-            }
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Start using Findrr now
           </button>
