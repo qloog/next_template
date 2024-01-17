@@ -68,6 +68,14 @@ const faqList = [
       </p>
     ),
   },
+  {
+    question: "How do I check my previous billing history and purchases?",
+    answer: (
+      <p>
+      Scroll to the top and you will see your account icon at the top left corner. Click it to log out or view any previous payments you have made.
+      </p>
+    ),
+  },
 ];
 
 const Item = ({ item }) => {
