@@ -13,10 +13,10 @@ const CTA = () => {
       <div className="relative hero-overlay bg-neutral bg-opacity-70"></div>
       <div className="relative hero-content text-center text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
-          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left">
+          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left text-white">
             Start generating never-seen-before unique tattoos now
           </h2>
-          <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left">
+          <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left text-white">
             Generate custom tattoo designs that no one owns or seen before with
             AI. Save money and use AI to turn your tattoo ideas into custom
             designs, right from your phone or laptop. No need for expensive
