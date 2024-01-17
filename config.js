@@ -23,7 +23,7 @@ const config = {
             ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
             : "price_1OXnr6Ha8820Uqe5FUV7i6ag",
         //  REQUIRED - Name of the plan, displayed on the pricing page
-        name: "Beginner",
+        name: "BEGINNER",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
         description: "10 credits added to your account",
         // The price you want to display, the one user will be charged on Stripe.
@@ -43,7 +43,7 @@ const config = {
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_1OXnshHa8820Uqe5dOQdkXfI",
-        name: "Veteran",
+        name: "VETERAN",
         description: "20 credits added to your account",
         price: 9.99,
         credits: 20,
@@ -59,7 +59,7 @@ const config = {
           ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
           : "price_1OXnugHa8820Uqe5AO4tkDW1",
       //  REQUIRED - Name of the plan, displayed on the pricing page
-      name: "Premium",
+      name: "PREMIUM",
       // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
       description: "50 credits added to your account",
       // The price you want to display, the one user will be charged on Stripe.
