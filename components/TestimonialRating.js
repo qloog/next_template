@@ -3,7 +3,7 @@ const TestimonialRating = () => {
     <div className="flex -gap-1 items-center mt-auto">
       <svg
         viewBox="0 0 773 1262"
-        className="w-8 fill-base-content/40 rotate-12"
+        className="w-8 rotate-12"
         fill="white"
         xmlns="http://www.w3.org/2000/svg"
       >
