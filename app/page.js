@@ -223,7 +223,7 @@ export default function Home() {
           </div>
         </section>
         <FAQ></FAQ>
-        <section className=" font-semibold text-base-content text-lg opacity-80 text-white bg-black">
+        <section className=" font-semibold text-base-content text-lg text-white bg-black">
           <Pricing></Pricing>
         </section>
         <Footer></Footer>
