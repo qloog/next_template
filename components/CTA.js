@@ -18,7 +18,7 @@ const CTA = () => {
           </h2>
           <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left text-white">
             Create beautiful AI custom tattoos within seconds. Save designing
-            time and use AI to turn your client's ideas into custom designs
+            time and use AI to turn your client&apos;s ideas into custom designs
             right from your phone or laptop. Spend that time on getting more
             clients instead
           </p>
