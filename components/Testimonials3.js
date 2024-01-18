@@ -9,14 +9,14 @@ const list = [
     // REQUIRED
     name: "Everaldo C.",
     // REQUIRED
-    text: "'Findrr is just fantastic! I generated designs for myself, my wife, and some friends. As someone who is a tattoo-obsessed being, I love this!'",
+    text: "'Findrr is just fantastic! I generated designs for myself, my wife, and some clients. As a artist, who is a tattoo-obsessed being, I love this!'",
     // Optional, a statically imported image (usually from your public folder—recommended) or a link to the person's avatar. Shows a fallback letter if not provided
     img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
   },
   {
     username: "the_irynak",
     name: "Iryna K.",
-    text: "'Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my friends loved mt tattoo!'",
+    text: "'Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my client's loved the tattoos!'",
   },
   {
     username: "jordantheman",
@@ -81,7 +81,7 @@ const Testimonials3 = () => {
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
             <h2 className="sm:text-5xl text-4xl font-extrabold text-base-content text-white">
-            Customers can&apos;t stop raving about the tattoos they generated
+            Client can&apos;t stop raving about the tattoos they generated
             </h2>
           </div>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80 text-white">
