@@ -55,7 +55,7 @@ const Item = ({ index, feature, isOpen, setFeatureSelected }) => {
         aria-expanded={isOpen}
       >
         <span
-          className={`flex-1 text-base-content ${isOpen ? "text-primary" : ""}`}
+          className={`flex-1 text-white ${isOpen ? "text-primary" : ""}`}
         >
           <span className={`mr-2`}>{index + 1}.</span>
           <h3 className="inline">{title}</h3>
