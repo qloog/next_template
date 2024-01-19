@@ -9,7 +9,7 @@ const SigninButton = () => {
     className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
       onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
     >
-     Get 3 free renders for your tattoo
+     Start using Findrr now
     </button>
     
   );
