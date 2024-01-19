@@ -171,7 +171,7 @@ const FAQ = () => {
           <Image
             src="https://images.unsplash.com/photo-1571117223784-688f15c9d66a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcwNTY5MTE5Mw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
             alt="tattoo girl"
-            className="object-cover w-full"
+            className="w-full"
             fill
           />
         </div>
