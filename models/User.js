@@ -38,12 +38,12 @@ const userSchema = mongoose.Schema(
     },
     currentCredits: {
       type: Number,
-      default: 3,
+      default: 1,
     },
     planType: {
       type: String,
-      enum: ['beginner', 'veteran', 'premium'],
-      default: 'freePlan',
+      enum: ['beginner', 'pro', 'premium'],
+      default: 'none',
     },
   },
 
