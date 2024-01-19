@@ -8,25 +8,36 @@ import { useRef, useState } from "react";
 const faqList = [
   {
     question: <div className="text-white">How does Findrr&apos;s AI work?</div>,
-    answer: <div className="space-y-2 leading-relaxed text-white">Findrr&apos;s AI taps into the power of textual input to generate custom tattoo designs. You input your tattoo concept through text, and the AI, trained on a vast array of tattoo art, interprets your words to create a unique design. It&apos;s a seamless blend of your ideas and AI creativity, offering personalized tattoos without the need for complex software or design skills. With findrr, envisioning your next tattoo is as simple as typing a description.</div>,
-  },
-  {
-    question: <div className="text-white">What AI model do you use?</div>,
     answer: (
-      <p>
-       Findrr is powered by DALL-E 3
-      </p>
+      <div className="space-y-2 leading-relaxed text-white">
+        Findrr&apos;s AI taps into the power of textual input to generate custom
+        tattoo designs. You input your tattoo concept through text, and the AI,
+        trained on a vast array of tattoo art, interprets your words to create a
+        unique design. It&apos;s a seamless blend of your ideas and AI
+        creativity, offering personalized tattoos without the need for complex
+        software or design skills. With findrr, envisioning your next tattoo is
+        as simple as typing a description.
+      </div>
     ),
   },
   {
+    question: <div className="text-white">What AI model do you use?</div>,
+    answer: <p>Findrr is powered by DALL-E 3</p>,
+  },
+  {
     question: "How long will it take to generate my tattoo?",
-    answer: <div className="space-y-2 leading-relaxed">It takes between 5-10 seconds maximum to generate your custom design.</div>,
+    answer: (
+      <div className="space-y-2 leading-relaxed">
+        It takes between 5-10 seconds maximum to generate your custom design.
+      </div>
+    ),
   },
   {
     question: "What will you do with my AI tattoo ideas?",
     answer: (
       <p>
-      We only use your ideas to create a custom tattoo design. Your data privacy and security are our top priorities.
+        We only use your ideas to create a custom tattoo design. Your data
+        privacy and security are our top priorities.
       </p>
     ),
   },
@@ -34,7 +45,8 @@ const faqList = [
     question: "Who built and is behind Findrr?",
     answer: (
       <p>
-     This service was built by me, Rajvir Singh Nahar. You can contact for support at Rajvirnahar6667@gmail.com.
+        This service was built by me, Rajvir Singh Nahar. You can contact for
+        support at Rajvirnahar6667@gmail.com.
       </p>
     ),
   },
@@ -42,21 +54,29 @@ const faqList = [
     question: "Is the payment service secure?",
     answer: (
       <p>
-    Yes, our payment service is secure. We use Stripe for financial processing, and we do not store any information about your card. Stripe ensures bank-level security standards.
+        Yes, our payment service is secure. We use Stripe for financial
+        processing, and we do not store any information about your card. Stripe
+        ensures bank-level security standards.
       </p>
     ),
   },
   {
     question: "How much does Findrr cost?",
     answer: (
-      <div className="space-y-2 leading-relaxed">Right now the beginner plan costs $4.99, the Veteran plan $9.99 and the Premium plan $18.99. You get 3 credits for free when you sign up. Only one time payments</div>
+      <div className="space-y-2 leading-relaxed">
+        Right now the beginner plan costs $4.99, the Veteran plan $9.99 and the
+        Premium plan $18.99. You get 3 credits for free when you sign up. Only
+        one time payments
+      </div>
     ),
   },
   {
     question: "Can I get a refund?",
     answer: (
       <p>
-       Unfortunately, we cannot offer refunds as costs incurred for creating AI tatooos are extremely high. Each time you generate a design, we get charged. 
+        Unfortunately, we cannot offer refunds as costs incurred for creating AI
+        tatooos are extremely high. Each time you generate a design, we get
+        charged.
       </p>
     ),
   },
@@ -64,7 +84,10 @@ const faqList = [
     question: "How do these payments work?",
     answer: (
       <p>
-       You only pay once to gain credits to generate custom tattoo designs. We have Beginner, Veteran, and Premium plans. You choose which one best suits you and pay once, and when you&apos;ve run out of credits, you must choose a plan again.
+        You only pay once to gain credits to generate custom tattoo designs. We
+        have Beginner, Veteran, and Premium plans. You choose which one best
+        suits you and pay once, and when you&apos;ve run out of credits, you
+        must choose a plan again.
       </p>
     ),
   },
@@ -72,7 +95,8 @@ const faqList = [
     question: "How do I check my previous billing history and purchases?",
     answer: (
       <p>
-      Scroll to the top and you will see your account icon at the top left corner. Click it to log out or view any previous payments you have made.
+        Scroll to the top and you will see your account icon at the top left
+        corner. Click it to log out or view any previous payments you have made.
       </p>
     ),
   },
@@ -92,11 +116,7 @@ const Item = ({ item }) => {
         }}
         aria-expanded={isOpen}
       >
-        <span
-          className={`flex-1 text-white`}
-        >
-          {item?.question}
-        </span>
+        <span className={`flex-1 text-white`}>{item?.question}</span>
         <svg
           className={`flex-shrink-0 w-4 h-4 ml-auto fill-current`}
           viewBox="0 0 16 16"
@@ -147,6 +167,12 @@ const FAQ = () => {
           <p className="sm:text-4xl text-3xl font-extrabold text-white">
             Frequently Asked Questions
           </p>
+          <Image
+            src="https://images.unsplash.com/photo-1571117223784-688f15c9d66a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcwNTY5MTE5Mw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+            alt="tattoo girl"
+            className="object-cover w-full"
+            fill
+          />
         </div>
 
         <ul className="basis-1/2">
