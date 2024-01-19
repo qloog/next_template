@@ -14,6 +14,7 @@ import Testimonials3 from "@/components/Testimonials3";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA"
 import Problem from "@/components/Problem"
+import FeaturesAccordion from "@/components/FeaturesAccordion"
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -136,6 +137,7 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
         <Problem></Problem>
+        <FeaturesAccordion></FeaturesAccordion>
         <Testimonials3></Testimonials3>
         <FAQ></FAQ>
         <section className=" font-semibold text-base-content text-lg text-white bg-black">
