@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-
+import Image from "next/link"
 // <FAQ> component is a lsit of <Item> component
 // Just import the FAQ & add your FAQ content to the const faqList
 
