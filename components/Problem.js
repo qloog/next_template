@@ -56,7 +56,7 @@ const Arrow = ({ extraStyle }) => {
   
             <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
   
-            <Step emoji="😠" text="Wasted time and money on the design" />
+            <Step emoji="😠" text="Design not matching expectations" />
   
             <Arrow extraStyle="md:-scale-x-100 md:-rotate-90" />
   
