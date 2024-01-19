@@ -24,7 +24,7 @@ function Hero() {
 
         <p className="font-medium text-lg leading-relaxed text-white"></p>
         <p className="font-medium text-lg leading-relaxed text-white">
-          Save time and use AI to turn your tattoo ideas into custom designs.
+          Save money and use AI to turn your tattoo ideas into custom designs.
           right from your phone or laptop. No need for expensive designers, just
           your imagination
         </p>
