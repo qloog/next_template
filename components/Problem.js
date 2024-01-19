@@ -41,7 +41,7 @@ const Arrow = ({ extraStyle }) => {
   // - Features: "ShipFast has user auth, Stripe, emails all set up for you"
   const Problem = () => {
     return (
-      <section className="bg-neutral text-neutral-content">
+      <section className="bg-black text-neutral-content">
         <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
           <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-6 md:mb-8">
             90% of people end up with similar designs to others because an artist can only be so creative
@@ -52,15 +52,15 @@ const Arrow = ({ extraStyle }) => {
           </p>
   
           <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
-            <Step emoji="🧑‍💻" text="8 hrs to add Stripe" />
+            <Step emoji="🧑‍💻" text="Expensive designing" />
   
             <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
   
-            <Step emoji="😮‍💨" text="Struggle to find time" />
+            <Step emoji="😠" text="Wasted time and money on the design" />
   
             <Arrow extraStyle="md:-scale-x-100 md:-rotate-90" />
   
-            <Step emoji="😔" text="Quit project" />
+            <Step emoji="😔" text="Regretting tattoo forever" />
           </div>
         </div>
       </section>
