@@ -89,7 +89,7 @@ export default function Home() {
   const Arrow = ({ extraStyle }) => {
     return (
       <svg
-        className={`shrink-0 w-12 fill-neutral-content opacity-70 ${extraStyle}`}
+        className={`shrink-0 w-12 fill-neutral-content opacity-70 bg-black ${extraStyle}`}
         viewBox="0 0 138 138"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +160,7 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
         <Problem></Problem>
-        <section>
+        <section className="bg-black">
         <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
         </section>
         <FeaturesAccordion></FeaturesAccordion>
