@@ -44,7 +44,7 @@ const Arrow = ({ extraStyle }) => {
       <section className="bg-neutral text-neutral-content">
         <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
           <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-6 md:mb-8">
-            80% of people end up with similar designs to others because an artist can only be so creative
+            90% of people end up with similar designs to others because an artist can only be so creative
           </h2>
           <p className="max-w-xl mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20">
             Same designs, no differentiation, disliking artist&apos;s work... There&apos;s so much going
