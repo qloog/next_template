@@ -11,21 +11,21 @@ const CTA = () => {
         fill
       />
       <div className="relative hero-overlay bg-neutral bg-opacity-70"></div>
-      <div className="relative hero-content text-left text-neutral-content p-8">
+      <div className="relative hero-content text-white text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
           <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left text-white">
-            Stand apart from other client&spos; with AI on your side
+            Start generating never-seen-before unique tattoos now
           </h2>
           <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left text-white">
-            Create beautiful AI custom tattoos within seconds. Save designing
-            time and use AI to turn your client&apos;s ideas into custom designs
-            right from your phone or laptop. Spend that time on getting more
-            clients instead
+            Generate custom tattoo designs that no one owns or seen before with
+            AI. Save money and use AI to turn your tattoo ideas into custom
+            designs, right from your phone or laptop. No need for expensive
+            designers, just your imagination
           </p>
 
           <button
             className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Start using Findrr now
           </button>
