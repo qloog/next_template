@@ -135,94 +135,6 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
         <Testimonials3></Testimonials3>
-        <section className="bg-black">
-          <h3
-            style={{ marginLeft: "20px" }}
-            className="font-semibold text-base-content text-lg opacity-80 text-white"
-          >
-            Latest Designs Gallery
-          </h3>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Image
-              className="w-screen max-w-[22rem]"
-              src="/media/IMG_5579.WEBP"
-              alt="tattoo"
-              priority={true}
-              width={120}
-              height={120}
-            />
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Image
-              className="w-screen max-w-[22rem]"
-              src="/media/IMG_5573.WEBP"
-              alt="tattoo"
-              priority={true}
-              width={120}
-              height={120}
-            />
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Image
-              className="w-screen max-w-[22rem]"
-              src="/media/lion.JPG"
-              alt="tattoo"
-              priority={true}
-              width={120}
-              height={120}
-            />
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Image
-              className="w-screen max-w-[22rem]"
-              src="/media/IMG_5351.WEBP"
-              alt="tattoo"
-              priority={true}
-              width={120}
-              height={120}
-            />
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Image
-              className="w-screen max-w-[22rem]"
-              src="/media/IMG_5412 Small.png"
-              alt="tattoo"
-              priority={true}
-              width={120}
-              height={120}
-            />
-          </div>
-        </section>
         <FAQ></FAQ>
         <section className=" font-semibold text-base-content text-lg text-white bg-black">
           <Pricing></Pricing>
@@ -233,3 +145,94 @@ export default function Home() {
     </>
   );
 }
+
+
+/* <section className="bg-black">
+<h3
+style={{ marginLeft: "20px" }}
+className="font-semibold text-base-content text-lg opacity-80 text-white"
+>
+Latest Designs Gallery
+</h3>
+
+<div
+style={{
+  display: "flex",
+  justifyContent: "center",
+}}
+>
+<Image
+  className="w-screen max-w-[22rem]"
+  src="/media/IMG_5579.WEBP"
+  alt="tattoo"
+  priority={true}
+  width={120}
+  height={120}
+/>
+</div>
+
+<div
+style={{
+  display: "flex",
+  justifyContent: "center",
+}}
+>
+<Image
+  className="w-screen max-w-[22rem]"
+  src="/media/IMG_5573.WEBP"
+  alt="tattoo"
+  priority={true}
+  width={120}
+  height={120}
+/>
+</div>
+
+<div
+style={{
+  display: "flex",
+  justifyContent: "center",
+}}
+>
+<Image
+  className="w-screen max-w-[22rem]"
+  src="/media/lion.JPG"
+  alt="tattoo"
+  priority={true}
+  width={120}
+  height={120}
+/>
+</div>
+
+<div
+style={{
+  display: "flex",
+  justifyContent: "center",
+}}
+>
+<Image
+  className="w-screen max-w-[22rem]"
+  src="/media/IMG_5351.WEBP"
+  alt="tattoo"
+  priority={true}
+  width={120}
+  height={120}
+/>
+</div>
+
+<div
+style={{
+  display: "flex",
+  justifyContent: "center",
+}}
+>
+<Image
+  className="w-screen max-w-[22rem]"
+  src="/media/IMG_5412 Small.png"
+  alt="tattoo"
+  priority={true}
+  width={120}
+  height={120}
+/>
+</div>
+</section>
+*/
