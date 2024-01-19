@@ -13,6 +13,7 @@ import config from "@/config";
 import Testimonials3 from "@/components/Testimonials3";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA"
+import Problem from "@/components/Problem"
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -134,6 +135,7 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
+        <Problem></Problem>
         <Testimonials3></Testimonials3>
         <FAQ></FAQ>
         <section className=" font-semibold text-base-content text-lg text-white bg-black">
