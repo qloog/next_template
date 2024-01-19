@@ -137,6 +137,9 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
         <Problem></Problem>
+        <section>
+        <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
+        </section>
         <FeaturesAccordion></FeaturesAccordion>
         <Testimonials3></Testimonials3>
         <FAQ></FAQ>
