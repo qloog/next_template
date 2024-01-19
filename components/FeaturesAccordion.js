@@ -15,9 +15,9 @@ const features = [
     title: "Designs",
     description:
       "Render unqiue tattoos that nobody has, bring 'hard to draw' designs to a reality, and show off a compliment magnet",
-    type: "video",
-    path: "https://d3m8mk7e1mf7xn.cloudfront.net/app/newsletter.webm",
-    format: "video/webm",
+    //type: "video",
+    //path: //"https://d3m8mk7e1mf7xn.cloudfront.net/app/newsletter.webm"//,
+    //format: "video/webm",//
   },
   {
     title: "Credit-based payment",
