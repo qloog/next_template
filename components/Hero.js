@@ -24,8 +24,9 @@ function Hero() {
 
         <p className="font-medium text-lg leading-relaxed text-white"></p>
         <p className="font-medium text-lg leading-relaxed text-white">
-          Save designing time and use AI to turn your client&apos;s ideas into custom designs
-          right from your phone or laptop. Spend that time on getting more clients instead
+          Save time and use AI to turn your tattoo ideas into custom designs.
+          right from your phone or laptop. No need for expensive designers, just
+          your imagination
         </p>
         <TestimonialRating></TestimonialRating>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
