@@ -23,9 +23,6 @@ const features = [
     title: "Credit-based payment",
     description:
       "Why pay so much money to a artist for your design to be drawn? Choose a credit pack that's best for how many designs you want",
-    type: "image",
-    path: src="/media/demo Small.jpeg",
-    alt: "A computer",
   },
   {
     title: "Design in seconds",
