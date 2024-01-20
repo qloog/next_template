@@ -30,20 +30,7 @@ export default function Home() {
     setIsLoading(true);
     e.preventDefault();
 
-    if (!session) {
-      // If not logged in, scroll to top and optionally show a login prompt
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setIsLoading(false);
-      return;
-    }
-
-    if (session.user.credits <= 0) {
-      // Show popup for getting more credits
-      setShowPopup(true);
-      setIsLoading(false);
-      return;
-    }
-
+    
 
     const fullPrompt = `${style}: ${prompt}`;
 
