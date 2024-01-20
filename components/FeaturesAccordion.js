@@ -15,7 +15,7 @@ const features = [
     title: "Designs",
     description:
       "Render unqiue tattoos that nobody has, bring 'hard to draw' designs to a reality, and show off a compliment magnet",
-    //type: "video",
+    type: "video",
     path: "https://rajvirnahar6667.wistia.com/medias/8auqdzehww",
     format: "video/webm",
   },
