@@ -42,7 +42,7 @@ const userSchema = mongoose.Schema(
     },
     planType: {
       type: String,
-      enum: ['beginner', 'pro', 'premium'],
+      enum: ['freePlan', 'beginner', 'pro', 'premium'],
       default: 'freePlan',
     },
   },
