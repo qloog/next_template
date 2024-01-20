@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox";
