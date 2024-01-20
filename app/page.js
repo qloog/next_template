@@ -33,7 +33,6 @@ export default function Home() {
     if (!session) {
       // If not logged in, scroll to top and optionally show a login prompt
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setShowPopup(true); // If you have a popup for login
       setIsLoading(false);
       return;
     }
