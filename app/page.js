@@ -37,6 +37,14 @@ export default function Home() {
       return;
     }
 
+    if (session.user.credits <= 0) {
+      // Show popup for getting more credits
+      setShowPopup(true);
+      setIsLoading(false);
+      return;
+    }
+
+
     const fullPrompt = `${style}: ${prompt}`;
 
     const res = await fetch("/api/generateImage", {
