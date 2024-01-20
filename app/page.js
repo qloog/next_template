@@ -165,7 +165,9 @@ export default function Home() {
         </section>
         <FeaturesAccordion></FeaturesAccordion>
         <Testimonials3></Testimonials3>
+        <section>
         <FAQ></FAQ>
+        </section>
         <section id="pricing" className=" font-semibold text-base-content text-lg text-white bg-black">
           <Pricing></Pricing>
         </section>
