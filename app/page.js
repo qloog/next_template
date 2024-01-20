@@ -15,6 +15,7 @@ import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA"
 import Problem from "@/components/Problem"
 import FeaturesAccordion from "@/components/FeaturesAccordion"
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -23,10 +24,19 @@ export default function Home() {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
+  const { data: session } = useSession();
 
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
+
+    if (!session) {
+      // If not logged in, scroll to top and optionally show a login prompt
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setShowPopup(true); // If you have a popup for login
+      setIsLoading(false);
+      return;
+    }
 
     const fullPrompt = `${style}: ${prompt}`;
 
