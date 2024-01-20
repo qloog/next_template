@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox";
@@ -15,7 +13,6 @@ import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA"
 import Problem from "@/components/Problem"
 import FeaturesAccordion from "@/components/FeaturesAccordion"
-import { useSession } from "next-auth/react";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -24,13 +21,10 @@ export default function Home() {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
-  const { data: session } = useSession();
 
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
-
-    
 
     const fullPrompt = `${style}: ${prompt}`;
 
@@ -131,7 +125,7 @@ export default function Home() {
           </span>
 
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
-            Design Your Tattoo
+            Generate Your Tattoo
           </h3>
           <input
             type="text"
@@ -270,3 +264,4 @@ style={{
 </div>
 </section>
 */
+
