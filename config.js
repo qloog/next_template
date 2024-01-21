@@ -69,7 +69,7 @@ const config = {
       priceAnchor: 32.99,
       features: [
         { name: "Unlimited tattoo history" },
-        { name: "Generate 50 unique designs" },
+        { name: "Generate unlimited tattoo designs" },
       ],
       },
     ],
