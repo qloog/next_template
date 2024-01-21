@@ -15,6 +15,7 @@ import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA"
 import Problem from "@/components/Problem"
 import FeaturesAccordion from "@/components/FeaturesAccordion"
+import Testimonials11 from "@/components/Testimonials11"; 
 import { useSession } from "next-auth/react";
 
 export default function Home() {
@@ -172,7 +173,7 @@ export default function Home() {
         <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
         </section>
         <FeaturesAccordion></FeaturesAccordion>
-        <Testimonials3></Testimonials3>
+        <Testimonials11></Testimonials11>
         <section>
         <FAQ></FAQ>
         </section>

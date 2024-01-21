@@ -47,7 +47,7 @@ const list = [
     // REQUIRED
     name: "Marc Lou",
     // REQUIRED
-    text: "Really easy to use. The tutorials are really useful and explains how everything works. Hope to ship my next project really fast!",
+    text: "'Findrr is just fantastic! I generated designs for myself, my wife, and some clients. As a artist, who is a tattoo-obsessed being, I love this!'",
     // REQUIRED — use refTypes.other if you don't want to display an icon
     type: refTypes.twitter,
     // Optional, link to the person's testimonial. It's more trustable
@@ -58,39 +58,37 @@ const list = [
   {
     username: "the_mcnaveen",
     name: "Naveen",
-    text: "Setting up everything from the ground up is a really hard, and time consuming process. What you pay for will save your time for sure.",
+    text: "'Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my client's loved the tattoos!'",
     type: refTypes.twitter,
-    link: "https://twitter.com/the_mcnaveen",
+  
   },
   {
-    username: "wahab",
-    name: "Wahab Shaikh",
-    text: "Easily saves 15+ hrs for me setting up trivial stuff. Now, I can directly focus on shipping features rather than hours of setting up the same technologies from scratch. Feels like a super power! :D",
+    username: "Irynak",
+    name: "Iryna K.",
+    text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. Findrr was very responsive to my questions'",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/products/shipfast-2/reviews?review=667971",
+    
   },
   {
     name: "Sean",
-    text: "Just purchased and cloned and *holy shit!* I realllyyy like what I'm seeing here!",
+    text: "Just purchased a few credits and *holy shit!* I realllyyy like what I'm seeing here!",
     type: refTypes.other,
   },
   {
-    username: "krishna",
-    name: "Krishna Kant",
-    text: "Finally a good boilerplate for Nextjs, now I dont have to cry about it comparing with laravel ecosystem.",
+    username: "Jordand1",
+    name: "Jordan D",
+    text: "Finally a good tattoo designer that ONLY gives designs that have never been seen by anyone before!! now I don't have to worry about comparing my tattoo to others",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/shipfast-2?comment=2707061",
   },
   {
     username: "imgyf",
     name: "Yifan Goh",
-    text: "It's a game changer  🚀 Comes with easy to follow tutorial, and saves you a ton of time. What's not to love?",
+    text: "It's a game changer  🚀 Comes up with unique tattoos, and saves you a ton of time and money. What's not to love?",
     type: refTypes.twitter,
-    link: "https://twitter.com/imgyf/status/1697549891080532236?s=20",
   },
   {
     name: "Yazdun",
-    text: "Yo Marc, I got the boilerplate, it's fantastic man you just save me 10 hours on each project",
+    text: "Yo Rajvir, I got the Premium plan, it's fantastic man you just saved me from spending hundreds of dollars on a design from a artist",
     type: refTypes.other,
   },
   {
@@ -102,21 +100,20 @@ const list = [
   {
     username: "zawwadx",
     name: "Zawwad Ul Sami",
-    text: "It's an amazing minimalist, lightweight boilerplate with well-organized code. It has almost all the core features you would want in a SaaS boilerplate. As a new team last year it actually took us months to build a similar set of features at a stable level.",
+    text: "It's an amazing tool, with probably the best designs i've seen. It's got everything I need!. If you're not going to buy credits, I'm hella glad because more credits and designs for me!!!",
     type: refTypes.twitter,
   },
   {
     username: "dan",
     name: "Dan Mindru",
-    text: "Probably one of the most powerful things you can 'npm install' that I've seen",
+    text: "Probably one of the most powerful things you can generate that I've seen",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/shipfast-2?comment=2706763",
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
   {
     username: "VicPivots",
     name: "Victor Abeledo",
-    text: "Marc, I got your boilerplate and having the payments setup with Stripe + user auth is a blessing. This will save me like a week of work for each new side project I spin up. I appreciate that is well documented, as well. 100% worth it 🚀🚀🚀",
+    text: "Rajvir, I chose the beginner plan and having the designing part all handled for me at such a good price is phenominal. 100% worth it 🚀🚀🚀",
     type: refTypes.twitter,
     link: "https://twitter.com/VicPivots/status/1697352442986250413?s=20",
   },
@@ -186,12 +183,11 @@ const Testimonials11 = () => {
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
             <h2 className="sm:text-5xl text-4xl font-extrabold text-base-content">
-              212 makers are already shipping faster!
+            Customers can&apos;t stop raving about the tattoos they designed
             </h2>
           </div>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80">
-            Don&apos;t take our word for it. Here&apos;s what they have to say
-            about ShipFast.
+          Don&apos;t take our word for it. Here&apos;s what they have to say about Findrr.
           </p>
         </div>
 
