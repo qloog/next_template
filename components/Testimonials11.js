@@ -47,7 +47,7 @@ const list = [
     // REQUIRED
     name: "Marc Lou",
     // REQUIRED
-    text: "'Findrr is just fantastic! I generated designs for myself, my wife, and some clients. As a artist, who is a tattoo-obsessed being, I love this!'",
+    text: "'Tattooswithai is just fantastic! I generated designs for myself, my wife, and some clients. As a artist, who is a tattoo-obsessed being, I love this!'",
     // REQUIRED — use refTypes.other if you don't want to display an icon
     type: refTypes.twitter,
     // Optional, link to the person's testimonial. It's more trustable
@@ -65,7 +65,7 @@ const list = [
   {
     username: "Irynak",
     name: "Iryna K.",
-    text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. Findrr was very responsive to my questions'",
+    text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. TATTOOSWITHAI was very responsive to my questions'",
     type: refTypes.productHunt,
     img: "/media/t2.jpeg",
     

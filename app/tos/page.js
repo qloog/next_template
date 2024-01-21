@@ -57,23 +57,24 @@ const TOS = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: September 26, 2023
+          {`Last Updated: September 26, 2023  
+          
 
-Welcome to Findrr!
+Welcome to TATTOOSWITHAI!
 
-These Terms of Service ("Terms") govern your use of the Findrr website at https://findrr.ca ("Website") and the services provided by Findrr. By using our Website and services, you agree to these Terms.
+These Terms of Service ("Terms") govern your use of the TATTOOSWITHAI website at https://tattooswithai.com ("Website") and the services provided by TATTOOSWITHAI. By using our Website and services, you agree to these Terms.
 
-1. Description of Findrr
+1. Description of TATTOOSWITHAI
 
-Findrr is a platform that allows users to generate tattoo designs efficiently.
+TATTOOSWITHAI is a platform that allows users to generate tattoo designs efficiently.
 
 2. Ownership and Usage Rights
 
-When you purchase a from Findrr, you gain the right to generate and download unlimted tattoo designs.
+When you purchase a from TATTOOSWITHAI, you gain the right to generate and download unlimted tattoo designs.
 
 3. User Data and Privacy
 
-We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://findrr.ca/privacy-policy.
+We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://tattooswithai.com/privacy-policy.
 
 4. Non-Personal Data Collection
 
@@ -89,7 +90,7 @@ We may update these Terms from time to time. Users will be notified of any chang
 
 For any questions or concerns regarding these Terms of Service, please contact us at rajvirnahar6667@gmail.com.
 
-Thank you for using Findrr!`}
+Thank you for using TATTOOSWITHAI!`}
         </pre>
       </div>
     </main>
