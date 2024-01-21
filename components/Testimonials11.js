@@ -67,29 +67,34 @@ const list = [
     name: "Iryna K.",
     text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. Findrr was very responsive to my questions'",
     type: refTypes.productHunt,
+    img: "/media/t2.jpeg",
     
   },
   {
     name: "Sean",
     text: "Just purchased a few credits and *holy shit!* I realllyyy like what I'm seeing here!",
     type: refTypes.other,
+    img: "/media/t3.jpeg",
   },
   {
     username: "Jordand1",
     name: "Jordan D",
     text: "Finally a good tattoo designer that ONLY gives designs that have never been seen by anyone before!! now I don't have to worry about comparing my tattoo to others",
     type: refTypes.productHunt,
+    img: "/media/t4.jpeg",
   },
   {
     username: "imgyf",
     name: "Yifan Goh",
     text: "It's a game changer  🚀 Comes up with unique tattoos, and saves you a ton of time and money. What's not to love?",
     type: refTypes.twitter,
+    img: "/media/t5.jpeg",
   },
   {
     name: "Yazdun",
     text: "Yo Rajvir, I got the Premium plan, it's fantastic man you just saved me from spending hundreds of dollars on a design from a artist",
     type: refTypes.other,
+    img: "/media/t6.jpeg",
   },
   {
     username: "welcometobriami",
