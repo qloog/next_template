@@ -51,7 +51,6 @@ const list = [
     // REQUIRED — use refTypes.other if you don't want to display an icon
     type: refTypes.twitter,
     // Optional, link to the person's testimonial. It's more trustable
-    link: "https://twitter.com/marc_louvion",
     // Optional, a statically imported image (usually from your public folder—recommended) or a link to the person's avatar. Shows a fallback letter if not provided
     img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
   },
@@ -60,7 +59,7 @@ const list = [
     name: "Naveen",
     text: "'Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my client's loved the tattoos!'",
     type: refTypes.twitter,
-    link: "https://twitter.com/the_mcnaveen"
+    img: "/media/t1.jpeg",
   
   },
   {
@@ -68,7 +67,6 @@ const list = [
     name: "Iryna K.",
     text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. Findrr was very responsive to my questions'",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/findrr-1"
     
   },
   {
@@ -81,7 +79,6 @@ const list = [
     name: "Jordan D",
     text: "Finally a good tattoo designer that ONLY gives designs that have never been seen by anyone before!! now I don't have to worry about comparing my tattoo to others",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/findrr-1"
   },
   {
     username: "imgyf",
@@ -105,14 +102,12 @@ const list = [
     name: "Zawwad Ul Sami",
     text: "It's an amazing tool, with probably the best designs i've seen. It's got everything I need!. If you're not going to buy credits, I'm hella glad because more credits and designs for me!!!",
     type: refTypes.twitter,
-    link: "https://twitter.com/imgyf/status/1697549891080532236?s=20",
   },
   {
     username: "dan",
     name: "Dan Mindru",
     text: "Probably one of the most powerful things you can generate that I've seen",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/findrr-1"
 
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
@@ -121,7 +116,6 @@ const list = [
     name: "Victor Abeledo",
     text: "Rajvir, I chose the beginner plan and having the designing part all handled for me at such a good price is phenominal. 100% worth it 🚀🚀🚀",
     type: refTypes.twitter,
-    link: "https://twitter.com/VicPivots/status/1697352442986250413?s=20",
   },
 ];
 
