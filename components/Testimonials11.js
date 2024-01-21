@@ -120,8 +120,8 @@ const list = [
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
   {
-    username: "VicPivots",
-    name: "Victor Abeledo",
+    username: "JazPivots",
+    name: "Jaz Abeledo",
     text: "Rajvir, I chose the beginner plan and having the designing part all handled for me at such a good price is phenominal. 100% worth it 🚀🚀🚀",
     type: refTypes.twitter,
     img: "/media/t11.jpeg",
