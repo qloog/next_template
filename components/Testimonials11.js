@@ -101,18 +101,21 @@ const list = [
     name: "Brian Kang",
     text: "The tool is exactly what I didn't even know I needed. ",
     type: refTypes.twitter,
+    img: "/media/t7.jpeg",
   },
   {
     username: "zawwadx",
     name: "Zawwad Ul Sami",
     text: "It's an amazing tool, with probably the best designs i've seen. It's got everything I need!. If you're not going to buy credits, I'm hella glad because more credits and designs for me!!!",
     type: refTypes.twitter,
+    img: "/media/t8.jpeg",
   },
   {
     username: "dan",
     name: "Dan Mindru",
     text: "Probably one of the most powerful things you can generate that I've seen",
     type: refTypes.productHunt,
+    img: "/media/t9.jpeg",
 
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
@@ -121,6 +124,7 @@ const list = [
     name: "Victor Abeledo",
     text: "Rajvir, I chose the beginner plan and having the designing part all handled for me at such a good price is phenominal. 100% worth it 🚀🚀🚀",
     type: refTypes.twitter,
+    img: "/media/t11.jpeg",
   },
 ];
 
