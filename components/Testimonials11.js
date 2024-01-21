@@ -184,7 +184,7 @@ const Testimonial = ({ i }) => {
 
 const Testimonials11 = () => {
   return (
-    <section className="bg-base-200" id="testimonials">
+    <section className="bg-black text-white" id="testimonials">
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
@@ -192,7 +192,7 @@ const Testimonials11 = () => {
             Customers can&apos;t stop raving about the tattoos they designed
             </h2>
           </div>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80">
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-white">
           Don&apos;t take our word for it. Here&apos;s what they have to say about Findrr.
           </p>
         </div>
