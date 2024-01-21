@@ -71,8 +71,8 @@ const list = [
     
   },
   {
-    name: "Sean",
-    text: "Just purchased a few credits and *holy shit!* I realllyyy like what I'm seeing here!",
+    name: "Seline",
+    text: "Just purchased a few credits and oh my lord I realllyyy like what I'm seeing here!",
     type: refTypes.other,
     img: "/media/t3.jpeg",
   },
@@ -91,8 +91,8 @@ const list = [
     img: "/media/t5.jpeg",
   },
   {
-    name: "Yazdun",
-    text: "Yo Rajvir, I got the Premium plan, it's fantastic man you just saved me from spending hundreds of dollars on a design from a artist",
+    name: "Yazmine",
+    text: "Wow, I got the Premium plan, it's fantastic man you just saved me from spending hundreds of dollars on a design from a artist",
     type: refTypes.other,
     img: "/media/t6.jpeg",
   },
