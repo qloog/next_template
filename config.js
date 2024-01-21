@@ -31,7 +31,7 @@ const config = {
         price: 6.99,
         credits: 100,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 16.99,
+        priceAnchor: 24.99,
         features: [
           { name: "Unlimited tattoo designs" },
           { name: "Generate unlimited amount of tattoos" },
