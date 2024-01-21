@@ -61,7 +61,7 @@ const config = {
       //  REQUIRED - Name of the plan, displayed on the pricing page
       name: "Premium",
       // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-      description: "unlimited credits added to your account",
+      description: "Unlimited credits added to your account",
       // The price you want to display, the one user will be charged on Stripe.
       price: 18.99,
       credits: 100,
