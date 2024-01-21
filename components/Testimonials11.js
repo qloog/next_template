@@ -60,6 +60,7 @@ const list = [
     name: "Naveen",
     text: "'Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my client's loved the tattoos!'",
     type: refTypes.twitter,
+    link: "https://twitter.com/the_mcnaveen"
   
   },
   {
@@ -67,6 +68,7 @@ const list = [
     name: "Iryna K.",
     text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. Findrr was very responsive to my questions'",
     type: refTypes.productHunt,
+    link: "https://www.producthunt.com/posts/findrr-1"
     
   },
   {
@@ -79,6 +81,7 @@ const list = [
     name: "Jordan D",
     text: "Finally a good tattoo designer that ONLY gives designs that have never been seen by anyone before!! now I don't have to worry about comparing my tattoo to others",
     type: refTypes.productHunt,
+    link: "https://www.producthunt.com/posts/findrr-1"
   },
   {
     username: "imgyf",
@@ -102,12 +105,15 @@ const list = [
     name: "Zawwad Ul Sami",
     text: "It's an amazing tool, with probably the best designs i've seen. It's got everything I need!. If you're not going to buy credits, I'm hella glad because more credits and designs for me!!!",
     type: refTypes.twitter,
+    link: "https://twitter.com/imgyf/status/1697549891080532236?s=20",
   },
   {
     username: "dan",
     name: "Dan Mindru",
     text: "Probably one of the most powerful things you can generate that I've seen",
     type: refTypes.productHunt,
+    link: "https://www.producthunt.com/posts/findrr-1"
+
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
   {
