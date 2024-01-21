@@ -28,8 +28,8 @@ const config = {
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
         description: "10 credits added to your account",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 6.99,
-        credits: 100,
+        price: 4.99,
+        credits: 10,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 16.99,
         features: [
@@ -48,7 +48,7 @@ const config = {
         description: "30 credits added to your account",
         price: 9.99,
         credits: 30,
-        priceAnchor: 16.99,
+        priceAnchor: 22.99,
         features: [
           { name: "Unlimited tattoo history" },
           { name: "Generate 30 unique designs" },
