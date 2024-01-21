@@ -64,7 +64,7 @@ const config = {
       description: "50 credits added to your account",
       // The price you want to display, the one user will be charged on Stripe.
       price: 18.99,
-      credits: 50,
+      credits: 60,
       // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
       priceAnchor: 32.99,
       features: [
