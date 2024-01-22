@@ -21,7 +21,7 @@ const config = {
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
-            : "price_1OXnr6Ha8820Uqe5FUV7i6ag",
+            : "price_1ObDh8Ha8820Uqe5zwd6xtNX",
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Beginner",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
@@ -42,7 +42,7 @@ const config = {
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
-            : "price_1OXnshHa8820Uqe5dOQdkXfI",
+            : "price_1ObDhsHa8820Uqe5hWVSyYNT",
         name: "Pro",
         description: "30 credits added to your account",
         price: 9.99,
@@ -57,7 +57,7 @@ const config = {
         priceId:
         process.env.NODE_ENV === "development"
           ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
-          : "price_1OXnugHa8820Uqe5AO4tkDW1",
+          : "price_1ObDijHa8820Uqe53AHgB1Ib",
       //  REQUIRED - Name of the plan, displayed on the pricing page
       name: "Premium",
       // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
