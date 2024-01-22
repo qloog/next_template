@@ -8,10 +8,10 @@ import Image from "next/image"
 
 const faqList = [
   {
-    question: <div className="text-white">How does Findrr&apos;s AI work?</div>,
+    question: <div className="text-white">How does TattooswithAI work?</div>,
     answer: (
       <div className="space-y-2 leading-relaxed text-white">
-        Findrr&apos;s AI taps into the power of textual input to generate custom
+        TattooswithAI taps into the power of textual input to generate custom
         tattoo designs. You input your tattoo concept through text, and the AI,
         trained on a vast array of tattoo art, interprets your words to create a
         unique design. It&apos;s a seamless blend of your ideas and AI
@@ -23,7 +23,7 @@ const faqList = [
   },
   {
     question: <div className="text-white">What AI model do you use?</div>,
-    answer: <p>Findrr is powered by DALL-E 3</p>,
+    answer: <p>TattooswithAI is powered by DALL-E 3</p>,
   },
   {
     question: "How long will it take to generate my tattoo?",
@@ -43,11 +43,11 @@ const faqList = [
     ),
   },
   {
-    question: "Who built and is behind Findrr?",
+    question: "Who built and is behind TattooswithAI?",
     answer: (
       <p>
         This service was built by me, Rajvir Singh Nahar. You can contact for
-        support at Rajvirnahar6667@gmail.com.
+        support at Rajvirnahar6667@gmail.com or any serice-related questions!.
       </p>
     ),
   },
@@ -66,7 +66,7 @@ const faqList = [
     answer: (
       <div className="space-y-2 leading-relaxed">
         Right now the beginner plan costs $4.99, the Veteran plan $9.99 and the
-        Premium plan $18.99. You get 3 credits for free when you sign up. Only
+        Premium plan $18.99. You get 1 credit for free when you sign up. Only
         one time payments
       </div>
     ),
