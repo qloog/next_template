@@ -150,7 +150,7 @@ export default function Home() {
         }
       `}</style>
 
-      <h1 className="animated-text">Your Gradient Text Here</h1>
+      <h1 className="animated-text">TATTOOSWITHAI</h1>
     </div>
 
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
