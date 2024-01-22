@@ -47,7 +47,7 @@ const faqList = [
     answer: (
       <p>
         This service was built by me, Rajvir Singh Nahar. You can contact for
-        support at Rajvirnahar6667@gmail.com or any service-related questions!.
+        support at Rajvirnahar6667@gmail.com or any service-related questions!
       </p>
     ),
   },
