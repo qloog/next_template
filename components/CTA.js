@@ -18,7 +18,7 @@ const CTA = () => {
             Start designing your own tattoo
           </h2>
           <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left text-white">
-            Design custom tattoos that no one owns with
+            Design a custom tattoo with
             AI. Save money and use AI to turn your tattoo ideas into custom
             designs, right from your phone or laptop.
           </p>
