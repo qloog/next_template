@@ -17,7 +17,6 @@ import Problem from "@/components/Problem"
 import FeaturesAccordion from "@/components/FeaturesAccordion"
 import Testimonials11 from "@/components/Testimonials11"; 
 import { useSession } from "next-auth/react";
-import config from "@/config";
 import logo from "@/app/icon.png";
 
 export default function Home() {
