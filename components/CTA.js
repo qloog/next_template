@@ -3,13 +3,14 @@ import config from "@/config";
 
 const CTA = () => {
   return (
-    <section className="relative hero overflow-hidden min-h-screen">
-      <Image
-        src="https://images.unsplash.com/photo-1586243287039-23f4c8e2e7ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcwMjE0MzY5Mg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-        alt="Background"
-        className="object-cover w-full"
-        fill
-      />
+    <section className="relative hero overflow-hidden min-h-screen"
+    style={{
+      backgroundImage: "url('/media/39.957eee0b4d31250c64c05646f99c7c058d417dc8.gif')",
+      backgroundSize: "cover", // Ensures the image covers the whole section
+      backgroundPosition: "center", // Centers the image
+      backgroundRepeat: "no-repeat", // Prevents the image from repeating
+    }}>
+      
       <div className="relative hero-overlay bg-neutral bg-opacity-70"></div>
       <div className="relative hero-content text-white text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
@@ -26,7 +27,7 @@ const CTA = () => {
             className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            Start using Findrr now
+            Start using TattooswithAI now
           </button>
         </div>
       </div>
