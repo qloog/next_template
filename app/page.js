@@ -17,6 +17,8 @@ import Problem from "@/components/Problem"
 import FeaturesAccordion from "@/components/FeaturesAccordion"
 import Testimonials11 from "@/components/Testimonials11"; 
 import { useSession } from "next-auth/react";
+import Image from 'next/image';
+import icon from "@/app/favicon_package_v0.16/icon.png"; // 
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -151,6 +153,37 @@ export default function Home() {
       `}</style>
 
       <h1 className="animated-text">TATTOOSWITHAI</h1>
+    </div>
+    <div>
+      <div className="icon-container">
+        <Image src={icon} alt="Icon" width={50} height={50} />
+      </div>
+
+      {/* ... other components ... */}
+
+      <style jsx>{`
+        @keyframes animatedgradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .icon-container {
+          width: 50px;
+          height: 50px;
+          background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+          background-size: 300% 300%;
+          animation: animatedgradient 6s ease infinite alternate;
+          border-radius: 50%; /* Optional: if you want a circular mask */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .icon-container :global(img) {
+          mix-blend-mode: multiply;
+        }
+      `}</style>
     </div>
 
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
