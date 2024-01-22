@@ -150,7 +150,9 @@ export default function Home() {
         }
       `}</style>
 
-      <h1 className="animated-text">TATTOOSWITHAI</h1>
+    <h1 style="font-weight:300">
+			II<span style="font-weight: normal">II</span><span style="font-weight:bold">Tattooswith</span>AI<span class="trademark">TM&nbsp;&nbsp;</span>
+		</h1>
     </div>
     
 
