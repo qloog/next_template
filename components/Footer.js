@@ -17,55 +17,39 @@ const Footer = () => {
               aria-current="page"
               className="flex gap-2 justify-center md:justify-start items-center"
             >
-              <div className="logo-container">
-                <Image
-                  src={logo}
-                  alt={`${config.appName} logo`}
-                  priority={true}
-                  className="w-6 h-6"
-                  width={24}
-                  height={24}
-                />
-              </div>
+               <div className="logo-container">
+        {/* Inline SVG of your logo */}
+        <svg viewBox="0 0 700.000000 700.000000" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+          {/* SVG paths */}
+          <path d="app/favicon_package_v0.16/safari-pinned-tab.svg" fill="url(#gradient)" />
+        </svg>
 
-              <style jsx>{`
-                @keyframes animatedgradient {
-                  0% {
-                    background-position: 0% 50%;
-                  }
-                  50% {
-                    background-position: 100% 50%;
-                  }
-                  100% {
-                    background-position: 0% 50%;
-                  }
-                }
+        <style jsx>{`
+          @keyframes animatedgradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
 
-                .logo-container {
-                  width: 24px;
-                  height: 24px;
-                  background: linear-gradient(
-                    60deg,
-                    #f79533,
-                    #f37055,
-                    #ef4e7b,
-                    #a166ab,
-                    #5073b8,
-                    #1098ad,
-                    #07b39b,
-                    #6fba82
-                  );
-                  background-size: 300% 300%;
-                  animation: animatedgradient 6s ease infinite alternate;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                }
+          .logo-container svg {
+            height: 24px;
+            width: 24px;
+          }
 
-                .logo-container :global(img) {
-                  mix-blend-mode: multiply;
-                }
-              `}</style>
+          .logo-container svg #gradient {
+            animation: animatedgradient 6s ease infinite alternate;
+            background-size: 300% 300%;
+          }
+        `}</style>
+
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{stopColor: "#f79533", stopOpacity: 1}} />
+            <stop offset="100%" style={{stopColor: "#ef4e7b", stopOpacity: 1}} />
+            {/* Add more color stops as needed */}
+          </linearGradient>
+        </defs>
+      </div>
 
               <strong className="font-extrabold tracking-tight text-base md:text-lg">
                 {config.appName}
