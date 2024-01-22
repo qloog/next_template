@@ -17,39 +17,24 @@ const Footer = () => {
               aria-current="page"
               className="flex gap-2 justify-center md:justify-start items-center"
             >
-               <div className="logo-container">
-        {/* Inline SVG of your logo */}
+              <div className="logo-container">
         <svg viewBox="0 0 700.000000 700.000000" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-          {/* SVG paths */}
-          <path d="app/favicon_package_v0.16/safari-pinned-tab.svg" fill="url(#gradient)" />
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f79533">
+                <animate attributeName="stop-color" values="#f79533; #f37055; #ef4e7b; #f79533" dur="6s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="100%" stopColor="#ef4e7b">
+                <animate attributeName="stop-color" values="#ef4e7b; #a166ab; #5073b8; #ef4e7b" dur="6s" repeatCount="indefinite" />
+              </stop>
+              {/* Add more <stop> and <animate> elements as needed for more colors */}
+            </linearGradient>
+          </defs>
+          <path d="app/safari-pinned-tab.svg" fill="url(#gradient)" />
+          {/* Include other paths or shapes as needed */}
         </svg>
-
-        <style jsx>{`
-          @keyframes animatedgradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-
-          .logo-container svg {
-            height: 24px;
-            width: 24px;
-          }
-
-          .logo-container svg #gradient {
-            animation: animatedgradient 6s ease infinite alternate;
-            background-size: 300% 300%;
-          }
-        `}</style>
-
-        <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{stopColor: "#f79533", stopOpacity: 1}} />
-            <stop offset="100%" style={{stopColor: "#ef4e7b", stopOpacity: 1}} />
-            {/* Add more color stops as needed */}
-          </linearGradient>
-        </defs>
       </div>
+
 
               <strong className="font-extrabold tracking-tight text-base md:text-lg">
                 {config.appName}
