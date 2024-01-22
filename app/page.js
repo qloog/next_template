@@ -17,7 +17,6 @@ import Problem from "@/components/Problem"
 import FeaturesAccordion from "@/components/FeaturesAccordion"
 import Testimonials11 from "@/components/Testimonials11"; 
 import { useSession } from "next-auth/react";
-import logo from "@/app/icon.png";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -153,56 +152,7 @@ export default function Home() {
 
       <h1 className="animated-text">TATTOOSWITHAI</h1>
     </div>
-    <div className="logo-container">
-                <Image
-                  src={logo}
-                  alt={`${config.appName} logo`}
-                  priority={true}
-                  width={24}
-                  height={24}
-                />
-              </div>
-
-              <style jsx>{`
-                @keyframes animatedgradient {
-                  0% {
-                    background-position: 0% 50%;
-                  }
-                  50% {
-                    background-position: 100% 50%;
-                  }
-                  100% {
-                    background-position: 0% 50%;
-                  }
-                }
-
-                .logo-container {
-                  width: 24px;
-                  height: 24px;
-                  background: linear-gradient(
-                    60deg,
-                    #f79533,
-                    #f37055,
-                    #ef4e7b,
-                    #a166ab,
-                    #5073b8,
-                    #1098ad,
-                    #07b39b,
-                    #6fba82
-                  );
-                  background-size: 300% 300%;
-                  animation: animatedgradient 6s ease infinite alternate;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                }
-
-                .logo-container :global(img) {
-                  mix-blend-mode: multiply;
-                }
-              `}</style>
-    
-
+  
           <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
            Design Your Tattoo
           </h3>
