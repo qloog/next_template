@@ -18,38 +18,53 @@ const Footer = () => {
               className="flex gap-2 justify-center md:justify-start items-center"
             >
               <div className="logo-container">
-        <Image
-          src={logo}
-          alt={`${config.appName} logo`}
-          priority={true}
-          width={24}
-          height={24}
-        />
-      </div>
+                <Image
+                  src={logo}
+                  alt={`${config.appName} logo`}
+                  priority={true}
+                  width={24}
+                  height={24}
+                />
+              </div>
 
-      <style jsx>{`
-        @keyframes animatedgradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
+              <style jsx>{`
+                @keyframes animatedgradient {
+                  0% {
+                    background-position: 0% 50%;
+                  }
+                  50% {
+                    background-position: 100% 50%;
+                  }
+                  100% {
+                    background-position: 0% 50%;
+                  }
+                }
 
-        .logo-container {
-          width: 24px;
-          height: 24px;
-          background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-          background-size: 300% 300%;
-          animation: animatedgradient 6s ease infinite alternate;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+                .logo-container {
+                  width: 24px;
+                  height: 24px;
+                  background: linear-gradient(
+                    60deg,
+                    #f79533,
+                    #f37055,
+                    #ef4e7b,
+                    #a166ab,
+                    #5073b8,
+                    #1098ad,
+                    #07b39b,
+                    #6fba82
+                  );
+                  background-size: 300% 300%;
+                  animation: animatedgradient 6s ease infinite alternate;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                }
 
-        .logo-container :global(img) {
-          mix-blend-mode: multiply;
-        }
-      `}</style>
-
+                .logo-container :global(img) {
+                  mix-blend-mode: multiply;
+                }
+              `}</style>
 
               <strong className="font-extrabold tracking-tight text-base md:text-lg">
                 {config.appName}
