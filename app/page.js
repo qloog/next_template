@@ -17,8 +17,6 @@ import Problem from "@/components/Problem"
 import FeaturesAccordion from "@/components/FeaturesAccordion"
 import Testimonials11 from "@/components/Testimonials11"; 
 import { useSession } from "next-auth/react";
-import Image from 'next/image';
-import icon from "@/app/favicon_package_v0.16/icon.png"; // 
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
