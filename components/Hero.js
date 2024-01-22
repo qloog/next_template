@@ -11,7 +11,7 @@ function Hero() {
     <section
       className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-black"
       style={{
-        backgroundImage: "url('/media/200w.gif')",
+        backgroundImage: "url('/media/infinite.gif')",
         backgroundSize: "cover", // Ensures the image covers the whole section
         backgroundPosition: "center", // Centers the image
         backgroundRepeat: "no-repeat", // Prevents the image from repeating
@@ -25,7 +25,7 @@ function Hero() {
         </h1>
 
         <p className="font-medium text-lg leading-relaxed text-white"></p>
-        <p className="font-medium text-lg leading-relaxed text-white">
+        <p className="font-medium text-lg leading-relaxed text-white bg-black">
           Save money and use AI to turn your tattoo ideas into custom designs
           right from your phone or laptop. No need for expensive artist&apos;s, just
           your imagination
