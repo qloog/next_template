@@ -3,7 +3,7 @@ import config from "@/config";
 
 const CTA = () => {
   return (
-    <section className="relative hero overflow-hidden min-h-screen"
+    <section className="relative hero  min-h-screen"
     style={{
       backgroundImage: "url('/media/39.957eee0b4d31250c64c05646f99c7c058d417dc8.gif')",
       backgroundSize: "cover", // Ensures the image covers the whole section
