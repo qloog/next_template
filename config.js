@@ -2,7 +2,7 @@ import themes from "daisyui/src/theming/themes.js";
 
 const config = {
   // REQUIRED
-  appName: "TATTOOSWITHAI",
+  appName: "TattooswithAI",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
     "Transform any Tattoo idea into a custom-made design. Stand apart from the crowd and rock something unique",
