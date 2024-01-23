@@ -44,11 +44,10 @@ const Arrow = ({ extraStyle }) => {
       <section className="bg-white text-black">
         <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
           <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-6 md:mb-8">
-            90% of people end up with similar designs to others because an artist can only be so creative
+          Did you know 90% of ink fans wind up with designs eerily similar to others? It's not just you — even the best artists have their creative limits
           </h2>
           <p className="max-w-xl mx-auto text-lg text-black leading-relaxed mb-12 md:mb-20">
-            Same designs, no differentiation, disliking artist&apos;s design... There&apos;s so much going
-            on.
+          Repetitive Designs, Limited Choices, Artist&apos;s Vision Not Matching Yours...
           </p>
   
           <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
