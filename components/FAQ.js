@@ -43,11 +43,10 @@ const faqList = [
     ),
   },
   {
-    question: "Who built and is behind TattooswithAI?",
+    question: "How do I contact support?",
     answer: (
       <p>
-        This service was built by me, Rajvir Singh Nahar. You can contact for
-        support at Rajvirnahar6667@gmail.com or any service-related questions!
+        You can contact us at rajvirnahar6667@gmail.com
       </p>
     ),
   },
