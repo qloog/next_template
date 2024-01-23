@@ -121,7 +121,7 @@ export default function Home() {
 
   return (
     <>
-    
+    <Header></Header>
       <ButtonAccount></ButtonAccount>
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
