@@ -68,7 +68,7 @@ const Pricing = () => {
                     ${plan.price}
                   </p>
                   <div className="flex flex-col justify-end mb-[4px]">
-                    <p className="text-xs text-white uppercase font-semibold">
+                    <p className="text-xs text-black uppercase font-semibold">
                       USD
                     </p>
                   </div>
