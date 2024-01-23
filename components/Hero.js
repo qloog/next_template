@@ -20,13 +20,11 @@ function Hero() {
       
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
         <h1 className="text-black font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left lg:font-semibold">
-          Create beautiful AI custom tattoos within seconds
+        Create Artist-Quality Tattoos for Less using AI
         </h1>
 
         <p className="font-medium text-lg leading-relaxed  text-black">
-          Save money and use AI to turn your tattoo ideas into custom designs
-          right from your phone or laptop. No need for expensive artist&apos;s, just
-          your imagination
+          Turn your idea into a custom design without overpaying and design accordingly to your liking.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
 
