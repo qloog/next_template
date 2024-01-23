@@ -19,7 +19,7 @@ const links = [
     label: "FAQ",
   },
   {
-  href: "/#support",
+    href: "/#footer",
   label: "Support",
   }
 ];
