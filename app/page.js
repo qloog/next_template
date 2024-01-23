@@ -168,6 +168,9 @@ export default function Home() {
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
         <section>
+          <section>
+            
+          </section>
         <FAQ></FAQ>
         </section>
         <section id="pricing" className="font-semibold text-base-content text-lg bg-white text-black">
