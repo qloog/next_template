@@ -53,7 +53,28 @@ const Header = () => {
               height={32}
             />
             <span className="font-extrabold text-lg">
-            <span class="text-black">{config.appName}</span>
+            <span className="animated-text">
+              {config.appName}</span>
+
+              <div>
+      <style jsx>{`
+        @keyframes animatedgradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .animated-text {
+          font-size: 24px; /* Adjust size as needed */
+          font-weight: bold;
+          background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: animatedgradient 6s ease infinite alternate;
+        }
+      `}</style>
+    </div>
             </span>
           </Link>
         </div>

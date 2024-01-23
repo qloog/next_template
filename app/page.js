@@ -128,30 +128,9 @@ export default function Home() {
         <Hero />
         <section
           id="tattoo-generator"
-          className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
-        >
+          className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black" >
           
-          <div>
-      <style jsx>{`
-        @keyframes animatedgradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animated-text {
-          font-size: 24px; /* Adjust size as needed */
-          font-weight: bold;
-          background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-          background-size: 300% 300%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: animatedgradient 6s ease infinite alternate;
-        }
-      `}</style>
-
-      <h1 className="animated-text">TATTOOSWITHAI</h1>
-    </div>
+    
   
           <h3 className="font-semibold text-base-content text-lg opacity-80 bg-white text-black">
            Design Your Tattoo
@@ -291,3 +270,27 @@ style={{
 </section>
 */
 
+/* <div>
+      <style jsx>{`
+        @keyframes animatedgradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+*/
+
+       /* .animated-text {
+          font-size: 24px; /* Adjust size as needed */
+         // font-weight: bold;
+         // background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+          //background-size: 300% 300%;
+          //-webkit-background-clip: text;
+          ///-webkit-text-fill-color: transparent;
+          //animation: animatedgradient 6s ease infinite alternate;
+       // }
+      
+      //`}</style>
+
+      //<h1 className="animated-text">TATTOOSWITHAI</h1>
+    //</div>
+    
