@@ -20,7 +20,7 @@ const CTA = () => {
             className="btn btn-primary btn-block w-full max-w-xs space-y-3"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            Start using TattooswithAI now
+            Start designing - it&apos;s free
           </button>
         </div>
       </div>
