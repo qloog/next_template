@@ -14,12 +14,12 @@ function Hero() {
     >
       
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
-        <h1 className="text-white font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
+        <h1 className="text-black font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left">
           Create beautiful AI custom tattoos within seconds
         </h1>
 
-        <p className="font-medium text-lg leading-relaxed text-white"></p>
-        <p className="font-medium text-lg leading-relaxed text-white">
+        <p className="font-medium text-lg leading-relaxed text-black"></p>
+        <p className="font-medium text-lg leading-relaxed text-black">
           Save money and use AI to turn your tattoo ideas into custom designs
           right from your phone or laptop. No need for expensive artist&apos;s, just
           your imagination
