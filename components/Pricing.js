@@ -16,7 +16,7 @@ const Pricing = () => {
           </h2>
         </div>
 
-        <div className="bg-black text-white relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
+        <div className="bg-white text-black relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
           {config.stripe.plans.map((plan) => (
             <div key={plan.priceId} className="relative w-full max-w-lg">
               {plan.isFeatured && (
@@ -35,12 +35,12 @@ const Pricing = () => {
                 ></div>
               )}
 
-              <div className="relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-black p-8 rounded-lg">
+              <div className="relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-white p-8 rounded-lg">
                 <div className="flex justify-between items-center gap-4">
                   <div>
                     <p className="text-lg lg:text-xl font-bold">{plan.name}</p>
                     {plan.description && (
-                      <p className="text-white">
+                      <p className="text-black">
                         {plan.description}
                       </p>
                     )}
@@ -51,7 +51,7 @@ const Pricing = () => {
                     <div className="flex flex-col justify-end mb-[4px] text-lg ">
                       <p className="relative">
                         <span className="absolute bg-base-content h-[1.5px] inset-x-0 top-[53%]"></span>
-                        <span className="text-white">
+                        <span className="text-black">
                           ${plan.priceAnchor}
                         </span>
                       </p>
@@ -91,7 +91,7 @@ const Pricing = () => {
                 <div className="space-y-2">
                   <ButtonCheckout priceId={plan.priceId} />
 
-                  <p className="flex items-center justify-center gap-2 text-sm text-center text-white font-medium relative">
+                  <p className="flex items-center justify-center gap-2 text-sm text-center text-black font-medium relative">
                     Pay once.
                   </p>
                 </div>
