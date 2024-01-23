@@ -11,9 +11,17 @@ import ButtonAccount from "./ButtonAccount";
 
 const links = [
   {
-    href: <Link href="/#pricing">Pricing</Link>,
+    href: "/#pricing",
     label: "Pricing",
   },
+  {
+    href: "/#faq",
+    label: "FAQ",
+  },
+  {
+  href: "/#support",
+  label: "Support",
+  }
 ];
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
