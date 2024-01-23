@@ -150,6 +150,12 @@ const FeaturesAccordion = () => {
     <section
       className="py-24 md:py-32 space-y-24 md:space-y-32 max-w-7xl mx-auto bg-white text-black"
       id="features"
+      style={{
+        backgroundImage: 'url(/media/background-abstract-line-digital-gradient-style_483537-2276.avif)', // Replace with your image URL
+        backgroundSize: 'cover', // Cover the entire section with the image
+        backgroundPosition: 'center', // Center the background image
+        backgroundRepeat: 'no-repeat', // Do not repeat the image
+      }}
     >
       <div className="px-8">
         <p className="font-medium text-sm text-accent mb-2">
