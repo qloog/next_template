@@ -17,7 +17,7 @@ import Problem from "@/components/Problem"
 import FeaturesAccordion from "@/components/FeaturesAccordion"
 import Testimonials11 from "@/components/Testimonials11"; 
 import { useSession } from "next-auth/react";
-import FeaturesListicle from "@/components/FeaturesListicle";
+
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -169,9 +169,6 @@ export default function Home() {
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
         <section>
-          <section>
-            <FeaturesListicle></FeaturesListicle>
-          </section>
         <FAQ></FAQ>
         </section>
         <section id="pricing" className="font-semibold text-base-content text-lg bg-white text-black">
