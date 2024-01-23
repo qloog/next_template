@@ -70,21 +70,21 @@ export default function Home() {
   };
 
   const textboxStyle = {
-    backgroundColor: "black",
+    backgroundColor: "white",
     border: "2px dotted gray", // White background for the textbox
-    color: "white",
+    color: "black",
     padding: "10px", // Example padding, adjust as needed
     fontSize: "1rem",
     // Add other necessary styles
   };
 
   const buttonStyle = {
-    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "white",
+    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "black",
     border: "none",
     borderRadius: "20px", // This makes the button oval-shaped
     padding: "10px 20px",
     cursor: "pointer",
-    color: "black",
+    color: "white",
     // Add any other styles you need for the button
   };
 
