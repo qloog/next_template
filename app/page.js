@@ -191,7 +191,6 @@ export default function Home() {
         <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
         </section>
         <FeaturesAccordion></FeaturesAccordion>
-        <Testimonials11></Testimonials11>
         <section>
         <FAQ></FAQ>
         </section>
