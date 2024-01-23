@@ -16,7 +16,7 @@ function Hero() {
     >
       
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
-        <h1 className="text-black font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left font-semibold">
+        <h1 className="text-black font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left lg:font-semibold">
           Create beautiful AI custom tattoos within seconds
         </h1>
 
