@@ -10,7 +10,12 @@ function Hero() {
   return (
     <section
       className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
-    
+      style={{
+        backgroundImage: 'url(/media/abstract-white-line-background-vector-illustration_54768-479.avif)', // Replace with your image URL
+        backgroundSize: 'cover', // Cover the entire section with the image
+        backgroundPosition: 'center', // Center the background image
+        backgroundRepeat: 'no-repeat', // Do not repeat the image
+      }}
     >
       
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
