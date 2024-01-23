@@ -11,13 +11,10 @@ import ButtonAccount from "./ButtonAccount";
 
 const links = [
   {
-    href:<Link href="/#pricing">Pricing</Link>,
+    href: <Link href="/#pricing">Pricing</Link>,
     label: "Pricing",
   },
-  
 ];
-
-
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
@@ -52,30 +49,44 @@ const Header = () => {
               width={32}
               height={32}
             />
-            <span className="font-extrabold text-lg">
-            <span className="animated-text">
-              {config.appName}</span>
+            <div>
+              <style jsx>{`
+                @keyframes animatedgradient {
+                  0% {
+                    background-position: 0% 50%;
+                  }
+                  50% {
+                    background-position: 100% 50%;
+                  }
+                  100% {
+                    background-position: 0% 50%;
+                  }
+                }
 
-              <div>
-      <style jsx>{`
-        @keyframes animatedgradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animated-text {
-          font-size: 24px; /* Adjust size as needed */
-          font-weight: bold;
-          background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-          background-size: 300% 300%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: animatedgradient 6s ease infinite alternate;
-        }
-      `}</style>
-    </div>
-            </span>
+                .animated-text {
+                  font-size: 24px; /* Adjust size as needed */
+                  font-weight: bold;
+                  background: linear-gradient(
+                    60deg,
+                    #f79533,
+                    #f37055,
+                    #ef4e7b,
+                    #a166ab,
+                    #5073b8,
+                    #1098ad,
+                    #07b39b,
+                    #6fba82
+                  );
+                  background-size: 300% 300%;
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  animation: animatedgradient 6s ease infinite alternate;
+                }
+              `}</style>
+              <span className="font-extrabold text-lg">
+                <span className="animated-text">{config.appName}</span>
+              </span>
+            </div>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
@@ -118,7 +129,9 @@ const Header = () => {
         </div>
 
         {/* CTA on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1"><ButtonAccount></ButtonAccount></div>
+        <div className="hidden lg:flex lg:justify-end lg:flex-1">
+          <ButtonAccount></ButtonAccount>
+        </div>
       </nav>
 
       {/* Mobile menu, show/hide based on menu state. */}
@@ -185,7 +198,9 @@ const Header = () => {
             </div>
             <div className="divider"></div>
             {/* Your CTA on small screens */}
-            <div className="flex flex-col"><ButtonAccount></ButtonAccount></div>
+            <div className="flex flex-col">
+              <ButtonAccount></ButtonAccount>
+            </div>
           </div>
         </div>
       </div>
