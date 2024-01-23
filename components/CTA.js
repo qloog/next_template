@@ -3,28 +3,21 @@ import config from "@/config";
 
 const CTA = () => {
   return (
-    <section className="relative hero  min-h-screen"
-    style={{
-      backgroundImage: "url('/media/39.957eee0b4d31250c64c05646f99c7c058d417dc8.gif')",
-      backgroundSize: "cover", // Ensures the image covers the whole section
-      backgroundPosition: "center", // Centers the image
-      backgroundRepeat: "no-repeat", // Prevents the image from repeating
-    }}>
+    <section className="relative hero  min-h-screen">
       
       <div className="relative hero-overlay bg-neutral bg-opacity-70"></div>
       <div className="relative hero-content text-white text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
           <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left text-white">
-            Start designing your own tattoo
+          Try TattooswithAI for free today
+
           </h2>
           <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left text-white">
-            Design a custom tattoo with
-            AI. Save money and use AI to turn your tattoo ideas into custom
-            designs, right from your phone or laptop.
+          Create your first custom piece with TattooswithAI today and never look back
           </p>
 
           <button
-            className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
+            className="btn btn-primary btn-block w-full max-w-xs space-y-3"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             Start using TattooswithAI now
