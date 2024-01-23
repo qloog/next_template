@@ -3,7 +3,7 @@ import config from "@/config";
 
 const CTA = () => {
   return (
-    <section className="relative hero  min-h-screen">
+    <section className="relative hero bg-white text-black min-h-screen">
       
       <div className="relative hero-overlay bg-neutral bg-opacity-70"></div>
       <div className="relative hero-content text-white text-neutral-content p-8">
