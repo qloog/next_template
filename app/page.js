@@ -198,7 +198,6 @@ export default function Home() {
         <section id="pricing" className="font-semibold text-base-content text-lg text-white bg-black">
           <Pricing></Pricing>
         </section>
-        <CTA></CTA>
         <Footer></Footer>
       </main>
     </>
