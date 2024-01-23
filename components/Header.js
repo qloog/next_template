@@ -19,7 +19,7 @@ const links = [
     label: "FAQ",
   },
   {
-    href: "/#footer",
+    href: "mailto:rajvirnahar6667@gmail.com",
   label: "Support",
   }
 ];
