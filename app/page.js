@@ -64,8 +64,8 @@ export default function Home() {
 
   const buttonStyle1 = {
     border: "2px dotted gray",
-    backgroundColor: "black",
-    color: "white", // White text with 80% opacity
+    backgroundColor: "white",
+    color: "black", // White text with 80% opacity
     // Other styles...
   };
 
