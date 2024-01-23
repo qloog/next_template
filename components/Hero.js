@@ -19,11 +19,11 @@ function Hero() {
     >
       
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
-        <h1 className="text-black font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left lg:font-semibold">
+        <h1 className="text-black font-medium font-sans-serif text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center lg:font-semibold">
         Create Artist-Quality Tattoos for Less using AI
         </h1>
 
-        <p className="font-medium text-lg leading-relaxed  text-black">
+        <p className="font-medium text-lg leading-relaxed text-align:center text-black">
           Turn your idea into a custom design without overpaying and design accordingly to your liking.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
