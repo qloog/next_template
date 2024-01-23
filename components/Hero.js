@@ -30,7 +30,6 @@ function Hero() {
           right from your phone or laptop. No need for expensive artist&apos;s, just
           your imagination
         </p>
-        <TestimonialRating></TestimonialRating>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
 
         <div
