@@ -14,7 +14,7 @@ const features = [
   {
     title: "Designs",
     description:
-      "Render unqiue tattoos that nobody has, bring 'hard to draw' designs to a reality, and show off a compliment magnet",
+      "Render unqiue tattoos, bring 'hard to draw' designs to a reality, and show off a compliment magnet",
      //type: "video",
       //path: "https://d3m8mk7e1mf7xn.cloudfront.net/app/newsletter.webm",
       //format: "video/webm",
@@ -22,7 +22,7 @@ const features = [
   {
     title: "Credit-based payment",
     description:
-      "Why pay so much money to a artist for your design to be drawn? Choose a credit pack that's best for how many designs you want",
+      "Save money from overpaying a artist for your design to be draw. Choose a credit pack that's best for how many designs you want",
   },
   {
     title: "Design in seconds",
