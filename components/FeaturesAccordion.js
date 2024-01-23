@@ -12,27 +12,27 @@ import Image from "next/image";
 // - alt: The alt text of the image (if type is 'image')
 const features = [
   {
-    title: "Designs",
+    title: "AI Design Assist",
     description:
-      "Render unqiue tattoos, bring 'hard to draw' designs to a reality, and show off a compliment magnet",
+      "Just like autocomplete, our AI assists you in designing tattoos. Start with a basic idea and watch as AI expands it into a full-fledged design, overcoming any creative block",
      //type: "video",
       //path: "https://d3m8mk7e1mf7xn.cloudfront.net/app/newsletter.webm",
       //format: "video/webm",
   },
   {
-    title: "Credit-based payment",
+    title: "Custom Tattoo Styles",
     description:
-      "Save money from overpaying a artist for your design to be draw. Choose a credit pack that's best for how many designs you want",
+      "From traditional to abstract, select from a range of tattoo styles. Our AI adapts to your preference, ensuring each design aligns with the chosen style",
   },
   {
-    title: "Design in seconds",
+    title: "Interactive Design Sessions",
     description:
-      "Don't wait days or weeks for your custom piece to be made. Render it within 5 seconds instead.",
+      "Chat with our AI to tweak and refine your tattoo designs in real time. It's like having a conversation with a virtual tattoo artist",
   },
   {
-    title: "Style",
+    title: "Prompt-Driven Custom Designs",
     description:
-      "AI trained specifically to render tattoos to your style-taste for best results",
+      "Jumpstart your tattoo journey by entering a prompt or idea. Our AI takes your concept and generates a unique design, providing a creative foundation for you to refine and personalize",
   },
 ];
 
