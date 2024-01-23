@@ -11,9 +11,7 @@ function Hero() {
     <section
       className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
       style={{
-        borderColor: '#e5e7eb', // This is the hex color code for Tailwind's gray-200
-        borderWidth: '1px',
-        borderStyle: 'solid'
+        border: '1px solid #e5e7eb', // Applies a solid gray border
       }}
     >
       
