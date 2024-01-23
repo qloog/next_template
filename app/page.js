@@ -71,7 +71,7 @@ export default function Home() {
 
   const textboxStyle = {
     backgroundColor: "white",
-    border: "2px dotted gray", // White background for the textbox
+    border: "2px solid gray", // White background for the textbox
     color: "black",
     padding: "10px", // Example padding, adjust as needed
     fontSize: "1rem",
