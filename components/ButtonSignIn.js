@@ -9,7 +9,7 @@ const SigninButton = () => {
     className="btn btn-primary btn-block w-full max-w-xs space-y-3"
       onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
     >
-     Start designing - it&apos;s free
+     Start designing - 2 free credits
     </button>
     
   );

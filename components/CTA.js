@@ -20,7 +20,7 @@ const CTA = () => {
             className="btn btn-primary btn-block w-full max-w-xs space-y-3"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            Start designing - it&apos;s free
+            Start designing - 2 free credits
           </button>
         </div>
       </div>

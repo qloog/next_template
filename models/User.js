@@ -38,7 +38,7 @@ const userSchema = mongoose.Schema(
     },
     currentCredits: {
       type: Number,
-      default: 1,
+      default: 2,
     },
     planType: {
       type: String,
