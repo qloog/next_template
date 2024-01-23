@@ -9,7 +9,7 @@ const SigninButton = () => {
     className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"
       onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
     >
-     Start designing - it's free
+     Start designing - it&apos;s free
     </button>
     
   );
