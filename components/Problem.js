@@ -58,7 +58,7 @@ const Problem = () => {
 
           <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
 
-          <Step emoji="😕" text="Mismatched Expectations" />
+          <Step emoji="😕" text="Designs Not Meeting Your Vision" />
 
           <Arrow extraStyle="md:-scale-x-100 md:-rotate-90" />
 
