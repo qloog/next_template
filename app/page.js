@@ -79,12 +79,12 @@ export default function Home() {
   };
 
   const buttonStyle = {
-    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "black",
+    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "white",
     border: "none",
     borderRadius: "20px", // This makes the button oval-shaped
     padding: "10px 20px",
     cursor: "pointer",
-    color: "white",
+    color: "black",
     // Add any other styles you need for the button
   };
 
