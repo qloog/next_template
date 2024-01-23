@@ -8,9 +8,9 @@ import Image from "next/image"
 
 const faqList = [
   {
-    question: <div className="text-white">How does TattooswithAI work?</div>,
+    question: <div className="text-black">How does TattooswithAI work?</div>,
     answer: (
-      <div className="space-y-2 leading-relaxed text-white">
+      <div className="space-y-2 leading-relaxed text-black">
         TattooswithAI taps into the power of textual input to generate custom
         tattoo designs. You input your tattoo concept through text, and the AI,
         trained on a vast array of tattoo art, interprets your words to create a
@@ -22,7 +22,7 @@ const faqList = [
     ),
   },
   {
-    question: <div className="text-white">What AI model do you use?</div>,
+    question: <div className="text-black">What AI model do you use?</div>,
     answer: <p>TattooswithAI is powered by DALL-E 3</p>,
   },
   {
@@ -117,7 +117,7 @@ const Item = ({ item }) => {
         }}
         aria-expanded={isOpen}
       >
-        <span className={`flex-1 text-white`}>{item?.question}</span>
+        <span className={`flex-1 text-black`}>{item?.question}</span>
         <svg
           className={`flex-shrink-0 w-4 h-4 ml-auto fill-current`}
           viewBox="0 0 16 16"
@@ -165,13 +165,10 @@ const FAQ = () => {
       <div className="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
         <div className="flex flex-col text-left basis-1/2">
           <p className="inline-block font-semibold text-primary mb-4">FAQ</p>
-          <p className="sm:text-4xl text-3xl font-extrabold text-white">
+          <p className="sm:text-4xl text-3xl font-extrabold text-black">
             Frequently Asked Questions
           </p>
-          <Image
-            src="https://images.unsplash.com/photo-1571117223784-688f15c9d66a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcwNTY5MTE5Mw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-            alt="tattoo girl"
-          />
+
         </div>
 
         <ul className="basis-1/2">
