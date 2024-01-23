@@ -128,7 +128,7 @@ export default function Home() {
         <Hero />
         <section
           id="tattoo-generator"
-          className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-black"
+          className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
         >
           
           <div>
@@ -153,7 +153,7 @@ export default function Home() {
       <h1 className="animated-text">TATTOOSWITHAI</h1>
     </div>
   
-          <h3 className="font-semibold text-base-content text-lg opacity-80 text-white">
+          <h3 className="font-semibold text-base-content text-lg opacity-80 bg-white text-black">
            Design Your Tattoo
           </h3>
           <input
@@ -187,7 +187,7 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
         <Problem></Problem>
-        <section className="bg-black items-center justify-center">
+        <section className="bg-white text-black items-center justify-center">
         <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
         </section>
         <FeaturesAccordion></FeaturesAccordion>
@@ -195,7 +195,7 @@ export default function Home() {
         <section>
         <FAQ></FAQ>
         </section>
-        <section id="pricing" className="font-semibold text-base-content text-lg text-white bg-black">
+        <section id="pricing" className="font-semibold text-base-content text-lg bg-white text-black">
           <Pricing></Pricing>
         </section>
         <Footer></Footer>
