@@ -9,8 +9,12 @@ const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 function Hero() {
   return (
     <section
-      className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black stroke-gray-200"
-     
+      className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
+      style={{
+        borderColor: '#e5e7eb', // This is the hex color code for Tailwind's gray-200
+        borderWidth: '1px',
+        borderStyle: 'solid'
+      }}
     >
       
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
