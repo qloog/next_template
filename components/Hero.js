@@ -10,9 +10,7 @@ function Hero() {
   return (
     <section
       className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
-      style={{
-        border: '1px solid #e5e7eb', // Applies a solid gray border
-      }}
+    
     >
       
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-left lg:text-left lg:items-start">
