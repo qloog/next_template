@@ -5,10 +5,10 @@ const CTA = () => {
   return (
     <section className="relative hero bg-white text-black min-h-screen">
       
-      <div className="relative hero-overlay bg-neutral bg-opacity-70"></div>
+      <div className="relative hero-overlay bg-white"></div>
       <div className="relative hero-content text-white text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
-          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left text-white">
+          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left bg-white text-white">
           Try TattooswithAI for free today
 
           </h2>
