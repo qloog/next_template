@@ -155,7 +155,10 @@ const FeaturesAccordion = () => {
         <p className="font-medium text-sm text-accent mb-2">
         POWERFUL FEATURES
         </p>
-        <h2 className="font-extrabold text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24">
+        <h2 className="font-extrabold text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24"
+        style={{
+          fontFamily: 'Times New Roman, serif'
+        }}>
          Think, design, and get it inked
         </h2>
         <div className=" flex flex-col md:flex-row gap-12 md:gap-24">

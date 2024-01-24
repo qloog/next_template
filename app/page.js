@@ -133,7 +133,10 @@ export default function Home() {
           
     
   
-          <h3 className="font-semibold text-base-content text-lg opacity-80 bg-white text-black">
+          <h3 className="font-semibold text-base-content text-lg opacity-80 bg-white text-black"
+          style={{
+            fontFamily: 'Times New Roman, serif'
+          }}>
            Design Your Tattoo
           </h3>
           <input
