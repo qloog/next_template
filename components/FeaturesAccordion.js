@@ -23,6 +23,9 @@ const features = [
     title: "Custom Tattoo Styles",
     description:
       "From traditional to abstract, select from a range of tattoo styles. Our AI adapts to your preference, ensuring each design aligns with the chosen style",
+      type: "image",
+      path: "/media/demo.png",
+      alt: "A demo",
   },
   {
     title: "Interactive Design Sessions",
