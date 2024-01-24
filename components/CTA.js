@@ -27,7 +27,7 @@ const CTA = () => {
             style={{
               backgroundColor: 'rgb(50, 61, 214)'
             }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
           >
             Start designing - 2 free credits
           </button>
