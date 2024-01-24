@@ -19,7 +19,7 @@ function Hero() {
     >
       
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-center lg:items-start">
-        <h1 className="text-black font-medium font-EB Garamond text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center lg:font-semibold">
+        <h1 className="text-black font-medium font-Arial text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center lg:font-semibold">
         Create Artist-Quality Tattoos for Less using AI
         </h1>
 
