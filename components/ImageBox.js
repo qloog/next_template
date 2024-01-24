@@ -27,7 +27,7 @@ const GeneratedImageCard = ({ finalData, isLoading }) => {
     return (
         <div style={cardStyle}>
             {isLoading ? (
-                <p className='text-white'>Loading...</p>
+                <p className='text-black'>Loading...</p>
             ) : finalData ? (
                 <img src={finalData} alt="Generated Tattoo" style={imageStyle} />
             ) : (
