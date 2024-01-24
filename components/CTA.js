@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { signIn } from "next-auth/react";
 import config from "@/config";
 
 const CTA = () => {
