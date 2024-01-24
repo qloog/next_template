@@ -15,9 +15,9 @@ const features = [
     title: "AI Design Assist",
     description:
       "Just like autocomplete, our AI assists you in designing tattoos. Start with a basic idea and watch as AI expands it into a full-fledged design, overcoming any creative block",
-     //type: "video",
-      //path: "https://d3m8mk7e1mf7xn.cloudfront.net/app/newsletter.webm",
-      //format: "video/webm",
+     type: "video",
+      path: "/media/demovideo.mp4",
+      format: "video/mp4",
   },
   {
     title: "Custom Tattoo Styles",
