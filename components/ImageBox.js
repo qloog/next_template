@@ -31,7 +31,7 @@ const GeneratedImageCard = ({ finalData, isLoading }) => {
             ) : finalData ? (
                 <img src={finalData} alt="Generated Tattoo" style={imageStyle} />
             ) : (
-                <p className='text-white'>No image generated yet</p>
+                <p className='text-black'>No image generated yet</p>
             )}
         </div>
     );
