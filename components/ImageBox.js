@@ -8,7 +8,7 @@ const GeneratedImageCard = ({ finalData, isLoading }) => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        border: 'white', // White border with 80% opacity
+        border: 'gray solid',
         padding: '20px',
         marginTop: '20px',
         borderRadius: '10px',
