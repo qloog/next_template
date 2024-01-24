@@ -85,7 +85,7 @@ const faqList = [
     answer: (
       <p>
         You only pay once to gain credits to generate custom tattoo designs. We
-        have Beginner, Veteran, and Premium plans. You choose which one best
+        have Beginner, Pro, and Premium plans. You choose which one best
         suits you and pay once, and when you&apos;ve run out of credits, you
         must choose a plan again.
       </p>
