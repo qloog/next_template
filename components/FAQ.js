@@ -46,7 +46,7 @@ const faqList = [
     question: "How do I contact support?",
     answer: (
       <p>
-        You can contact us at rajvirnahar6667@gmail.com
+        You can contact us at infotattooswithai@gmail.com
       </p>
     ),
   },
@@ -61,11 +61,11 @@ const faqList = [
     ),
   },
   {
-    question: "How much does Findrr cost?",
+    question: "How much does TattooswithAI cost?",
     answer: (
       <div className="space-y-2 leading-relaxed">
-        Right now the beginner plan costs $4.99, the Veteran plan $9.99 and the
-        Premium plan $18.99. You get 1 credit for free when you sign up. Only
+        Right now the beginner plan costs $4.99, the Pro plan $9.99 and the
+        Premium plan $18.99. You get 2 credits for free when you sign up. Only
         one time payments
       </div>
     ),
