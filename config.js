@@ -26,17 +26,16 @@ const config = {
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Beginner",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "Perfect for First-Timers Exploring AI Tattoo Design",
+        description: "A Great Start for AI-Assisted Tattoo Design",
         // The price you want to display, the one user will be charged on Stripe.
         price: 4.99,
         credits: 10,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 16.99,
         features: [
-          { name: "10 design credits added to your account" },
-        { name: "Access an unlimited array of design options; create up to 10 unique tattoos" },
-        { name: "Personalize each tattoo design with AI assistance" },
-        { name: "Access to standard customer support for guidance" },
+          { name: "10 design credits" },
+        { name: "Design up to 10 unique tattoos" },
+        { name: "Access essential customer assistance" },
         ],
       },
       {
@@ -47,15 +46,15 @@ const config = {
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_1ObDhsHa8820Uqe5hWVSyYNT",
         name: "Pro",
-        description: "Ideal for Enthusiasts Seeking More Creativity",
+        description: "Expanded Creativity for Tattoo Enthusiasts",
         price: 9.99,
         credits: 30,
         priceAnchor: 22.99,
         features: [
-          { name: "30 design credits added to your account" },
-        { name: "Share your creations and get professional insights and community opinions" },
-        { name: "More credits for more creativity" },
-        { name: "Faster, prioritized customer assistance" },
+          { name: "30 design credits" },
+        { name: "SMore versatility in design creation" },
+        { name: "Faster response for your inquiries" },
+        { name: "Collaborate and share ideas within the community for feedback and inspiration" },
         ],
       },
       {
@@ -66,7 +65,7 @@ const config = {
       //  REQUIRED - Name of the plan, displayed on the pricing page
       name: "Premium",
       // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-      description: "Unlimited Creativity for Tattoo Lovers",
+      description: "The Ultimate Experience for Tattoo Lovers",
       // The price you want to display, the one user will be charged on Stripe.
       price: 18.99,
       credits: 100,
@@ -74,8 +73,8 @@ const config = {
       priceAnchor: 32.99,
       features: [
         { name: "Unlimited design credits - create without limits" },
-        { name: "The sky's the limit" },
-        { name: "Leverage all AI features for unparalleled design options" },
+        { name: "Leverage all AI tools for advanced designs" },
+        { name: "Get professional insights on your creations" },
         { name: "Top-tier customer service and technical support" },
       ],
       },
