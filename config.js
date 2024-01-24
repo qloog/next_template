@@ -52,7 +52,7 @@ const config = {
         priceAnchor: 22.99,
         features: [
           { name: "30 design credits" },
-        { name: "SMore versatility in design creation" },
+        { name: "More versatility in design creation" },
         { name: "Faster response for your inquiries" },
         { name: "Collaborate and share ideas within the community for feedback and inspiration" },
         ],
