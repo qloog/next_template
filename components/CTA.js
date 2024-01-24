@@ -8,11 +8,17 @@ const CTA = () => {
       <div className="relative hero-overlay bg-white"></div>
       <div className="relative hero-content text-white text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
-          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left bg-white text-black">
+          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left bg-white text-black"
+          style={{
+            fontFamily: 'Times New Roman, serif'
+          }}>
           Try TattooswithAI for free today
 
           </h2>
-          <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left text-black">
+          <p className="text-lg opacity-80 mb-12 md:mb-16 text-align:left text-black"
+          style={{
+            fontFamily: 'Times New Roman, serif'
+          }}>
           Create your first custom piece with TattooswithAI today and never look back
           </p>
 
