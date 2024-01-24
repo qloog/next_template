@@ -26,7 +26,11 @@ function Hero() {
         Create Artist-Quality Tattoos for Less using AI
         </h1>
 
-        <p className="font-medium text-lg leading-relaxed items-center justify-center  text-align:center text-center lg:text-center text-black">
+        <p className="font-medium text-lg leading-relaxed items-center justify-center  text-align:center text-center lg:text-center text-black"
+         style={{
+          fontFamily: 'Times New Roman, serif'
+        }}>
+          
           Turn your idea into a custom design without overpaying and design accordingly to your liking.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
