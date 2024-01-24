@@ -36,6 +36,9 @@ const features = [
     title: "Prompt-Driven Custom Designs",
     description:
       "Jumpstart your tattoo journey by entering a prompt or idea. Our AI takes your concept and generates a unique design, providing a creative foundation for you to refine and personalize",
+      type: "image",
+      path: "/media/tiger.webp",
+      alt: "A tiger",
   },
 ];
 
