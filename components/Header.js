@@ -19,7 +19,7 @@ const links = [
     label: "FAQ",
   },
   {
-    href: "mailto:rajvirnahar6667@gmail.com",
+    href: "mailto:infotattooswithai@gmail.com",
   label: "Support",
   }
 ];
