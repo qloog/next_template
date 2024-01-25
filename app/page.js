@@ -128,7 +128,6 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
       </Head>
     <Header></Header>
-      <ButtonAccount></ButtonAccount>
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
         <Hero />
