@@ -12,7 +12,7 @@ const SigninButton = () => {
     }}
       onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
     >
-     Start designing - 2 free credits
+     Start designing -it&apos;s free
     </button>
     
   );
