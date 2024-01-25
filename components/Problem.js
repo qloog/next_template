@@ -45,13 +45,13 @@ const Problem = () => {
       <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
         <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-6 md:mb-8"
         style={{
-          fontFamily: 'Times New Roman, serif'
+          fontFamily: "'EB Garamond', serif",
         }}>
         90% of tattoos are surprisingly similar. It&apos;s not just you, even top artists have their limits
         </h2>
         <p className="max-w-xl mx-auto text-lg text-black leading-relaxed mb-12 md:mb-20"
         style={{
-          fontFamily: 'Times New Roman, serif'
+          fontFamily: "'EB Garamond', serif",
         }}>
           Repetitive Designs, Limited Choices, Artist&apos;s Vision Not Matching
           Yours...
@@ -59,7 +59,7 @@ const Problem = () => {
 
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6"
         style={{
-          fontFamily: 'Times New Roman, serif'
+          fontFamily: "'EB Garamond', serif",
         }}>
           <Step emoji="💰" text="Overspending on Design" />
 

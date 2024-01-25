@@ -22,7 +22,7 @@ function Hero() {
         <p
           className="font-medium text-lg leading-relaxed items-center justify-center  text-align:center text-center lg:text-center text-black"
           style={{
-            fontFamily: "Times New Roman, serif",
+            fontFamily: "'EB Garamond', serif",
           }}
         >
           Turn your idea into a custom design without overpaying and design

@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="opacoty-80 border-t border-base-content/10 text-white" id="footer"
     style={{
-      fontFamily: 'Times New Roman, serif',
+      fontFamily: "'EB Garamond', serif",
       backgroundColor: 'rgb(25,25,25)'
     }}>
       <div className="max-w-7xl mx-auto px-8 py-24">

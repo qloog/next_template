@@ -163,7 +163,7 @@ const FeaturesAccordion = () => {
         </p>
         <h2 className="font-extrabold text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24"
         style={{
-          fontFamily: 'Times New Roman, serif'
+          fontFamily: "'EB Garamond', serif",
         }}>
          Think, design, and get it inked
         </h2>
