@@ -14,6 +14,29 @@ export async function POST(req) {
 
   await connectMongo()
 
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  let ipUser = await User.findOne({ ipAddress: ip });
+
+  if (!ipUser) {
+    // This is a new user based on IP address
+    // Create a new user entry with 2 credits and the captured IP address
+    ipUser = new User({ currentCredits: 2, ipAddress: ip });
+    await ipUser.save();
+  }
+
+  if (session) {
+    // Existing user logic with session
+    // Use 'user' as it was being used before
+    // ...
+  } else if (ipUser.currentCredits === 0) {
+    // IP-based user exists but no credits left
+    return NextResponse.json({ error: 'Not enough credits', promptSignIn: true }, { status: 403 });
+  }
+
+  ipUser.currentCredits = ipUser.currentCredits - 1;
+  await ipUser.save();
+
+
   const user = await User.findById(id)
 
   if (!user || !user.currentCredits || user.currentCredits === 0) {
