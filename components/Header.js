@@ -22,6 +22,10 @@ const links = [
     href: "mailto:infotattooswithai@gmail.com",
   label: "Support",
   },
+  {
+    href: config.auth.callbackUrl,
+    label: "About",
+  }
 ];
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
