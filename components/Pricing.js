@@ -8,12 +8,6 @@ import ButtonCheckout from "./ButtonCheckout";
 const Pricing = () => {
   return (
     <section className="bg-white text-black overflow-hidden" id="pricing"
-    style={{
-      backgroundImage: 'url(/media/HD-wallpaper-swirly-lines-wavy-white-background-white-background.jpg)', // Replace with your image URL
-      backgroundSize: 'cover', // Cover the entire section with the image
-      backgroundPosition: 'center', // Center the background image
-      backgroundRepeat: 'no-repeat', // Do not repeat the image
-    }}
     >
       <div className="py-24 px-8 max-w-5xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
