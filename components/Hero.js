@@ -16,7 +16,7 @@ function Hero() {
         fontFamily: "'EB Garamond', serif",
       }}
     >
-          Create Artist-Quality Tattoos for Less using AI
+          Design Your Own Artist-Quality Custom-Made Tattoos At Home Using AI
         </h1>
 
         <p
