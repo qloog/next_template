@@ -11,7 +11,7 @@ function Hero() {
     <section className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-center lg:items-start">
       <h1
-      className="text-black font-medium text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center lg:font-semibold"
+      className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center"
       style={{
         fontFamily: "'EB Garamond', serif",
       }}
