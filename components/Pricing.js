@@ -8,6 +8,10 @@ import ButtonCheckout from "./ButtonCheckout";
 const Pricing = () => {
   return (
     <section className="bg-white text-black overflow-hidden" id="pricing"
+    style={{
+      backgroundColor: "rgba(255, 255, 255, 0.95)", // White with a bit of opacity
+      // Any other styles...
+    }}
     >
       <div className="py-24 px-8 max-w-5xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
