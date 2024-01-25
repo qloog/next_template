@@ -26,7 +26,7 @@ const config = {
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Beginner",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "A Great Start for AI-Assisted Tattoo Design",
+        description: "",
         // The price you want to display, the one user will be charged on Stripe.
         price: 4.99,
         credits: 10,
@@ -46,7 +46,7 @@ const config = {
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_1ObDhsHa8820Uqe5hWVSyYNT",
         name: "Pro",
-        description: "Expanded Creativity for Tattoo Enthusiasts",
+        description: "",
         price: 9.99,
         credits: 30,
         priceAnchor: 22.99,
@@ -65,7 +65,7 @@ const config = {
       //  REQUIRED - Name of the plan, displayed on the pricing page
       name: "Premium",
       // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-      description: "The Ultimate Experience for Tattoo Lovers",
+      description: "",
       // The price you want to display, the one user will be charged on Stripe.
       price: 18.99,
       credits: 100,
@@ -76,6 +76,7 @@ const config = {
         { name: "Leverage all AI tools for advanced designs" },
         { name: "Get professional insights on your creations" },
         { name: "Top-tier customer service and technical support" },
+        { name: "Access to latest features" }
       ],
       },
     ],
