@@ -23,7 +23,7 @@ const links = [
   label: "Support",
   },
   {
-    href: "/#about",
+    href: "/about", 
     label: "About",
   },
 ];
