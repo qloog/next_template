@@ -9,8 +9,8 @@ const Pricing = () => {
   return (
     <section className="bg-white text-black overflow-hidden" id="pricing"
     style={{
-      backgroundColor: "rgba(255, 255, 255, 0.95)", // White with a bit of opacity
-      // Any other styles...
+      backgroundColor: "rgba(255, 255, 255, 0.95)",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     }}
     >
       <div className="py-24 px-8 max-w-5xl mx-auto">
