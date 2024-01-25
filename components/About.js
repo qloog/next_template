@@ -1,3 +1,5 @@
+
+export default async function About() {
 return (
     <main className="bg-white text-black min-h-screen p-8 pb-24">
       <section className="max-w-xl mx-auto space-y-8" id="about">
@@ -21,3 +23,4 @@ return (
 
     </main>
   );
+    }
