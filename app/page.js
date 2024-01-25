@@ -138,9 +138,10 @@ export default function Home() {
           
     
   
-          <h3 className="font-semibold text-base-content text-lg opacity-80 bg-white text-black"
+          <h3 className=" text-base-content text-lg opacity-80 bg-white text-black"
           style={{
             fontFamily: "'EB Garamond', serif",
+            fontSize: '2rem',
           }}>
            Design Your Tattoo
           </h3>
