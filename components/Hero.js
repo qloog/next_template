@@ -8,30 +8,25 @@ const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
 function Hero() {
   return (
-    <section
-      className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
-      style={{
-        backgroundImage: 'url(/media/abstract-white-line-background-vector-illustration_54768-479.avif)', // Replace with your image URL
-        backgroundSize: 'cover', // Cover the entire section with the image
-        backgroundPosition: 'center', // Center the background image
-        backgroundRepeat: 'no-repeat', // Do not repeat the image
-      }}
-    >
-      
+    <section className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-center lg:items-start">
-        <h1 className="text-black font-medium  text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center lg:font-semibold"
-        style={{
-          fontFamily: 'Times New Roman, serif'
-        }}>
-        Create Artist-Quality Tattoos for Less using AI
+        <h1
+          className="text-black font-medium  text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center lg:font-semibold"
+          style={{
+            fontFamily: "Times New Roman, serif",
+          }}
+        >
+          Create Artist-Quality Tattoos for Less using AI
         </h1>
 
-        <p className="font-medium text-lg leading-relaxed items-center justify-center  text-align:center text-center lg:text-center text-black"
-         style={{
-          fontFamily: 'Times New Roman, serif'
-        }}>
-          
-          Turn your idea into a custom design without overpaying and design accordingly to your liking.
+        <p
+          className="font-medium text-lg leading-relaxed items-center justify-center  text-align:center text-center lg:text-center text-black"
+          style={{
+            fontFamily: "Times New Roman, serif",
+          }}
+        >
+          Turn your idea into a custom design without overpaying and design
+          accordingly to your liking.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
 
