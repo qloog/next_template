@@ -27,6 +27,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
   const { data: session } = useSession();
+  const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
+
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
@@ -34,6 +36,7 @@ export default function Home() {
     if (!session) {
       // If not logged in, only scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      setShowLoginSignupPrompt(true);
       setIsLoading(false);
       return;
     }
@@ -128,6 +131,24 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
       </Head>
     <Header></Header>
+    <style jsx>{`
+        .login-signup-prompt {
+          background-color: #f8f9fa;
+          border: 1px solid #ddd;
+          padding: 20px;
+          border-radius: 5px;
+          text-align: center;
+          margin-top: 20px;
+        }
+      `}</style>
+
+    {showLoginSignupPrompt && (
+  <div className="login-signup-prompt">
+    <p>Sign up for an account. If you already have an account, we'll log you in.</p>
+    <button onClick={() => setShowLoginSignupPrompt(false)}>Close</button>
+  </div>
+)}
+
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
         <Hero />
