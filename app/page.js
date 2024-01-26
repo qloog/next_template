@@ -144,7 +144,7 @@ export default function Home() {
 
     {showLoginSignupPrompt && (
   <div className="login-signup-prompt">
-    <p>Sign up for an account. If you already have an account, we&apos;ll log you in.</p>
+    <p>Sign up for an account below. If you already have an account, we&apos;ll log you in.</p>
     <button onClick={() => setShowLoginSignupPrompt(false)}>Close</button>
   </div>
 )}
