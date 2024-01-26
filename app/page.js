@@ -52,6 +52,7 @@ export default function Home() {
     if (res.status !== 200) {
       console.log("Error: ", res.status);
       setIsLoading(false);
+      
 
       if (res.status === 403) {
         setShowPopup(true);

@@ -15,7 +15,6 @@ export async function POST(req) {
   await connectMongo()
 
 
-
   const user = await User.findById(id)
 
   if (!user || !user.currentCredits || user.currentCredits === 0) {

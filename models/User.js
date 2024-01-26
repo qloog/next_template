@@ -14,6 +14,12 @@ const userSchema = mongoose.Schema(
       lowercase: true,
       private: true,
     },
+
+    ipAddress: {
+      type: String,
+      required: false, // IP address may not be available for all users
+    },
+    
     image: {
       type: String,
     },
