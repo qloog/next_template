@@ -20,7 +20,7 @@ function Hero() {
         </h1>
 
         <p
-          className="font-medium text-lg leading-relaxed items-center justify-center  text-align:center text-center lg:text-center text-black"
+          className="font-medium text-lg leading-relaxed items-center justify-center  text-align:center text-center lg:text-center text-black opacity-80"
           style={{
             fontFamily: "'EB Garamond', serif",
           }}
