@@ -65,11 +65,11 @@ const Pricing = () => {
                       </p>
                     </div>
                   )}
-                  <p className={`text-5xl tracking-tight`}>
+                  <p className={`tracking-tight`}>
                     ${plan.price}
                   </p>
                   <div className="flex flex-col justify-end mb-[4px]">
-                    <p className="text-xs text-black uppercase">
+                    <p className=" text-black uppercase">
                       USD
                     </p>
                   </div>
