@@ -19,7 +19,7 @@ const Pricing = () => {
           </h1>
         </div>
 
-        <div className="text-black"
+        <div className="text-black relative flex justify-center flex-col lg:flex-row items-center gap-8"
         style={{
           backgroundColor: "rgba(255, 255, 255, 0.95)",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
