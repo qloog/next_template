@@ -65,7 +65,7 @@ const Pricing = () => {
                       </p>
                     </div>
                   )}
-                  <p className={`text-2xl tracking-tight`}>
+                  <p className={`text-5xl tracking-tight`}>
                     ${plan.price}
                   </p>
                   <div className="flex flex-col justify-end mb-[4px]">
