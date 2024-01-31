@@ -201,7 +201,7 @@ export default function Home() {
         <section>
         <FAQ></FAQ>
         </section>
-        <section id="pricing" className="font-semibold text-base-content text-lg bg-white text-black">
+        <section id="pricing" className="text-base-content text-lg bg-white text-black">
           <Pricing></Pricing>
         </section>
         <CTA></CTA>
