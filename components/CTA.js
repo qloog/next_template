@@ -29,7 +29,7 @@ const CTA = () => {
             }}
             onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
           >
-             Sign up for 2 free credits
+             Sign up for a free credit
           </button>
         </div>
       </div>
