@@ -8,7 +8,7 @@ const CTA = () => {
       <div className="relative hero-overlay bg-white"></div>
       <div className="relative hero-content text-black text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
-          <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left text-black"
+          <h2 className=" text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left text-black"
           style={{
             fontFamily: "'EB Garamond', serif",
           }}>
