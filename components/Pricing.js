@@ -46,7 +46,7 @@ const Pricing = () => {
               <div className="bg-white relative flex flex-col h-full gap-5 lg:gap-8 z-10 p-8 rounded-lg">
                 <div className="flex justify-between items-center gap-4">
                   <div>
-                    <p className="text-lg lg:text-xl font-bold">{plan.name}</p>
+                    <p className="text-lg lg:text-xl">{plan.name}</p>
                     {plan.description && (
                       <p className="text-black">
                         {plan.description}
@@ -65,11 +65,11 @@ const Pricing = () => {
                       </p>
                     </div>
                   )}
-                  <p className={`text-5xl tracking-tight font-extrabold`}>
+                  <p className={`text-5xl tracking-tight`}>
                     ${plan.price}
                   </p>
                   <div className="flex flex-col justify-end mb-[4px]">
-                    <p className="text-xs text-black uppercase font-semibold">
+                    <p className="text-xs text-black uppercase">
                       USD
                     </p>
                   </div>
