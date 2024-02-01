@@ -84,10 +84,10 @@ export default function Home() {
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
     transition: "border-color 0.2s ease-in-out", // Smooth transition for interactions
     // Ensures the input stands out when focused
-    ':focus': {
+    ":focus": {
       borderColor: "#007bff", // Highlight color when the textbox is focused
       boxShadow: "0 0 0 3px rgba(0, 123, 255, 0.25)", // Expands the shadow for focus indication
-    }
+    },
   };
 
   const buttonStyle = {
@@ -179,11 +179,12 @@ export default function Home() {
           >
             Design Your Tattoo
           </h3>
-          <textarea
-            style={{textboxStyle}}
+          <input
+            type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Enter your tattoo idea"
+            style={textboxStyle}
           />
           <select
             value={style}
