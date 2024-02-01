@@ -66,11 +66,22 @@ export default function Home() {
     setIsLoading(false); // End loading
   }
 
-  const buttonStyle1 = {
-    border: "2px border gray",
-    backgroundColor: "white",
-    color: "black", // White text with 80% opacity
-    // Other styles...
+  const selectStyle = {
+    backgroundColor: "#ffffff", // Consistent with the textarea
+    border: "1px solid #cccccc", // Light border for a delicate look
+    borderRadius: "5px", // Rounded corners to match the textarea
+    color: "#333333", // Text color for readability
+    padding: "10px 12px", // Padding for visual comfort, slightly less vertical padding than textarea for differentiation
+    fontSize: "1rem", // Font size to maintain consistency
+    boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)", // Soft shadow to match the textarea
+    appearance: "none", // Remove default browser styling
+    WebkitAppearance: "none", // Also for Safari
+    MozAppearance: "none", // Also for Firefox
+    backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20"><path fill="%23333333" d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z"/></svg>')`, // Custom dropdown arrow
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "right 10px center", // Position for the custom arrow
+    marginRight: "0.5rem", // Ensure select doesn't touch any sibling elements
+    transition: "border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out", // Smooth transition for interactions
   };
 
   const textboxStyle = {
@@ -189,7 +200,7 @@ export default function Home() {
           <select
             value={style}
             onChange={(e) => setStyle(e.target.value)}
-            style={buttonStyle1}
+            style={selectStyle}
           >
             <option value="Original">Original</option>
             <option value="Watercolor">Watercolor</option>
