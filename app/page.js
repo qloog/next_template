@@ -224,7 +224,7 @@ export default function Home() {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
-            Render new Tattoo
+            Render new tattoo
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
