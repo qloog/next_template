@@ -102,8 +102,9 @@ export default function Home() {
   };
 
   const buttonStyle = {
-    fontFamily: "'EB Garamond', serif", // Ensures consistency with your heading fonts
-    backgroundColor: "#4c51bf", // A deep blue color that stands out on a white background
+    fontFamily: "'Inter', sans-serif", // Use the Inter font
+    fontWeight: 600, 
+    backgroundColor: 'rgb(50, 61, 214)',
     color: "white", // White text for contrast
     fontSize: "1rem", // Adjust based on your preference
     padding: "10px 20px", // Ample padding for a larger clickable area
@@ -156,7 +157,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap"
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@600&display=swap"
           rel="stylesheet"
         />
       </Head>
