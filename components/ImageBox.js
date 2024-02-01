@@ -8,32 +8,37 @@ const GeneratedImageCard = ({ finalData, isLoading }) => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        border: 'gray solid',
+        border: '1px solid #e2e8f0', // Lighter and more subtle border
         padding: '20px',
         marginTop: '20px',
         borderRadius: '10px',
-        backgroundColor: 'transparent',
-
+        backgroundColor: '#ffffff', // Light background to distinguish the card
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
+        maxWidth: '90%',
     };
    
 
 
     const imageStyle = {
-        maxWidth: '100%',
-        maxHeight: '400px', // Set a max height for the image
+        width: '100%', // Makes image responsive
+        maxHeight: '400px',
         borderRadius: '8px',
+        objectFit: 'cover', // Ensures the image covers the area nicely without distortion
     };
     
     return (
         <div style={cardStyle}>
-            {isLoading ? (
-                <p className='text-black'>Loading...</p>
-            ) : finalData ? (
-                <img src={finalData} alt="Generated Tattoo" style={imageStyle} />
-            ) : (
-                <p className='text-black'>No image generated yet</p>
-            )}
-        </div>
+        {isLoading ? (
+            <p>Loading...</p>
+        ) : finalData ? (
+            <img src={finalData} alt="Generated Tattoo" style={imageStyle} />
+        ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '200px' }}>
+                <p>No image generated yet</p>
+                {/* Optionally, add an icon or placeholder here */}
+            </div>
+        )}
+    </div>
     );
 
 };
