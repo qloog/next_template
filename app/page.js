@@ -12,12 +12,12 @@ import Pricing from "@/components/Pricing";
 import config from "@/config";
 import Testimonials3 from "@/components/Testimonials3";
 import FAQ from "@/components/FAQ";
-import CTA from "@/components/CTA"
-import Problem from "@/components/Problem"
-import FeaturesAccordion from "@/components/FeaturesAccordion"
-import Testimonials11 from "@/components/Testimonials11"; 
+import CTA from "@/components/CTA";
+import Problem from "@/components/Problem";
+import FeaturesAccordion from "@/components/FeaturesAccordion";
+import Testimonials11 from "@/components/Testimonials11";
 import { useSession } from "next-auth/react";
-import Head from 'next/head';
+import Head from "next/head";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -35,7 +35,7 @@ export default function Home() {
 
     if (!session) {
       // If not logged in, only scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
       setShowLoginSignupPrompt(true);
       setIsLoading(false);
       return;
@@ -52,7 +52,6 @@ export default function Home() {
     if (res.status !== 200) {
       console.log("Error: ", res.status);
       setIsLoading(false);
-      
 
       if (res.status === 403) {
         setShowPopup(true);
@@ -74,22 +73,26 @@ export default function Home() {
     // Other styles...
   };
 
-  const textboxStyle = {
-    backgroundColor: "#ffffff", // Cleaner to use hex codes for color
-    border: "1px solid #cccccc", // Lighter border for subtlety
-    borderRadius: "5px", // Rounded corners for a modern look
-    color: "#333333", // Slightly softer than pure black for readability
-    padding: "12px", // Slightly more padding for better text input visibility
-    fontSize: "1rem", // Maintains default size, adjust based on preference
-    outline: "none", // Removes the default focus outline
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
-    transition: "border-color 0.2s ease-in-out", // Smooth transition for interactions
-    // Ensures the input stands out when focused
-    ':focus': {
-      borderColor: "#007bff", // Highlight color when the textbox is focused
-      boxShadow: "0 0 0 3px rgba(0, 123, 255, 0.25)", // Expands the shadow for focus indication
+  <style jsx>{`
+    .textboxStyle {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0; /* Lighter border for a softer look */
+      border-radius: 8px; /* More rounded corners */
+      color: #2d3748; /* Dark gray for text, offering better contrast */
+      padding: 15px; /* More padding for text area */
+      font-size: 1rem;
+      outline: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtler shadow for depth */
+      transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
     }
-  };
+    .textboxStyle:focus {
+      border-color: #4c51bf; /* Highlight color when textbox is focused, choose a theme color */
+      box-shadow: 0 0 0 3px rgba(76, 81, 191, 0.6); /* Expanding the shadow for focus indication with theme color */
+    }
+    .textboxStyle::placeholder {
+      color: #a0aec0; /* Lighter color for placeholders */
+    }
+  `}</style>;
 
   const buttonStyle = {
     backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "black",
@@ -134,13 +137,16 @@ export default function Home() {
 
   return (
     <>
-     <Head>
+      <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-    <Header></Header>
-    <style jsx>{`
+      <Header></Header>
+      <style jsx>{`
         .login-signup-prompt {
           background-color: #f8f9fa;
           border: 1px solid #ddd;
@@ -151,35 +157,37 @@ export default function Home() {
         }
       `}</style>
 
-    {showLoginSignupPrompt && (
-  <div className="login-signup-prompt">
-    <p>Sign up for an account below. If you already have an account, we&apos;ll log you in.</p>
-    <button onClick={() => setShowLoginSignupPrompt(false)}>Close</button>
-  </div>
-)}
+      {showLoginSignupPrompt && (
+        <div className="login-signup-prompt">
+          <p>
+            Sign up for an account below. If you already have an account,
+            we&apos;ll log you in.
+          </p>
+          <button onClick={() => setShowLoginSignupPrompt(false)}>Close</button>
+        </div>
+      )}
 
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
         <Hero />
         <section
           id="tattoo-generator"
-          className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black" >
-          
-    
-  
-          <h3 className=" text-base-content text-lg opacity-80 bg-white text-black"
-          style={{
-            fontFamily: "'EB Garamond', serif",
-            fontSize: '2rem',
-          }}>
-           Design Your Tattoo
+          className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
+        >
+          <h3
+            className=" text-base-content text-lg opacity-80 bg-white text-black"
+            style={{
+              fontFamily: "'EB Garamond', serif",
+              fontSize: "2rem",
+            }}
+          >
+            Design Your Tattoo
           </h3>
-          <input
-            type="text"
+          <textarea
+            className="textboxStyle"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Enter your tattoo idea"
-            style={textboxStyle}
           />
           <select
             value={style}
@@ -207,9 +215,12 @@ export default function Home() {
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
         <section>
-        <FAQ></FAQ>
+          <FAQ></FAQ>
         </section>
-        <section id="pricing" className="text-base-content text-lg bg-white text-black">
+        <section
+          id="pricing"
+          className="text-base-content text-lg bg-white text-black"
+        >
           <Pricing></Pricing>
         </section>
         <CTA></CTA>
@@ -218,7 +229,6 @@ export default function Home() {
     </>
   );
 }
-
 
 /* <section className="bg-black">
 <h3
@@ -319,18 +329,17 @@ style={{
         }
 */
 
-       /* .animated-text {
+/* .animated-text {
           font-size: 24px; /* Adjust size as needed */
-         // font-weight: bold;
-         // background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-          //background-size: 300% 300%;
-          //-webkit-background-clip: text;
-          ///-webkit-text-fill-color: transparent;
-          //animation: animatedgradient 6s ease infinite alternate;
-       // }
-      
-      //`}</style>
+// font-weight: bold;
+// background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+//background-size: 300% 300%;
+//-webkit-background-clip: text;
+///-webkit-text-fill-color: transparent;
+//animation: animatedgradient 6s ease infinite alternate;
+// }
 
-      //<h1 className="animated-text">TATTOOSWITHAI</h1>
-    //</div>
-    
+//`}</style>
+
+//<h1 className="animated-text">TATTOOSWITHAI</h1>
+//</div>
