@@ -34,8 +34,8 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
     <button
       className="btn bg-black text-white w-full max-w-xs space-y-3"
       onClick={() => handlePayment()}
-      tyle={{
-        fontFamily: "'EB Garamond', serif",
+      style={{
+        fontFamily: "'Inter', sans-serif", // Use the Inter font
       }}
     >
       {isLoading ? (
