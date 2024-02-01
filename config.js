@@ -72,7 +72,7 @@ const config = {
       // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
       priceAnchor: 32.99,
       features: [
-        { name: "Unlimited design credits - create without limits" },
+        { name: "100 design credits - create without limits" },
         { name: "Leverage all AI tools for advanced designs" },
         { name: "Get professional insights on your creations" },
         { name: "Top-tier customer service and technical support" },
