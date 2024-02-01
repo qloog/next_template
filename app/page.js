@@ -74,25 +74,28 @@ export default function Home() {
   };
 
   <style jsx>{`
-    .textboxStyle {
-      background-color: #ffffff;
-      border: 1px solid #e2e8f0; /* Lighter border for a softer look */
-      border-radius: 8px; /* More rounded corners */
-      color: #2d3748; /* Dark gray for text, offering better contrast */
-      padding: 15px; /* More padding for text area */
-      font-size: 1rem;
-      outline: none;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtler shadow for depth */
-      transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
-    }
-    .textboxStyle:focus {
-      border-color: #4c51bf; /* Highlight color when textbox is focused, choose a theme color */
-      box-shadow: 0 0 0 3px rgba(76, 81, 191, 0.6); /* Expanding the shadow for focus indication with theme color */
-    }
-    .textboxStyle::placeholder {
-      color: #a0aec0; /* Lighter color for placeholders */
-    }
-  `}</style>;
+  .textboxStyle {
+    background-color: #f9f9f9; /* Slightly off-white for contrast */
+    border: 1px solid #e0e0e0; /* Soft, light grey border */
+    border-radius: 12px; /* Smooth, rounded corners for a modern look */
+    color: #333; /* Dark grey text for readability */
+    padding: 20px; /* Generous padding for ease of writing */
+    font-size: 1rem; /* Standard font size for legibility */
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for interactive elements */
+    width: 100%; /* Full width to match container */
+    height: 150px; /* Initial height to accommodate multi-line inputs */
+    resize: vertical; /* Allows vertical resizing, fixed width */
+  }
+  .textboxStyle:focus {
+    border-color: #a0a0a0; /* Darker border on focus for distinction */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Glowing effect to indicate focus */
+  }
+  .textboxStyle::placeholder {
+    color: #aaa; /* Lighter text for placeholder for subtlety */
+  }
+`}</style>
 
   const buttonStyle = {
     backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "black",
