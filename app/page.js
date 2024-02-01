@@ -216,7 +216,8 @@ export default function Home() {
             <option value="Traditional">Traditional</option>
             <option value="Realism">Realism</option>
           </select>
-          <button
+          <button 
+            className="btn w-full max-w-xs space-y-3 "
             style={buttonStyle}
             onClick={onGenerate}
             onMouseDown={handleMouseDown}
