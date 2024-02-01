@@ -34,7 +34,7 @@ const GeneratedImageCard = ({ finalData, isLoading }) => {
             <img src={finalData} alt="Generated Tattoo" style={imageStyle} />
         ) : (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '200px' }}>
-                <p>No image generated yet</p>
+                <p>No tattoo designed yet</p>
                 {/* Optionally, add an icon or placeholder here */}
             </div>
         )}
