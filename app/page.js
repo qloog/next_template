@@ -83,6 +83,10 @@ export default function Home() {
     outline: "none", // Removes the default focus outline
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
     transition: "border-color 0.2s ease-in-out", // Smooth transition for interactions
+    width: "100%", // Ensures the textarea fits its container's width
+    height: "100px", // Sets an initial height to display multiple lines of text
+    resize: "vertical", // Allows the user to vertically resize the textarea
+    boxSizing: "border-box",
     // Ensures the input stands out when focused
     ":focus": {
       borderColor: "#007bff", // Highlight color when the textbox is focused
