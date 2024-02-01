@@ -24,7 +24,7 @@ const config = {
             : "price_1ObDh8Ha8820Uqe5zwd6xtNX",
             //price_1ObDh8Ha8820Uqe5zwd6xtNX
         //  REQUIRED - Name of the plan, displayed on the pricing page
-        name: "beginner",
+        name: "Beginner",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
         description: "",
         // The price you want to display, the one user will be charged on Stripe.
@@ -45,7 +45,7 @@ const config = {
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_1ObDhsHa8820Uqe5hWVSyYNT",
-        name: "pro",
+        name: "Pro",
         description: "",
         price: 9.99,
         credits: 30,
@@ -63,7 +63,7 @@ const config = {
           ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
           : "price_1ObDijHa8820Uqe53AHgB1Ib",
       //  REQUIRED - Name of the plan, displayed on the pricing page
-      name: "premium",
+      name: "Premium",
       // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
       description: "",
       // The price you want to display, the one user will be charged on Stripe.
