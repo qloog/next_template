@@ -102,13 +102,21 @@ export default function Home() {
   };
 
   const buttonStyle = {
-    backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "black",
-    border: "none",
-    borderRadius: "20px", // This makes the button oval-shaped
-    padding: "10px 20px",
-    cursor: "pointer",
-    color: "white",
-    // Add any other styles you need for the button
+    fontFamily: "'EB Garamond', serif", // Ensures consistency with your heading fonts
+    backgroundColor: "#4c51bf", // A deep blue color that stands out on a white background
+    color: "white", // White text for contrast
+    fontSize: "1rem", // Adjust based on your preference
+    padding: "10px 20px", // Ample padding for a larger clickable area
+    border: "none", // Removes the default border
+    borderRadius: "5px", // Slightly rounded corners for a modern look
+    cursor: "pointer", // Changes the cursor to indicate clickable
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)", // Adds a subtle shadow for depth
+    transition: "background-color 0.3s ease", // Smooth transition for hover effect
+    ":hover": {
+      backgroundColor: "#2b6cb0", // Darkens the button on hover for an interactive effect
+    },
+    outline: "none", // Removes the outline to keep the design clean
+    fontWeight: "bold", // Makes the button text stand out
   };
 
   const handleMouseDown = () => {
