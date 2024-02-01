@@ -110,8 +110,7 @@ export default function Home() {
     padding: "10px 20px", // Ample padding for a larger clickable area
     border: "none", // Removes the default border
     borderRadius: "5px", // Slightly rounded corners for a modern look
-    cursor: "pointer", // Changes the cursor to indicate clickable
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)", // Adds a subtle shadow for depth
+    cursor: "pointer", // Changes the cursor to indicate clickable 
     transition: "background-color 0.3s ease", // Smooth transition for hover effect
     ":hover": {
       backgroundColor: "#2b6cb0", // Darkens the button on hover for an interactive effect
