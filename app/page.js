@@ -180,7 +180,7 @@ export default function Home() {
             Design Your Tattoo
           </h3>
           <textarea
-            className="textboxStyle"
+            style={{textboxStyle}}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Enter your tattoo idea"
