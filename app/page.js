@@ -117,7 +117,6 @@ export default function Home() {
       backgroundColor: "#2b6cb0", // Darkens the button on hover for an interactive effect
     },
     outline: "none", // Removes the outline to keep the design clean
-    fontWeight: "bold", // Makes the button text stand out
   };
 
   const handleMouseDown = () => {
