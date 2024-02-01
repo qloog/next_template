@@ -75,12 +75,20 @@ export default function Home() {
   };
 
   const textboxStyle = {
-    backgroundColor: "white",
-    border: "2px solid gray", // White background for the textbox
-    color: "black",
-    padding: "10px", // Example padding, adjust as needed
-    fontSize: "1rem",
-    // Add other necessary styles
+    backgroundColor: "#ffffff", // Cleaner to use hex codes for color
+    border: "1px solid #cccccc", // Lighter border for subtlety
+    borderRadius: "5px", // Rounded corners for a modern look
+    color: "#333333", // Slightly softer than pure black for readability
+    padding: "12px", // Slightly more padding for better text input visibility
+    fontSize: "1rem", // Maintains default size, adjust based on preference
+    outline: "none", // Removes the default focus outline
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
+    transition: "border-color 0.2s ease-in-out", // Smooth transition for interactions
+    // Ensures the input stands out when focused
+    ':focus': {
+      borderColor: "#007bff", // Highlight color when the textbox is focused
+      boxShadow: "0 0 0 3px rgba(0, 123, 255, 0.25)", // Expands the shadow for focus indication
+    }
   };
 
   const buttonStyle = {
