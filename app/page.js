@@ -73,29 +73,22 @@ export default function Home() {
     // Other styles...
   };
 
-  <style jsx>{`
-  .textboxStyle {
-    background-color: #f9f9f9; /* Slightly off-white for contrast */
-    border: 1px solid #e0e0e0; /* Soft, light grey border */
-    border-radius: 12px; /* Smooth, rounded corners for a modern look */
-    color: #333; /* Dark grey text for readability */
-    padding: 20px; /* Generous padding for ease of writing */
-    font-size: 1rem; /* Standard font size for legibility */
-    outline: none; /* Removes the default focus outline */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for interactive elements */
-    width: 100%; /* Full width to match container */
-    height: 150px; /* Initial height to accommodate multi-line inputs */
-    resize: vertical; /* Allows vertical resizing, fixed width */
-  }
-  .textboxStyle:focus {
-    border-color: #a0a0a0; /* Darker border on focus for distinction */
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Glowing effect to indicate focus */
-  }
-  .textboxStyle::placeholder {
-    color: #aaa; /* Lighter text for placeholder for subtlety */
-  }
-`}</style>
+  const textboxStyle = {
+    backgroundColor: "#ffffff", // Cleaner to use hex codes for color
+    border: "1px solid #cccccc", // Lighter border for subtlety
+    borderRadius: "5px", // Rounded corners for a modern look
+    color: "#333333", // Slightly softer than pure black for readability
+    padding: "12px", // Slightly more padding for better text input visibility
+    fontSize: "1rem", // Maintains default size, adjust based on preference
+    outline: "none", // Removes the default focus outline
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
+    transition: "border-color 0.2s ease-in-out", // Smooth transition for interactions
+    // Ensures the input stands out when focused
+    ':focus': {
+      borderColor: "#007bff", // Highlight color when the textbox is focused
+      boxShadow: "0 0 0 3px rgba(0, 123, 255, 0.25)", // Expands the shadow for focus indication
+    }
+  };
 
   const buttonStyle = {
     backgroundColor: isButtonActive ? "rgba(255, 255, 255, 0.8)" : "black",
