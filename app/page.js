@@ -152,8 +152,7 @@ export default function Home() {
 
   return (
     <>
-     <Head>
-     <Script
+    <Script
   strategy="afterInteractive"
   dangerouslySetInnerHTML={{
     __html: `
@@ -168,7 +167,7 @@ export default function Home() {
     `
   }}
 />
-
+     <Head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@600&display=swap" rel="stylesheet" />
