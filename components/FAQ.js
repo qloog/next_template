@@ -166,7 +166,7 @@ const FAQ = () => {
           <p className="inline-block font-semibold text-primary mb-4">FAQ</p>
           <p className="sm:text-4xl text-3xl text-black"
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'EB Garamond', serif",
           }}>
             Frequently Asked Questions
           </p>
