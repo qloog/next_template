@@ -30,17 +30,6 @@ export default function Home() {
   const { data: session } = useSession();
   const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
 
-  const hotjarScript = `
-  (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:3851321,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-`;
-
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
@@ -164,8 +153,10 @@ export default function Home() {
   return (
     <>
      <Head>
-       {/* Hotjar Tracking Code */}
-       <script dangerouslySetInnerHTML={{ __html: hotjarScript }}></script>
+     <Script
+        strategy="afterInteractive"
+        src={`https://static.hotjar.com/c/hotjar-3851321.js?sv=6`}
+      />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@600&display=swap" rel="stylesheet" />
