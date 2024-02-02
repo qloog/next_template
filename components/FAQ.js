@@ -75,7 +75,7 @@ const faqList = [
     answer: (
       <p>
         Unfortunately, we cannot offer refunds as costs incurred for creating AI
-        tatooos are extremely high. Each time you generate a design, we get
+        tattoos are extremely high. Each time you generate a design, we get
         charged.
       </p>
     ),
