@@ -42,6 +42,7 @@ const Modal = ({ isModalOpen, setIsModalOpen }) => {
                   <Dialog.Title as="h2" className="font-semibold">
                     Oops, you&apos;ve run out of credits!
                   </Dialog.Title>
+                  <p>Use code WELCOME20OFF for 20% off any plan!</p>
                   <button
                     className="btn btn-square btn-ghost btn-sm"
                     onClick={() => setIsModalOpen(false)}
