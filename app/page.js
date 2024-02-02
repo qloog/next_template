@@ -21,10 +21,6 @@ import Head from "next/head";
 import Script from "next/script";
 
 export default function Home() {
-  <Script
-        strategy="afterInteractive"
-        src={`https://static.hotjar.com/c/hotjar-3851321.js?sv=6`}
-      />
   const [style, setStyle] = useState("tattoo");
   const [prompt, setPrompt] = useState("");
   const [finalData, setFinalData] = useState();
@@ -108,14 +104,14 @@ export default function Home() {
 
   const buttonStyle = {
     fontFamily: "'Inter', sans-serif", // Use the Inter font
-    fontWeight: 600, 
-    backgroundColor: 'black',
+    fontWeight: 600,
+    backgroundColor: "black",
     color: "white", // White text for contrast
     fontSize: "1rem", // Adjust based on your preference
     padding: "10px 20px", // Ample padding for a larger clickable area
     border: "none", // Removes the default border
     borderRadius: "5px", // Slightly rounded corners for a modern look
-    cursor: "pointer", // Changes the cursor to indicate clickable 
+    cursor: "pointer", // Changes the cursor to indicate clickable
     transition: "background-color 0.3s ease", // Smooth transition for hover effect
     ":hover": {
       backgroundColor: "#2b6cb0", // Darkens the button on hover for an interactive effect
@@ -156,11 +152,30 @@ export default function Home() {
 
   return (
     <>
-     <Head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@600&display=swap" rel="stylesheet" />
-</Head>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@600&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <Script
+        id="hotjar-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:3851321,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+          `,
+        }}
+      />
       <Header></Header>
       <style jsx>{`
         .login-signup-prompt {
@@ -218,7 +233,7 @@ export default function Home() {
             <option value="Traditional">Traditional</option>
             <option value="Realism">Realism</option>
           </select>
-          <button 
+          <button
             className="btn w-full max-w-xs space-y-3 "
             style={buttonStyle}
             onClick={onGenerate}
