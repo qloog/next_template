@@ -205,6 +205,38 @@ export default function Home() {
           id="tattoo-generator"
           className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
         >
+<style jsx>{`
+        .tattoo-generator-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+          .tattoo-generator-section {
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 20px;
+          }
+
+          .textboxStyle, .selectStyle, .buttonStyle {
+            max-width: 300px; // Example max-width, adjust as needed
+          }
+
+          .textboxStyle, .selectStyle {
+            flex-grow: 1;
+            margin-right: 10px; // Add some space between the input/select and the button
+          }
+
+          .buttonStyle {
+            flex-grow: 0; // Prevent the button from growing to match the inputs
+          }
+        }
+      `}</style>
+
+
+
           <h3
             className=" text-base-content text-lg opacity-80 bg-white text-black"
             style={{
