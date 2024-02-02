@@ -76,19 +76,6 @@ const Footer = () => {
             </Link>
 
             <p className="mt-3 text-sm text-white">{config.appDescription}</p>
-            <button
-            className="btn btn-block w-full max-w-xs space-y-3 text-white"
-            style={{
-              fontFamily: "'Inter', sans-serif", // Use the Inter font
-              fontWeight: 600,
-              backgroundColor: "rgb(50, 61, 214)",
-            }}
-            onClick={() =>
-              signIn(undefined, { callbackUrl: config.auth.callbackUrl })
-            }
-          >
-            Sign up for a free credit
-          </button>
             <p className="mt-3 text-sm text-white">
               Copyright © {new Date().getFullYear()} - All rights reserved
             </p>
