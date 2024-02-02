@@ -109,7 +109,7 @@ const Item = ({ item }) => {
   return (
     <li>
       <button
-        className="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+        className="relative flex gap-2 items-center w-full py-5 text-base text-left border-t md:text-lg border-base-content/10"
         onClick={(e) => {
           e.preventDefault();
           setIsOpen(!isOpen);
