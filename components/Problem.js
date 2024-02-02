@@ -59,7 +59,7 @@ const Problem = () => {
 
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6"
         style={{
-          fontFamily: "'EB Garamond', serif",
+          fontFamily: "'Inter', sans-serif",
         }}>
           <Step emoji="💰" text="Overspending on Design" />
 
