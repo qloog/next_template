@@ -104,7 +104,7 @@ export default function Home() {
   const buttonStyle = {
     fontFamily: "'Inter', sans-serif", // Use the Inter font
     fontWeight: 600, 
-    backgroundColor: 'rgb(50, 61, 214)',
+    backgroundColor: 'black',
     color: "white", // White text for contrast
     fontSize: "1rem", // Adjust based on your preference
     padding: "10px 20px", // Ample padding for a larger clickable area
