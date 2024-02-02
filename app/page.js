@@ -18,6 +18,7 @@ import FeaturesAccordion from "@/components/FeaturesAccordion";
 import Testimonials11 from "@/components/Testimonials11";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Script from "next/script";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -152,21 +153,25 @@ export default function Home() {
   return (
     <>
      <Head>
+     <Script
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: `
+      (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3851321,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    `
+  }}
+/>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@600&display=swap" rel="stylesheet" />
-    <script dangerouslySetInnerHTML={{
-        __html: `
-            (function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:3851321,hjsv:6};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        `
-    }} />
 </Head>
       <Header></Header>
       <style jsx>{`
