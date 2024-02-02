@@ -65,7 +65,7 @@ const faqList = [
     answer: (
       <div className="space-y-2 leading-relaxed">
         Right now the beginner plan costs $4.99, the Pro plan $9.99 and the
-        Premium plan $18.99. You get 2 credits for free when you sign up. Only
+        Premium plan $18.99. You get 1 free credit when you sign up. Only
         one time payments
       </div>
     ),
