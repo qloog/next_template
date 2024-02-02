@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import config from "@/config";
 import logo from "@/app/icon.png";
-
+import ButtonSignIn from "@/components/ButtonSignIn"
 // Add the Footer to the bottom of your landing page and more.
 // The support link is connected to the config.js file. If there's no config.mailgun.supportEmail, the link won't be displayed.
 
@@ -76,6 +76,7 @@ const Footer = () => {
             </Link>
 
             <p className="mt-3 text-sm text-white">{config.appDescription}</p>
+            <ButtonSignIn></ButtonSignIn>
             <p className="mt-3 text-sm text-white">
               Copyright © {new Date().getFullYear()} - All rights reserved
             </p>

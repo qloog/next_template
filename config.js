@@ -5,7 +5,7 @@ const config = {
   appName: "TattooswithAI",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "Transform any Tattoo idea into a custom-made design. Stand apart from the crowd and rock something unique",
+    "Design Your Own Artist-Quality Custom-Made Tattoos At Home Using AI",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "tattooswithai.com",
   crisp: {
