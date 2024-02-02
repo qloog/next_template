@@ -153,14 +153,14 @@ export default function Home() {
   return (
     <>
      <Head>
-     <Script
-        strategy="afterInteractive"
-        src={`https://static.hotjar.com/c/hotjar-3851321.js?sv=6`}
-      />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@600&display=swap" rel="stylesheet" />
 </Head>
+<Script
+        strategy="afterInteractive"
+        src={`https://static.hotjar.com/c/hotjar-3851321.js?sv=6`}
+      />
       <Header></Header>
       <style jsx>{`
         .login-signup-prompt {
