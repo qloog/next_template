@@ -21,7 +21,7 @@ const CTA = () => {
               fontFamily: "'EB Garamond', serif",
             }}
           >
-            Create your first custom piece with TattooswithAI today and never
+           Design your first tattoo with TattooswithAI today and never
             look back
           </p>
 
