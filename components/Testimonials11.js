@@ -189,6 +189,10 @@ const Testimonials11 = () => {
       id="testimonials"
       style={{
         fontFamily: "'EB Garamond', serif", // Use the Inter font
+        backgroundImage: "url('/media/worldwide.avif')", // Add your image path here
+        backgroundSize: 'cover', // Cover the entire section
+        backgroundPosition: 'center', // Center the background image
+        backgroundRepeat: 'no-repeat', // Do not repeat the image
       }}
     >
       <div className="px-8">
