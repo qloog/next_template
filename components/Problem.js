@@ -46,7 +46,7 @@ const Problem = () => {
           className="font-medium text-sm mb-2 text-center"
           style={{ color: "rgb(23, 34, 190)" }}
         >
-          YOU&apos;RE IN CONTROL
+         DESIGN TO LIKING
         </p>
       <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
         <h2 className="max-w-3xl mx-auto text-4xl md:text-5xl tracking-tight mb-6 md:mb-8"
