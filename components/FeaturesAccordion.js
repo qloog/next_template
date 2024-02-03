@@ -111,12 +111,7 @@ const Item = ({ index, feature, isOpen, setFeatureSelected }) => {
 // Video are set to autoplay for best UX.
 const Media = ({ feature }) => {
   const { type, path, format, alt } = feature;
-  const style =
-    "rounded-lg aspect-square w-full sm:w-[26rem] border border-base-content/10";
-  const size = {
-    width: 500,
-    height: 500,
-  };
+
 
   if (type === "video") {
     return (
