@@ -18,7 +18,7 @@ const Pricing = () => {
         </p>
           <h1 className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center"
           style={{
-            fontFamily: "'EB Garamond', serif",
+            fontFamily: "'Poppins', sans-serif",
           }}>
           Simple, transparent pricing
           </h1>

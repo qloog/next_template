@@ -165,7 +165,7 @@ const FAQ = () => {
         </p>
           <p className="sm:text-4xl text-3xl text-black"
           style={{
-            fontFamily: "'EB Garamond', serif",
+            fontFamily: "'Poppins', sans-serif",
           }}>
             Frequently Asked Questions
           </p>
