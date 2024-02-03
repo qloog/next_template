@@ -187,7 +187,10 @@ const Testimonial = ({ i }) => {
 
 const Testimonials11 = () => {
   return (
-    <section className="bg-black text-white" id="testimonials">
+    <section className="bg-white text-black" id="testimonials"
+    style={{
+      fontFamily: "'Inter', sans-serif", // Use the Inter font
+    }}>
        <div className="px-8">
         <p className="font-medium text-sm text-accent mb-2">
         CUSTOMER LOVE
@@ -196,12 +199,12 @@ const Testimonials11 = () => {
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
-            <h2 className="sm:text-5xl text-4xl font-extrabold text-white">
-            Customers can&apos;t stop raving about the tattoos they designed
+            <h2 className="sm:text-5xl text-4xl text-black">
+            Join 2 thousand empowered tattoo lovers 
             </h2>
           </div>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-white">
-          Don&apos;t take our word for it. Here&apos;s what they have to say about Findrr.
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">
+           TattooswithAI has helped create over 10,000 tattoos. From different style choices, never-seen before designs, to being the only one to own your dream tattoo   
           </p>
         </div>
 
