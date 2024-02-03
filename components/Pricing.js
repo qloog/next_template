@@ -45,7 +45,8 @@ const Pricing = () => {
 
               {plan.isFeatured && (
                 <div
-                  className={`absolute -inset-[1px] rounded-[9px] bg-primary z-10`}
+                  className={`absolute -inset-[1px] rounded-[9px] z-10`}
+                  style={{ backgroundColor: "rgb(23, 34, 190)" }}
                 ></div>
               )}
 
