@@ -47,7 +47,7 @@ const Problem = () => {
         style={{
           fontFamily: "'EB Garamond', serif",
         }}>
-        90% of tattoos are surprisingly similar. It&apos;s not just you, even top artists have their limits
+      Over 90% of tattoos share common designs. Even the best artists face creative limits
         </h2>
         <p className="max-w-xl mx-auto text-lg text-black leading-relaxed mb-12 md:mb-20"
         style={{
