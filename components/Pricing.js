@@ -35,7 +35,7 @@ const Pricing = () => {
               {plan.isFeatured && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                   <span
-                    className={`badge text-xs text-primary-content border-0`}
+                    className={`badge text-xs border-0`}
                     style={{ color: "rgb(23, 34, 190)" }}
                   >
                     POPULAR
