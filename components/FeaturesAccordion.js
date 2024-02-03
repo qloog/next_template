@@ -15,6 +15,9 @@ const features = [
     title: "Custom Tattoo Design Generation",
     description:
       "Create unique tattoo designs tailored to your preferences. Customize style, theme, and complexity with just a few clicks",
+      type: "video",
+      path: "/media/demovideo.mp4",
+      format: "video/webm",
   },
   {
     title: "Visual Inspiration Gallery",
