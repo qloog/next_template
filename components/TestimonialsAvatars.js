@@ -66,7 +66,7 @@ const TestimonialsAvatars = ({ priority = false }) => {
           <span 
           className="font-semibold text-base-content"
           style={{
-            fontFamily: "'EB Garamond', serif",
+            fontFamily: "'Poppins', sans-serif",
           }}>
             Loved by over 2 thousand rebels
           </span>
