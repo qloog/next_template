@@ -10,7 +10,7 @@ const CTA = () => {
           <h2
             className=" text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align: center text-black text-center"
             style={{
-              fontFamily: "'EB Garamond', serif",
+              fontFamily: "'Poppins', sans-serif",
             }}
           >
             Try TattooswithAI for free today
