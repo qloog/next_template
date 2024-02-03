@@ -60,7 +60,6 @@ const list = [
     text: "'Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my client's loved the tattoos!'",
     type: refTypes.twitter,
     img: "/media/t1.jpeg",
-  
   },
   {
     username: "Irynak",
@@ -68,7 +67,6 @@ const list = [
     text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. TATTOOSWITHAI was very responsive to my questions'",
     type: refTypes.productHunt,
     img: "/media/t2.jpeg",
-    
   },
   {
     name: "Seline",
@@ -116,7 +114,6 @@ const list = [
     text: "Probably one of the most powerful things you can generate that I've seen",
     type: refTypes.productHunt,
     img: "/media/t9.jpeg",
-
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
   {
@@ -187,24 +184,32 @@ const Testimonial = ({ i }) => {
 
 const Testimonials11 = () => {
   return (
-    <section className="bg-white text-black" id="testimonials"
-    style={{
-      fontFamily: "'Inter', sans-serif", // Use the Inter font
-    }}>
-       <div className="px-8">
-        <p className="font-medium text-sm text-accent mb-2">
-        CUSTOMER LOVE
+    <section
+      className="bg-white text-black"
+      id="testimonials"
+      style={{
+        fontFamily: "'Inter', sans-serif", // Use the Inter font
+      }}
+    >
+      <div className="px-8">
+        <p
+          className="font-medium text-sm mb-2 text-center"
+          style={{ color: "rgb(23, 34, 190)" }}
+        >
+          CUSTOMER LOVE
         </p>
-        </div>
+      </div>
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
             <h2 className="sm:text-5xl text-4xl text-black">
-            Join 2 thousand empowered tattoo lovers 
+              Join 2 thousand empowered tattoo lovers
             </h2>
           </div>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">
-           TattooswithAI has helped create over 10,000 tattoos. From different style choices, never-seen before designs, to being the only one to own your dream tattoo   
+            TattooswithAI has helped create over 10,000 tattoos. From different
+            style choices, never-seen before designs, to being the only one to
+            own your dream tattoo
           </p>
         </div>
 
@@ -224,7 +229,7 @@ const Testimonials11 = () => {
             {/* BIG FEATURED TESTIMONIAL — THE LAST ONE IN THE LIST (11th) */}
             <ul className="col-span-2">
               <li>
-                <figure className="relative h-full p-6 bg-base-100 rounded-lg">
+                <figure className="relative h-full p-6 bg-white text-black rounded-lg">
                   <blockquote className="relative p-4">
                     <p className="text-lg font-medium text-base-content">
                       {list[list.length - 1].text}
