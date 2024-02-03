@@ -133,7 +133,7 @@ const Testimonial = ({ i }) => {
 
   return (
     <li key={i}>
-      <figure className="relative h-full p-6 bg-white text-black rounded-lg">
+      <figure className="relative h-full p-6 bg-base-100 text-black rounded-lg">
         <blockquote className="relative">
           <p className="text-sm text-base-content/80">{testimonial.text}</p>
         </blockquote>
