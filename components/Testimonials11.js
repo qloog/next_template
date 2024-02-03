@@ -72,27 +72,27 @@ const list = [
   },
   {
     name: "Seline",
-    text: "Just purchased a few credits and oh my lord I realllyyy like what I'm seeing here!",
+    text: "A major shoutout to TattooswithAI for straight up saving my life 🙏❤️",
     type: refTypes.other,
     img: "/media/t3.jpeg",
   },
   {
     username: "Jordand1",
     name: "Jordan D",
-    text: "Finally a good tattoo designer that ONLY gives designs that have never been seen by anyone before!! now I don't have to worry about comparing my tattoo to others",
+    text: "I started with Tattoos-who & Tattoos-what. But now, I can't bring my wild tattoo ideas into reality without TattooswithAI. I love the AI and am amazed to see how far TattooswithAI has come. Kudos to TattooswithAI.",
     type: refTypes.productHunt,
     img: "/media/t4.jpeg",
   },
   {
     username: "imgyf",
     name: "Yifan Goh",
-    text: "It's a game changer  🚀 Comes up with unique tattoos, and saves you a ton of time and money. What's not to love?",
+    text: "I thought AI tattoos were useless. Then I found TattooswithAI. It turned out to be much more advanced that I ever could have imagined. TattooswithAI = ChatGPT x 10",
     type: refTypes.twitter,
     img: "/media/t5.jpeg",
   },
   {
     name: "Yazmine",
-    text: "Wow, I got the Premium plan, it's fantastic man you just saved me from spending hundreds of dollars on a design from a artist",
+    text: "Wow, I got the Premium plan, it's fantastic. Saved me from spending hundreds of dollars on a design that I may have been regretting after",
     type: refTypes.other,
     img: "/media/t6.jpeg",
   },
@@ -106,7 +106,7 @@ const list = [
   {
     username: "zawwadx",
     name: "Zawwad Ul Sami",
-    text: "It's an amazing tool, with probably the best designs i've seen. It's got everything I need!. If you're not going to buy credits, I'm hella glad because more credits and designs for me!!!",
+    text: "It's an amazing tool, with probably the best tattoo designs. It's got everything I need!",
     type: refTypes.twitter,
     img: "/media/t8.jpeg",
   },
@@ -122,7 +122,7 @@ const list = [
   {
     username: "JazPivots",
     name: "Jaz Abeledo",
-    text: "Rajvir, I chose the beginner plan and having the designing part all handled for me at such a good price is phenominal. 100% worth it 🚀🚀🚀",
+    text: "I thought AI Tattoos were horrible. But when I found TattooswithAI - it blew my mind. It's 10x more advanced than I thought and the AI is actually accurate and gives such good tattoo designs.",
     type: refTypes.twitter,
     img: "/media/t11.jpeg",
   },
@@ -188,6 +188,11 @@ const Testimonial = ({ i }) => {
 const Testimonials11 = () => {
   return (
     <section className="bg-black text-white" id="testimonials">
+       <div className="px-8">
+        <p className="font-medium text-sm text-accent mb-2">
+        CUSTOMER LOVE
+        </p>
+        </div>
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
