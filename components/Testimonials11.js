@@ -188,7 +188,7 @@ const Testimonials11 = () => {
       className="bg-white text-black"
       id="testimonials"
       style={{
-        fontFamily: "'Inter', sans-serif", // Use the Inter font
+        fontFamily: "'EB Garamond', serif", // Use the Inter font
       }}
     >
       <div className="px-8">
