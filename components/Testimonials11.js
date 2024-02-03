@@ -155,7 +155,7 @@ const Testimonial = ({ i }) => {
           </div>
           <div className="w-full flex items-end justify-between gap-2">
             <div>
-              <div className="text-sm font-medium text-black">
+              <div className="text-sm font-medium text-white">
                 {testimonial.name}
               </div>
               {testimonial.username && (
