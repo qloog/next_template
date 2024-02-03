@@ -42,6 +42,12 @@ const Step = ({ emoji, text }) => {
 const Problem = () => {
   return (
     <section className="bg-white text-black">
+       <p
+          className="font-medium text-sm mb-2 text-center"
+          style={{ color: "rgb(23, 34, 190)" }}
+        >
+          YOU&apos;RE IN CONTROL
+        </p>
       <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
         <h2 className="max-w-3xl mx-auto text-4xl md:text-5xl tracking-tight mb-6 md:mb-8"
         style={{
