@@ -188,7 +188,7 @@ const Testimonials11 = () => {
       className="bg-white text-black"
       id="testimonials"
       style={{
-        fontFamily: "'EB Garamond', serif", // Use the Inter font
+        fontFamily: "'Poppins', sans-serif", // Use the Inter font
         backgroundImage: "url('/media/global-network-connection_41981-1057.avif')", // Add your image path here
         backgroundSize: 'cover', // Cover the entire section
         backgroundPosition: 'center', // Center the background image

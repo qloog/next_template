@@ -176,7 +176,7 @@ const FeaturesAccordion = () => {
         </p>
         <h2 className="text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24 text-align:center text-center"
         style={{
-          fontFamily: "'EB Garamond', serif",
+          fontFamily: "'Poppins', sans-serif",
         }}>
          Think, design, and get it inked
         </h2>

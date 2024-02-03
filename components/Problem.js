@@ -51,7 +51,7 @@ const Problem = () => {
       <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
         <h2 className="max-w-3xl mx-auto text-4xl md:text-5xl tracking-tight mb-6 md:mb-8"
         style={{
-          fontFamily: "'EB Garamond', serif",
+          fontFamily: "'Poppins', sans-serif",
         }}>
       Over 90% of tattoos share common designs. Even the best artists face creative limits
         </h2>
