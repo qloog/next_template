@@ -23,11 +23,17 @@ const features = [
     title: "Visual Inspiration Gallery",
     description:
       "Browse through an extensive gallery of designs. Find inspiration for your next tattoo from a diverse collection of styles and themes",
+      type: "image",
+      path: "/media/22.png",
+      alt: "A computer",
   },
   {
     title: "Style and Theme Explorer",
     description:
       "Whether it's traditional, realism, watercolor, or tribal, explore a myriad of tattoo styles. Find the one that best expresses your individuality",
+    type: "image",
+    path: "/media/Untitled design (13).png",
+    alt: "A computer",
   },
   {
     title: "High-Quality Exports",
