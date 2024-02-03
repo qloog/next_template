@@ -229,7 +229,7 @@ const Testimonials11 = () => {
             {/* BIG FEATURED TESTIMONIAL — THE LAST ONE IN THE LIST (11th) */}
             <ul className="col-span-2">
               <li>
-                <figure className="relative h-full p-6 bg-white text-black rounded-lg">
+                <figure className="relative h-full p-6 bg-base-100 text-black rounded-lg">
                   <blockquote className="relative p-4">
                     <p className="text-lg font-medium text-base-content">
                       {list[list.length - 1].text}
