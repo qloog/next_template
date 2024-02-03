@@ -210,7 +210,7 @@ export default function Home() {
           className="font-medium text-sm mb-2"
           style={{ color: "rgb(23, 34, 190)" }}
         >
-         Design your tattoo
+         DESIGN YOUR TATTOO
         </p>
           <textarea
             value={prompt}
