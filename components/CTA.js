@@ -8,7 +8,7 @@ const CTA = () => {
       <div className="relative hero-content text-black text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
           <h2
-            className=" text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align:left text-black text-center"
+            className=" text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-align: center text-black text-center"
             style={{
               fontFamily: "'EB Garamond', serif",
             }}
@@ -16,7 +16,7 @@ const CTA = () => {
             Try TattooswithAI for free today
           </h2>
           <p
-            className="text-lg opacity-80 mb-12 md:mb-16 text-align:left text-black"
+            className="text-lg opacity-80 mb-12 md:mb-16 text-align:center text-center text-black"
             style={{
               fontFamily: "'EB Garamond', serif",
             }}
