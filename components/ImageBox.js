@@ -14,7 +14,8 @@ const GeneratedImageCard = ({ finalData, isLoading }) => {
         borderRadius: '10px',
         backgroundColor: '#ffffff', // Light background to distinguish the card
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-        maxWidth: '90%',
+        maxWidth: '600px', // or whatever maximum width you prefer
+        margin: '0 auto', // Centers the container
     };
    
 
