@@ -103,7 +103,7 @@ export default function Home() {
   };
 
   const buttonStyle = {
-    fontFamily: "'Inter', sans-serif", // Use the Inter font
+    fontFamily: "'Poppins', sans-serif", // Use the Inter font
     fontWeight: 600,
     backgroundColor: "black",
     color: "white", // White text for contrast

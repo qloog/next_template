@@ -57,7 +57,7 @@ const Problem = () => {
         </h2>
         <p className="max-w-xl mx-auto text-lg text-black leading-relaxed mb-12 md:mb-20"
         style={{
-          fontFamily: "'EB Garamond', serif",
+          fontFamily: "'Poppins', sans-serif",
         }}>
           Repetitive Designs, Limited Choices, Artist&apos;s Vision Not Matching
           Yours...
@@ -65,7 +65,7 @@ const Problem = () => {
 
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6"
         style={{
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Poppins', sans-serif",
         }}>
           <Step emoji="💰" text="Overspending on Design" />
 
