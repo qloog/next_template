@@ -18,7 +18,7 @@ const CTA = () => {
           <p
             className="text-lg opacity-80 mb-12 md:mb-16 text-align:center text-center text-black"
             style={{
-              fontFamily: "'EB Garamond', serif",
+              fontFamily: "'Poppins', sans-serif",
             }}
           >
            Design your first tattoo with TattooswithAI today and never

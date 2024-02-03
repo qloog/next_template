@@ -28,7 +28,7 @@ const Pricing = () => {
         style={{
           backgroundColor: "rgba(255, 255, 255, 0.95)",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          fontFamily: "'EB Garamond', serif",
+          fontFamily: "'Poppins', sans-serif",
         }}>
           {config.stripe.plans.map((plan) => (
             <div key={plan.priceId} className="relative w-full max-w-lg">
