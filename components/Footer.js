@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className="opacoty-80 border-t border-base-content/10 text-white" id="footer"
     style={{
       fontFamily: "'Inter', sans-serif",
-      backgroundColor: 'rgb(25,25,25)'
+      backgroundColor: 'rgb(30,31,31)'
     }}>
       <div className="max-w-7xl mx-auto px-8 py-24">
         <div className=" flex lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
