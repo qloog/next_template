@@ -59,9 +59,9 @@ const Item = ({ index, feature, isOpen, setFeatureSelected }) => {
         aria-expanded={isOpen}
       >
         <span
-          className={`flex-1 text-black ${isOpen ? "text-primary" : ""}`}
+          className="flex-1 text-black"
+          style={{ color: isOpen ? "rgb(23, 34, 190)" : "" }}
         >
-          <span className={`mr-2`}>{index + 1}.</span>
           <h3 className="inline">{title}</h3>
         </span>
         <svg
@@ -194,3 +194,5 @@ const FeaturesAccordion = () => {
 };
 
 export default FeaturesAccordion;
+
+//<span className={`mr-2`}>{index + 1}.</span>
