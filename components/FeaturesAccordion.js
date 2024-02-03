@@ -158,8 +158,11 @@ const FeaturesAccordion = () => {
       id="features"
     >
       <div className="px-8">
-        <p className="font-medium text-sm text-accent mb-2">
-        POWERFUL FEATURES
+      <p
+          className="font-medium text-sm mb-2 text-center"
+          style={{ color: "rgb(23, 34, 190)" }}
+        >
+         POWERFUL FEATURES
         </p>
         <h2 className="text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24"
         style={{
