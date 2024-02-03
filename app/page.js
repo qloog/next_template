@@ -206,15 +206,12 @@ export default function Home() {
           className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
         >
           
-          <h3
-            className=" text-base-content text-lg opacity-80 bg-white text-black"
-            style={{
-              fontFamily: "'EB Garamond', serif",
-              fontSize: "2rem",
-            }}
-          >
-            Design Your Tattoo
-          </h3>
+          <p
+          className="font-medium text-sm mb-2 text-center"
+          style={{ color: "rgb(23, 34, 190)" }}
+        >
+         Design your tattoo
+        </p>
           <textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
