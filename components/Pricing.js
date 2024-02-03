@@ -10,7 +10,12 @@ const Pricing = () => {
     <section className="bg-white text-black overflow-hidden" id="pricing">
       <div className="py-24 px-8 max-w-5xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
-          <p className="font-medium text-primary mb-8">Pricing</p>
+        <p
+          className="font-medium text-sm mb-2 text-center"
+          style={{ color: "rgb(23, 34, 190)" }}
+        >
+         PRICING
+        </p>
           <h1 className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center"
           style={{
             fontFamily: "'EB Garamond', serif",
