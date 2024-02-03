@@ -3,6 +3,7 @@ import config from "@/config";
 import SigninButton from "@/components/ButtonSignIn";
 import Image from "next/image";
 import TestimonialRating from "@/components/TestimonialRating";
+import TestimonialsAvatars from "./TestimonialsAvatars";
 
 const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
@@ -29,6 +30,7 @@ function Hero() {
           accordingly to your liking.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
+        <TestimonialsAvatars></TestimonialsAvatars>
 
         <div
           style={{
