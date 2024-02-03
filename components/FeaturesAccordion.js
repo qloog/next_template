@@ -12,33 +12,34 @@ import Image from "next/image";
 // - alt: The alt text of the image (if type is 'image')
 const features = [
   {
-    title: "AI Design Assist",
+    title: "Custom Tattoo Design Generation",
     description:
-      "Just like autocomplete, our AI assists you in designing tattoos. Start with a basic idea and watch as AI expands it into a full-fledged design, overcoming any creative block",
-     type: "video",
-      path: "/media/demovideo.mp4",
-      format: "video/mp4",
+      "Create unique tattoo designs tailored to your preferences. Customize style, theme, and complexity with just a few clicks",
   },
   {
-    title: "Custom Tattoo Styles",
+    title: "Visual Inspiration Gallery",
     description:
-      "From traditional to abstract, select from a range of tattoo styles. Our AI adapts to your preference, ensuring each design aligns with the chosen style",
-      type: "image",
-      path: "/media/demo.png",
-      alt: "A demo",
+      "Browse through an extensive gallery of designs. Find inspiration for your next tattoo from a diverse collection of styles and themes",
   },
   {
-    title: "Interactive Design Sessions",
+    title: "Style and Theme Explorer",
     description:
-      "Chat with our AI to tweak and refine your tattoo designs in real time. It's like having a conversation with a virtual tattoo artist",
+      "Whether it's traditional, realism, watercolor, or tribal, explore a myriad of tattoo styles. Find the one that best expresses your individuality",
   },
   {
-    title: "Prompt-Driven Custom Designs",
+    title: "High-Quality Exports",
     description:
-      "Jumpstart your tattoo journey by entering a prompt or idea. Our AI takes your concept and generates a unique design, providing a creative foundation for you to refine and personalize",
-      type: "image",
-      path: "/media/tiger.webp",
-      alt: "A tiger",
+      "Download your designs in high-resolution formats, ready for your tattoo artist to use as a stencil or reference",
+  },
+  {
+    title: "Share and Collaborate",
+    description:
+      "Share your tattoo designs with friends or your tattoo artist. Get feedback and make collaborative adjustments to your design",
+  },
+  {
+    title: "Multilingual Support",
+    description:
+      "Describe your tattoo idea in multiple languages. Our AI understands and generates designs in English, Spanish, French, German, and more",
   },
 ];
 
