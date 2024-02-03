@@ -165,7 +165,7 @@ const FeaturesAccordion = () => {
         >
          POWERFUL FEATURES
         </p>
-        <h2 className="text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24"
+        <h2 className="text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24 text-align:center text-center"
         style={{
           fontFamily: "'EB Garamond', serif",
         }}>

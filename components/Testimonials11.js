@@ -206,11 +206,11 @@ const Testimonials11 = () => {
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
-            <h2 className="sm:text-5xl text-4xl text-black">
+            <h2 className="sm:text-5xl text-4xl text-black text-align:center text-center">
               Join 2 thousand empowered tattoo lovers
             </h2>
           </div>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black text-align:center text-center">
             TattooswithAI has helped create over 10,000 tattoos. From different
             style choices, never-seen before designs, to being the only one to
             own your dream tattoo
