@@ -159,7 +159,7 @@ const Testimonial = ({ i }) => {
                 {testimonial.name}
               </div>
               {testimonial.username && (
-                <div className="mt-0.5 text-sm text-black">
+                <div className="mt-0.5 text-sm text-white">
                   @{testimonial.username}
                 </div>
               )}
