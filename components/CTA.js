@@ -28,7 +28,7 @@ const CTA = () => {
           <button
             className="btn btn-block w-full max-w-xs space-y-3 text-white"
             style={{
-              fontFamily: "'Inter', sans-serif", // Use the Inter font
+              fontFamily: "'Poppins', sans-serif", // Use the Inter font
               fontWeight: 600,
               backgroundColor: "rgb(50, 61, 214)",
             }}
