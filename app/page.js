@@ -156,7 +156,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
           rel="stylesheet"
         />
       </Head>
@@ -177,18 +177,18 @@ export default function Home() {
         }}
       />
       <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-YVYWH0C0XS"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-YVYWH0C0XS"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             
             gtag('config', 'G-YVYWH0C0XS');
           `}
-        </Script>
+      </Script>
       <Header></Header>
       <style jsx>{`
         .login-signup-prompt {
@@ -218,13 +218,12 @@ export default function Home() {
           id="tattoo-generator"
           className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
         >
-          
           <p
-          className="font-medium text-sm mb-2"
-          style={{ color: "rgb(23, 34, 190)" }}
-        >
-         DESIGN YOUR TATTOO
-        </p>
+            className="font-medium text-sm mb-2"
+            style={{ color: "rgb(23, 34, 190)" }}
+          >
+            DESIGN YOUR TATTOO
+          </p>
           <textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}

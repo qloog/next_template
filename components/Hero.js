@@ -14,7 +14,7 @@ function Hero() {
       <h1
       className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center"
       style={{
-        fontFamily: "'EB Garamond', serif",
+        fontFamily: "'Poppins', sans-serif",
       }}
     >
           Design Your Own Artist-Quality Custom-Made Tattoos At Home Using AI
@@ -23,7 +23,7 @@ function Hero() {
         <p
           className="font-medium text-lg leading-relaxed items-center justify-center  text-align:center text-center lg:text-center text-black opacity-80"
           style={{
-            fontFamily: "'EB Garamond', serif",
+            fontFamily: "'Poppins', sans-serif",
           }}
         >
           Turn your idea into a custom design without overpaying and design
