@@ -11,7 +11,7 @@ const faqList = [
     question: <div className="text-black">How does TattooswithAI work?</div>,
     answer: (
       <div className="space-y-2 leading-relaxed text-black">
-        TattooswithAI uses your text descriptions to create unique tattoo designs. Just type in your idea, and our AI transforms it into a custom tattoo. It's easy and requires no design skills, making your next tattoo design just a description away.
+        TattooswithAI uses your text descriptions to create unique tattoo designs. Just type in your idea, and our AI transforms it into a custom tattoo. It&apos;s easy and requires no design skills, making your next tattoo design just a description away.
       </div>
     ),
   },
