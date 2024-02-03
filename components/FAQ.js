@@ -164,7 +164,7 @@ const FAQ = () => {
       <div className="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
         <div className="flex flex-col text-left basis-1/2">
         <p
-          className="font-medium text-sm mb-2 text-center"
+          className="font-medium text-sm mb-2"
           style={{ color: "rgb(23, 34, 190)" }}
         >
          FAQ

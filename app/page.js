@@ -207,7 +207,7 @@ export default function Home() {
         >
           
           <p
-          className="font-medium text-sm mb-2 text-center"
+          className="font-medium text-sm mb-2"
           style={{ color: "rgb(23, 34, 190)" }}
         >
          Design your tattoo
