@@ -30,7 +30,6 @@ function Hero() {
           accordingly to your liking.
         </p>
         <SigninButton className="btn btn-gradient animate-shimmer w-full max-w-xs space-y-3"></SigninButton>
-        <TestimonialsAvatars></TestimonialsAvatars>
 
         <div
           style={{
