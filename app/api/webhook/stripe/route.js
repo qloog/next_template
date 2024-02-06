@@ -42,7 +42,6 @@ export async function POST(req) {
         // ✅ Grant access to the product
 
         const session = await findCheckoutSession(data.object.id);
-
         const customerId = session?.customer;
         const priceId = session?.line_items?.data[0]?.price.id;
         const userId = data.object.client_reference_id;
