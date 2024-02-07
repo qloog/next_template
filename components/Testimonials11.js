@@ -185,14 +185,12 @@ const Testimonial = ({ i }) => {
 const Testimonials11 = () => {
   return (
     <section
-      className="bg-white text-black"
+      className="text-black"
       id="testimonials"
       style={{
-        fontFamily: "'Poppins', sans-serif", // Use the Inter font
-        backgroundImage: "url('/media/worldd.png')", // Add your image path here
-        backgroundSize: 'cover', // Cover the entire section
-        backgroundPosition: 'center', // Center the background image
-        backgroundRepeat: 'no-repeat', // Do not repeat the image
+        backgroundColor: "white",
+        opacity: 80
+      
       }}
     >
       <div className="px-8">
