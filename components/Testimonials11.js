@@ -212,8 +212,7 @@ const Testimonials11 = () => {
           </div>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black text-align:center text-center">
             TattooswithAI has helped create over 10,000 tattoos. From different
-            style choices, never-seen before designs, to being the only one to
-            own your dream tattoo
+            style choices, finding the right design, to being the only one to own your dream tattoo
           </p>
         </div>
 
