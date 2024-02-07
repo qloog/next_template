@@ -113,7 +113,7 @@ const list = [
     name: "Taylor Mindru",
     text: "Im obsessed. These designs are just too good. My back tattoo design is definitely going to be from TattooswithAI",
     type: refTypes.productHunt,
-    img: "/media/t9.jpeg",
+    img: "/media/taylor-harding-VTcH7RcqECQ-unsplash.jpg",
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
   {
