@@ -189,7 +189,7 @@ const Testimonials11 = () => {
       id="testimonials"
       style={{
         fontFamily: "'Poppins', sans-serif", // Use the Inter font
-        backgroundImage: "url('/media/global-network-connection_41981-1057.avif')", // Add your image path here
+        backgroundImage: "url('/media/worldd.png')", // Add your image path here
         backgroundSize: 'cover', // Cover the entire section
         backgroundPosition: 'center', // Center the background image
         backgroundRepeat: 'no-repeat', // Do not repeat the image
