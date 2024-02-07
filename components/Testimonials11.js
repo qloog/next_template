@@ -97,7 +97,7 @@ const list = [
   {
     username: "welcometobriami",
     name: "Brian Kang",
-    text: "The tool is exactly what I didn't even know I needed. ",
+    text: "AI Tattoos are alright but have you tried TattooswithAI?",
     type: refTypes.twitter,
     img: "/media/t7.jpeg",
   },
