@@ -47,7 +47,7 @@ const list = [
     // REQUIRED
     name: "Marc Lou",
     // REQUIRED
-    text: "'Tattooswithai is just fantastic! I generated designs for myself, my wife, and some clients. As a artist, who is a tattoo-obsessed being, I love this!'",
+    text: "TattooswithAI is just fantastic! I generated designs for myself, my wife, and some clients. As a artist, who is a tattoo-obsessed being, I love this!",
     // REQUIRED — use refTypes.other if you don't want to display an icon
     type: refTypes.twitter,
     // Optional, link to the person's testimonial. It's more trustable
@@ -55,16 +55,16 @@ const list = [
     img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
   },
   {
-    username: "the_mcnaveen",
-    name: "Naveen",
-    text: "'Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my client's loved the tattoos!'",
+    username: "the_collison",
+    name: "Patrick Collison",
+    text: "I thought AI Tattoos were horrible. But when I found TattooswithAI - it blew my mind. It's 10x more advanced than I thought and the AI is actually accurate and gives such good tattoo designs.",
     type: refTypes.twitter,
     img: "/media/t1.jpeg",
   },
   {
     username: "Irynak",
     name: "Iryna K.",
-    text: "'Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. TATTOOSWITHAI was very responsive to my questions'",
+    text: "I started with Tattoos-who & Tattoos-what. But now, I can't bring my wild tattoo ideas into reality without TattooswithAI. I love the AI and am amazed to see how far TattooswithAI has come. Kudos to TattooswithAI.",
     type: refTypes.productHunt,
     img: "/media/t2.jpeg",
   },
@@ -77,7 +77,7 @@ const list = [
   {
     username: "Jordand1",
     name: "Jordan D",
-    text: "I started with Tattoos-who & Tattoos-what. But now, I can't bring my wild tattoo ideas into reality without TattooswithAI. I love the AI and am amazed to see how far TattooswithAI has come. Kudos to TattooswithAI.",
+    text: "Good input = good output. Very fun! Took me some effort at first to accurately describe which tattoo I wanted, but when I got back my design, it was amazing. TATTOOSWITHAI was very responsive to my questions",
     type: refTypes.productHunt,
     img: "/media/t4.jpeg",
   },
@@ -119,7 +119,7 @@ const list = [
   {
     username: "JazPivots",
     name: "Jaz Abeledo",
-    text: "I thought AI Tattoos were horrible. But when I found TattooswithAI - it blew my mind. It's 10x more advanced than I thought and the AI is actually accurate and gives such good tattoo designs.",
+    text: "Cool AI tool for tattoo generation! I could create a lot of truly amazing tattoos anytime I want, anywhere in the world off my phone. All my client's loved the tattoos!",
     type: refTypes.twitter,
     img: "/media/t11.jpeg",
   },
