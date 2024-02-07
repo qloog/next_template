@@ -258,6 +258,7 @@ export default function Home() {
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
         <section>
+          <Testimonials11></Testimonials11>
         </section>
         <section>
           <FAQ></FAQ>

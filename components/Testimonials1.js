@@ -37,7 +37,7 @@ const Testimonial = () => {
                     Amanda Lou
                   </div>
                   <div className="text-base-content/60">
-                    Indie Maker &amp; Developer
+                   Tattoo lover
                   </div>
                 </div>
 
