@@ -68,7 +68,7 @@ const TestimonialsAvatars = ({ priority = false }) => {
           style={{
             fontFamily: "'Poppins', sans-serif",
           }}>
-            Loved by over 2 thousand rebels
+            Loved by over 2 thousand customers
           </span>
         </div>
       </div>
