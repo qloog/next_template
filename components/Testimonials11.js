@@ -109,9 +109,9 @@ const list = [
     img: "/media/joel-muniz-yb5VUJo_Ddw-unsplash.jpg",
   },
   {
-    username: "dan",
-    name: "Dan Mindru",
-    text: "Probably one of the most powerful things you can generate that I've seen",
+    username: "ItsYaGirlTaylor",
+    name: "Taylor Mindru",
+    text: "Im obsessed. These designs are just too good. My back tattoo design is definitely going to be from TattooswithAI",
     type: refTypes.productHunt,
     img: "/media/t9.jpeg",
   },
