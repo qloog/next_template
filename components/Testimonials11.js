@@ -190,7 +190,6 @@ const Testimonials11 = () => {
       style={{
         backgroundColor: "white",
         opacity: 80
-      
       }}
     >
       <div className="px-8">
