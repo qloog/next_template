@@ -1,4 +1,8 @@
 import React from 'react';
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/app/icon.png";
+import config from "@/config";
 
 // Dummy data for gallery images
 const galleryImages = [
