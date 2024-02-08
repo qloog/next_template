@@ -23,7 +23,7 @@ const galleryImages = [
 const page = () => {
   return (
     <div style={{ padding: '20px', backgroundColor: '#fff' }}>
-      <h1 style={{ fontFamily: "'Poppins', sans-serif", textAlign: 'center', marginBottom: '20px' }}>Latest Design Renders</h1>
+      <h1 style={{ color: 'black', fontFamily: "'Poppins', sans-serif", textAlign: 'center', marginBottom: '20px' }}>Latest Design Renders</h1>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
