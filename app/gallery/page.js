@@ -62,7 +62,7 @@ const page = () => {
         </div>
         <p
           className="font-medium text-sm mb-2 text-center"
-          style={{ color: "rgb(23, 34, 190)" }}
+          style={{ color: "rgb(23, 34, 190)", marginBottom: '30px', marginTop: '30px' }}
         >
          LATEST DESIGN RENDERS
         </p>
