@@ -2,8 +2,8 @@ import React from 'react';
 
 // Dummy data for gallery images
 const galleryImages = [
-  { id: 1, url: '/path/to/image1.jpg', alt: 'Tattoo Design 1' },
-  { id: 2, url: '/path/to/image2.jpg', alt: 'Tattoo Design 2' },
+  { id: 1, url: '/media/tiger.webp', alt: 'Tattoo Design 1' },
+  { id: 2, url: '/media/lion.JPG', alt: 'Tattoo Design 2' },
   // Add more images as needed
 ];
 
