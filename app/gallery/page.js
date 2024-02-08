@@ -21,6 +21,23 @@ const galleryImages = [
 ];
 
 const page = () => {
+    <div className="flex lg:flex-1">
+    <Link
+      className="flex items-center gap-2 shrink-0 "
+      href="/"
+      title={`${config.appName} hompage`}
+    >
+    </Link>
+      <Image
+        src={logo}
+        alt={`${config.appName} logo`}
+        className="w-8"
+        placeholder="blur"
+        priority={true}
+        width={32}
+        height={32}
+        />
+</div>
   return (
     <div style={{ padding: '20px', backgroundColor: '#fff' }}>
       <h1 style={{ color: 'black', fontFamily: "'Poppins', sans-serif", textAlign: 'center', marginBottom: '20px' }}>Latest Design Renders</h1>
