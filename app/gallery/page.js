@@ -59,11 +59,13 @@ const page = () => {
           </div>
         </Link>
          {/* Right side - Sign in button */}
-      <div>
-        <SigninButton />
-      </div>
         </div>
-      <h1 style={{ color: 'black', fontFamily: "'Poppins', sans-serif", textAlign: 'center', marginBottom: '20px' }}>Latest Design Renders</h1>
+        <p
+          className="font-medium text-sm mb-2 text-center"
+          style={{ color: "rgb(23, 34, 190)" }}
+        >
+         LATEST DESIGN RENDERS
+        </p>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
