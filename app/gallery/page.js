@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/icon.png";
 import config from "@/config";
+import SigninButton from '@/components/ButtonSignIn';
 
 
 // Dummy data for gallery images
@@ -57,6 +58,10 @@ const page = () => {
             </span>
           </div>
         </Link>
+         {/* Right side - Sign in button */}
+      <div>
+        <SigninButton />
+      </div>
         </div>
       <h1 style={{ color: 'black', fontFamily: "'Poppins', sans-serif", textAlign: 'center', marginBottom: '20px' }}>Latest Design Renders</h1>
       <div style={{
