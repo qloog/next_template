@@ -22,14 +22,12 @@ const links = [
     href: "mailto:infotattooswithai@gmail.com",
   label: "Support",
   },
+  {
+    href: "/gallery/route",
+  label: "Gallery",
+  },
 ];
-const cta = <ButtonSignin  
-style={{
-  fontFamily: "'Poppins', sans-serif", // Use the Inter font
-  fontWeight: 600, 
-    backgroundColor: 'rgb(50, 61, 214)'
-  }}
-/>;
+
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
