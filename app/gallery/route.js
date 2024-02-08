@@ -1,8 +1,5 @@
-// app/gallery/route.js
-import React from 'react';
-
-function GalleryPage() {
-  return <div>Gallery Content</div>;
+export default function Gallery() {
+    return(
+        <h1>Gallery</h1>
+    )
 }
-
-export default GalleryPage;
