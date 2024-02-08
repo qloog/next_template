@@ -23,7 +23,7 @@ const links = [
   label: "Support",
   },
   {
-    href: "/gallery/route",
+    href: "/gallery",
   label: "Gallery",
   },
 ];

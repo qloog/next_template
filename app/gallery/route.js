@@ -1,13 +1,7 @@
-// pages/gallery/route.js
+// app/gallery/route.js
 import React from 'react';
+import Gallery from '@/components/Gallery';
 
-const GalleryPage = () => {
-    return (
-        <div>
-            <h1>Gallery Page</h1>
-            {/* Gallery content goes here */}
-        </div>
-    );
+export default function GalleryRoute() {
+  return <Gallery />;
 }
-
-export default GalleryPage;
