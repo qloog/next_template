@@ -10,21 +10,17 @@ import config from "@/config";
 const GalleryPage = () => {
   const [galleryImages, setGalleryImages] = useState([]);
 
-  useEffect(() => {
+ // In your gallery page component
+useEffect(() => {
     fetch('/api/gallery')
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Network response was not ok.');
+      .then((res) => res.json())
+      .then((data) => {
+        // Set your state with the fetched gallery items
+        setGalleryItems(data);
       })
-      .then(data => {
-        setGalleryImages(data);
-      })
-      .catch(error => {
-        console.error('Error fetching gallery images:', error);
-      });
+      .catch((error) => console.error('Error fetching gallery images:', error));
   }, []);
+  
 
   return (
     <div style={{ padding: '20px', backgroundColor: '#fff' }}>

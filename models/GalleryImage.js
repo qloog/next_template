@@ -2,15 +2,10 @@
 import mongoose from 'mongoose';
 
 const galleryImageSchema = new mongoose.Schema({
-  url: {
-    type: String,
-    required: true,
-  },
-  alt: {
-    type: String,
-    required: true,
-  },
-  // Include other fields as necessary, for example, a reference to the user who uploaded the image
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  url: { type: String, required: true },
+  alt: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
 });
 
 export default mongoose.models.GalleryImage || mongoose.model('GalleryImage', galleryImageSchema);
