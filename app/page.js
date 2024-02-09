@@ -29,6 +29,7 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
   const { data: session } = useSession();
   const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
+  const [includeInGallery, setIncludeInGallery] = useState(false);
 
   async function onGenerate(e) {
     setIsLoading(true);
@@ -47,7 +48,7 @@ export default function Home() {
     const res = await fetch("/api/generateImage", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: fullPrompt }),
+      body: JSON.stringify({ prompt: fullPrompt, includeInGallery }),
     });
 
     if (res.status !== 200) {
@@ -243,6 +244,15 @@ export default function Home() {
             <option value="Traditional">Traditional</option>
             <option value="Realism">Realism</option>
           </select>
+          <label>
+            <input
+              type="checkbox"
+              checked={includeInGallery}
+              onChange={(e) => setIncludeInGallery(e.target.checked)}
+            />
+            Include in Gallery
+          </label>
+
           <button
             className="btn w-full max-w-xs space-y-3 "
             style={buttonStyle}

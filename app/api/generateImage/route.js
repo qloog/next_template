@@ -44,6 +44,14 @@ export async function POST(req) {
     user.currentCredits = user.currentCredits - 1
     await user.save()
 
+    if (body.includeInGallery) {
+      const galleryImage = new GalleryImage({
+        url: finalData.imageUrl, // or however you're getting the URL
+        userId: user._id,
+      });
+      await galleryImage.save();
+    }
+
     return NextResponse.json({ imageUrl , finalData })
   } catch (error) {
     console.error('OpenAI API Error:', error)
