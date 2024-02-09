@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/icon.png";
 import config from "@/config";
 
 
-const initialGalleryImages = [
+const galleryImages = [
     { id: 1, url: '/media/tiger.webp', alt: 'Tattoo Design 1' },
     { id: 2, url: '/media/lion.JPG', alt: 'Tattoo Design 2' },
     { id: 3, url: '/media/IMG_5581.WEBP', alt: 'Tattoo Design 2' },
@@ -26,18 +26,6 @@ const initialGalleryImages = [
   
 
   const Page = () => {
-    const [galleryImages, setGalleryImages] = useState([initialGalleryImages]);
-
-    useEffect(() => {
-        fetch('/api/gallery')
-          .then((res) => res.json())
-          .then((data) => {
-            console.log('Fetched data:', data);
-            setGalleryImages((prevImages) => [...prevImages, ...data]);
-          })
-          .catch((error) => console.error('Fetching error:', error));
-      }, []);
-      
       
 
     return (
