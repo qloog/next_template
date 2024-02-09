@@ -4,8 +4,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/libs/next-auth";
 import connectMongo from '@/libs/mongoose'
 import User from '@/models/User'
-// Assuming the file is named GalleryImage.js and is located in the models directory
-import GalleryImage from '@/models/GalleryImage';
+
 
 
 export async function POST(req) {
