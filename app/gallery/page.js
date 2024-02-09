@@ -25,7 +25,6 @@ const galleryImages = [
     { id: 15, url: '/media/Khalsa Small.jpeg', alt: 'Tattoo Design 2' },
   ];
   
-  const logo = '/app/icon.png';
 
   const page = () => {
     return (
