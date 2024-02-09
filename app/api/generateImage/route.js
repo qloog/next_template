@@ -47,13 +47,24 @@ export async function POST(req) {
     user.currentCredits = user.currentCredits - 1
     await user.save()
 
-    if (body.includeInGallery) {
+    if (body.includeInGallery && imageUrl) {
+      const altText = prompt; // Using the prompt as alt text, or define a suitable alternative
+
       const galleryImage = new GalleryImage({
-        url: finalData.imageUrl, // or however you're getting the URL
+        url: imageUrl,
+        alt: altText,
         userId: user._id,
       });
-      await galleryImage.save();
+
+      try {
+        await galleryImage.save();
+      } catch (error) {
+        console.error('Failed to save gallery image:', error);
+        // Optionally, handle the error by sending a response or logging
+      }
     }
+    
+
 
     return NextResponse.json({ imageUrl , finalData })
   } catch (error) {
