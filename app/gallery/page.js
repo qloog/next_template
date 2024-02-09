@@ -6,7 +6,7 @@ import logo from "@/app/icon.png";
 import config from "@/config";
 
 
-const galleryImages = [
+const initialGalleryImages = [
     { id: 1, url: '/media/tiger.webp', alt: 'Tattoo Design 1' },
     { id: 2, url: '/media/lion.JPG', alt: 'Tattoo Design 2' },
     { id: 3, url: '/media/IMG_5581.WEBP', alt: 'Tattoo Design 2' },
@@ -26,7 +26,7 @@ const galleryImages = [
   
 
   const Page = () => {
-    const [galleryImages, setGalleryImages] = useState([]);
+    const [galleryImages, setGalleryImages] = useState([initialGalleryImages]);
 
     useEffect(() => {
         fetch('/api/gallery')
