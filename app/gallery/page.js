@@ -31,9 +31,14 @@ const initialGalleryImages = [
     useEffect(() => {
         fetch('/api/gallery')
           .then((res) => res.json())
-          .then(setGalleryImages)
-          .catch(console.error);
+          .then((data) => {
+            console.log('Fetched data:', data);
+            setGalleryImages((prevImages) => [...prevImages, ...data]);
+          })
+          .catch((error) => console.error('Fetching error:', error));
       }, []);
+      
+      
 
     return (
       <div style={{ padding: '20px', backgroundColor: '#fff' }}>
