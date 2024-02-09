@@ -25,7 +25,7 @@ const galleryImages = [
   ];
   
 
-  const page = () => {
+  const Page = () => {
     const [galleryImages, setGalleryImages] = useState([]);
 
     useEffect(() => {
@@ -89,5 +89,5 @@ const galleryImages = [
     );
   };
   
-  export default page;
+  export default Page;
            
