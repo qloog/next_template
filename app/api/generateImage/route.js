@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/libs/next-auth";
 import connectMongo from '@/libs/mongoose'
 import User from '@/models/User'
+import GalleryImage from '@/models/GalleryImage';
 
 
 
