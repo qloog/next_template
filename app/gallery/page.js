@@ -57,12 +57,29 @@ const galleryImages = [
             </div>
           </Link>
         </div>
+        <p
+          className="font-medium text-sm mb-2 text-center"
+          style={{ color: "rgb(23, 34, 190)", marginBottom: '30px', marginTop: '30px' }}
+        >
+         LATEST DESIGN RENDERS
+        </p>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gap: '20px',
+          alignItems: 'stretch',
+        }}>
+          {galleryImages.map((image) => (
+            <div key={image.id} style={{ overflow: 'hidden', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+              <img src={image.url} alt={image.alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+          ))}
+        </div>
   
-        {/* Gallery content below */}
-        <h1 style={{ color: 'black', fontFamily: "'Poppins', sans-serif", textAlign: 'center', marginBottom: '20px' }}>Latest Design Renders</h1>
-        {/* Rest of your gallery page content */}
+      
       </div>
     );
   };
   
   export default page;
+           
