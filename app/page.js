@@ -244,14 +244,6 @@ export default function Home() {
             <option value="Traditional">Traditional</option>
             <option value="Realism">Realism</option>
           </select>
-          <label>
-            <input
-              type="checkbox"
-              checked={includeInGallery}
-              onChange={(e) => setIncludeInGallery(e.target.checked)}
-            />
-            Include in Gallery
-          </label>
 
           <button
             className="btn w-full max-w-xs space-y-3 "
