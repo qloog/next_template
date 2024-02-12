@@ -47,17 +47,6 @@ export async function POST(req) {
     user.currentCredits = user.currentCredits - 1
     await user.save()
 
-    if (body.includeInGallery) {
-      const newGalleryImage = new GalleryImage({
-        url: imageUrl,
-        alt: "Generated Tattoo Design", // You might want to customize this
-        user: user._id,
-      });
-    
-      await newGalleryImage.save();
-    }
-
-
 
     return NextResponse.json({ imageUrl , finalData })
   } catch (error) {

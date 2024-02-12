@@ -30,7 +30,6 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
   const { data: session } = useSession();
   const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
-  const [includeInGallery, setIncludeInGallery] = useState(false);
 
   async function onGenerate(e) {
     setIsLoading(true);
@@ -49,7 +48,7 @@ export default function Home() {
     const res = await fetch("/api/generateImage", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: fullPrompt, includeInGallery }),
+      body: JSON.stringify({ prompt: fullPrompt}),
     });
 
     if (res.status !== 200) {
