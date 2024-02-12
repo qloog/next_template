@@ -37,6 +37,7 @@ const EditTattoo = () => {
   };
 
   return (
+    <div style={{ maxWidth: '100%', margin: 'auto', padding: '20px' }}>
     <div className="edit-tattoo-container" style={{ fontFamily: 'Poppins, sans-serif' }}>
       <input type="file" onChange={handleFileChange} accept="image/*" />
       <textarea
@@ -72,6 +73,7 @@ const EditTattoo = () => {
           <img src={modifiedTattoo} alt="Modified Tattoo" style={{ width: '100%', borderRadius: '5px' }} />
         </div>
       )}
+    </div>
     </div>
   );
 };
