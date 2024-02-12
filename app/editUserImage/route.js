@@ -1,4 +1,5 @@
 
+import { response } from "express";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -10,13 +11,15 @@ export async function handler(req, res) {
     return res.status(405).send({ message: "Only POST requests allowed" });
   }
 
+
+
   try {
     const { content } = await req.json();
-
     const response = await openai.createCompletion({
       model: "gpt-4-vision-preview",
       prompt: content,
     });
+    console.log(response, "response")
 
     // Log the response or process it as needed
     console.log(response);
