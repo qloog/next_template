@@ -29,7 +29,7 @@ const EditTattoo = () => {
 
     try {
       // Replace '/api/editTattoo' with your actual API endpoint
-      const response = await fetch('/api/editTattoo', {
+      const response = await fetch('/api/editUserImage', {
         method: 'POST',
         body: formData,
         // Don't set 'Content-Type' header when sending FormData;
