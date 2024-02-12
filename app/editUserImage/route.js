@@ -16,10 +16,11 @@ export async function handler(req, res) {
   try {
     const { content } = await req.json();
     const response = await openai.createCompletion({
+     messages: [{ role: "user", content: "Say this is a test" }],
       model: "gpt-4-vision-preview",
       prompt: content,
     });
-    console.log(response, "response")
+    console.log('response', response.data.choices)
 
     // Log the response or process it as needed
     console.log(response);
