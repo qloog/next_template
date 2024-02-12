@@ -19,6 +19,7 @@ import Testimonials11 from "@/components/Testimonials11";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Script from "next/script";
+import EditTattoo from "@/components/EditTattoo";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -256,6 +257,9 @@ export default function Home() {
             Render new tattoo
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
+          <EditTattoo></EditTattoo>
+
+
         </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
