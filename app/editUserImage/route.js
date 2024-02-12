@@ -1,35 +1,37 @@
-
-import { response } from "express";
-import OpenAI from "openai";
+import multer from 'multer';
+import OpenAI from 'openai';
+import express from 'express';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY2,
 });
 
-export async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).send({ message: "Only POST requests allowed" });
-  }
+const upload = multer({ storage: multer.memoryStorage() });
+const router = express.Router();
 
-
-
+router.post('/', upload.single('file'), async (req, res) => {
   try {
-    const { content } = await req.json();
+    const file = req.file; // This is your image file
+    const modificationRequest = req.body.modificationRequest;
+
+    // Use OpenAI's API to modify the image here.
+    // This is a placeholder for where you'd call the OpenAI API.
+    // You'll need to adjust this according to the OpenAI API documentation
+    // and how it supports image modification.
     const response = await openai.createCompletion({
-     messages: [{ role: "user", content: "Say this is a test" }],
       model: "gpt-4-vision-preview",
-      prompt: content,
+      prompt: modificationRequest,
+      // Add additional parameters as required by the OpenAI API for image processing
     });
-    console.log('response', response.data.choices)
 
-    // Log the response or process it as needed
-    console.log(response);
+    // Assuming the OpenAI API returns a URL to the modified image
+    const modifiedImageUrl = response.data.choices[0].text; // Adjust based on actual response structure
 
-    // Respond with the edited image URL or the direct API response
-    // Adjust according to what the API returns
-    res.status(200).json(response);
+    res.status(200).json({ modifiedTattooUrl: modifiedImageUrl });
   } catch (error) {
-    console.error(error);
+    console.error('Error processing image:', error);
     res.status(500).json({ message: "Internal Server Error" });
   }
-}
+});
+
+export default router;
