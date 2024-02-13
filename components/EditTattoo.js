@@ -54,11 +54,15 @@ export default function EditTattoo() {
   
       const reader = response.body.getReader();
       let responseText = "";
+      let reading = true;
   
-      while (true) {
+      while (reading) {
         const { done, value } = await reader.read();
-        if (done) break;
-        responseText += new TextDecoder().decode(value);
+        if (done) {
+          reading = false; // End the loop
+        } else {
+          responseText += new TextDecoder().decode(value);
+        }
       }
   
       setOpenAIResponse(responseText);
@@ -67,6 +71,7 @@ export default function EditTattoo() {
       alert("Error processing image. Please try again.");
     }
   }
+  
 
   return (
     <div className="edit-tattoo-wrapper bg-gray-100 p-5 rounded-lg shadow-lg max-w-lg mx-auto mt-10">
