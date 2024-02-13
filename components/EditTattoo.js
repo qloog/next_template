@@ -1,83 +1,48 @@
-import React, { useState } from 'react';
 
-const EditTattoo = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [modificationRequest, setModificationRequest] = useState('');
-  const [modifiedTattoo, setModifiedTattoo] = useState(null);
-  const [isDesigning, setIsDesigning] = useState(false);
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setSelectedImage(file);
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
-
-  const handleModificationRequestChange = (e) => {
-    setModificationRequest(e.target.value);
-  };
-
-  const handleEditTattoo = async () => {
-    if (!selectedImage || !modificationRequest.trim()) {
-      alert('Please select an image and specify the modifications.');
-      return;
-    }
-
-    setIsDesigning(true);
-
-    // Assuming the API expects a FormData with the image and the text request
-    const formData = new FormData();
-    formData.append('image', selectedImage);
-    formData.append('modificationRequest', modificationRequest);
-
-    try {
-      const response = await fetch('/api/editUserImage', { // Adjust this endpoint as needed
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to modify the tattoo.');
-      }
-
-      const data = await response.json();
-      setModifiedTattoo(data.modifiedTattooUrl); // Adjust according to your API response
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error modifying the tattoo. Please try again.');
-    } finally {
-      setIsDesigning(false);
-    }
-  };
-
-  return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-      {imagePreview && (
-        <div>
-          <p>Selected Image:</p>
-          <img src={imagePreview} alt="Selected Tattoo" style={{ maxWidth: '100%', height: 'auto', marginTop: '10px' }} />
+<div className="min-h-screen flex items-center justify-center text-md">
+      <div className='bg-slate-800 w-full max-w-2xl rounded-lg shadow-md p-8'>
+        <h2 className='text-xl font-bold mb-4'>Uploaded Image</h2>
+        { image !== "" ?
+          <div className="mb-4 overflow-hidden">
+            <img 
+              src={image}
+              className="w-full object-contain max-h-72"
+            />
+          </div>
+        :
+        <div className="mb-4 p-8 text-center">
+          <p>Once you upload an image, you will see it here.</p>
         </div>
-      )}
-      <textarea
-        placeholder="Describe what you want changed..."
-        value={modificationRequest}
-        onChange={handleModificationRequestChange}
-        style={{ display: 'block', margin: '20px auto', width: '80%', height: '100px' }}
-      ></textarea>
-      <button onClick={handleEditTattoo} disabled={isDesigning} style={{ padding: '10px 20px', margin: '10px' }}>
-        {isDesigning ? 'Designing...' : 'Edit Your Tattoo'}
-      </button>
-      {modifiedTattoo && (
-        <div>
-          <p>Modified Tattoo:</p>
-          <img src={modifiedTattoo} alt="Modified Tattoo" style={{ maxWidth: '100%', height: 'auto', marginTop: '10px' }} />
+        }
+        
+
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className='flex flex-col mb-6'>
+            <label className='mb-2 text-sm font-medium'>Upload Image</label>
+            <input
+              type="file"
+              className="text-sm border rounded-lg cursor-pointer"
+              onChange={(e) => handleFileChange(e)}
+            />
+          </div>
+          
+          <div className='flex justify-center'>
+            <button type="submit" className='p-2 bg-sky-600 rounded-md mb-4'>
+              Ask ChatGPT To Analyze Your Image
+            </button>
+          </div> 
+
+        </form>
+
+        {openAIResponse !== "" ?
+        <div className="border-t border-gray-300 pt-4">
+          <h2 className="text-xl font-bold mb-2">AI Response</h2>
+          <p>{openAIResponse}</p>
         </div>
-      )}
+        :
+        null
+        }
+        
+
+      </div>
     </div>
-  );
-};
-
-export default EditTattoo;
