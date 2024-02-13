@@ -1,4 +1,5 @@
-
+import { ChangeEvent, FormEvent } from "react"
+import React, { useState } from "react";
 
 export default function EditTattoo() {
 const [ image, setImage ] = useState<string>("");
