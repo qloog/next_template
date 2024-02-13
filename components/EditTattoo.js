@@ -1,4 +1,6 @@
 
+
+export default function EditTattoo() {
 <div className="min-h-screen flex items-center justify-center text-md">
       <div className='bg-slate-800 w-full max-w-2xl rounded-lg shadow-md p-8'>
         <h2 className='text-xl font-bold mb-4'>Uploaded Image</h2>
@@ -46,3 +48,4 @@
 
       </div>
     </div>
+}
