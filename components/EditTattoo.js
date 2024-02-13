@@ -41,20 +41,21 @@ export default function EditTattoo() {
       body: JSON.stringify({ image: image }),
     })
     .then(async (response) => {
-      if (!response.body) {
-        throw new Error("No response body");
-      }
-
-      const reader = response.body.getReader();
-      let responseText = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        responseText += new TextDecoder().decode(value);
-      }
-
-      setOpenAIResponse(responseText);
+        if (!response.body) {
+          throw new Error("No response body");
+        }
+  
+        const reader = response.body.getReader();
+        let responseText = "";
+  
+        // eslint-disable-next-line no-constant-condition
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          responseText += new TextDecoder().decode(value);
+        }
+  
+        setOpenAIResponse(responseText);
     })
     .catch((error) => {
       console.error("Error processing image:", error);
