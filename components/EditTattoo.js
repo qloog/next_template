@@ -3,6 +3,79 @@
 export default function EditTattoo() {
 const [ image, setImage ] = useState<string>("");
 const [ openAIResponse, setOpenAIResponse ] = useState<string>("");
+
+function handleFileChange(event) {
+    if (!event.target.files || event.target.files.length === 0) {
+        alert("No file selected. Please choose a file.");
+        return;
+    }
+    const file = event.target.files[0];
+
+    // Convert the user's file to a base64 string using FileReader
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+        // reader.result contains the base64 string
+        if (typeof reader.result === "string") {
+            console.log(reader.result);
+            setImage(reader.result); // Assuming setImage updates your component's state
+        }
+    };
+
+    reader.onerror = (error) => {
+        console.error("Error reading file:", error);
+    };
+}
+
+async function handleSubmit(event) {
+    event.preventDefault();
+
+    if (image === "") {
+        alert("Please upload an image before submitting.");
+        return;
+    }
+
+    // POST to your API endpoint
+    fetch("/api/editUserImage", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            image: image, // base64 image string
+        }),
+    })
+    .then(async (response) => {
+        if (!response.body) {
+            throw new Error("No response body");
+        }
+
+        const reader = response.body.getReader();
+        let openAIResponse = ""; // Assuming you'll use this to store the full response
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) {
+                break;
+            }
+            // Convert the Uint8Array to a string and append it to the response
+            const chunk = new TextDecoder().decode(value);
+            openAIResponse += chunk;
+        }
+
+        // Assuming you have a way to handle the full response in your component
+        setOpenAIResponse(openAIResponse);
+    })
+    .catch((error) => {
+        console.error("Error processing image:", error);
+    });
+}
+
+
+
+
+
 <div className="min-h-screen flex items-center justify-center text-md">
       <div className='bg-slate-800 w-full max-w-2xl rounded-lg shadow-md p-8'>
         <h2 className='text-xl font-bold mb-4'>Uploaded Image</h2>
