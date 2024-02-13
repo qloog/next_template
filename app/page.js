@@ -1,6 +1,5 @@
 "use client";
 
-import { ChangeEvent, FormEvent } from "react"
 import React, { useState } from "react";
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox";
@@ -31,8 +30,7 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
   const { data: session } = useSession();
   const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
-  const [ image, setImage ] = useState<string>("");
-  const [ openAIResponse, setOpenAIResponse ] = useState<string>("");
+
   async function onGenerate(e) {
     setIsLoading(true);
     e.preventDefault();
