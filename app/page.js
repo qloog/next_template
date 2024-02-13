@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState, FormEvent } from "react"
+import { ChangeEvent, FormEvent } from "react"
 import React, { useState } from "react";
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox";
