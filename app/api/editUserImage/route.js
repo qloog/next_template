@@ -39,7 +39,7 @@ export async function POST(req) {
   }
 
   // Now, use the description to generate a new image with DALL·E 3
-  const dalleResponse = await openai.createImage({
+  const dalleResponse = await openai.images.generate({
     model: "dall-e-3",
     prompt: description,
     size: "1024x1024", // Change this to the desired size
