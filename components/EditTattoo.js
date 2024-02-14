@@ -29,49 +29,40 @@ export default function EditTattoo() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-  
+
     if (image === "") {
       alert("Please upload an image before submitting.");
       return;
     }
-  
+
+    setIsEditing(true); // Indicate that editing is in process
+
     try {
       const response = await fetch("/api/editUserImage", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ image: image }),
+        body: JSON.stringify({ image: image, modifications: modificationRequest }),
       });
-  
+
+      setIsEditing(false); // Reset editing state
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-  
-      if (!response.body) {
-        throw new Error("No response body");
-      }
-  
-      const reader = response.body.getReader();
-      let responseText = "";
-      let reading = true;
-  
-      while (reading) {
-        const { done, value } = await reader.read();
-        if (done) {
-          reading = false; // End the loop
-        } else {
-          responseText += new TextDecoder().decode(value);
-        }
-      }
-  
-      setOpenAIResponse(responseText);
+
+      const data = await response.json();
+      setOpenAIResponse(data.newImageUrl); // Assuming the backend returns the new image URL
     } catch (error) {
       console.error("Error processing image:", error);
+      setIsEditing(false); // Reset editing state in case of error
       alert("Error processing image. Please try again.");
     }
   }
   
+  // ... your other component logic ...
+  // ... previous state and functions ...
 
   return (
     <div className="edit-tattoo-wrapper bg-gray-100 p-5 rounded-lg shadow-lg max-w-lg mx-auto mt-10">
@@ -108,9 +99,17 @@ export default function EditTattoo() {
       {openAIResponse && (
         <div className="mt-5 p-3 rounded-md border border-gray-200">
           <h3 className='text-lg font-semibold mb-2'>AI Response</h3>
-          <p className='text-sm'>{openAIResponse}</p>
+          {/* If the response is an image URL, display the image */}
+          {openAIResponse.startsWith('http') ? (
+            <img src={openAIResponse} alt="AI Modified Tattoo" className="mx-auto" style={{ maxHeight: '300px', maxWidth: '100%' }} />
+          ) : (
+            <p className='text-sm'>{openAIResponse}</p> // Otherwise, display the response text
+          )}
         </div>
       )}
     </div>
   );
 }
+
+  // The return statement will be here, which you already have.
+
