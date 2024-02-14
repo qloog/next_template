@@ -1,60 +1,67 @@
 import { OpenAIStream, StreamingTextResponse } from "ai"
+// Import necessary modules and configurations
 import { Configuration, OpenAIApi } from "openai-edge";
 
-export const runtime = 'edge';
+export const config = { runtime: 'experimental-edge' }; // Ensure this matches your deployment capabilities
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY2
+  apiKey: process.env.OPENAI_API_KEY2,
 });
 
 const openai = new OpenAIApi(configuration);
 
-export async function POST(req) {
-  const { image, modifications } = await req.json();
+// API route handler for POST requests
+export default async function handler(req, res) {
+  try {
+    // Parse the JSON body from the request
+    const { image, modifications } = await req.json();
 
-  // First, get the description of the changes needed from GPT-4 Vision Preview
-  const visionResponse = await openai.createChatCompletion({
-    model: "gpt-4-vision-preview",
-    stream: true,
-    max_tokens: 4096,
-    messages: [
-      {
-        role: "user",
-        content: [
-          { type: "text", text: modifications }, // User's description of the changes
-          { type: "image_url", image_url: image } // User's original image
-        ]
-      }
-    ]
-  });
+    // Get description of changes needed from GPT-4 Vision Preview
+    const visionResponse = await openai.createChatCompletion({
+      model: "gpt-4-vision-preview",
+      stream: true,
+      max_tokens: 4096,
+      messages: [
+        {
+          role: "user",
+          content: `Modify the image: ${modifications}`,
+        },
+        {
+          role: "system",
+          content: { type: "image_url", image_url: image },
+        },
+      ],
+    });
 
-  // Stream the vision API response and extract the content
-  const visionStream = OpenAIStream(visionResponse);
-  let description = '';
-  for await (const data of visionStream) {
-    if (data.choices && data.choices.length > 0) {
-      description = data.choices[0].message.content.trim();
-      break; // We break after the first response since we only need the description
+    // Assume visionResponse is streamed and handle accordingly
+    let description = '';
+    if (visionResponse.data && visionResponse.data.length > 0) {
+      // Assuming the first piece of data contains the necessary description
+      description = visionResponse.data[0].choices[0].message.content.trim();
     }
+
+    // Generate a new image with DALL·E 3 using the description
+    const dalleResponse = await openai.createImage({
+      model: "dall-e-3",
+      prompt: description,
+      size: "1024x1024",
+      n: 1,
+    });
+
+    // Extract and return the URL of the new image
+    if (dalleResponse.data && dalleResponse.data.length > 0) {
+      const newImageUrl = dalleResponse.data[0].url;
+      res.status(200).json({ newImageUrl });
+    } else {
+      res.status(500).json({ error: "Failed to generate new image." });
+    }
+  } catch (error) {
+    // Handle any errors that occur during the process
+    console.error("Error processing request:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-
-  // Now, use the description to generate a new image with DALL·E 3
-  const dalleResponse = await openai.createImage({
-    model: "dall-e-3",
-    prompt: description,
-    size: "1024x1024", // Change this to the desired size
-    quality: "standard",
-    n: 1
-  });
-
-  // Extract the URL of the new image
-  const newImageUrl = dalleResponse.data[0].url;
-
-  // Return the URL of the new image
-  return new Response(JSON.stringify({ newImageUrl }), {
-    headers: { 'Content-Type': 'application/json' }
-  });
 }
+
 
 
 
