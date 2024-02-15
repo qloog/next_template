@@ -3,11 +3,7 @@ import axios from 'axios';
 import formidable from 'formidable-serverless';
 import fs from 'fs';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
