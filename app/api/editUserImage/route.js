@@ -1,84 +1,37 @@
-// File: /pages/api/editUserImage.js
-import axios from 'axios';
-import formidable from 'formidable-serverless';
-import fs from 'fs';
 
+ import { OpenAIStream, StreamingTextResponse } from "ai"
+import { Configuration, OpenAIApi } from "openai-edge"
 
+export const runtime = 'edge'
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).send({ error: 'Only POST requests are allowed' });
-  }
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY2
+})
 
-  const form = new formidable.IncomingForm();
-  form.parse(req, async (err, fields, files) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: 'Error processing the form.' });
-    }
+const openai = new OpenAIApi(configuration);
 
-    // Read the image file and convert to base64
-    const fileBuffer = fs.readFileSync(files.image.filepath);
-    const base64Image = fileBuffer.toString('base64');
+export async function POST(req) {
+const { image } = await req.json()
 
-    // Use the base64 image and user prompt to call OpenAI's GPT-4 Vision API
-    try {
-      // Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
-      const headers = {
-        'Authorization': `Bearer YOUR_OPENAI_API_KEY2`,
-        'Content-Type': 'application/json'
-      };
-
-      // Call the GPT-4 Vision API to get a description of the image
-      const visionResponse = await axios.post(
-        'https://api.openai.com/v1/engines/gpt-4-vision-preview/completions', {
-          model: "gpt-4-vision-preview",
-          messages: [
-            {
-              role: "system",
-              content: "Image description request."
-            },
-            {
-              role: "user",
-              content: { type: "image_url", image_url: `data:image/jpeg;base64,${base64Image}` }
-            },
-            {
-              role: "user",
-              content: fields.userPrompt
-            }
-          ],
-          max_tokens: 300
-        }, 
-        { headers }
-      );
-
-      // Extract the image description from the response
-      const imageDescription = visionResponse.data.choices[0].message.content;
-
-      // Call DALL·E 3 API to generate a new image using the description
-      const dalleResponse = await axios.post(
-        'https://api.openai.com/v1/images/generations', 
+const response = await openai.createChatCompletion({
+    model: "gpt-4-vision-preview",
+    max_tokens: 4096,
+    messages: [
         {
-          model: "dall-e-3",
-          prompt: imageDescription,
-          n: 1,
-          size: "1024x1024"
-        }, 
-        { headers }
-      );
+            role: "user",
+            content: [
+                { type: "text", text: "Modify the image to a better styling" }, 
+                { type: "image_url", image_url: image }//base64 images
+            ]
+        }
+    ]
+});
 
-      // Extract the URL of the generated image
-      const generatedImageUrl = dalleResponse.data.data[0].url;
+const descriptionText = response.choices[0].message.content
+return descriptionText
 
-      // Send the generated image URL back to the frontend
-      res.status(200).json({ newImageUrl: generatedImageUrl });
-    } catch (error) {
-      console.error('OpenAI API error:', error);
-      res.status(500).json({ error: 'Error interacting with OpenAI API.' });
-    }
-  });
+
 }
-
 
 
 
