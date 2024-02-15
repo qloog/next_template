@@ -1,59 +1,86 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { Configuration, OpenAIApi } from "openai-edge"
+const axios = require('axios');
+const sharp = require('sharp');
+const fs = require('fs');
+const path = require('path');
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY2,
-});
-const openai = new OpenAIApi(configuration);
+// Helper function to encode image to base64
+const encodeImageToBase64 = (filePath) => {
+  return fs.readFileSync(filePath, { encoding: 'base64' });
+};
 
-export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    try {
-      // Parse the incoming request
-      const { image, userPrompt } = req.body;
-
-      // Get image description from GPT-4 Vision Preview
-      const descriptionResponse = await openai.createChatCompletion({
-        model: "gpt-4-vision-preview",
-        messages: [
-          {
-            role: "system",
-            content: "Image description request."
-          },
-          {
-            role: "user",
-            content: { type: "image_url", image_url: image }
-          }
-        ],
-      });
-
-      const imageDescription = descriptionResponse.data.choices[0].message.content;
-
-      // Generate a new image with DALL·E 3 using the image description and user's prompt
-      const generateResponse = await openai.createImage({
-        model: "dall-e-3",
-        prompt: `${imageDescription}. ${userPrompt}`,
-        n: 1,
-        size: "1024x1024"
-      });
-
-      const generatedImageUrl = generateResponse.data[0].url;
-
-      // Return the new image URL
-      res.status(200).json({ url: generatedImageUrl });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Error processing your request.' });
+// Function to get image description
+const getImageDescription = async (base64Image) => {
+  const response = await axios.post('https://api.openai.com/v1/engines/gpt-4-vision-preview/completions', {
+    model: "gpt-4-vision-preview",
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "Describe the style and elements of this image and from the description" },
+          { type: "image_url", image_url: `data:image/jpeg;base64,${base64Image}` }
+        ]
+      }
+    ],
+    max_tokens: 300
+  }, {
+    headers: {
+      'Authorization': `Bearer ${process.env.OPENAI_API_KEY2}`,
+      'Content-Type': 'application/json'
     }
-  } else {
-    // Handle any other HTTP method
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
-}
+  });
 
+  return response.data.choices[0].message.content;
+};
 
+// Function to generate an image
+const generateImage = async (prompt) => {
+  const response = await axios.post('https://api.openai.com/v1/images/generations', {
+    model: "dall-e-3",
+    prompt: prompt,
+    size: "1792x1024",
+    quality: "standard",
+    n: 1
+  }, {
+    headers: {
+      'Authorization': `Bearer ${process.env.OPENAI_API_KEY2}`,
+      'Content-Type': 'application/json'
+    }
+  });
 
+  return response.data.data[0].url;
+};
+
+// Function to save image from URL
+const saveImageFromUrl = async (url, originalFilename) => {
+  const response = await axios.get(url, { responseType: 'arraybuffer' });
+  const imageBuffer = Buffer.from(response.data, 'binary');
+  const webpFilename = path.join(__dirname, 'covers', `${path.parse(originalFilename).name}.webp`);
+
+  await sharp(imageBuffer)
+    .toFormat('webp')
+    .toFile(webpFilename);
+
+  return webpFilename;
+};
+
+// Example usage:
+const base64Image = encodeImageToBase64('path_to_your_image.jpg');
+getImageDescription(base64Image)
+  .then(description => {
+    console.log('Image description:', description);
+    return generateImage(description);
+  })
+  .then(generatedImageUrl => {
+    console.log('Generated image URL:', generatedImageUrl);
+    const originalFilename = 'your_image_name.jpg'; // Change this to your actual filename
+    return saveImageFromUrl(generatedImageUrl, originalFilename);
+  })
+  .then(savedImagePath => {
+    console.log('Saved image path:', savedImagePath);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
 
 
 
