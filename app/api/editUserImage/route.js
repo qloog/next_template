@@ -1,90 +1,87 @@
-const axios = require('axios');
-const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+// File: /pages/api/editUserImage.js
+import axios from 'axios';
+import formidable from 'formidable-serverless';
+import fs from 'fs';
 
-// Helper function to encode image to base64
-const encodeImageToBase64 = (filePath) => {
-  return fs.readFileSync(filePath, { encoding: 'base64' });
+export const config = {
+  api: {
+    bodyParser: false,
+  },
 };
 
-// Function to get image description
-const getImageDescription = async (base64Image) => {
-  const response = await axios.post('https://api.openai.com/v1/engines/gpt-4-vision-preview/completions', {
-    model: "gpt-4-vision-preview",
-    messages: [
-      {
-        role: "user",
-        content: [
-          { type: "text", text: "Describe the style and elements of this image and from the description" },
-          { type: "image_url", image_url: `data:image/jpeg;base64,${base64Image}` }
-        ]
-      }
-    ],
-    max_tokens: 300
-  }, {
-    headers: {
-      'Authorization': `Bearer ${process.env.OPENAI_API_KEY2}`,
-      'Content-Type': 'application/json'
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).send({ error: 'Only POST requests are allowed' });
+  }
+
+  const form = new formidable.IncomingForm();
+  form.parse(req, async (err, fields, files) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Error processing the form.' });
+    }
+
+    // Read the image file and convert to base64
+    const fileBuffer = fs.readFileSync(files.image.filepath);
+    const base64Image = fileBuffer.toString('base64');
+
+    // Use the base64 image and user prompt to call OpenAI's GPT-4 Vision API
+    try {
+      // Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
+      const headers = {
+        'Authorization': `Bearer YOUR_OPENAI_API_KEY2`,
+        'Content-Type': 'application/json'
+      };
+
+      // Call the GPT-4 Vision API to get a description of the image
+      const visionResponse = await axios.post(
+        'https://api.openai.com/v1/engines/gpt-4-vision-preview/completions', {
+          model: "gpt-4-vision-preview",
+          messages: [
+            {
+              role: "system",
+              content: "Image description request."
+            },
+            {
+              role: "user",
+              content: { type: "image_url", image_url: `data:image/jpeg;base64,${base64Image}` }
+            },
+            {
+              role: "user",
+              content: fields.userPrompt
+            }
+          ],
+          max_tokens: 300
+        }, 
+        { headers }
+      );
+
+      // Extract the image description from the response
+      const imageDescription = visionResponse.data.choices[0].message.content;
+
+      // Call DALL·E 3 API to generate a new image using the description
+      const dalleResponse = await axios.post(
+        'https://api.openai.com/v1/images/generations', 
+        {
+          model: "dall-e-3",
+          prompt: imageDescription,
+          n: 1,
+          size: "1024x1024"
+        }, 
+        { headers }
+      );
+
+      // Extract the URL of the generated image
+      const generatedImageUrl = dalleResponse.data.data[0].url;
+
+      // Send the generated image URL back to the frontend
+      res.status(200).json({ newImageUrl: generatedImageUrl });
+    } catch (error) {
+      console.error('OpenAI API error:', error);
+      res.status(500).json({ error: 'Error interacting with OpenAI API.' });
     }
   });
-
-  return response.data.choices[0].message.content;
-};
-
-// Function to generate an image
-const generateImage = async (prompt) => {
-  const response = await axios.post('https://api.openai.com/v1/images/generations', {
-    model: "dall-e-3",
-    prompt: prompt,
-    size: "1792x1024",
-    quality: "standard",
-    n: 1
-  }, {
-    headers: {
-      'Authorization': `Bearer ${process.env.OPENAI_API_KEY2}`,
-      'Content-Type': 'application/json'
-    }
-  });
-
-  return response.data.data[0].url;
-};
-
-// Function to save image from URL
-const saveImageFromUrl = async (url, originalFilename) => {
-  const response = await axios.get(url, { responseType: 'arraybuffer' });
-  const imageBuffer = Buffer.from(response.data, 'binary');
-  const webpFilename = path.join(__dirname, 'covers', `${path.parse(originalFilename).name}.webp`);
-
-  await sharp(imageBuffer)
-    .toFormat('webp')
-    .toFile(webpFilename);
-
-  return webpFilename;
-};
-
-// Example usage:
-const base64Image = encodeImageToBase64('');
-getImageDescription(base64Image)
-  .then(description => {
-    console.log('Image description:', description);
-    return generateImage(description);
-  })
-  .then(generatedImageUrl => {
-    console.log('Generated image URL:', generatedImageUrl);
-    const originalFilename = 'your_image_name.jpg'; // Change this to your actual filename
-    return saveImageFromUrl(generatedImageUrl, originalFilename);
-  })
-  .then(savedImagePath => {
-    console.log('Saved image path:', savedImagePath);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
-
-
-
+}
 
 
 
