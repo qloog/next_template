@@ -64,7 +64,7 @@ const saveImageFromUrl = async (url, originalFilename) => {
 };
 
 // Example usage:
-const base64Image = encodeImageToBase64('/media/IMG_5573.WEBP');
+const base64Image = encodeImageToBase64('');
 getImageDescription(base64Image)
   .then(description => {
     console.log('Image description:', description);
