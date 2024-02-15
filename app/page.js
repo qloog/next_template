@@ -237,7 +237,10 @@ export default function Home() {
             Render new tattoo
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
-          <EditTattoo></EditTattoo>
+          <div>
+      <h1 style={{ textAlign: 'center', margin: '40px 0' }}>Tattoo editor</h1>
+      <EditTattoo />
+    </div>
 
 
         </section>
