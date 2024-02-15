@@ -1,119 +1,106 @@
 import React, { useState } from "react";
-import axios from "axios";
 
-const EditUserImage = () => {
-  const [imageFile, setImageFile] = useState(null);
-  const [userPrompt, setUserPrompt] = useState("");
-  const [newImageUrl, setNewImageUrl] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+export default function Home() {
+  const [image, setImage] = useState("");
+  const [openAIResponse, setOpenAIResponse] = useState("");
 
-  const handleSubmit = async (event) => {
+  function handleFileChange(event) {
+    if (event.target.files === null) {
+      window.alert("No file selected. Choose a file.");
+      return;
+    }
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        console.log(reader.result);
+        setImage(reader.result);
+      }
+    };
+
+    reader.onerror = (error) => {
+      console.log("error:", error);
+    };
+  }
+
+  async function handleSubmit(event) {
     event.preventDefault();
-    setIsLoading(true);
-    const formData = new FormData();
-    formData.append("image", imageFile);
-    formData.append("userPrompt", userPrompt);
+
+    if (image === "") {
+      alert("Upload an image.");
+      return;
+    }
 
     try {
-      const response = await axios.post("/api/editUserImage", formData, {
+      const response = await fetch("api/analyzeImage", {
+        method: "POST",
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          image: image,
+        }),
       });
-      setNewImageUrl(response.data.url);
+
+      if (response.body) {
+        const reader = response.body.getReader();
+        setOpenAIResponse("");
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const currentChunk = new TextDecoder().decode(value);
+          setOpenAIResponse((prev) => prev + currentChunk);
+        }
+      }
     } catch (error) {
-      console.error("Error generating new image:", error);
-      alert("There was an error generating the image.");
-    } finally {
-      setIsLoading(false);
+      console.error("Error posting image:", error);
     }
-  };
+  }
 
   return (
-    <div
-      style={{
-        maxWidth: "600px",
-        margin: "40px auto",
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        borderRadius: "8px",
-      }}
-    >
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "20px" }}
-      >
-        <label
-          htmlFor="image-upload"
-          style={{
-            backgroundColor: "#007bff",
-            color: "white",
-            padding: "10px 20px",
-            textAlign: "center",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          {imageFile ? "Change Image" : "Upload Image"}
-          <input
-            id="image-upload"
-            type="file"
-            onChange={(e) => setImageFile(e.target.files[0])}
-            accept="image/*"
-            style={{ display: "none" }}
-          />
-        </label>
-        <textarea
-          value={userPrompt}
-          onChange={(e) => setUserPrompt(e.target.value)}
-          placeholder="Describe your modifications"
-          style={{
-            padding: "10px",
-            fontSize: "16px",
-            height: "100px",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-          }}
-        />
-        <button
-          type="submit"
-          disabled={isLoading || !imageFile}
-          style={{
-            padding: "10px 20px",
-            fontSize: "18px",
-            cursor: isLoading ? "default" : "pointer",
-            backgroundColor: isLoading ? "#aaa" : "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-          }}
-        >
-          {isLoading ? "Processing..." : "Generate Image"}
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center text-md">
+      <div className="bg-slate-800 w-full max-w-2xl rounded-lg shadow-md p-8">
+        <h2 className="text-xl font-bold mb-4">Uploaded Image</h2>
+        {image && (
+          <div className="mb-4 overflow-hidden">
+            <img src={image} className="w-full object-contain max-h-72" alt="Uploaded" />
+          </div>
+        )}
+        {!image && (
+          <div className="mb-4 p-8 text-center">
+            <p>Once you upload an image, you will see it here.</p>
+          </div>
+        )}
 
-      {newImageUrl && (
-        <div
-          style={{
-            marginTop: "20px",
-            textAlign: "center",
-            padding: "10px",
-            border: "1px solid #ddd",
-            borderRadius: "5px",
-            maxHeight: "500px",
-            overflow: "hidden",
-          }}
-        >
-          <img
-            src={newImageUrl}
-            alt="Generated Image"
-            style={{ width: "100%", height: "auto", objectFit: "contain" }}
-          />
-        </div>
-      )}
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-col mb-6">
+            <label className="mb-2 text-sm font-medium">Upload Image</label>
+            <input
+              type="file"
+              className="text-sm border rounded-lg cursor-pointer"
+              onChange={handleFileChange}
+            />
+          </div>
+
+          <div className="flex justify-center">
+            <button type="submit" className="p-2 bg-sky-600 rounded-md mb-4">
+              Ask ChatGPT To Analyze Your Image
+            </button>
+          </div>
+        </form>
+
+        {openAIResponse && (
+          <div className="border-t border-gray-300 pt-4">
+            <h2 className="text-xl font-bold mb-2">AI Response</h2>
+            <p>{openAIResponse}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
-};
-
-export default EditUserImage;
+}
