@@ -28,38 +28,41 @@ export default function Home() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+  
     if (image === "") {
       alert("Upload an image.");
       return;
     }
-
-    await fetch("api/analyzeImage", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        image: image, // base64 image
-      }),
-    })
-      .then(async (response) => {
-        const reader = response.body?.getReader();
+  
+    try {
+      const response = await fetch("api/analyzeImage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ image }),
+      });
+  
+      if (response.body) {
+        const reader = response.body.getReader();
         setOpenAIResponse("");
-        while (true) {
-          const { done, value } = await reader?.read();
-          if (done) {
+  
+        let readResult;
+        do {
+          readResult = await reader.read();
+          if (readResult.done) {
             break;
           }
-
-          var currentChunk = new TextDecoder().decode(value);
+  
+          const currentChunk = new TextDecoder().decode(readResult.value);
           setOpenAIResponse((prev) => prev + currentChunk);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        } while (!readResult.done);
+      }
+    } catch (error) {
+      console.error("Error posting image:", error);
+    }
   }
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center text-md">
