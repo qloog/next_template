@@ -1,111 +1,95 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { Button, TextField, Box, Typography, Container, CircularProgress, Paper, Input } from '@mui/material';
 
 export default function Home() {
-  const [image, setImage] = useState("");
-  const [openAIResponse, setOpenAIResponse] = useState("");
+  const [image, setImage] = useState(null);
+  const [prompt, setPrompt] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [openAIResponse, setOpenAIResponse] = useState('');
 
-  function handleFileChange(event) {
-    if (event.target.files === null) {
-      window.alert("No file selected. Choose a file.");
-      return;
+  const handleFileChange = (event) => {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      setImage(file);
     }
-    const file = event.target.files[0];
+  };
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+  const handlePromptChange = (event) => {
+    setPrompt(event.target.value);
+  };
 
-    reader.onload = () => {
-      if (typeof reader.result === "string") {
-        console.log(reader.result);
-        setImage(reader.result);
-      }
-    };
-
-    reader.onerror = (error) => {
-      console.log("Error:", error);
-    };
-  }
-
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    if (image === "") {
-      alert("Upload an image.");
+
+    if (!image || prompt === '') {
+      alert('Please upload an image and enter a prompt.');
       return;
     }
-  
+
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('prompt', prompt);
+
     try {
-      const response = await fetch("/api/editUserImage", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ image }),
+      const response = await fetch('/api/editUserImage', {
+        method: 'POST',
+        body: formData,
       });
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-  
-      if (response.body) {
-        const reader = response.body.getReader();
-        setOpenAIResponse("");
-  
-        let readResult;
-        do {
-          readResult = await reader.read();
-          if (readResult.done) {
-            break;
-          }
-          const currentChunk = new TextDecoder().decode(readResult.value);
-          setOpenAIResponse((prev) => prev + currentChunk);
-        } while (!readResult.done);
-      }
+
+      const data = await response.json();
+      setOpenAIResponse(data.response);
     } catch (error) {
-      console.error("Error posting image:", error);
+      console.error('Error posting image:', error);
+    } finally {
+      setLoading(false);
     }
-  }
-  
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-md">
-      <div className="bg-slate-800 w-full max-w-2xl rounded-lg shadow-md p-8">
-        <h2 className="text-xl font-bold mb-4">Uploaded Image</h2>
-        {image !== "" && (
-          <div className="mb-4 overflow-hidden">
-            <img src={image} alt="Uploaded" className="w-full object-contain max-h-72" />
-          </div>
-        )}
-        {image === "" && (
-          <div className="mb-4 p-8 text-center">
-            <p>Once you upload an image, you will see it here.</p>
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit}>
-          <div className="flex flex-col mb-6">
-            <label className="mb-2 text-sm font-medium">Upload Image</label>
-            <input
-              type="file"
-              className="text-sm border rounded-lg cursor-pointer"
-              onChange={handleFileChange}
-            />
-          </div>
-
-          <div className="flex justify-center">
-            <button type="submit" className="p-2 bg-sky-600 rounded-md mb-4">
-              Ask ChatGPT To Analyze Your Image
-            </button>
-          </div>
-        </form>
-
-        {openAIResponse !== "" && (
-          <div className="border-t border-gray-300 pt-4">
-            <h2 className="text-xl font-bold mb-2">AI Response</h2>
-            <p>{openAIResponse}</p>
-          </div>
-        )}
-      </div>
-    </div>
+    <Container component="main" maxWidth="md">
+      <Paper elevation={3} sx={{ p: 4, mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Typography component="h1" variant="h4" gutterBottom>
+          Tattoo Design Analyzer
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Input
+            accept="image/*"
+            type="file"
+            onChange={handleFileChange}
+            disableUnderline
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="Enter your prompt"
+            autoFocus
+            value={prompt}
+            onChange={handlePromptChange}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={loading}
+          >
+            Analyze Design
+          </Button>
+          {loading && <CircularProgress size={24} sx={{ display: 'block', mx: 'auto' }} />}
+          {openAIResponse && (
+            <Typography variant="body1" sx={{ mt: 2 }}>
+              Response: {openAIResponse}
+            </Typography>
+          )}
+        </Box>
+      </Paper>
+    </Container>
   );
 }
