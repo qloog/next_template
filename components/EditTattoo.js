@@ -7,8 +7,8 @@ import { ChangeEvent, useState, FormEvent } from "react"
 // Discussion / where to go from here.
 
 export default function Home() {
-  const [ image, setImage ] = useState<string>("");
-  const [ openAIResponse, setOpenAIResponse ] = useState<string>("");
+    const [image, setImage] = useState("");
+    const [openAIResponse, setOpenAIResponse] = useState("");
   // useState to hold a base64 string.
   // useState to hold the chatGPT response
 
