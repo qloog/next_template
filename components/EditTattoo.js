@@ -19,7 +19,7 @@ export default function Home() {
   // "ENTIRESTRING" -> :)
   // 3. When we request the API route we create, we will pass the image (string) to the backend.
 
-  function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
+  function handleFileChange(event) {
     if(event.target.files === null) {
       window.alert("No file selected. Choose a file.")
       return;
@@ -45,7 +45,7 @@ export default function Home() {
 
   }
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     if(image === "") {
@@ -63,7 +63,7 @@ export default function Home() {
         image: image // base64 image
       })
     })
-    .then(async (response: any) => {
+    .then(async (response) => {
       // Because we are getting a streaming text response
       // we have to make some logic to handle the streaming text
       const reader = response.body?.getReader();
