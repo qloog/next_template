@@ -224,6 +224,7 @@ export default function Home() {
           <button
             className="btn w-full max-w-xs space-y-3 "
             style={buttonStyle}
+            onClick={onGenerate}
           >
             Render new tattoo
           </button>
