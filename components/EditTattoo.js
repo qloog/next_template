@@ -1,65 +1,77 @@
-"use client";
 import React, { useState } from 'react';
 
-export default function Home() {
-    const [image, setImage] = useState(null);
-    const [prompt, setPrompt] = useState('');
-    const [openAIResponse, setOpenAIResponse] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false); // Added to prevent multiple submissions
+const EditTattoo = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [modificationRequest, setModificationRequest] = useState('');
+  const [modifiedTattoo, setModifiedTattoo] = useState(null);
 
-    const handleFileChange = (event) => {
-        if (event.target.files.length > 0) {
-            const file = event.target.files[0];
-            setImage(file);
-        }
-    };
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
 
-    const handlePromptChange = (event) => {
-        setPrompt(event.target.value);
-    };
+  const handleModificationRequestChange = (event) => {
+    setModificationRequest(event.target.value);
+  };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+  const handleSubmit = async () => {
+    if (!selectedFile || !modificationRequest) {
+      alert('Please select a file and enter your modification request.');
+      return;
+    }
 
-        // Prevent function from proceeding if it's already submitting or if there are missing inputs
-        if (isSubmitting || !image || !prompt) {
-            alert("Please wait for the current submission to finish or ensure all fields are filled.");
-            return;
-        }
+    // Create FormData to send the file and text
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('modificationRequest', modificationRequest);
 
-        setIsSubmitting(true); // Prevents further submissions until the current one is processed
+    // Replace with your API endpoint for handling the modification
+    const response = await fetch('/api/editTattoo', {
+      method: 'POST',
+      body: formData,
+    });
 
-        const formData = new FormData();
-        formData.append('image', image);
-        formData.append('prompt', prompt);
+    const data = await response.json();
+    setModifiedTattoo(data.modifiedTattooUrl);
+  };
 
-        try {
-            const response = await fetch('/api/analyzeImage', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            setOpenAIResponse(data.response);
-        } catch (error) {
-            console.error("Error posting image:", error);
-            alert("An error occurred while processing your request.");
-        } finally {
-            setIsSubmitting(false); // Allows new submissions
-        }
-    };
-
-    return (
-        <div>
-            {/* UI elements here */}
-            <input type="file" onChange={handleFileChange} />
-            <input type="text" value={prompt} onChange={handlePromptChange} />
-            <button onClick={handleSubmit} disabled={isSubmitting}>Submit</button>
-            {openAIResponse && <p>{openAIResponse}</p>}
+  return (
+    <div className="edit-tattoo-container" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <input type="file" onChange={handleFileChange} accept="image/*" />
+      <textarea
+        placeholder="Describe what you want changed..."
+        value={modificationRequest}
+        onChange={handleModificationRequestChange}
+        style={{
+          width: '100%',
+          marginTop: '20px',
+          padding: '10px',
+          borderRadius: '5px',
+          border: '1px solid #ccc',
+        }}
+      />
+      <button
+        onClick={handleSubmit}
+        style={{
+          display: 'block',
+          width: '100%',
+          marginTop: '20px',
+          padding: '10px 20px',
+          backgroundColor: '#000',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+        }}
+      >
+        Render New Tattoo Design
+      </button>
+      {modifiedTattoo && (
+        <div style={{ marginTop: '20px' }}>
+          <img src={modifiedTattoo} alt="Modified Tattoo" style={{ width: '100%', borderRadius: '5px' }} />
         </div>
-    );
-}
+      )}
+    </div>
+  );
+};
+
+export default EditTattoo;
