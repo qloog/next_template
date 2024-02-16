@@ -10,8 +10,8 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export async function POST(req) {
-const { image } = await req.json()
+export async function POST(request) {
+const { image } = await request.json()
 
 const response = await openai.createChatCompletion({
     model: "gpt-4-vision-preview",
