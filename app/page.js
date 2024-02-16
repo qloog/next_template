@@ -18,7 +18,7 @@ import Script from "next/script";
 import EditTattoo from "@/components/EditTattoo";
 
 
-export default async function Home() {
+export default function Home() {
   const [style, setStyle] = useState("tattoo");
   const [prompt, setPrompt] = useState("");
   const [finalData, setFinalData] = useState();
