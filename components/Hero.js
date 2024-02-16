@@ -5,7 +5,7 @@ import Image from "next/image";
 import TestimonialRating from "@/components/TestimonialRating";
 import TestimonialsAvatars from "./TestimonialsAvatars";
 
-const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
+//const priceId = config.stripe.plans[0].priceId; // Assuming it's the first plan
 
 function Hero() {
   return (
