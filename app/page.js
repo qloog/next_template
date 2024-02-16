@@ -121,13 +121,7 @@ export default function Home() {
     outline: "none", // Removes the outline to keep the design clean
   };
 
-  const handleMouseDown = () => {
-    setIsButtonActive(true);
-  };
-
-  const handleMouseUp = () => {
-    setIsButtonActive(false);
-  };
+  
   
   
 
