@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-function recurse(count) {
-    if (count > 0) {
-      console.log(count);
-      recurse(count - 1); // This will decrement the count and eventually stop
-    }
-  }
+
 export default function Home() {
   const [image, setImage] = useState("");
   const [openAIResponse, setOpenAIResponse] = useState("");
@@ -109,4 +104,3 @@ export default function Home() {
     </div>
   );
 }
-recurse(10); 
