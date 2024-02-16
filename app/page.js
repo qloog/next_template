@@ -4,13 +4,9 @@ import React, { useState } from "react";
 import Hero from "@/components/Hero";
 import GeneratedImageCard from "@/components/ImageBox";
 import Footer from "@/components/Footer";
-import ButtonAccount from "@/components/ButtonAccount";
 import Modal from "@/components/Modal";
 import Header from "@/components/Header";
-import Image from "next/image";
 import Pricing from "@/components/Pricing";
-import config from "@/config";
-import Testimonials3 from "@/components/Testimonials3";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Problem from "@/components/Problem";
@@ -121,7 +117,13 @@ export default function Home() {
     outline: "none", // Removes the outline to keep the design clean
   };
 
-  
+  const handleMouseDown = () => {
+    setIsButtonActive(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsButtonActive(false);
+  };
   
   
 
@@ -225,6 +227,9 @@ export default function Home() {
             className="btn w-full max-w-xs space-y-3 "
             style={buttonStyle}
             onClick={onGenerate}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
           >
             Render new tattoo
           </button>
