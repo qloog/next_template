@@ -29,7 +29,7 @@ export default function Home() {
   async function handleSubmit(event) {
     event.preventDefault();
   
-    if (image === "") {
+    if (!image) {
       alert("Upload an image.");
       return;
     }
@@ -37,31 +37,40 @@ export default function Home() {
     try {
       const response = await fetch("/api/editUserImage", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ image }),
       });
   
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
       if (response.body) {
         const reader = response.body.getReader();
-        setOpenAIResponse("");
+        let openAIResponseChunks = "";
   
-        let readResult;
-        do {
-          readResult = await reader.read();
-          if (readResult.done) {
-            break;
-          }
+        try {
+          let readResult;
+          do {
+            readResult = await reader.read();
+            if (readResult.done) {
+              break;
+            }
   
-          const currentChunk = new TextDecoder().decode(readResult.value);
-          setOpenAIResponse((prev) => prev + currentChunk);
-        } while (!readResult.done);
+            const currentChunk = new TextDecoder().decode(readResult.value);
+            openAIResponseChunks += currentChunk;
+          } while (!readResult.done);
+  
+          setOpenAIResponse(openAIResponseChunks); // Update state once after reading all chunks
+        } catch (streamError) {
+          console.error("Error reading stream:", streamError);
+        }
       }
     } catch (error) {
       console.error("Error posting image:", error);
     }
   }
+  
   
 
   return (
