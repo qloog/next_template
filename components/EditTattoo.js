@@ -26,7 +26,7 @@ export default function Home() {
     };
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit12 (event) {
     event.preventDefault();
   
     if (!image) {
@@ -87,7 +87,7 @@ export default function Home() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit12}>
           <div className="flex flex-col mb-6">
             <label className="mb-2 text-sm font-medium">Upload Image</label>
             <input
