@@ -1,4 +1,15 @@
-import { openai } from "openai-edge";
+import { OpenAIStream, StreamingTextResponse } from "ai"
+import { response } from "express";
+import { model } from "mongoose";
+import { Configuration, OpenAIApi } from "openai-edge"
+
+export const runtime = 'edge'
+
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY2
+})
+
+const openai = new OpenAIApi(configuration);
 
 export async function POST(req) {
     const { prompt } = req.body;
