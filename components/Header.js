@@ -23,8 +23,6 @@ const links = [
   label: "Support",
   },
   {
-    href: "/gallery",
-  label: "Gallery",
   },
 ];
 
