@@ -43,20 +43,19 @@ export default function TattooEditor() {
         image: image,
       }),
     })
-      .then(async (response) => {
-        const reader = response.body.getReader(); // Remove optional chaining since response.body is always defined
+    .then(async (response) => {
+        const reader = response.body.getReader();
         setOpenAIResponse("");
-
-        while (true) { // Replace constant condition with a breakable condition
+      
+        while (true) {
           const { done, value } = await reader.read();
-          if (done) {
-            break;
-          }
-
+          if (done) break;
+      
           var currentChunk = new TextDecoder().decode(value);
           setOpenAIResponse((prev) => prev + currentChunk);
         }
       });
+      
   }
 
   return (
