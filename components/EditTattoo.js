@@ -5,7 +5,7 @@ export default function TattooEditor() {
   const [openAIResponse, setOpenAIResponse] = useState("");
 
   function handleFileChange(event) {
-    if (event.target.files === null || event.target.files.length === 0) { // Fix 1: Check if files array is empty
+    if (!event.target.files || event.target.files.length === 0) { // Check if files array is empty
       window.alert("No file selected. Choose a file.");
       return;
     }
@@ -29,7 +29,7 @@ export default function TattooEditor() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (!image) { // Fix 1: Check if image is truthy
+    if (!image) { // Check if image is truthy
       alert("Upload an image.");
       return;
     }
@@ -44,10 +44,10 @@ export default function TattooEditor() {
       }),
     })
       .then(async (response) => {
-        const reader = response.body.getReader(); // Fix 2: Remove optional chaining since response.body is always defined
+        const reader = response.body.getReader(); // Remove optional chaining since response.body is always defined
         setOpenAIResponse("");
 
-        while (true) { // Fix 1: Replace constant condition with a breakable condition
+        while (true) { // Replace constant condition with a breakable condition
           const { done, value } = await reader.read();
           if (done) {
             break;
