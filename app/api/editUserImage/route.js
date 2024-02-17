@@ -1,4 +1,5 @@
 import { OpenAIStream, StreamingTextResponse } from "ai"
+import { response } from "express";
 import { model } from "mongoose";
 import { Configuration, OpenAIApi } from "openai-edge"
 
@@ -31,7 +32,8 @@ const stream = OpenAIStream(response);
 
 return new StreamingTextResponse(stream);
 
-
 }
+
+
 
 
