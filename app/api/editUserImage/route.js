@@ -21,7 +21,7 @@ const response = await openai.createChatCompletion({
         {
             role: "user",
             content: [
-                { type: "text", text: "Modify the image to a better styling" }, 
+                { type: "text", text: "What's in this image?" }, 
                 { type: "image_url", image_url: image }//base64 images
             ]
         }
