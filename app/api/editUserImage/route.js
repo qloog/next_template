@@ -1,6 +1,4 @@
 import { OpenAIStream, StreamingTextResponse } from "ai"
-import { response } from "express";
-import { model } from "mongoose";
 import { Configuration, OpenAIApi } from "openai-edge"
 
 export const runtime = 'edge'
