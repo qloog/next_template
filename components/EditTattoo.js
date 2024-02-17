@@ -5,7 +5,7 @@ export default function TattooEditor() {
   const [openAIResponse, setOpenAIResponse] = useState("");
 
   function handleFileChange(event) {
-    if (event.target.files === null) {
+    if (event.target.files === null || event.target.files.length === 0) { // Fix 1: Check if files array is empty
       window.alert("No file selected. Choose a file.");
       return;
     }
@@ -29,7 +29,7 @@ export default function TattooEditor() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (image === "") {
+    if (!image) { // Fix 1: Check if image is truthy
       alert("Upload an image.");
       return;
     }
@@ -44,11 +44,11 @@ export default function TattooEditor() {
       }),
     })
       .then(async (response) => {
-        const reader = response.body?.getReader();
+        const reader = response.body.getReader(); // Fix 2: Remove optional chaining since response.body is always defined
         setOpenAIResponse("");
 
-        while (true) {
-          const { done, value } = await reader?.read();
+        while (true) { // Fix 1: Replace constant condition with a breakable condition
+          const { done, value } = await reader.read();
           if (done) {
             break;
           }
@@ -63,7 +63,7 @@ export default function TattooEditor() {
     <div className="min-h-screen flex items-center justify-center text-md">
       <div className="bg-slate-800 w-full max-w-2xl rounded-lg shadow-md p-8">
         <h2 className="text-xl font-bold mb-4">Uploaded Image</h2>
-        {image !== "" ? (
+        {image ? (
           <div className="mb-4 overflow-hidden">
             <img src={image} className="w-full object-contain max-h-72" />
           </div>
