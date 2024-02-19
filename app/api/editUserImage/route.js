@@ -26,17 +26,6 @@ const response = await openai.createChatCompletion({
         }
     ]
 });
-
-const { prompt } = await request.json();
-
-    console.log("Generating image...");
-    console.log(prompt);
-
-    const realResponse = await openai.images.generate({
-      model: "dall-e-3",
-      prompt: prompt,
-    });
-
 const stream = OpenAIStream(response);
 
 return new StreamingTextResponse(stream);
