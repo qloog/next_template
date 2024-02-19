@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 export default function TattooEditor() {
   const [image, setImage] = useState("");
-  const [openAIResponse, setOpenAIResponse] = useState("");
   const [generatedImage, setGeneratedImage] = useState(null);
 
   function handleFileChange(event) {
@@ -46,19 +45,18 @@ export default function TattooEditor() {
     })
       .then(async (response) => {
         const reader = response.body.getReader();
-        setOpenAIResponse("");
-
         let done = false;
+        let openAIResponse = '';
+
         while (!done) {
           const { done: isDone, value } = await reader.read();
           done = isDone;
           if (!done) {
-            var currentChunk = new TextDecoder().decode(value);
-            setOpenAIResponse((prev) => prev + currentChunk);
+            const currentChunk = new TextDecoder().decode(value);
+            openAIResponse += currentChunk;
           }
         }
-      })
-      .then(() => {
+
         // Fetch the generated image from the same endpoint
         fetch("/api/editUserImage", {
           method: "POST",
