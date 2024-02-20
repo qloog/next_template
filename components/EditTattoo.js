@@ -61,31 +61,7 @@ export default function TattooEditor() {
     });
   }
 
-  async function handleGenerateImage() {
-    if (!openAIResponse) { // Check if there's a description
-      alert("No description available to generate image.");
-      return;
-    }
-  
-    try {
-      const response = await fetch("/api/generateImageWithDalle", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ description: openAIResponse }),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to generate image');
-      }
-  
-      const data = await response.json();
-      // Handle the response, e.g., display the generated image
-      console.log(data); // Assuming `data` contains information about the generated image
-      // Update your state/UI here to display the generated image
-    } catch (error) {
-      alert(error.message);
-    }
-  }
+
   
 
   return (
@@ -126,12 +102,6 @@ export default function TattooEditor() {
           </div>
         ) : null}
       </div>
-      <div className="min-h-screen flex items-center justify-center text-md">
-    {/* Your existing UI elements */}
-    <button onClick={handleGenerateImage} className="mt-4 p-2 bg-blue-500 text-white rounded-md">
-      Generate Image with DALL·E
-    </button>
-  </div>
     </div>
   );
 }
