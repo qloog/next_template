@@ -11,7 +11,7 @@ const openai = new OpenAIApi(configuration);
 export async function POST(request) {
     const { description } = await request.json(); // Extract the description from the request body
 
-    const response = await openai.createImage({
+    const response = await openai.images.generate({
         model: "dall-e-3",
         prompt: description,
         n: 1, // Adjust based on how many images you want to generate
