@@ -4,7 +4,8 @@ import { Configuration, OpenAIApi } from 'openai';
 export default async function handler(req, res) {
     // Ensure we're dealing with a POST request
     if (req.method !== 'POST') {
-        return res.status(405).json({ message: 'Method Not Allowed' });
+        res.setHeader('Allow', ['POST']);
+        return res.status(405).end('Method Not Allowed');
     }
 
     // Initialize the OpenAI client
