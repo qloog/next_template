@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   // Your OpenAI API key should have access to DALL·E 3
   const openai = new OpenAIApi(new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY2,
   }));
 
   try {
