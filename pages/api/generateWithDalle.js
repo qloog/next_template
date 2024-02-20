@@ -1,4 +1,4 @@
-// pages/api/generateWithDalle.js
+// Import the necessary modules from the 'openai' package
 import { Configuration, OpenAIApi } from 'openai';
 
 export default async function handler(req, res) {
@@ -8,9 +8,9 @@ export default async function handler(req, res) {
         return res.status(405).end('Method Not Allowed');
     }
 
-    // Initialize the OpenAI client
+    // Initialize the OpenAI client with your API key
     const openai = new OpenAIApi(new Configuration({
-        apiKey: process.env.OPENAI_API_KEY3,
+        apiKey: process.env.OPENAI_API_KEY3, // Make sure this is correctly set in your environment variables
     }));
 
     try {
@@ -21,12 +21,13 @@ export default async function handler(req, res) {
         const dalleResponse = await openai.createImage({
             model: "dall-e-3",
             prompt: description,
-            n: 1, // Adjust as needed
-            // Add any other parameters as required for your use case
+            n: 1, // Number of images to generate
+            // Include any other parameters as required for your use case
         });
 
         // Assuming the DALL·E 3 API response includes the image URL or data
-        const imageUrl = dalleResponse.data[0].url; // Adjust based on actual response structure
+        // Adjust based on the actual response structure you receive from OpenAI
+        const imageUrl = dalleResponse.data[0].url;
 
         // Return the image URL to the frontend
         res.status(200).json({ imageUrl });
