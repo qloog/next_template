@@ -1,7 +1,8 @@
 // Import the necessary modules from the 'openai' package
 import { Configuration, OpenAIApi } from 'openai';
 
-export default async function handler(req, res) {
+
+export async function POST(req, res) {
     // Ensure we're dealing with a POST request
     if (req.method !== 'POST') {
         res.setHeader('Allow', ['POST']);
