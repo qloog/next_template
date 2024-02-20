@@ -72,8 +72,12 @@ export default function TattooEditor() {
     try {
       const response = await fetch("/api/generateWithDalle", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ description: openAIResponse }), // Send the description as payload
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          description: openAIResponse, // The description obtained from the GPT-4 analysis
+        }),
       });
   
       if (!response.ok) {
