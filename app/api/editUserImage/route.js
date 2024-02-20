@@ -29,6 +29,7 @@ export async function POST(request) {
 
     // Extract the description from the visionResponse
     let description = visionResponse.choices[0].message.content.text; // Simplified extraction; adjust based on actual response structure
+    console.log(JSON.stringify(visionResponse, null, 2));
 
     // Step 2: Use DALL·E 3 to generate an image based on the description
     const dalleResponse = openai.images.generate({
