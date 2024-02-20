@@ -3,7 +3,7 @@ import { Configuration, OpenAIApi } from "openai-edge";
 export const runtime = 'edge';
 
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY // Make sure this key has access to DALL·E 3
+    apiKey: process.env.OPENAI_API_KEY2 // Make sure this key has access to DALL·E 3
 });
 
 const openai = new OpenAIApi(configuration);
