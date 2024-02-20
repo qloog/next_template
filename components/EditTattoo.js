@@ -5,7 +5,8 @@ export default function TattooEditor() {
   const [openAIResponse, setOpenAIResponse] = useState("");
 
   function handleFileChange(event) {
-    if (!event.target.files || event.target.files.length === 0) { // Check if files array is empty
+    if (!event.target.files || event.target.files.length === 0) {
+      // Check if files array is empty
       window.alert("No file selected. Choose a file.");
       return;
     }
@@ -29,7 +30,8 @@ export default function TattooEditor() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (!image) { // Check if image is truthy
+    if (!image) {
+      // Check if image is truthy
       alert("Upload an image.");
       return;
     }
@@ -42,23 +44,40 @@ export default function TattooEditor() {
       body: JSON.stringify({
         image: image,
       }),
-    })
-    .then(async (response) => {
-        const reader = response.body.getReader(); // Remove optional chaining since response.body is always defined
-        setOpenAIResponse("");
-      
-        let done = false;
-        while (!done) { // Replace constant condition with a condition based on the value of done
-          const { done: isDone, value } = await reader.read();
-          done = isDone;
-          if (!done) {
-            var currentChunk = new TextDecoder().decode(value);
-            setOpenAIResponse((prev) => prev + currentChunk);
-          }
+    }).then(async (response) => {
+      const reader = response.body.getReader(); // Remove optional chaining since response.body is always defined
+      setOpenAIResponse("");
+
+      let done = false;
+      while (!done) {
+        // Replace constant condition with a condition based on the value of done
+        const { done: isDone, value } = await reader.read();
+        done = isDone;
+        if (!done) {
+          var currentChunk = new TextDecoder().decode(value);
+          setOpenAIResponse((prev) => prev + currentChunk);
         }
-      });
-      
-      
+      }
+    });
+  }
+
+  async function handleGenerateImage() {
+    if (!openAIResponse) { // Check if there's a description to send
+      alert("No description available to generate image.");
+      return;
+    }
+  
+    const response = await fetch("/api/generateImageWithDalle", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ description: openAIResponse }),
+    });
+  
+    const data = await response.json();
+    console.log(data); // Handle the response from DALL·E 3
+    // You might want to update the state to display the generated image
   }
 
   return (
@@ -99,6 +118,12 @@ export default function TattooEditor() {
           </div>
         ) : null}
       </div>
+      <button
+        onClick={handleGenerateImage}
+        className="p-2 bg-sky-600 rounded-md mb-4"
+      >
+        Generate Image with DALL·E
+      </button>
     </div>
   );
 }
