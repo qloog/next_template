@@ -1,25 +1,31 @@
-import { Configuration, OpenAIApi } from "openai-edge";
+// Assuming you are using Next.js for your API routes
+import { OpenAIApi, Configuration } from "openai";
 
-export const runtime = 'edge';
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method Not Allowed' });
+  }
 
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY2 // Make sure this key has access to DALL·E 3
-});
+  // Your OpenAI API key should have access to DALL·E 3
+  const openai = new OpenAIApi(new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  }));
 
-const openai = new OpenAIApi(configuration);
+  try {
+    const { description } = req.body;
 
-export async function POST(request) {
-    const { description } = await request.json(); // Extract the description from the request body
-
-    const response = await openai.images.generate({
-        model: "dall-e-3",
-        prompt: description,
-        n: 1, // Adjust based on how many images you want to generate
-        // Include any other parameters necessary for your request
+    // Using the description obtained from GPT-4 Vision as the prompt for DALL·E 3
+    const response = await openai.createImage({
+      model: "dall-e-3", // Ensure you're using the correct model identifier
+      prompt: description,
+      n: 1, // Number of images to generate, adjust as needed
     });
 
-    // Return the generated image(s) as a response
-    return new Response(JSON.stringify(response.data), {
-        headers: { 'Content-Type': 'application/json' },
-    });
+    // Assuming the response includes the URL or data of the generated image
+    // The structure of `response.data` depends on OpenAI's response format
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error('Error generating image with DALL·E 3:', error);
+    res.status(500).json({ message: 'Error generating image with DALL·E 3' });
+  }
 }
