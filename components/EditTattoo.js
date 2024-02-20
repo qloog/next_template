@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function TattooEditor() {
   const [image, setImage] = useState("");
   const [openAIResponse, setOpenAIResponse] = useState("");
-  const [generatedImage, setGeneratedImage] = useState("");
+  const [dalleImage, setDalleImage] = useState("");
 
 
   function handleFileChange(event) {
@@ -64,26 +64,32 @@ export default function TattooEditor() {
   }
 
   async function handleGenerateDalleImage() {
-    try {
-        const response = await fetch("/api/editUserImage", { // Adjust this endpoint as necessary
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ image: image }), // Sending the original image directly
-        });
-        if (!response.ok) {
-            throw new Error('Failed to generate image with DALL·E 3');
-        }
-        const data = await response.json();
-        setGeneratedImage(data.generatedImageUrl); // Adjust according to your API response structure
-    } catch (error) {
-        console.error(error);
-        alert(error.message);
+    if (!openAIResponse) {
+      alert("No description available to generate image.");
+      return;
     }
-}
-
-
-
   
+    try {
+      const response = await fetch("/api/generateWithDalle", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ description: openAIResponse }), // Send the description as payload
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to generate image with DALL·E 3');
+      }
+  
+      const data = await response.json();
+      setDalleImage(data.url); // Assuming the backend returns the image URL in `data.url`
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
+  }
+
+ 
+
 
   return (
     <div className="min-h-screen flex items-center justify-center text-md">
@@ -91,14 +97,14 @@ export default function TattooEditor() {
         <h2 className="text-xl font-bold mb-4">Uploaded Image</h2>
         {image ? (
           <div className="mb-4 overflow-hidden">
-            <img src={image} className="w-full object-contain max-h-72" />
+            <img src={image} className="w-full object-contain max-h-72" alt="Uploaded" />
           </div>
         ) : (
           <div className="mb-4 p-8 text-center">
             <p>Once you upload an image, you will see it here.</p>
           </div>
         )}
-
+  
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="flex flex-col mb-6">
             <label className="mb-2 text-sm font-medium">Upload Image</label>
@@ -108,36 +114,40 @@ export default function TattooEditor() {
               onChange={(e) => handleFileChange(e)}
             />
           </div>
-
+  
           <div className="flex justify-center">
             <button type="submit" className="p-2 bg-sky-600 rounded-md mb-4">
               Ask ChatGPT To Analyze Your Image
             </button>
           </div>
         </form>
-
-        {openAIResponse !== "" ? (
+  
+        {openAIResponse !== "" && (
           <div className="border-t border-gray-300 pt-4">
             <h2 className="text-xl font-bold mb-2">AI Response</h2>
             <p>{openAIResponse}</p>
           </div>
-        ) : null}
+        )}
+  
+        {openAIResponse && (
+          <button onClick={handleGenerateDalleImage} className="mt-4 p-2 bg-blue-500 text-white rounded-md">
+            Generate Image with DALL·E
+          </button>
+        )}
+  
+        {dalleImage && (
+          <div className="mt-4">
+            <h3>Generated Image:</h3>
+            <img src={dalleImage} alt="Generated" className="w-full object-contain max-h-72" />
+          </div>
+        )}
       </div>
-      {openAIResponse && (
-    <button onClick={handleGenerateDalleImage} className="mt-4 p-2 bg-blue-500 text-white rounded-md">
-        Generate Image with DALL·E
-    </button>
-)}
-
-{generatedImage && (
-    <div className="mt-4">
-        <h3 className="text-xl font-bold mb-2">Generated Image</h3>
-        <img src={generatedImage} alt="Generated" className="w-full object-contain max-h-72" />
     </div>
-)}
-    </div>
-  );
+  );  
 }
+
+
+
 
 /*
 import React, { useState } from "react";
