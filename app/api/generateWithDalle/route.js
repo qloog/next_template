@@ -1,4 +1,4 @@
-import { Configuration, OpenAIApi } from "openai-edge"
+import { Configuration, OpenAIApi } from "openai"
 
 export const runtime = 'edge'
 
