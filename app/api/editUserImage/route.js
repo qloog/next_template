@@ -1,9 +1,9 @@
 // Import OpenAI SDK
-const { OpenAIApi, Configuration } = require('openai');
+import { Configuration, OpenAIApi } from "openai-edge"
 
 // Your API Key should be stored in .env.local for development
 const openai = new OpenAIApi(new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY2,
 }));
 
 // Helper function to analyze image with GPT-4 Vision
