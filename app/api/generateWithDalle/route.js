@@ -1,12 +1,16 @@
 // app/api/generateWithDalle/route.js
 import { Configuration, OpenAIApi } from 'openai';
 
-export default async function route(req, res) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', ['POST']);
-    return res.status(405).end('Method Not Allowed');
-  }
-
+// app/api/generateWithDalle/route.js
+export default async function handler(req, res) {
+    if (req.method === 'POST') {
+      
+    } else {
+      res.setHeader('Allow', ['POST']);
+      return res.status(405).end('Method Not Allowed');
+    }
+  
+  
   const openai = new OpenAIApi(new Configuration({
     apiKey: process.env.OPENAI_API_KEY3,
   }));

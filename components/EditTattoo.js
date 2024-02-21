@@ -70,6 +70,7 @@ export default function TattooEditor() {
     }
   
     try {
+
       const response = await fetch("/api/generateWithDalle", {
         method: "POST",
         headers: {
