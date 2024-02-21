@@ -1,5 +1,4 @@
-// app/api/generateWithDalle/route.js
-import { Configuration, OpenAIApi } from 'openai';
+import { Configuration, OpenAIApi } from "openai-edge"
 
 // app/api/generateWithDalle/route.js
 export default async function handler(req, res) {
