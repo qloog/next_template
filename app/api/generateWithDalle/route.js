@@ -25,6 +25,8 @@ export async function POST(request) {
             prompt: description,
             n: 1, // Generate one image
         });
+        console.log(dalleResponse);
+
 
         const imageUrl = dalleResponse.data[0].url; // Extract the image URL from the response
 
