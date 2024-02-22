@@ -1,3 +1,16 @@
+export default function Gallery() {
+    return (
+        <h1>Gallery</h1>
+    )
+}
+
+
+
+
+
+
+
+/*
 const galleryImages = [
     { id: 1, url: '/media/tiger.webp', alt: 'Tattoo Design 1' },
     { id: 2, url: '/media/lion.JPG', alt: 'Tattoo Design 2' },
@@ -17,3 +30,4 @@ const galleryImages = [
     { id: 15, url: '/media/Khalsa Small.jpeg', alt: 'Tattoo Design 2' },
   
   ];
+*/
