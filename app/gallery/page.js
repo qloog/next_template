@@ -19,8 +19,15 @@ export default function Gallery() {
     ];
   
     return (
-      <div style={{ padding: '20px' }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Gallery</h1>
+      <div style={{
+        padding: '20px',
+        backgroundColor: '#F5F5F5', // Light gray background
+      }}>
+        <h1 style={{
+          textAlign: 'center',
+          marginBottom: '20px',
+          color: '#333', // Slightly darker text for better contrast
+        }}>Gallery</h1>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
