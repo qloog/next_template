@@ -15,7 +15,7 @@ import Testimonials11 from "@/components/Testimonials11";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Script from "next/script";
-import TattooEditor from "@/components/EditTattoo"
+import TattooEditor from "@/components/EditTattoo";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -26,6 +26,7 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
   const { data: session } = useSession();
   const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
+  const [uploadToGallery, setUploadToGallery] = useState(false);
 
   async function onGenerate(e) {
     setIsLoading(true);
@@ -40,28 +41,36 @@ export default function Home() {
     }
 
     const fullPrompt = `${style}: ${prompt}`;
+    try {
+      const res = await fetch("/api/generateImage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: fullPrompt }),
+      });
 
-    const res = await fetch("/api/generateImage", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: fullPrompt}),
-    });
+      if (res.status !== 200) {
+        console.log("Error: ", res.status);
+        setIsLoading(false);
 
-    if (res.status !== 200) {
-      console.log("Error: ", res.status);
-      setIsLoading(false);
+        if (res.status === 403) {
+          setShowPopup(true);
+        }
 
-      if (res.status === 403) {
-        setShowPopup(true);
+        return;
       }
 
-      return;
+      const results = await res.json();
+
+      setFinalData(results.imageUrl);
+      setIsLoading(false); // End loading
+
+      if (uploadToGallery) {
+        await uploadImageToGallery(results.imageUrl);
+      }
+    } catch (error) {
+      console.error("Error generating image:", error);
+      setIsLoading(false);
     }
-
-    const results = await res.json();
-
-    setFinalData(results.imageUrl);
-    setIsLoading(false); // End loading
   }
 
   const selectStyle = {
@@ -123,10 +132,6 @@ export default function Home() {
   const handleMouseUp = () => {
     setIsButtonActive(false);
   };
-  
-  
-
-
 
   return (
     <>
@@ -222,6 +227,15 @@ export default function Home() {
             <option value="Realism">Realism</option>
           </select>
 
+          <label className="flex items-center gap-2 mt-4 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={uploadToGallery}
+              onChange={(e) => setUploadToGallery(e.target.checked)}
+            />
+            Upload to Gallery
+          </label>
+
           <button
             className="btn w-full max-w-xs space-y-3 "
             style={buttonStyle}
@@ -234,7 +248,6 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
           <TattooEditor></TattooEditor>
-
         </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
@@ -256,4 +269,3 @@ export default function Home() {
     </>
   );
 }
-
