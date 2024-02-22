@@ -1,3 +1,4 @@
+/*
 import { Configuration, OpenAIApi } from "openai-edge"
 
 export const runtime = 'edge'
@@ -60,3 +61,4 @@ export async function POST(req) {
         });
     }
 }
+*/

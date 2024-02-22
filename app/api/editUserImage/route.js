@@ -1,4 +1,4 @@
-// Import OpenAI SDK
+/* Import OpenAI SDK
 import { Configuration, OpenAIApi } from "openai-edge"
 
 // Your API Key should be stored in .env.local for development

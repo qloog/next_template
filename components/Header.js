@@ -22,6 +22,11 @@ const links = [
     href: "mailto:infotattooswithai@gmail.com",
   label: "Support",
   },
+  {
+    href: "/gallery",
+  label: "Gallery",
+  },
+
 ];
 
 
