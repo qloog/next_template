@@ -1,33 +1,26 @@
-// pages/api/uploadToGallery.js
-import fs from 'fs';
-import path from 'path';
+// This could be a file like pages/api/uploadToGallery.js or app/api/uploadToGallery/route.js depending on your structure
+
+// Simulating a database with an in-memory array
+let galleryImages = [];
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).end('Method Not Allowed');
-  }
+  if (req.method === 'POST') {
+    const { imageUrl } = req.body;
 
-  const { imageUrl } = req.body;
-  if (!imageUrl) {
-    return res.status(400).json({ error: 'imageUrl is required' });
-  }
+    // Simulate saving to a database by pushing to an array
+    const newImage = {
+      id: galleryImages.length + 1, // Simple incrementing ID, replace with DB logic
+      url: imageUrl,
+      alt: 'User uploaded image', // You might want to allow users to specify an alt text
+    };
 
-  // Define the path to the JSON file
-  const filePath = path.join(process.cwd(), 'public', 'galleryImages.json');
+    galleryImages.push(newImage);
 
-  try {
-    const data = fs.readFileSync(filePath);
-    const images = JSON.parse(data.toString());
-
-    // Add the new image URL
-    images.push({ id: images.length + 1, url: imageUrl, alt: 'User Uploaded Tattoo Design' });
-
-    // Save the updated array back to the file
-    fs.writeFileSync(filePath, JSON.stringify(images, null, 2));
-
-    res.status(200).json({ message: 'Image uploaded successfully' });
-  } catch (error) {
-    console.error('Error uploading image:', error);
-    res.status(500).json({ error: 'Failed to upload image' });
+    // Respond with the updated list of images or just the new image as confirmation
+    res.status(200).json(newImage);
+  } else {
+    // If not a POST request, return 405 - Method Not Allowed
+    res.setHeader('Allow', ['POST']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }

@@ -29,11 +29,10 @@ export default function Home() {
   const [uploadToGallery, setUploadToGallery] = useState(false);
 
   async function onGenerate(e) {
-    setIsLoading(true);
     e.preventDefault();
+    setIsLoading(true);
 
     if (!session) {
-      // If not logged in, only scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
       setShowLoginSignupPrompt(true);
       setIsLoading(false);
@@ -51,26 +50,37 @@ export default function Home() {
       if (res.status !== 200) {
         console.log("Error: ", res.status);
         setIsLoading(false);
-
         if (res.status === 403) {
           setShowPopup(true);
         }
-
         return;
       }
 
       const results = await res.json();
-
       setFinalData(results.imageUrl);
       setIsLoading(false); // End loading
 
-      
+      // Check if the user wants to upload the generated image to the gallery
+      if (uploadToGallery) {
+        // Replace 'generatedImageUrl' with your actual variable that holds the image URL from DALL·E
+        const uploadResponse = await fetch("/api/uploadToGallery", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ imageUrl: results.imageUrl }),
+        });
+
+        if (!uploadResponse.ok) {
+          // Handle upload error
+          console.error("Failed to upload image to gallery");
+        }
+      }
     } catch (error) {
       console.error("Error generating image:", error);
       setIsLoading(false);
     }
   }
-
 
   const selectStyle = {
     backgroundColor: "#ffffff", // Consistent with the textarea
