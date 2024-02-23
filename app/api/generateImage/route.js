@@ -1,3 +1,6 @@
+export const maxDuration = 120
+export const dynamic = "force-dynamic"
+
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 import { getServerSession } from "next-auth/next";
