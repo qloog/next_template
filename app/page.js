@@ -60,27 +60,35 @@ export default function Home() {
       setFinalData(results.imageUrl);
       setIsLoading(false); // End loading
 
-      // Check if the user wants to upload the generated image to the gallery
       if (uploadToGallery) {
-        // Replace 'generatedImageUrl' with your actual variable that holds the image URL from DALL·E
-        const uploadResponse = await fetch("/api/uploadToGallery", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ imageUrl: results.imageUrl }),
-        });
-
-        if (!uploadResponse.ok) {
-          // Handle upload error
-          console.error("Failed to upload image to gallery");
-        }
+        // Call the uploadImageToGallery function with the generated image URL
+        await uploadImageToGallery(results.imageUrl);
       }
     } catch (error) {
       console.error("Error generating image:", error);
       setIsLoading(false);
     }
   }
+  
+
+  async function uploadImageToGallery(imageUrl) {
+    try {
+        const response = await fetch("/api/uploadToGallery", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ imageUrl }),
+        });
+        if (!response.ok) {
+            throw new Error('Failed to upload image to gallery');
+        }
+        // Optionally, process the response here
+        console.log("Image uploaded successfully");
+    } catch (error) {
+        console.error("Error uploading image to gallery:", error);
+    }
+}
 
   const selectStyle = {
     backgroundColor: "#ffffff", // Consistent with the textarea
