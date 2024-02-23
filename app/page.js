@@ -64,9 +64,7 @@ export default function Home() {
       setFinalData(results.imageUrl);
       setIsLoading(false); // End loading
 
-      if (uploadToGallery) {
-        await uploadImageToGallery(results.imageUrl);
-      }
+      
     } catch (error) {
       console.error("Error generating image:", error);
       setIsLoading(false);
