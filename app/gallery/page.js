@@ -6,8 +6,8 @@ import { createClient } from '@supabase/supabase-js';
 
 // Initialize Supabase client
 const supabaseClient = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  process.env.SUPABASE_PROJECT_URL,
+  process.env.SUPABASE_API_KEY
 );
 
 export default function Gallery() {
