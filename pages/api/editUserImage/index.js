@@ -8,13 +8,26 @@ const openai = new OpenAIApi(new Configuration({
 
 // Function to analyze image with GPT-4 Vision and return the analysis
 async function analyzeImageWithVision(imageData) {
-  const response = await openai.createCompletion({
-    model: "gpt-4-vision-preview",
-    prompt: "What's in this image?",
-    attachments: [{ data: imageData, type: "image" }],
-  });
-  return response.data.choices[0].text;
-}
+    try {
+      const response = await openai.createCompletion({
+        model: "gpt-4-vision-preview",
+        prompt: "What's in this image?",
+        attachments: [{ data: imageData, type: "image" }],
+      });
+      console.log("OpenAI API Response:", response); // Log the full response
+      if (response.data.choices) {
+        return response.data.choices[0].text;
+      } else {
+        // Handle unexpected response structure
+        console.error("Unexpected response structure:", response);
+        return "Error: Unexpected response structure from OpenAI API.";
+      }
+    } catch (error) {
+      console.error("Error calling OpenAI API:", error);
+      throw error; // Re-throw the error to be caught by the caller
+    }
+  }
+  
 
 // Function to generate an image with DALL·E 3 based on the description
 async function generateImageWithDalle(description) {
