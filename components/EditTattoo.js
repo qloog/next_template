@@ -5,10 +5,8 @@ export default function TattooEditor() {
   const [openAIResponse, setOpenAIResponse] = useState("");
   const [dalleImage, setDalleImage] = useState("");
 
-
   function handleFileChange(event) {
     if (!event.target.files || event.target.files.length === 0) {
-      // Check if files array is empty
       window.alert("No file selected. Choose a file.");
       return;
     }
@@ -33,7 +31,6 @@ export default function TattooEditor() {
     event.preventDefault();
 
     if (!image) {
-      // Check if image is truthy
       alert("Upload an image.");
       return;
     }
@@ -45,22 +42,24 @@ export default function TattooEditor() {
       },
       body: JSON.stringify({
         image: image,
+        userPrompt: "What's in this image?",
       }),
-    }).then(async (response) => {
-      const reader = response.body.getReader(); // Remove optional chaining since response.body is always defined
-      setOpenAIResponse("");
+    })
+      .then(async (response) => {
+        const reader = response.body.getReader();
+        setOpenAIResponse("");
 
-      let done = false;
-      while (!done) {
-        // Replace constant condition with a condition based on the value of done
-        const { done: isDone, value } = await reader.read();
-        done = isDone;
-        if (!done) {
-          var currentChunk = new TextDecoder().decode(value);
-          setOpenAIResponse((prev) => prev + currentChunk);
+        let done = false;
+        while (!done) {
+          const { done: isDone, value } = await reader.read();
+          done = isDone;
+          if (!done) {
+            var currentChunk = new TextDecoder().decode(value);
+            setOpenAIResponse((prev) => prev + currentChunk);
+          }
         }
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   async function handleGenerateDalleImage() {
@@ -68,33 +67,30 @@ export default function TattooEditor() {
       alert("No description available to generate image.");
       return;
     }
-  
-    try {
 
-      const response = await fetch("/api/generateWithDalle", {
+    try {
+      const response = await fetch("/api/editUserImage", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          description: openAIResponse, // The description obtained from the GPT-4 analysis
+          image: image,
+          userPrompt: openAIResponse,
         }),
       });
-  
+
       if (!response.ok) {
-        throw new Error('Failed to generate image with DALL·E 3');
+        throw new Error("Failed to generate image with DALL·E 3");
       }
-  
+
       const data = await response.json();
-      setDalleImage(data.url); // Assuming the backend returns the image URL in `data.url`
+      setDalleImage(data.imageUrl);
     } catch (error) {
       console.error(error);
       alert(error.message);
     }
   }
-
- 
-
 
   return (
     <div className="min-h-screen flex items-center justify-center text-md">
@@ -109,7 +105,7 @@ export default function TattooEditor() {
             <p>Once you upload an image, you will see it here.</p>
           </div>
         )}
-  
+
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="flex flex-col mb-6">
             <label className="mb-2 text-sm font-medium">Upload Image</label>
@@ -119,27 +115,20 @@ export default function TattooEditor() {
               onChange={(e) => handleFileChange(e)}
             />
           </div>
-  
+
           <div className="flex justify-center">
             <button type="submit" className="p-2 bg-sky-600 rounded-md mb-4">
               Ask ChatGPT To Analyze Your Image
             </button>
           </div>
         </form>
-  
-        {openAIResponse !== "" && (
-          <div className="border-t border-gray-300 pt-4">
-            <h2 className="text-xl font-bold mb-2">AI Response</h2>
-            <p>{openAIResponse}</p>
-          </div>
-        )}
-  
+
         {openAIResponse && (
           <button onClick={handleGenerateDalleImage} className="mt-4 p-2 bg-blue-500 text-white rounded-md">
             Generate Image with DALL·E
           </button>
         )}
-  
+
         {dalleImage && (
           <div className="mt-4">
             <h3>Generated Image:</h3>
@@ -148,7 +137,7 @@ export default function TattooEditor() {
         )}
       </div>
     </div>
-  );  
+  );
 }
 
 
