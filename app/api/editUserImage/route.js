@@ -32,8 +32,7 @@ async function generateImageWithDalle(description) {
   return response.data[0].url;
 }
 
-// API Route handler
-export default async function handler(req, res) {
+export default async function POST(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).end('Method Not Allowed');
   }
@@ -43,7 +42,7 @@ export default async function handler(req, res) {
   try {
     // Analyze the image with GPT-4 Vision
     const description = await analyzeImageWithVision(base64Image);
-    
+
     // Combine the vision's response with the user's prompt
     const combinedPrompt = `${description} ${userPrompt}`;
 
