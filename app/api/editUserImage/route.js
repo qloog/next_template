@@ -1,5 +1,4 @@
-
-import { Configuration, OpenAIApi } from "openai-edge"
+import { Configuration, OpenAIApi } from "openai-edge";
 
 // Your API Key should be stored in .env.local for development
 const openai = new OpenAIApi(new Configuration({
@@ -56,6 +55,7 @@ export default async function POST(req, res) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+
 
 
 
