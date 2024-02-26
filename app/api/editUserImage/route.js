@@ -1,4 +1,5 @@
-import { Configuration, OpenAIApi } from "openai-edge";
+
+import { Configuration, OpenAIApi } from "openai-edge"
 
 // Your API Key should be stored in .env.local for development
 const openai = new OpenAIApi(new Configuration({
@@ -31,7 +32,8 @@ async function generateImageWithDalle(description) {
   return response.data[0].url;
 }
 
-export default async function POST(req, res) {
+// API Route handler
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).end('Method Not Allowed');
   }
@@ -41,7 +43,7 @@ export default async function POST(req, res) {
   try {
     // Analyze the image with GPT-4 Vision
     const description = await analyzeImageWithVision(base64Image);
-
+    
     // Combine the vision's response with the user's prompt
     const combinedPrompt = `${description} ${userPrompt}`;
 
@@ -55,7 +57,6 @@ export default async function POST(req, res) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
-
 
 
 
@@ -96,6 +97,5 @@ return new StreamingTextResponse(stream);
 }
 
 */
-
 
 
