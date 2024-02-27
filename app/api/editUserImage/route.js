@@ -2,7 +2,7 @@
 import OpenAI from 'openai';
 
 // Your Next.js API route handler
-export default async function handler(req, res) {
+export async function  handler(req, res) {
   // Ensure it's a POST request
   if (req.method === 'POST') {
     try {
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
       // Log the response and send it back to the client
       console.log(response.choices[0]);
-      
+
       res.status(200).json(response.choices[0]);
     } catch (error) {
       console.error(error);
