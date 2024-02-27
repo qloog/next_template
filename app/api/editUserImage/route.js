@@ -1,28 +1,48 @@
-import OpenAI from "openai";
+// Import the OpenAI package
+import OpenAI from 'openai';
 
-const openai = new OpenAI();
+// Your Next.js API route handler
+export default async function handler(req, res) {
+  // Ensure it's a POST request
+  if (req.method === 'POST') {
+    try {
+      // Initialize OpenAI with your API key
+      const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+      });
 
-export async function main() {
-  const response = await openai.chat.completions.create({
-    model: "gpt-4-vision-preview",
-    max_tokens: 4096,
-    messages: [
-      {
-        role: "user",
-        content: [
-          { type: "text", text: "What’s in this image?" },
+      // Make the request to OpenAI's API
+      const response = await openai.chat.completions.create({
+        model: "gpt-4-vision-preview",
+        max_tokens: 4096,
+        messages: [
           {
-            type: "image_url",
-            image_url:
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+            role: "user",
+            content: [
+              { type: "text", text: "What’s in this image?" },
+              {
+                type: "image_url",
+                image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+              },
+            ],
           },
         ],
-      },
-    ],
-  });
-  console.log(response.choices[0]);
+      });
+
+      // Log the response and send it back to the client
+      console.log(response.choices[0]);
+      res.status(200).json(response.choices[0]);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error processing your request');
+    }
+  } else {
+    // Handle any non-POST requests
+    res.setHeader('Allow', ['POST']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
+  }
 }
-main();
+
 
 
 
