@@ -5,6 +5,7 @@ const openai = new OpenAI();
 export async function main() {
   const response = await openai.chat.completions.create({
     model: "gpt-4-vision-preview",
+    max_tokens: 4096,
     messages: [
       {
         role: "user",
