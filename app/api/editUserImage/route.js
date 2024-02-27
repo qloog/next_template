@@ -2,7 +2,7 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-async function main() {
+export async function main() {
   const response = await openai.chat.completions.create({
     model: "gpt-4-vision-preview",
     messages: [
