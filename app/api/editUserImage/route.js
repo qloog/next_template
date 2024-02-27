@@ -1,48 +1,42 @@
-// Import the OpenAI package
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
-// Your Next.js API route handler
-export async function  handler(req, res) {
-  // Ensure it's a POST request
-  if (req.method === 'POST') {
-    try {
-      // Initialize OpenAI with your API key
-      const openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY,
-      });
+const openai = new OpenAI();
 
-      // Make the request to OpenAI's API
-      const response = await openai.chat.completions.create({
-        model: "gpt-4-vision-preview",
-        max_tokens: 4096,
-        messages: [
+async function main() {
+  const response = await openai.chat.completions.create({
+    model: "gpt-4-vision-preview",
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "What's in this image?"},
           {
-            role: "user",
-            content: [
-              { type: "text", text: "What’s in this image?" },
-              {
-                type: "image_url",
-                image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
-              },
-            ],
+            type: "image_url",
+            image_url:
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
           },
         ],
-      });
+      },
+    ],
+  });
+  console.log(response.choices[0]);
+  const textPrompt = response.choices[0].message.content
 
-      // Log the response and send it back to the client
-      console.log(response.choices[0]);
-
-      res.status(200).json(response.choices[0]);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Error processing your request');
-    }
-  } else {
-    // Handle any non-POST requests
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+  async function createDallEImage() {
+    const image = await openai.images.generate({
+     model: "dall-e-3", 
+     prompt: textPrompt,
+     n: 1,
+    });
+    
+  
+    console.log(image.data);
+    
   }
+  createDallEImage()
 }
+
+main();
 
 
 
@@ -51,39 +45,45 @@ export async function  handler(req, res) {
 
 /*
 
-import { OpenAIStream, StreamingTextResponse } from "ai"
-import { Configuration, OpenAIApi } from "openai-edge"
+import OpenAI from "openai";
 
-export const runtime = 'edge'
+const openai = new OpenAI();
 
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY2
-})
-
-const openai = new OpenAIApi(configuration);
-
-export async function POST(request) {
-const { image } = await request.json()
-
-const response = await openai.createChatCompletion({
+async function main() {
+  const response = await openai.chat.completions.create({
     model: "gpt-4-vision-preview",
-    stream: true,
-    max_tokens: 4096,
     messages: [
-        {
-            role: "user",
-            content: [
-                { type: "text", text: "What's in this image?" }, 
-                { type: "image_url", image_url: image }//base64 images
-            ]
-        }
-    ]
-});
-const stream = OpenAIStream(response);
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "What's in this image?"},
+          {
+            type: "image_url",
+            image_url:
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+          },
+        ],
+      },
+    ],
+  });
+  console.log(response.choices[0]);
+  const textPrompt = response.choices[0].message.content
 
-return new StreamingTextResponse(stream);
-
+  async function createDallEImage() {
+    const image = await openai.images.generate({
+     model: "dall-e-3", 
+     prompt: textPrompt,
+     n: 1,
+    });
+    
+  
+    console.log(image.data);
+    
+  }
+  createDallEImage()
 }
+
+main();
 
 */
 

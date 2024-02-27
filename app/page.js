@@ -16,7 +16,8 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Script from "next/script";
 import TattooEditor from "@/components/EditTattoo";
-import TattooRedesign from "@/components/TattooRedesign";
+import TriggerApiButton from "@/components/TriggerButton";
+import ImageGenerator from "@/components/RedesignedTattoo"
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -265,8 +266,8 @@ export default function Home() {
             Render new tattoo
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
-          <TattooEditor></TattooEditor>
-          <TattooRedesign></TattooRedesign>
+         <TriggerApiButton/>
+         <ImageGenerator />
         </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
