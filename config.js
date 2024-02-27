@@ -60,7 +60,7 @@ const config = {
       {
         priceId:
         process.env.NODE_ENV === "development"
-          ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
+          ? "price_1Niyy5AxyNprDp7iZIqEyD2L"
           : "price_1ObDijHa8820Uqe53AHgB1Ib",
       //  REQUIRED - Name of the plan, displayed on the pricing page
       name: "Premium",
