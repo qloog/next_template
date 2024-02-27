@@ -30,6 +30,8 @@ export default async function handler(req, res) {
       });
 
       // Log the response and send it back to the client
+      console.log(response.choices[0]);
+      
       res.status(200).json(response.choices[0]);
     } catch (error) {
       console.error(error);
