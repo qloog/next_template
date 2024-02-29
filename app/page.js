@@ -246,14 +246,6 @@ export default function Home() {
             <option value="Realism">Realism</option>
           </select>
 
-          <label className="flex items-center gap-2 mt-4 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={uploadToGallery}
-              onChange={(e) => setUploadToGallery(e.target.checked)}
-            />
-            Upload to Gallery
-          </label>
 
           <button
             className="btn w-full max-w-xs space-y-3 "
