@@ -18,6 +18,8 @@ import Script from "next/script";
 import TattooEditor from "@/components/EditTattoo";
 import TriggerApiButton from "@/components/TriggerButton";
 import ImageGenerator from "@/components/RedesignedTattoo"
+import styles from '@/app/images.module.css'
+import S3UploadForm from '@/components/S3UploadForm'
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -260,6 +262,9 @@ export default function Home() {
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
          <TriggerApiButton/>
          <ImageGenerator />
+         <div className={styles.main}>
+      <S3UploadForm/>
+    </div>
         </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
