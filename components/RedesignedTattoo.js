@@ -26,12 +26,12 @@ function RedesignedTattoo() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+  
     if (image === "") {
       alert("Please upload an image before submitting.");
       return;
     }
-
+  
     try {
       const response = await fetch("api/editUserImage", {
         method: "POST",
@@ -42,16 +42,20 @@ function RedesignedTattoo() {
       });
       const reader = response.body.getReader();
       setOpenAIResponse("");
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        const currentChunk = new TextDecoder().decode(value);
-        setOpenAIResponse((prev) => prev + currentChunk);
+      let done = false;
+      while (!done) {
+        const { done: streamDone, value } = await reader.read();
+        done = streamDone;
+        if (!done) {
+          const currentChunk = new TextDecoder().decode(value);
+          setOpenAIResponse((prev) => prev + currentChunk);
+        }
       }
     } catch (error) {
       console.error("Error submitting image:", error);
     }
   }
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
