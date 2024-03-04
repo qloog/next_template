@@ -6,7 +6,7 @@ const openai = new OpenAI();
 
 export async function POST(req) {
     try {
-        const { image } = await req.json();
+        const { image, prompt } = await req.json();
 
         // Get the description of the image
         const response = await openai.chat.completions.create({
@@ -23,11 +23,12 @@ export async function POST(req) {
         });
 
         const textPrompt = response.choices[0].message.content
+        const combinedPrompt = `${textPrompt}. ${prompt}`;
 
         // Generate a new image based on the description
         const imageResponse = await openai.images.generate({
             model: "dall-e-3",
-            prompt: textPrompt,
+            prompt: combinedPrompt,
             n: 1,
         });
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function RedesignedTattoo() {
   const [image, setImage] = useState("");
+  const [prompt, setPrompt] = useState("");
   const [openAIResponse, setOpenAIResponse] = useState("");
   const [isRedesigning, setIsRedesigning] = useState(false);
 
@@ -41,7 +42,7 @@ function RedesignedTattoo() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ image }),
+        body: JSON.stringify({ image, prompt }),
       });
       const data = await response.json();
 
@@ -88,6 +89,17 @@ function RedesignedTattoo() {
             />
           </div>
 
+          <div className="flex flex-col mb-6">
+            <label className="mb-2 text-sm font-medium">Describe the changes you want</label>
+            <input
+              type="text"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              className="text-sm text-gray-900 py-2 px-4 rounded border border-gray-700 bg-gray-800"
+              placeholder="e.g., Make the lion more masculine"
+            />
+          </div>
+
           <div className="flex justify-center">
             <button type="submit" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md font-semibold">
               Analyze Image
@@ -107,6 +119,7 @@ function RedesignedTattoo() {
 }
 
 export default RedesignedTattoo;
+
 
 
 
