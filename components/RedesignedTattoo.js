@@ -27,7 +27,7 @@ function RedesignedTattoo() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-  
+
     if (image === "") {
       alert("Please upload an image before submitting.");
       return;
@@ -36,7 +36,7 @@ function RedesignedTattoo() {
     setIsRedesigning(true);
 
     try {
-      const response = await fetch("api/editUserImage", {
+      const response = await fetch("/api/editUserImage", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,8 +44,13 @@ function RedesignedTattoo() {
         body: JSON.stringify({ image }),
       });
       const data = await response.json();
-      setOpenAIResponse(data.message);
-      setImage(data.imageUrl); // Assuming 'data.imageUrl' contains the URL of the redesigned image
+
+      if (data.imageUrl) {
+        setImage(data.imageUrl); // Update the image state with the URL of the redesigned image
+        setOpenAIResponse(""); // Clear any previous AI response
+      } else {
+        setOpenAIResponse(data.message); // Display any message from the API, if available
+      }
     } catch (error) {
       console.error("Error submitting image:", error);
     } finally {
@@ -82,7 +87,7 @@ function RedesignedTattoo() {
               onChange={handleFileChange}
             />
           </div>
-          
+
           <div className="flex justify-center">
             <button type="submit" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md font-semibold">
               Analyze Image
@@ -102,10 +107,6 @@ function RedesignedTattoo() {
 }
 
 export default RedesignedTattoo;
-
-
-
-
 
 
 
