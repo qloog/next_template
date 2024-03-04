@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+export const maxDuration = 120;
 
 const openai = new OpenAI();
 
