@@ -3,9 +3,7 @@
 import { useEffect, useState } from 'react';
 import { S3Client, ListObjectsCommand } from '@aws-sdk/client-s3';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = "edge"
 
 console.log('S3 Region:', process.env.NEXT_PUBLIC_S3_REGION);
 
