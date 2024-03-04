@@ -16,7 +16,6 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Script from "next/script";
 import TattooEditor from "@/components/EditTattoo";
-import TriggerApiButton from "@/components/TriggerButton";
 import ImageGenerator from "@/components/RedesignedTattoo"
 import styles from '@/app/images.module.css'
 import S3UploadForm from '@/components/S3UploadForm'
@@ -260,7 +259,6 @@ export default function Home() {
             Render new tattoo
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
-         <TriggerApiButton/>
          <ImageGenerator />
          <div className={styles.main}>
       <S3UploadForm/>
