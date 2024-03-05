@@ -23,7 +23,7 @@ const UploadForm = () => {
       });
 
       const data = await response.json();
-      console.log(data.success, data.fileName); // Updated logging
+      console.log('Success:', data.success, 'FileName:', data.fileName);
       setUploading(false);
     } catch (error) {
       console.error(error);
