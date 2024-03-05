@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 
 const UploadForm = () => {
@@ -24,13 +23,13 @@ const UploadForm = () => {
       });
 
       const data = await response.json();
-      console.log(data.status);
+      console.log(data.success, data.fileName); // Updated logging
       setUploading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setUploading(false);
     }
-  }
+  };
 
   return (
     <>
