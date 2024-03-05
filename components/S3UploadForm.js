@@ -22,7 +22,10 @@ const UploadForm = () => {
         body: formData,
       });
 
-      const data = await response.json();
+    console.log('Client Response:', response);
+const data = await response.json();
+console.log('Client Data:', data);
+
       console.log('Success:', data.success, 'FileName:', data.fileName);
       setUploading(false);
     } catch (error) {
