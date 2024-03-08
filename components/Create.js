@@ -3,13 +3,16 @@ import GeneratedImageCard from "@/components/ImageBox";
 import { useSession } from "next-auth/react";
 
 const Create = () => {
-  const [prompt, setPrompt] = useState("");
-  const [finalData, setFinalData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [style, setStyle] = useState("tattoo");
+  const [prompt, setPrompt] = useState("");
+  const [finalData, setFinalData] = useState();
   const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); // New state for showing the popup
   const { data: session } = useSession();
   const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
+  const [uploadToGallery, setUploadToGallery] = useState(false);
+  const [activeTab, setActiveTab] = useState('create');
 
 
 
