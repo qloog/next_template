@@ -308,11 +308,12 @@ export default function Home() {
             Render new tattoo
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
-         <ImageGenerator />
+        </section>
+        
+        <ImageGenerator />
          <div className={styles.main}>
       <S3UploadForm/>
     </div>
-        </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
         <section>
