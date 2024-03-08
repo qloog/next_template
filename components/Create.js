@@ -50,10 +50,7 @@ const Create = () => {
       setFinalData(results.imageUrl);
       setIsLoading(false); // End loading
   
-      if (uploadToGallery) {
-        // Call the uploadImageToGallery function with the generated image URL
-        await uploadImageToGallery(results.imageUrl);
-      }
+     
     } catch (error) {
       console.error("Error generating image:", error);
       setIsLoading(false);
