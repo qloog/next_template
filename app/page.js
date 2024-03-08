@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import React, { useState } from "react";
@@ -19,6 +21,11 @@ import TattooEditor from "@/components/EditTattoo";
 import ImageGenerator from "@/components/RedesignedTattoo"
 import styles from '@/app/images.module.css'
 import S3UploadForm from '@/components/S3UploadForm'
+import Create from '@/components/Create';
+import Convert from '@/components/Convert';
+import Explore from '@/components/Explore';
+import HelpMe from '@/components/HelpMe';
+import "@/app/new.style.css"
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -30,6 +37,7 @@ export default function Home() {
   const { data: session } = useSession();
   const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
   const [uploadToGallery, setUploadToGallery] = useState(false);
+  const [activeTab, setActiveTab] = useState('create');
 
   async function onGenerate(e) {
     e.preventDefault();
@@ -155,6 +163,7 @@ export default function Home() {
 
   return (
     <>
+    
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -193,6 +202,7 @@ export default function Home() {
           `}
       </Script>
       <Header></Header>
+      
       <style jsx>{`
         .login-signup-prompt {
           background-color: #f8f9fa;
@@ -203,6 +213,10 @@ export default function Home() {
           margin-top: 20px;
         }
       `}</style>
+
+
+  
+      
 
       {showLoginSignupPrompt && (
         <div className="login-signup-prompt">
@@ -216,7 +230,42 @@ export default function Home() {
 
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
+      <div className="container">
+      <div className="tab-header">
+        <div
+          className={`tab-item ${activeTab === 'create' ? 'active' : ''}`}
+          onClick={() => setActiveTab('create')}
+        >
+          Create
+        </div>
+        <div
+          className={`tab-item ${activeTab === 'convert' ? 'active' : ''}`}
+          onClick={() => setActiveTab('convert')}
+        >
+          Convert
+        </div>
+        <div
+          className={`tab-item ${activeTab === 'explore' ? 'active' : ''}`}
+          onClick={() => setActiveTab('explore')}
+        >
+          Explore
+        </div>
+        <div
+          className={`tab-item ${activeTab === 'helpMe' ? 'active' : ''}`}
+          onClick={() => setActiveTab('helpMe')}
+        >
+          Help Me
+        </div>
+      </div>
+      <div className="tab-content">
+        {activeTab === 'create' && <Create />}
+        {activeTab === 'convert' && <Convert />}
+        {activeTab === 'explore' && <Explore />}
+        {activeTab === 'helpMe' && <HelpMe />}
+      </div>
+    </div>
         <Hero />
+
         <section
           id="tattoo-generator"
           className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black"
@@ -284,3 +333,5 @@ export default function Home() {
     </>
   );
 }
+
+
