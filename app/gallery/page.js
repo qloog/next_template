@@ -1,11 +1,5 @@
-"use client";
-
 import { useEffect, useState } from 'react';
 import { S3Client, ListObjectsCommand } from '@aws-sdk/client-s3';
-
-export const runtime = "edge"
-
-console.log('S3 Region:', process.env.NEXT_PUBLIC_S3_REGION);
 
 const s3Client = new S3Client({
   region: process.env.NEXT_PUBLIC_S3_REGION,
@@ -15,12 +9,11 @@ const s3Client = new S3Client({
   },
 });
 
-export default function Gallery() {
+export default function Gallery({ searchTerm = '' }) {
   const [galleryImages, setGalleryImages] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -65,13 +58,6 @@ export default function Gallery() {
     <>
       <div className="gallery">
         <h1>Gallery</h1>
-        <input
-          type="text"
-          placeholder="Search for a tattoo design..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-bar"
-        />
         {isLoading ? (
           <div className="loader">Loading...</div>
         ) : error ? (
@@ -99,14 +85,6 @@ export default function Gallery() {
           color: #333;
         }
 
-        .search-bar {
-          margin-bottom: 20px;
-          padding: 10px;
-          width: 50%;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-
         .grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -130,6 +108,7 @@ export default function Gallery() {
           height: 100%;
           object-fit: cover;
         }
+
         .loader,
         .error {
           display: flex;
