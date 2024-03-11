@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { S3Client, ListObjectsCommand } from '@aws-sdk/client-s3';
+import Search from '@/components/Search';
+
 
 const s3Client = new S3Client({
   region: process.env.NEXT_PUBLIC_S3_REGION,
@@ -16,6 +18,7 @@ export default function Gallery({ searchTerm = '' }) {
   const [filteredImages, setFilteredImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -29,7 +32,7 @@ export default function Gallery({ searchTerm = '' }) {
         const images = response.Contents.map((object) => ({
           id: object.Key,
           url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}?t=${Date.now()}`,
-          tags: object.Metadata?.tags?.split(',') || [], // Assuming tags are stored as comma-separated values in the Metadata
+          name: object.Key.split('/').pop(), // Assuming the image name is the last part of the key
         }));
         setGalleryImages(images);
         setFilteredImages(images);
@@ -50,7 +53,7 @@ export default function Gallery({ searchTerm = '' }) {
       setFilteredImages(galleryImages);
     } else {
       const filtered = galleryImages.filter(image =>
-        image.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        image.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredImages(filtered);
     }
@@ -58,6 +61,10 @@ export default function Gallery({ searchTerm = '' }) {
 
   return (
     <>
+       <div>
+      <Search onSearch={setSearchTerm} />
+      <Gallery searchTerm={searchTerm} />
+    </div>
       <div className="gallery">
         <h1>Gallery</h1>
         {isLoading ? (
@@ -132,6 +139,7 @@ export default function Gallery({ searchTerm = '' }) {
     </>
   );
 }
+
 
 
 
