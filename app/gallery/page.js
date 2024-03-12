@@ -1,9 +1,7 @@
-"use client";
-
 import { useEffect, useState } from 'react';
-import { S3Client, ListObjectsCommand } from '@aws-sdk/client-s3';
+import { S3Client, ListObjectsCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 
-export const runtime = "edge"
+export const runtime = "edge";
 
 console.log('S3 Region:', process.env.NEXT_PUBLIC_S3_REGION);
 
@@ -17,8 +15,10 @@ const s3Client = new S3Client({
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
+  const [filteredImages, setFilteredImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -29,11 +29,20 @@ export default function Gallery() {
           Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
         });
         const response = await s3Client.send(command);
-        const images = response.Contents.map((object) => ({
-          id: object.Key,
-          url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}?t=${Date.now()}`,
+        const images = await Promise.all(response.Contents.map(async (object) => {
+          const metadataCommand = new GetObjectCommand({
+            Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+            Key: object.Key,
+          });
+          const metadataResponse = await s3Client.send(metadataCommand);
+          return {
+            id: object.Key,
+            url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}?t=${Date.now()}`,
+            label: metadataResponse.Metadata.label,
+          };
         }));
         setGalleryImages(images);
+        setFilteredImages(images);
       } catch (err) {
         setError('Failed to fetch images from S3');
         console.error(err);
@@ -45,19 +54,33 @@ export default function Gallery() {
     fetchImages();
   }, []);
 
+  useEffect(() => {
+    const filtered = galleryImages.filter(image =>
+      image.label.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredImages(filtered);
+  }, [searchTerm, galleryImages]);
+
   return (
     <>
       <div className="gallery">
         <h1>Gallery</h1>
+        <input
+          type="text"
+          placeholder="Search..."
+          className="search-bar"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         {isLoading ? (
           <div className="loader">Loading...</div>
         ) : error ? (
           <div className="error">Error: {error}</div>
         ) : (
           <div className="grid">
-            {galleryImages.map((image) => (
+            {filteredImages.map((image) => (
               <div key={image.id} className="image-container">
-                <img src={image.url} alt="Tattoo Design" />
+                <img src={image.url} alt={image.label} />
               </div>
             ))}
           </div>
@@ -74,6 +97,15 @@ export default function Gallery() {
         .gallery h1 {
           margin-bottom: 20px;
           color: #333;
+        }
+
+        .search-bar {
+          margin-bottom: 20px;
+          padding: 10px;
+          width: 80%;
+          max-width: 400px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
         }
 
         .grid {
@@ -121,6 +153,7 @@ export default function Gallery() {
     </>
   );
 }
+
 
 /* 
 "use client";
