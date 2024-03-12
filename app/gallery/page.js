@@ -3,18 +3,19 @@
 import { useEffect, useState } from 'react';
 import { S3Client, ListObjectsCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 
-export const runtime = "edge"
+export const runtime = "edge";
 
 const s3Client = new S3Client({
   region: process.env.NEXT_PUBLIC_S3_REGION,
   credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY, // Make sure these are correct
-    secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY, // Make sure these are correct
+    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
+    secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
   },
 });
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
+  const [filteredImages, setFilteredImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,20 +29,22 @@ export default function Gallery() {
           Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
         });
         const response = await s3Client.send(command);
-        const images = await Promise.all(response.Contents.map(async (object) => {
-          const metadataCommand = new HeadObjectCommand({
+        const imagePromises = response.Contents.map(async (object) => {
+          const headCommand = new HeadObjectCommand({
             Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
             Key: object.Key,
           });
-          const metadataResponse = await s3Client.send(metadataCommand);
-          // AWS SDK for JavaScript v3 returns metadata keys in lowercase
+          const metadataResponse = await s3Client.send(headCommand);
+          const labels = metadataResponse.Metadata['labels']; // Adjust if your metadata key is different
           return {
             id: object.Key,
             url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}`,
-            labels: metadataResponse.Metadata['x-amz-meta-labels'] || '',
+            labels: labels ? labels.split(',') : [], // Assuming labels are comma-separated
           };
-        }));
-        setGalleryImages(images);
+        });
+        const imagesWithLabels = await Promise.all(imagePromises);
+        setGalleryImages(imagesWithLabels);
+        setFilteredImages(imagesWithLabels); // Show all images by default
       } catch (err) {
         setError('Failed to fetch images from S3');
         console.error(err);
@@ -53,13 +56,14 @@ export default function Gallery() {
     fetchImages();
   }, []);
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  useEffect(() => {
+    // Filter images based on search term
+    const filtered = searchTerm
+      ? galleryImages.filter(image => image.labels.includes(searchTerm))
+      : galleryImages;
 
-  const displayedImages = galleryImages.filter(image => {
-    return searchTerm === '' || image.labels.includes(searchTerm);
-  });
+    setFilteredImages(filtered);
+  }, [searchTerm, galleryImages]);
 
   return (
     <>
@@ -69,16 +73,16 @@ export default function Gallery() {
           type="text"
           placeholder="Search..."
           className="search-bar"
-          onChange={handleSearch}
           value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         {isLoading ? (
-          <div>Loading...</div>
+          <div className="loader">Loading...</div>
         ) : error ? (
-          <div>Error: {error}</div>
+          <div className="error">Error: {error}</div>
         ) : (
           <div className="grid">
-            {displayedImages.map((image) => (
+            {filteredImages.map((image) => (
               <div key={image.id} className="image-container">
                 <img src={image.url} alt="Tattoo Design" />
               </div>
@@ -86,14 +90,73 @@ export default function Gallery() {
           </div>
         )}
       </div>
-
+  
       <style jsx>{`
-        // ... your existing styles
+        .gallery {
+          padding: 20px;
+          background-color: #f5f5f5;
+          text-align: center;
+        }
+  
+        .gallery h1 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+  
+        .search-bar {
+          margin-bottom: 20px;
+          padding: 10px;
+          width: 80%;
+          max-width: 400px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+  
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          justify-content: center;
+        }
+  
+        .image-container {
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        }
+  
+        .image-container:hover {
+          transform: scale(1.05);
+        }
+  
+        .image-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+  
+        .loader,
+        .error {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 200px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+  
+        .loader {
+          color: #007bff;
+        }
+  
+        .error {
+          color: #dc3545;
+        }
       `}</style>
     </>
   );
 }
-
 
 
 
