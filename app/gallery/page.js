@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from 'react';
 import { S3Client, ListObjectsCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 
