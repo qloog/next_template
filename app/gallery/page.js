@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react';
-import { S3Client, ListObjectsCommand, GetObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, ListObjectsCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 
 export const runtime = "edge";
 
@@ -32,7 +32,7 @@ export default function Gallery() {
         });
         const response = await s3Client.send(command);
         const images = await Promise.all(response.Contents.map(async (object) => {
-          const metadataCommand = new GetObjectCommand({
+          const metadataCommand = new HeadObjectCommand({
             Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
             Key: object.Key,
           });
@@ -40,7 +40,7 @@ export default function Gallery() {
           return {
             id: object.Key,
             url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}?t=${Date.now()}`,
-            label: metadataResponse.Metadata.label,
+            labels: metadataResponse.Metadata.labels,
           };
         }));
         setGalleryImages(images);
@@ -58,11 +58,10 @@ export default function Gallery() {
 
   useEffect(() => {
     const filtered = galleryImages.filter(image =>
-      image.label && image.label.toLowerCase().includes(searchTerm.toLowerCase())
+      image.labels && image.labels.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
-  
 
   return (
     <>
@@ -83,7 +82,7 @@ export default function Gallery() {
           <div className="grid">
             {filteredImages.map((image) => (
               <div key={image.id} className="image-container">
-                <img src={image.url} alt={image.label} />
+                <img src={image.url} alt="Tattoo Design" />
               </div>
             ))}
           </div>
@@ -156,6 +155,7 @@ export default function Gallery() {
     </>
   );
 }
+
 
 
 /* 
