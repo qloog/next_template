@@ -8,7 +8,7 @@ export const runtime = "edge"
 const s3Client = new S3Client({
   region: process.env.NEXT_PUBLIC_S3_REGION,
   credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID, // Make sure these are correct
+    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY, // Make sure these are correct
     secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY, // Make sure these are correct
   },
 });
