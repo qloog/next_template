@@ -5,13 +5,11 @@ import { S3Client, ListObjectsCommand, HeadObjectCommand } from '@aws-sdk/client
 
 export const runtime = "edge"
 
-console.log('S3 Region:', process.env.NEXT_PUBLIC_S3_REGION);
-
 const s3Client = new S3Client({
   region: process.env.NEXT_PUBLIC_S3_REGION,
   credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
-    secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
+    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID, // Make sure these are correct
+    secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY, // Make sure these are correct
   },
 });
 
@@ -30,25 +28,20 @@ export default function Gallery() {
           Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
         });
         const response = await s3Client.send(command);
-        const fetchMetadataPromises = response.Contents.map(async (object) => {
-          try {
-            const metadataCommand = new HeadObjectCommand({
-              Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
-              Key: object.Key,
-            });
-            const metadataResponse = await s3Client.send(metadataCommand);
-            return {
-              id: object.Key,
-              url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}`,
-              labels: metadataResponse.Metadata.labels || '',
-            };
-          } catch (metadataError) {
-            console.error(`Error fetching metadata for ${object.Key}:`, metadataError);
-            return null;
-          }
-        });
-        const imagesWithMetadata = (await Promise.all(fetchMetadataPromises)).filter(image => image);
-        setGalleryImages(imagesWithMetadata);
+        const images = await Promise.all(response.Contents.map(async (object) => {
+          const metadataCommand = new HeadObjectCommand({
+            Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+            Key: object.Key,
+          });
+          const metadataResponse = await s3Client.send(metadataCommand);
+          // AWS SDK for JavaScript v3 returns metadata keys in lowercase
+          return {
+            id: object.Key,
+            url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}`,
+            labels: metadataResponse.Metadata['x-amz-meta-labels'] || '',
+          };
+        }));
+        setGalleryImages(images);
       } catch (err) {
         setError('Failed to fetch images from S3');
         console.error(err);
@@ -60,9 +53,13 @@ export default function Gallery() {
     fetchImages();
   }, []);
 
-  const filteredImages = searchTerm
-    ? galleryImages.filter(image => image.labels.toLowerCase().includes(searchTerm.toLowerCase()))
-    : galleryImages;
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const displayedImages = galleryImages.filter(image => {
+    return searchTerm === '' || image.labels.includes(searchTerm);
+  });
 
   return (
     <>
@@ -72,18 +69,18 @@ export default function Gallery() {
           type="text"
           placeholder="Search..."
           className="search-bar"
+          onChange={handleSearch}
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
         />
         {isLoading ? (
-          <div className="loader">Loading...</div>
+          <div>Loading...</div>
         ) : error ? (
-          <div className="error">Error: {error}</div>
+          <div>Error: {error}</div>
         ) : (
           <div className="grid">
-            {filteredImages.map((image) => (
+            {displayedImages.map((image) => (
               <div key={image.id} className="image-container">
-                <img src={image.url} alt="Image" />
+                <img src={image.url} alt="Tattoo Design" />
               </div>
             ))}
           </div>
@@ -91,7 +88,7 @@ export default function Gallery() {
       </div>
 
       <style jsx>{`
-        // ... (your existing styles)
+        // ... your existing styles
       `}</style>
     </>
   );
