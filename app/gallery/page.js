@@ -2,16 +2,6 @@
 import { useEffect, useState } from 'react';
 import { S3Client, ListObjectsCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 
-export const runtime = "edge";
-
-const s3Client = new S3Client({
-  region: process.env.NEXT_PUBLIC_S3_REGION,
-  credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
-    secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
-  },
-});
-
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
@@ -19,8 +9,16 @@ export default function Gallery() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
+  const s3Client = new S3Client({
+    region: process.env.NEXT_PUBLIC_S3_REGION,
+    credentials: {
+      accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
+      secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
+    },
+  });
+
   useEffect(() => {
-    const fetchImages = async () => {
+    const fetchImagesFromS3 = async () => {
       setIsLoading(true);
       setError(null);
       try {
@@ -38,7 +36,7 @@ export default function Gallery() {
           return {
             id: object.Key,
             url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}`,
-            labels: labels.split(',').map(label => label.trim().toLowerCase()),
+            labels: labels.split(','),
           };
         }));
         setGalleryImages(images);
@@ -51,12 +49,32 @@ export default function Gallery() {
       }
     };
 
-    fetchImages();
+    fetchImagesFromS3();
   }, []);
 
   useEffect(() => {
-    const filtered = searchTerm.trim() === '' ? galleryImages : galleryImages.filter(image =>
-      image.labels.some(label => label.includes(searchTerm.trim().toLowerCase()))
+    const fetchImagesFromLambda = async () => {
+      try {
+        const response = await fetch("https://dvjbq3zonc.execute-api.us-east-2.amazonaws.com/Demo");
+        if (!response.ok) {
+          throw new Error('Failed to fetch images from Lambda');
+        }
+        const imagesFromLambda = await response.json();
+        setGalleryImages(prevImages => [...prevImages, ...imagesFromLambda]);
+      } catch (err) {
+        setError('Failed to fetch images from Lambda');
+        console.error(err);
+      }
+    };
+
+    if (galleryImages.length === 0) {
+      fetchImagesFromLambda();
+    }
+  }, [galleryImages]);
+
+  useEffect(() => {
+    const filtered = galleryImages.filter(image =>
+      searchTerm === '' || image.labels.includes(searchTerm)
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
