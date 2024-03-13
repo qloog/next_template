@@ -1,6 +1,16 @@
 "use client"
-
 import { useEffect, useState } from 'react';
+import { S3Client, ListObjectsCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
+
+export const runtime = "edge";
+
+const s3Client = new S3Client({
+  region: process.env.NEXT_PUBLIC_S3_REGION,
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
+    secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
+  },
+});
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
@@ -14,15 +24,27 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch("https://dvjbq3zonc.execute-api.us-east-2.amazonaws.com/Demo");
-        if (!response.ok) {
-          throw new Error('Failed to fetch images');
-        }
-        const images = await response.json();
+        const command = new ListObjectsCommand({
+          Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+        });
+        const response = await s3Client.send(command);
+        const images = await Promise.all(response.Contents.map(async (object) => {
+          const headCommand = new HeadObjectCommand({
+            Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+            Key: object.Key,
+          });
+          const metadataResponse = await s3Client.send(headCommand);
+          const labels = metadataResponse.Metadata['x-amz-meta-labels'] || '';
+          return {
+            id: object.Key,
+            url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}`,
+            labels: labels.split(',').map(label => label.trim().toLowerCase()),
+          };
+        }));
         setGalleryImages(images);
-        setFilteredImages(images); // Initially display all images
+        setFilteredImages(images);
       } catch (err) {
-        setError('Failed to fetch images');
+        setError('Failed to fetch images from S3');
         console.error(err);
       } finally {
         setIsLoading(false);
@@ -33,9 +55,8 @@ export default function Gallery() {
   }, []);
 
   useEffect(() => {
-    // Filter images based on search term
-    const filtered = galleryImages.filter(image =>
-      image.labels.some(label => label.toLowerCase().includes(searchTerm.trim().toLowerCase()))
+    const filtered = searchTerm.trim() === '' ? galleryImages : galleryImages.filter(image =>
+      image.labels.some(label => label.includes(searchTerm.trim().toLowerCase()))
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
@@ -129,9 +150,11 @@ export default function Gallery() {
           color: #dc3545;
         }
       `}</style>
+
     </>
   );
 }
+
 
 
 
