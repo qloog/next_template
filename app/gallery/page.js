@@ -1,6 +1,17 @@
 "use client"
+
 import { useEffect, useState } from 'react';
 import { S3Client, ListObjectsCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
+
+export const runtime = "edge";
+
+const s3Client = new S3Client({
+  region: process.env.NEXT_PUBLIC_S3_REGION,
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
+    secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
+  },
+});
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
@@ -9,16 +20,8 @@ export default function Gallery() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const s3Client = new S3Client({
-    region: process.env.NEXT_PUBLIC_S3_REGION,
-    credentials: {
-      accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
-      secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
-    },
-  });
-
   useEffect(() => {
-    const fetchImagesFromS3 = async () => {
+    const fetchImages = async () => {
       setIsLoading(true);
       setError(null);
       try {
@@ -49,31 +52,11 @@ export default function Gallery() {
       }
     };
 
-    fetchImagesFromS3();
+    fetchImages();
   }, []);
 
   useEffect(() => {
-    const fetchImagesFromLambda = async () => {
-      try {
-        const response = await fetch("https://dvjbq3zonc.execute-api.us-east-2.amazonaws.com/Demo");
-        if (!response.ok) {
-          throw new Error('Failed to fetch images from Lambda');
-        }
-        const imagesFromLambda = await response.json();
-        setGalleryImages(prevImages => [...prevImages, ...imagesFromLambda]);
-      } catch (err) {
-        setError('Failed to fetch images from Lambda');
-        console.error(err);
-      }
-    };
-
-    if (galleryImages.length === 0) {
-      fetchImagesFromLambda();
-    }
-  }, [galleryImages]);
-
-  useEffect(() => {
-    const filtered = galleryImages.filter(image =>
+    const filtered = galleryImages.filter(image => 
       searchTerm === '' || image.labels.includes(searchTerm)
     );
     setFilteredImages(filtered);
@@ -106,68 +89,68 @@ export default function Gallery() {
       </div>
 
       <style jsx>{`
-        .gallery {
-          padding: 20px;
-          background-color: #f5f5f5;
-          text-align: center;
-        }
+  .gallery {
+    padding: 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
 
-        .gallery h1 {
-          margin-bottom: 20px;
-          color: #333;
-        }
+  .gallery h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
 
-        .search-bar {
-          margin-bottom: 20px;
-          padding: 10px;
-          width: 80%;
-          max-width: 400px;
-          border-radius: 5px;
-          border: 1px solid #ccc;
-        }
+  .search-bar {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
 
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 20px;
-          justify-content: center;
-        }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+  }
 
-        .image-container {
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-          border-radius: 8px;
-          overflow: hidden;
-          transition: transform 0.3s ease;
-        }
+  .image-container {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
 
-        .image-container:hover {
-          transform: scale(1.05);
-        }
+  .image-container:hover {
+    transform: scale(1.05);
+  }
 
-        .image-container img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-        .loader,
-        .error {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 200px;
-          font-size: 18px;
-          font-weight: bold;
-        }
+  .loader,
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 18px;
+    font-weight: bold;
+  }
 
-        .loader {
-          color: #007bff;
-        }
+  .loader {
+    color: #007bff;
+  }
 
-        .error {
-          color: #dc3545;
-        }
-      `}</style>
+  .error {
+    color: #dc3545;
+  }
+`}</style>
 
     </>
   );
