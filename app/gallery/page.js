@@ -1,9 +1,12 @@
 "use client"
 
-import { useEffect, useState } from 'react';
-import { S3Client, ListObjectsCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 
-export const runtime = "edge";
+import { useEffect, useState } from 'react';
+import { S3Client, ListObjectsCommand } from '@aws-sdk/client-s3';
+
+export const runtime = "edge"
+
+console.log('S3 Region:', process.env.NEXT_PUBLIC_S3_REGION);
 
 const s3Client = new S3Client({
   region: process.env.NEXT_PUBLIC_S3_REGION,
@@ -15,10 +18,8 @@ const s3Client = new S3Client({
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
-  const [filteredImages, setFilteredImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -29,21 +30,11 @@ export default function Gallery() {
           Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
         });
         const response = await s3Client.send(command);
-        const images = await Promise.all(response.Contents.map(async (object) => {
-          const headCommand = new HeadObjectCommand({
-            Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
-            Key: object.Key,
-          });
-          const metadataResponse = await s3Client.send(headCommand);
-          const labels = metadataResponse.Metadata['x-amz-meta-labels'] || '';
-          return {
-            id: object.Key,
-            url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}`,
-            labels: labels.split(','),
-          };
+        const images = response.Contents.map((object) => ({
+          id: object.Key,
+          url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}?t=${Date.now()}`,
         }));
         setGalleryImages(images);
-        setFilteredImages(images);
       } catch (err) {
         setError('Failed to fetch images from S3');
         console.error(err);
@@ -55,31 +46,17 @@ export default function Gallery() {
     fetchImages();
   }, []);
 
-  useEffect(() => {
-    const filtered = galleryImages.filter(image => 
-      searchTerm === '' || image.labels.includes(searchTerm)
-    );
-    setFilteredImages(filtered);
-  }, [searchTerm, galleryImages]);
-
   return (
     <>
       <div className="gallery">
         <h1>Gallery</h1>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="search-bar"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
         {isLoading ? (
           <div className="loader">Loading...</div>
         ) : error ? (
           <div className="error">Error: {error}</div>
         ) : (
           <div className="grid">
-            {filteredImages.map((image) => (
+            {galleryImages.map((image) => (
               <div key={image.id} className="image-container">
                 <img src={image.url} alt="Tattoo Design" />
               </div>
@@ -89,69 +66,59 @@ export default function Gallery() {
       </div>
 
       <style jsx>{`
-  .gallery {
-    padding: 20px;
-    background-color: #f5f5f5;
-    text-align: center;
-  }
+        .gallery {
+          padding: 20px;
+          background-color: #f5f5f5;
+          text-align: center;
+        }
 
-  .gallery h1 {
-    margin-bottom: 20px;
-    color: #333;
-  }
+        .gallery h1 {
+          margin-bottom: 20px;
+          color: #333;
+        }
 
-  .search-bar {
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          justify-content: center;
+        }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    justify-content: center;
-  }
+        .image-container {
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        }
 
-  .image-container {
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
+        .image-container:hover {
+          transform: scale(1.05);
+        }
 
-  .image-container:hover {
-    transform: scale(1.05);
-  }
+        .image-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
 
-  .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+        .loader,
+        .error {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 200px;
+          font-size: 18px;
+          font-weight: bold;
+        }
 
-  .loader,
-  .error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    font-size: 18px;
-    font-weight: bold;
-  }
+        .loader {
+          color: #007bff;
+        }
 
-  .loader {
-    color: #007bff;
-  }
-
-  .error {
-    color: #dc3545;
-  }
-`}</style>
-
+        .error {
+          color: #dc3545;
+        }
+      `}</style>
     </>
   );
 }
