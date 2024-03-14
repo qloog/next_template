@@ -1,40 +1,56 @@
-// Import the necessary package
+import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-// Initialize the OpenAI instance with your API key
-const openai = new OpenAI(process.env.OPENAI_API_KEY);
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // Ensure your API key is securely stored and accessed
+});
 
-export default async function handler(req, res) {
-    if (req.method === 'POST') {
-        try {
-            // Assuming the body directly contains the image URL
-            const { imageUrl } = req.body;
+export const config = {
+  runtime: 'experimental-edge',
+};
 
-            // Prepare and send the request to the AI model
-            const gpt4visionresponse = await openai.chat.completions.create({
-                model: "gpt-4-vision-preview",
-                messages: [{
-                    role: "user",
-                    content: [{
-                        type: "text",
-                        text: "Give me 3 labels for this image not a description. I need you to assign 3 labels as best and accurately as you can for what this image is based on."
-                    },
-                    {
-                        type: "image_url",
-                        image_url: imageUrl // Use the image URL from the request
-                    }]
-                }],
-            });
+export default async function handler(req) {
+  try {
+    // Parse the incoming request to get the image URL
+    const { image } = await req.json();
 
-            // Send back the labels as the response
-            res.status(200).json(gpt4visionresponse.data);
-        } catch (error) {
-            console.error("Error processing image labeling:", error);
-            res.status(500).json({ error: "Error processing image labeling" });
-        }
-    } else {
-        // Handle non-POST requests
-        res.setHeader('Allow', ['POST']);
-        res.status(405).end(`Method ${req.method} Not Allowed`);
-    }
+    // Modify the prompt to ask for specific labels
+    const response = await openai.chat.completions.create({
+      model: "gpt-4-vision-preview",
+      messages: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: "I need 3 labels that best describe this image. No description and nothing else. Make sure they are as accurate as possible."
+            },
+            {
+              type: "image_url",
+              image_url: image // The image URL from the request
+            },
+          ],
+        },
+      ],
+    });
+
+    // Extract the labels provided by GPT-4
+    const labels = response.choices[0].message.content;
+
+    // Return the labels in the response
+    return new NextResponse(JSON.stringify({ labels }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error in API:', error);
+    return new NextResponse(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
