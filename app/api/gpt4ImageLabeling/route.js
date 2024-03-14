@@ -7,7 +7,7 @@ const openai = new OpenAI({
 
 export const runtime = "experimental-edge"
 
-export default async function handler(req) {
+export async function POST(req) {
   try {
     // Parse the incoming request to get the image URL
     const { image } = await req.json();
