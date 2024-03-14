@@ -5,9 +5,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, // Ensure your API key is securely stored and accessed
 });
 
-export const config = {
-  runtime: 'experimental-edge',
-};
+export const runtime = "experimental-edge"
 
 export default async function handler(req) {
   try {
