@@ -21,7 +21,8 @@ export async function POST(req) {
           content: [
             {
               type: "text",
-              text: "I need 3 labels that best describe this image. No description and nothing else. Make sure they are as accurate as possible."
+              text: "Provide 3 specific labels that accurately categorize the content of this image, focusing on identifiable subjects or themes rather than the style or genre of the artwork. Aim for precise descriptors like 'Viking Warrior' if applicable, avoiding broad or generic terms like 'Digital Art' or 'Fantasy Landscape'."
+
             },
             {
               type: "image_url",
