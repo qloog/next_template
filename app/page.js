@@ -26,7 +26,6 @@ import Convert from '@/components/Convert';
 import Explore from '@/components/Explore';
 import HelpMe from '@/components/HelpMe';
 import "@/app/new.style.css"
-import ImageLabeler from "@/components/ImageLabeling";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -314,7 +313,6 @@ export default function Home() {
         <ImageGenerator />
          <div className={styles.main}>
       <S3UploadForm/>
-    <ImageLabeler></ImageLabeler>
     </div>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
