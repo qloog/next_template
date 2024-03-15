@@ -13,30 +13,40 @@ const UploadForm = () => {
     if (!file) return;
 
     setUploading(true);
-    const formData = new FormData();
-    formData.append("file", file);
+    const base64Image = await toBase64(file); // Convert the file to Base64
 
     try {
-      const response = await fetch("/api/s3-upload", {
+      const response = await fetch("/api/gpt4ImageLabeling", {
         method: "POST",
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ image: base64Image }),
       });
 
-    console.log('Client Response:', response);
-const data = await response.json();
-console.log('Client Data:', data);
+      if (!response.ok) {
+        throw new Error('Failed to upload and label image');
+      }
 
-      console.log('Success:', data.success, 'FileName:', data.fileName);
+      console.log('Image uploaded and labeled successfully');
       setUploading(false);
     } catch (error) {
-      console.error(error);
+      console.error('Upload error:', error);
       setUploading(false);
     }
   };
 
+  // Helper function to convert file to Base64
+  const toBase64 = (file) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+
   return (
     <>
-      <h1>Upload Files to S3 Bucket</h1>
+      <h1>Upload and Label Images</h1>
 
       <form onSubmit={handleSubmit}>
         <input type="file" accept="image/*" onChange={handleFileChange} />

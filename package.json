@@ -23,7 +23,7 @@
     "@mui/material": "^5.15.10",
     "@supabase/supabase-js": "^2.39.7",
     "ai": "^2.2.35",
-    "aws-sdk": "^2.1558.0",
+    "aws-sdk": "^2.1577.0",
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "crisp-sdk-web": "^1.0.21",

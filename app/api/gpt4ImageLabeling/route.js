@@ -1,55 +1,58 @@
-import { NextResponse } from 'next/server';
+import connectMongo from '@/libs/mongoose'; // Adjust the import path as needed
+import Image from '@/models/Image'; // Adjust the import path as needed
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Ensure your API key is securely stored and accessed
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-export const runtime = "experimental-edge"
-
 export async function POST(req) {
-  try {
-    // Parse the incoming request to get the image URL
-    const { image } = await req.json();
+  await connectMongo(); // Connect to MongoDB
 
-    // Modify the prompt to ask for specific labels
-    const response = await openai.chat.completions.create({
-      model: "gpt-4-vision-preview",
-      messages: [
-        {
-          role: "user",
-          content: [
-            {
-              type: "text",
-              text: "Provide 3 specific labels that accurately categorize the content of this image, focusing on identifiable subjects or themes rather than the style or genre of the artwork. Aim for precise descriptors like 'Viking Warrior' if applicable, avoiding broad or generic terms like 'Digital Art' or 'Fantasy Landscape'."
+  if (req.method === 'POST') {
+    const { image } = req.body; // Base64 encoded image data
 
-            },
-            {
-              type: "image_url",
-              image_url: image // The image URL from the request
-            },
-          ],
-        },
-      ],
-    });
+    try {
+      // Get labels from GPT-4 Vision
+      const response = await openai.chat.completions.create({
+        model: "gpt-4-vision-preview",
+        messages: [
+          {
+            role: "user",
+            content: [
+              {
+                type: "text",
+                text: "Provide 3 specific labels that accurately categorize the content of this image."
+              },
+              {
+                type: "image_base64",
+                image_base64: image.split(',')[1] // Remove the data URL prefix if present
+              },
+            ],
+          },
+        ],
+      });
+      const labels = response.choices[0].message.content.split(', ');
 
-    // Extract the labels provided by GPT-4
-    const labels = response.choices[0].message.content;
+      // Save image and labels in MongoDB
+      const newImage = new Image({ data: image, labels });
+      await newImage.save();
 
-    // Return the labels in the response
-    return new NextResponse(JSON.stringify({ labels }), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  } catch (error) {
-    console.error('Error in API:', error);
-    return new NextResponse(JSON.stringify({ error: error.message }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+      res.status(201).json(newImage);
+    } catch (error) {
+      console.error('Error processing image:', error);
+      res.status(500).json({ error: 'Error processing image' });
+    }
+  } else if (req.method === 'GET') {
+    // Handle fetching of all labeled images
+    try {
+      const images = await Image.find({});
+      res.status(200).json(images);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch images' });
+    }
+  } else {
+    res.setHeader('Allow', ['POST', 'GET']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
