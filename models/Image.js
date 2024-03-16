@@ -1,10 +1,23 @@
 import mongoose from 'mongoose';
 
-const imageSchema = mongoose.Schema({
-  data: String,
-  labels: [Array],
-}, {
-  timestamps: true,
-});
+// IMAGE SCHEMA
+const imageSchema = mongoose.Schema(
+  {
+    data: {
+      type: String,
+      required: true, // Base64 encoded image data
+    },
+    labels: {
+      type: [String],
+      required: true, // Array of labels assigned by GPT-4 Vision
+    },
+  },
+  {
+    timestamps: true, // Automatically adds createdAt and updatedAt fields
+  }
+);
 
-export default mongoose.models.Image || mongoose.model('Image', imageSchema);
+// Create the 'Image' model using the schema
+const Image = mongoose.model('Image', imageSchema);
+
+export default Image;
