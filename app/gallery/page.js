@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from 'react';
 
 export default function Gallery() {
@@ -47,6 +48,7 @@ export default function Gallery() {
     </div>
   );
 }
+
 
 
 
