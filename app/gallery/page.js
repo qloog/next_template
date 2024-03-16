@@ -17,6 +17,7 @@ export default function Gallery() {
           throw new Error('Failed to fetch images');
         }
         const images = await response.json();
+        // Assuming 'data' field from database contains the base64 string prefixed with 'data:image/jpeg;base64,'
         setGalleryImages(images);
       } catch (err) {
         setError(err.message);
@@ -29,6 +30,11 @@ export default function Gallery() {
     fetchImages();
   }, []);
 
+  const handleImageError = (e) => {
+    e.target.onerror = null; // prevents looping
+    e.target.src = "/images/placeholder.png"; // replace with a placeholder image if preferred
+  };
+
   return (
     <div className="gallery">
       <h1>Gallery</h1>
@@ -40,8 +46,11 @@ export default function Gallery() {
         <div className="grid">
           {galleryImages.map((image) => (
             <div key={image._id} className="image-container">
-            <img src={`data:image/jpeg;base64,${image.data}`} alt="Gallery item" />
-
+              <img
+                src={image.data} // image.data should already include the correct base64 data URI prefix
+                alt="Gallery item"
+                onError={handleImageError}
+              />
             </div>
           ))}
         </div>
