@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from 'react';
 
 export default function Gallery() {
@@ -11,7 +11,7 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/gpt4ImageLabeling');
+        const response = await fetch('/api/imageUpload');
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
@@ -40,7 +40,6 @@ export default function Gallery() {
           {galleryImages.map((image) => (
             <div key={image._id} className="image-container">
               <img src={`data:image/jpeg;base64,${image.data}`} alt="Gallery item" />
-              <div>Labels: {image.labels.join(', ')}</div>
             </div>
           ))}
         </div>
