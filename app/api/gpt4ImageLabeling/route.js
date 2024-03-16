@@ -1,4 +1,4 @@
-import connectMongo from '@/libs/connectMongo'; // Adjust the import path as needed
+import connectMongo from '@/libs/mongoose'; // Adjust the import path as needed
 import Image from '@/models/Image'; // Adjust the import path as needed
 import OpenAI from 'openai';
 
