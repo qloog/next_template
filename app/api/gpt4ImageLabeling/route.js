@@ -2,6 +2,9 @@ import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
 
+export const maxDuration = 120
+export const dynamic = "force-dynamic"
+
 const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 export async function POST(req) {
