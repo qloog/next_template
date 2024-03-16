@@ -1,37 +1,50 @@
-import mongoose from 'mongoose';
-import connectMongo from '@/libs/mongoose'; // Adjust the import path as needed
-import Image from '@/models/Image'; // Adjust the import path as needed
-
-// Connect to MongoDB
-await connectMongo();
+import connectMongo from '@/libs/mongoose';
+import Image from '@/models/Image';
 
 export async function POST(req) {
-  try {
-    const { image } = await req.json(); // Extract image data from the request
+    await connectMongo();
 
-    // Check if the image data is provided
-    if (!image) {
-      throw new Error('Image data is missing');
+    const { image } = await req.json();
+
+    try {
+        const newImage = new Image({ data: image });
+        await newImage.save();
+
+        return new Response(JSON.stringify(newImage), {
+            status: 201,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    } catch (error) {
+        console.error('Error saving image:', error);
+        return new Response(JSON.stringify({ error: 'Error saving image' }), {
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
     }
+}
 
-    // Create a new image document
-    const newImage = new Image({ data: image });
-    await newImage.save(); // Save the image document to the database
+export async function GET(req) {
+    await connectMongo();
 
-    // Return the saved image document
-    return new Response(JSON.stringify(newImage), {
-      status: 201,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  } catch (error) {
-    console.error('Error saving image:', error);
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
+    try {
+        const images = await Image.find({});
+        return new Response(JSON.stringify(images), {
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    } catch (error) {
+        console.error('Error fetching images:', error);
+        return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    }
 }
