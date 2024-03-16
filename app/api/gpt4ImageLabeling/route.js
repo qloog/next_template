@@ -6,11 +6,16 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function POST(req, res) {
+export default async function handler(req, res) {
   await connectMongo(); // Connect to MongoDB
 
   if (req.method === 'POST') {
     const { image } = req.body; // Base64 encoded image data
+
+    // Check if the image data is provided and is a string
+    if (!image || typeof image !== 'string') {
+      return res.status(400).json({ error: 'Image data is required and must be a string.' });
+    }
 
     try {
       // Get labels from GPT-4 Vision
@@ -26,7 +31,7 @@ export async function POST(req, res) {
               },
               {
                 type: "image_base64",
-                image_base64: image.split(',')[1] // Remove the data URL prefix if present
+                image_base64: image.split(',')[1] // Ensure this is the correct format
               },
             ],
           },
