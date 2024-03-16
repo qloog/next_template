@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from 'react';
 
 export default function Gallery() {
@@ -12,15 +11,14 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        // Make a GET request to your API endpoint to fetch images
         const response = await fetch('/api/gpt4ImageLabeling');
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Failed to fetch images');
         }
         const images = await response.json();
         setGalleryImages(images);
       } catch (err) {
-        setError('Failed to fetch images');
+        setError(err.message);
         console.error(err);
       } finally {
         setIsLoading(false);
@@ -34,14 +32,15 @@ export default function Gallery() {
     <div className="gallery">
       <h1>Gallery</h1>
       {isLoading ? (
-        <div className="loader">Loading...</div>
+        <div>Loading...</div>
       ) : error ? (
-        <div className="error">Error: {error}</div>
+        <div>Error: {error}</div>
       ) : (
         <div className="grid">
           {galleryImages.map((image) => (
             <div key={image._id} className="image-container">
               <img src={`data:image/jpeg;base64,${image.data}`} alt="Gallery item" />
+              <div>Labels: {image.labels.join(', ')}</div>
             </div>
           ))}
         </div>
@@ -49,6 +48,7 @@ export default function Gallery() {
     </div>
   );
 }
+
 
 
 

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const UploadForm = () => {
+export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -13,49 +13,34 @@ const UploadForm = () => {
     if (!file) return;
 
     setUploading(true);
-    const base64Image = await toBase64(file); // Convert the file to Base64
+    const formData = new FormData();
+    formData.append('image', file);
 
     try {
-      const response = await fetch("/api/gpt4ImageLabeling", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ image: base64Image }),
+      const response = await fetch('/api/gpt4ImageLabeling', {
+        method: 'POST',
+        body: formData,
       });
 
       if (!response.ok) {
         throw new Error('Failed to upload and label image');
       }
 
-      console.log('Image uploaded and labeled successfully');
-      setUploading(false);
+      const data = await response.json();
+      console.log('Image uploaded and labeled:', data);
     } catch (error) {
       console.error('Upload error:', error);
+    } finally {
       setUploading(false);
     }
   };
 
-  // Helper function to convert file to Base64
-  const toBase64 = (file) => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-
   return (
-    <>
-      <h1>Upload and Label Images</h1>
-
-      <form onSubmit={handleSubmit}>
-        <input type="file" accept="image/*" onChange={handleFileChange} />
-        <button type="submit" disabled={!file || uploading}>
-          {uploading ? "Uploading..." : "Upload"}
-        </button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <input type="file" accept="image/*" onChange={handleFileChange} />
+      <button type="submit" disabled={!file || uploading}>
+        {uploading ? 'Uploading...' : 'Upload to Gallery'}
+      </button>
+    </form>
   );
-};
-
-export default UploadForm;
+}
