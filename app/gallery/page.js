@@ -17,7 +17,6 @@ export default function Gallery() {
           throw new Error('Failed to fetch images');
         }
         const images = await response.json();
-        // Assuming 'data' field from database contains the base64 string prefixed with 'data:image/jpeg;base64,'
         setGalleryImages(images);
       } catch (err) {
         setError(err.message);
@@ -36,26 +35,82 @@ export default function Gallery() {
   };
 
   return (
-    <div className="gallery">
-      <h1>Gallery</h1>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : error ? (
-        <div>Error: {error}</div>
-      ) : (
-        <div className="grid">
-          {galleryImages.map((image) => (
-            <div key={image._id} className="image-container">
-              <img
-                src={image.data} // image.data should already include the correct base64 data URI prefix
-                alt="Gallery item"
-                onError={handleImageError}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <>
+      <div className="gallery">
+        <h1>Gallery</h1>
+        {isLoading ? (
+          <div className="loader">Loading...</div>
+        ) : error ? (
+          <div className="error">Error: {error}</div>
+        ) : (
+          <div className="grid">
+            {galleryImages.map((image) => (
+              <div key={image._id} className="image-container">
+                <img
+                  src={image.data}
+                  alt="Gallery item"
+                  onError={handleImageError}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <style jsx>{`
+        .gallery {
+          padding: 20px;
+          background-color: #f5f5f5;
+          text-align: center;
+        }
+
+        .gallery h1 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          justify-content: center;
+        }
+
+        .image-container {
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+          transform: scale(1.05);
+        }
+
+        .image-container img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+
+        .loader,
+        .error {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 200px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        .loader {
+          color: #007bff;
+        }
+
+        .error {
+          color: #dc3545;
+        }
+      `}</style>
+    </>
   );
 }
 
