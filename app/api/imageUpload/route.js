@@ -1,7 +1,7 @@
 import connectMongo from '@/libs/mongoose'; // Ensure this path is correct
 import Image from '@/models/Image'; // Ensure this path is correct
 
-export async function POST(req, res) {
+export async function POST(req) {
   if (req.method !== 'POST') {
     return res.status(405).end('Method Not Allowed');
   }
