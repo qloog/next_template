@@ -40,7 +40,8 @@ export default function Gallery() {
         <div className="grid">
           {galleryImages.map((image) => (
             <div key={image._id} className="image-container">
-              <img src={`data:image/jpeg;base64,${image.data}`} alt="Gallery item" />
+            <img src={`data:image/jpeg;base64,${image.data}`} alt="Gallery item" />
+
             </div>
           ))}
         </div>
