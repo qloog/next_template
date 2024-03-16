@@ -22,10 +22,4 @@ export async function POST(req, res) {
 }
 
 // Increase the default size limit for JSON body parsing if needed
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '10mb',
-    },
-  },
-};
+
