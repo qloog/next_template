@@ -2,74 +2,71 @@ import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
 
-export const maxDuration = 120
-export const dynamic = "force-dynamic"
-
-const openai = new OpenAI(process.env.OPENAI_API_KEY);
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export async function POST(req) {
-    await connectMongo();
+  await connectMongo();
 
-    const { image } = await req.json();
+  const { image } = await req.json();
 
-    try {
-        // Send image to OpenAI for labeling
-        const labelsResponse = await openai.chat.completions.create({
-            model: 'gpt-4-vision-preview',
-            prompt: 'Provide 3 specific labels for this image:',
-            // Attach the base64 image to the prompt
-            attachments: [{
-                data: image.split(',')[1], // Assuming the format "data:image/png;base64,iVBORw0KGgo..."
-                type: 'image/jpeg',
-            }],
-            max_tokens: 50,
-        });
+  try {
+    // Get labels from GPT-4 Vision
+    const response = await openai.chat.completions.create({
+      model: "gpt-4-vision-preview",
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: "Provide 3 specific labels that accurately categorize the content of this image." },
+            { type: "image_base64", image_base64: image.split(',')[1] } // Remove the data URL prefix if present
+          ],
+        },
+      ],
+    });
 
-        // Process OpenAI's response to get the labels
-        const labels = labelsResponse.choices[0].text.trim().split(',').map(label => label.trim());
+    const labels = response.choices[0].message.content.split(', ');
 
-        // Create a new image with the received labels
-        const newImage = new Image({
-            data: image,
-            labels: labels,
-        });
-        await newImage.save();
+    // Save image and labels in MongoDB
+    const newImage = new Image({ data: image, labels });
+    await newImage.save();
 
-        return new Response(JSON.stringify(newImage), {
-            status: 201,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    } catch (error) {
-        console.error('Error processing image:', error);
-        return new Response(JSON.stringify({ error: 'Error processing image' }), {
-            status: 500,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    }
+    return new Response(JSON.stringify(newImage), {
+      status: 201,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error processing image:', error);
+    return new Response(JSON.stringify({ error: 'Error processing image' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
 
 export async function GET(req) {
-    await connectMongo();
+  await connectMongo();
 
-    try {
-        const images = await Image.find({});
-        return new Response(JSON.stringify(images), {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    } catch (error) {
-        console.error('Error fetching images:', error);
-        return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
-            status: 500,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    }
+  try {
+    const images = await Image.find({});
+    return new Response(JSON.stringify(images), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching images:', error);
+    return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
