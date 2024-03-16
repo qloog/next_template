@@ -47,13 +47,16 @@ export async function POST(req, res) {
             },
           ],
         });
+        console.log('GPT-4 Vision response:', response);
         const labels = response.choices[0].message.content.split(', ');
+        
 
         // Save image and labels in MongoDB
         const newImage = new Image({ data: base64Image, labels });
         await newImage.save();
 
         res.status(201).json(newImage);
+
       } catch (error) {
         console.error('Error processing image:', error);
         res.status(500).json({ error: 'Error processing image' });
