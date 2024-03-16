@@ -1,69 +1,65 @@
-import connectMongo from '@/libs/mongoose'; // Adjust the import path as needed
-import Image from '@/models/Image'; // Adjust the import path as needed
+import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
-import formidable from 'formidable';
+import mongoose from 'mongoose';
+import ImageModel from '@/models/Image'; // Update the import path to your Image model
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// Connect to MongoDB once at the start
+const connectMongo = async () => {
+  if (mongoose.connections[0].readyState) return;
+  // Replace '<Your MongoDB connection string>' with your actual connection string
+  await mongoose.connect('mongodb+srv://rajvirnahar1:123qwer7R@cluster0.5qlbfj3.mongodb.net/', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+};
 
-export async function POST(req, res) {
-  await connectMongo(); // Connect to MongoDB
+export async function POST(req) {
+    await connectMongo(); // Make sure MongoDB is connected
+    
+    try {
+        const { image } = await req.json();
 
-  if (req.method === 'POST') {
-    const form = new formidable.IncomingForm();
-    form.parse(req, async (err, fields, files) => {
-      if (err) {
-        console.error('Form parsing error:', err);
-        return res.status(500).json({ error: 'Form parsing error' });
-      }
-
-      const image = files.image; // Assuming the file input name is "image"
-      if (!image) {
-        return res.status(400).json({ error: 'Image is required' });
-      }
-
-      // Convert image to base64
-      const base64Image = Buffer.from(image.filepath).toString('base64');
-
-      try {
         // Get labels from GPT-4 Vision
         const response = await openai.chat.completions.create({
           model: "gpt-4-vision-preview",
           messages: [
             {
               role: "user",
-              content: [
-                {
-                  type: "text",
-                  text: "Provide 3 specific labels that accurately categorize the content of this image."
-                },
-                {
-                  type: "image_base64",
-                  image_base64: base64Image,
-                },
-              ],
+              content: "Label this image with three descriptive tags."
+            },
+            {
+              role: "system",
+              content: {
+                image_url: image // The image URL provided in the request
+              }
             },
           ],
         });
-        console.log('GPT-4 Vision response:', response);
-        const labels = response.choices[0].message.content.split(', ');
-        
 
-        // Save image and labels in MongoDB
-        const newImage = new Image({ data: base64Image, labels });
+        const labels = response.choices[0].message.content.split(', ');
+
+        // Create and save the image with labels to MongoDB
+        const newImage = new ImageModel({ url: image, labels });
         await newImage.save();
 
-        res.status(201).json(newImage);
-
-      } catch (error) {
-        console.error('Error processing image:', error);
-        res.status(500).json({ error: 'Error processing image' });
-      }
-    });
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
+        // Return the new image with labels in the response
+        return new NextResponse(JSON.stringify(newImage), {
+            status: 201,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    } catch (error) {
+        console.error('Error processing the image:', error);
+        return new NextResponse(JSON.stringify({ error: error.message }), {
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
 }
