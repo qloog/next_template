@@ -1,9 +1,10 @@
+
+export const maxDuration = 120
+export const dynamic = "force-dynamic"
+
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
- 
-export const maxDuration = 120
-export const dynamic = "force-dynamic"
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -23,12 +24,11 @@ export async function POST(req) {
           role: "user",
           content: [
             { type: "text", text: "Provide 3 specific labels that accurately categorize the content of this image." },
-            { type: "image_base64", image_base64: image.split(',')[1] } // Remove the data URL prefix if present
+            { type: "image_base64", image_base64: image.split(',')[1] }, // Remove the data URL prefix if present
           ],
         },
       ],
     });
-
     const labels = response.choices[0].message.content.split(', ');
 
     // Save image and labels in MongoDB
