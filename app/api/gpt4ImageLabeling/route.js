@@ -14,7 +14,7 @@ export async function POST(req) {
 
     try {
         // Send image to OpenAI for labeling
-        const labelsResponse = await openai.createCompletion({
+        const labelsResponse = await openai.chat.completions.create({
             model: 'gpt-4-vision-preview',
             prompt: 'Provide 3 specific labels for this image:',
             // Attach the base64 image to the prompt
