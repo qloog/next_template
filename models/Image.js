@@ -1,9 +1,10 @@
-// models/Image.js
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const imageSchema = new mongoose.Schema({
-  data: String, // Base64 encoded image data
-  labels: [String],
+const imageSchema = mongoose.Schema({
+  data: String,
+  labels: [Array],
+}, {
+  timestamps: true,
 });
 
-module.exports = mongoose.model('Image', imageSchema);
+export default mongoose.models.Image || mongoose.model('Image', imageSchema);
