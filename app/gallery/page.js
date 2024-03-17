@@ -48,7 +48,6 @@ export default function Gallery() {
                 <img
                   src={image.data}
                   alt="Gallery item"
-                  onError={handleImageError}
                 />
               </div>
             ))}
