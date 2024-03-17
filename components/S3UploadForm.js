@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Compressor from 'compressorjs';
 
 export default function UploadForm() {
   const [file, setFile] = useState(null);
@@ -7,22 +6,8 @@ export default function UploadForm() {
   const [labels, setLabels] = useState(null); // Initialize labels as null
 
   const handleFileChange = (e) => {
-    const originalFile = e.target.files[0];
-    if (originalFile) {
-      new Compressor(originalFile, {
-        quality: 0.8, // Compression quality
-        maxWidth: 9920, // Max width of the image
-        maxHeight: 9080, // Max height of the image
-        convertSize: 20000000, // Convert image to JPEG if size exceeds 20MB
-        success: (compressedFile) => {
-          setFile(compressedFile);
-          setLabels(null); // Reset labels when file changes
-        },
-        error: (err) => {
-          console.error('Compression error:', err);
-        },
-      });
-    }
+    setFile(e.target.files[0]);
+    setLabels(null); // Reset labels when file changes
   };
 
   const handleSubmit = async (e) => {
