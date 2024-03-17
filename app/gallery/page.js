@@ -8,7 +8,7 @@ export default function Gallery() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchImages = async () => {
+    const fetchImages = async (retryCount = 0) => {
       setIsLoading(true);
       setError(null);
       try {
@@ -21,13 +21,17 @@ export default function Gallery() {
       } catch (err) {
         setError(err.message);
         console.error(err);
+        if (retryCount < 3) { // Retry up to 3 times
+          fetchImages(retryCount + 1);
+        }
       } finally {
         setIsLoading(false);
       }
     };
-
+  
     fetchImages();
   }, []);
+  
 
   const handleImageError = (e) => {
     e.target.onerror = null; // prevents looping
