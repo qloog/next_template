@@ -1,42 +1,27 @@
 import { useState } from 'react';
 import Compressor from 'compressorjs';
 
-export const maxDuration = 120
-export const dynamic = "force-dynamic"
-
 export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [labels, setLabels] = useState(null); // Initialize labels as null
 
-  const compressImage = (file, options) => {
-    return new Promise((resolve, reject) => {
-      new Compressor(file, {
-        ...options,
-        success(result) {
-          resolve(result);
+  const handleFileChange = (e) => {
+    const originalFile = e.target.files[0];
+    if (originalFile) {
+      new Compressor(originalFile, {
+        quality: 0.8, // Compression quality
+        maxWidth: 1920, // Max width of the image
+        maxHeight: 1080, // Max height of the image
+        convertSize: 20000000, // Convert image to JPEG if size exceeds 20MB
+        success: (compressedFile) => {
+          setFile(compressedFile);
+          setLabels(null); // Reset labels when file changes
         },
-        error(err) {
-          reject(err);
+        error: (err) => {
+          console.error('Compression error:', err);
         },
       });
-    });
-  };
-
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      try {
-        const compressedFile = await compressImage(file, {
-          maxWidth: 1920, // Adjust based on your needs
-          maxHeight: 1080,
-          quality: 0.8, // Adjust compression quality
-        });
-        setFile(compressedFile);
-        setLabels(null); // Reset labels when file changes
-      } catch (error) {
-        console.error('Compression error:', error);
-      }
     }
   };
 
@@ -112,7 +97,6 @@ export default function UploadForm() {
     </div>
   );
 }
-
 
 
 
