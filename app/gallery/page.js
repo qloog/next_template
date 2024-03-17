@@ -33,11 +33,6 @@ export default function Gallery() {
   }, []);
   
 
-  const handleImageError = (e) => {
-    e.target.onerror = null; // prevents looping
-    e.target.src = "/images/placeholder.png"; // replace with a placeholder image if preferred
-  };
-
   return (
     <>
       <div className="gallery">
@@ -123,22 +118,10 @@ export default function Gallery() {
 
 
 /* 
+
 "use client";
 
 import { useEffect, useState } from 'react';
-import { S3Client, ListObjectsCommand } from '@aws-sdk/client-s3';
-
-export const runtime = "edge"
-
-console.log('S3 Region:', process.env.NEXT_PUBLIC_S3_REGION);
-
-const s3Client = new S3Client({
-  region: process.env.NEXT_PUBLIC_S3_REGION,
-  credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
-    secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
-  },
-});
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
@@ -150,17 +133,14 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const command = new ListObjectsCommand({
-          Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
-        });
-        const response = await s3Client.send(command);
-        const images = response.Contents.map((object) => ({
-          id: object.Key,
-          url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_S3_REGION}.amazonaws.com/${object.Key}?t=${Date.now()}`,
-        }));
+        const response = await fetch('/api/imageUpload');
+        if (!response.ok) {
+          throw new Error('Failed to fetch images');
+        }
+        const images = await response.json();
         setGalleryImages(images);
       } catch (err) {
-        setError('Failed to fetch images from S3');
+        setError(err.message);
         console.error(err);
       } finally {
         setIsLoading(false);
@@ -169,6 +149,11 @@ export default function Gallery() {
 
     fetchImages();
   }, []);
+
+  const handleImageError = (e) => {
+    e.target.onerror = null; // prevents looping
+    e.target.src = "/images/placeholder.png"; // replace with a placeholder image if preferred
+  };
 
   return (
     <>
@@ -181,14 +166,17 @@ export default function Gallery() {
         ) : (
           <div className="grid">
             {galleryImages.map((image) => (
-              <div key={image.id} className="image-container">
-                <img src={image.url} alt="Tattoo Design" />
+              <div key={image._id} className="image-container">
+                <img
+                  src={image.data}
+                  alt="Gallery item"
+                  onError={handleImageError}
+                />
               </div>
             ))}
           </div>
         )}
       </div>
-
       <style jsx>{`
         .gallery {
           padding: 20px;
@@ -221,7 +209,7 @@ export default function Gallery() {
 
         .image-container img {
           width: 100%;
-          height: 100%;
+          height: auto;
           object-fit: cover;
         }
 
