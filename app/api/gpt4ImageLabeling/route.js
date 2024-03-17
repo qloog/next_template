@@ -24,7 +24,7 @@ export async function POST(req) {
           role: "user",
           content: [
             { type: "text", text: "Provide 3 specific labels that accurately categorize the content of this image." },
-            { type: "image_base64", image_base64: image.split(',')[1] }, // Remove the data URL prefix if present
+            { type: "image_url", image_url: `data:image/jpeg;base64,${image}` }
           ],
         },
       ],
