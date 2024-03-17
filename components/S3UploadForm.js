@@ -16,11 +16,11 @@ export default function UploadForm() {
 
     setUploading(true);
     const reader = new FileReader();
-    
+
     reader.readAsDataURL(file);
     reader.onload = async () => {
       try {
-        const base64Image = reader.result;
+        const base64Image = reader.result.split(',')[1]; // Remove data URL prefix
 
         // First, upload the image to your '/api/imageUpload' endpoint
         let response = await fetch('/api/imageUpload', {
@@ -32,7 +32,7 @@ export default function UploadForm() {
         });
 
         if (!response.ok) throw new Error('Image upload failed');
-        
+
         // After upload, use the base64Image to get labels from '/api/gpt4ImageLabeling'
         response = await fetch('/api/gpt4ImageLabeling', {
           method: 'POST',
@@ -54,7 +54,7 @@ export default function UploadForm() {
         setUploading(false);
       }
     };
-    
+
     reader.onerror = (error) => {
       console.error('Error converting image to Base64:', error);
       setUploading(false);
