@@ -1,13 +1,11 @@
-import { useState } from 'react';
-
 export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const [labels, setLabels] = useState([]);
+  const [labels, setLabels] = useState(null); // Initialize labels as null
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
-    setLabels([]); // Reset labels when file changes
+    setLabels(null); // Reset labels when file changes
   };
 
   const handleSubmit = async (e) => {
@@ -20,7 +18,7 @@ export default function UploadForm() {
     reader.readAsDataURL(file);
     reader.onload = async () => {
       try {
-        const base64Image = reader.result.split(',')[1]; // Remove data URL prefix
+        const base64Image = reader.result;
 
         // First, upload the image to your '/api/imageUpload' endpoint
         let response = await fetch('/api/imageUpload', {
@@ -45,8 +43,8 @@ export default function UploadForm() {
         if (!response.ok) throw new Error('Image labeling failed');
 
         // Extract the labels from the response and update the state
-        const { labels } = await response.json();
-        setLabels(labels); // Update labels state with the received labels
+        const result = await response.json();
+        setLabels(result.labels); // Update labels state with the received labels
 
       } catch (error) {
         console.error('Upload error:', error);
@@ -69,7 +67,7 @@ export default function UploadForm() {
           {uploading ? 'Uploading and Labeling...' : 'Upload Image'}
         </button>
       </form>
-      {labels.length > 0 && (
+      {labels && labels.length > 0 && (
         <div>
           <h3>Image Labels:</h3>
           <ul>
@@ -82,7 +80,6 @@ export default function UploadForm() {
     </div>
   );
 }
-
 
 
 
