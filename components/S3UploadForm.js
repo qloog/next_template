@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic'
+
 export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
