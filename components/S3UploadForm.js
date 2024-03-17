@@ -11,8 +11,8 @@ export default function UploadForm() {
     if (originalFile) {
       new Compressor(originalFile, {
         quality: 0.8, // Compression quality
-        maxWidth: 1920, // Max width of the image
-        maxHeight: 1080, // Max height of the image
+        maxWidth: 9920, // Max width of the image
+        maxHeight: 9080, // Max height of the image
         convertSize: 20000000, // Convert image to JPEG if size exceeds 20MB
         success: (compressedFile) => {
           setFile(compressedFile);
