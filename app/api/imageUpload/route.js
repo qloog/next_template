@@ -57,7 +57,7 @@ export async function GET(req) {
 }
 
 // Function to call GPT-4 Vision API and get labels for the image
-async function getLabelsFromGPT4Vision(image) {
+export async function getLabelsFromGPT4Vision(image) {
     // Replace 'YOUR_GPT4_VISION_API_ENDPOINT' with your GPT-4 Vision API endpoint
     // Replace 'YOUR_API_KEY' with your API key
     const response = await fetch('/api/gpt4ImageLabeling', {
