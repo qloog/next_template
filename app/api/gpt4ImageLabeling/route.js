@@ -16,6 +16,10 @@ export async function POST(req) {
   const { image } = await req.json();
 
   try {
+    const testImage = new Image({ data: image, labels: ['label1', 'label2', 'label3'] });
+    await testImage.save();
+    console.log('Test image saved with hardcoded labels');
+    
     // Get labels from GPT-4 Vision
     const response = await openai.chat.completions.create({
       model: "gpt-4-vision-preview",
