@@ -60,7 +60,7 @@ export async function GET(req) {
 export async function getLabelsFromGPT4Vision(image) {
     // Replace 'YOUR_GPT4_VISION_API_ENDPOINT' with your GPT-4 Vision API endpoint
     // Replace 'YOUR_API_KEY' with your API key
-    const response = await fetch('/api/gpt4ImageLabeling', {
+    const response = await fetch('https://tattooswithai.com/api/gpt4ImageLabeling', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
