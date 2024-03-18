@@ -4,6 +4,25 @@ export const dynamic = 'force-dynamic';
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 
+// Function to call GPT-4 Vision API and get labels for the image
+ export async function getLabelsFromGPT4Vision(image) {
+    const response = await fetch('https://tattooswithai.com/api/gpt4ImageLabeling', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            apiKey: process.env.OPENAI_API_KEY,
+        },
+        body: JSON.stringify({ image: image }),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to get labels from GPT-4 Vision API');
+    }
+
+    const data = await response.json();
+    return data.labels; // Assuming the response contains a 'labels' array
+}
+
 export async function POST(req) {
     await connectMongo();
 
@@ -13,7 +32,19 @@ export async function POST(req) {
         // Call GPT-4 Vision API to get labels for the image
         const labels = await getLabelsFromGPT4Vision(image);
 
-        // Create a new image document with the image data and labels
+        // Check if an image with the same data already exists to prevent duplicates
+        const existingImage = await Image.findOne({ data: image });
+        if (existingImage) {
+            // If image already exists, return it without creating a new one
+            return new Response(JSON.stringify(existingImage), {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        }
+
+        // If the image does not exist, create a new one
         const newImage = new Image({ data: image, labels: labels });
         await newImage.save();
 
@@ -56,26 +87,6 @@ export async function GET(req) {
     }
 }
 
-// Function to call GPT-4 Vision API and get labels for the image
-export async function getLabelsFromGPT4Vision(image) {
-    // Replace 'YOUR_GPT4_VISION_API_ENDPOINT' with your GPT-4 Vision API endpoint
-    // Replace 'YOUR_API_KEY' with your API key
-    const response = await fetch('https://tattooswithai.com/api/gpt4ImageLabeling', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            apiKey: process.env.OPENAI_API_KEY,
-        },
-        body: JSON.stringify({ image: image }),
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to get labels from GPT-4 Vision API');
-    }
-
-    const data = await response.json();
-    return data.labels; // Assuming the response contains a 'labels' array
-}
 
 
 

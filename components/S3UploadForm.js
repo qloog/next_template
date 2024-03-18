@@ -12,7 +12,6 @@ export default function UploadForm() {
     setFile(e.target.files[0]);
     setLabels(null); // Reset labels when file changes
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) return alert('Please select a file to upload');
@@ -25,8 +24,8 @@ export default function UploadForm() {
       try {
         const base64Image = reader.result;
   
-        // First, upload the image to your '/api/imageUpload' endpoint
-        let response = await fetch('/api/imageUpload', {
+        // Combine upload and labeling in a single API call
+        const response = await fetch('/api/imageUpload', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -34,20 +33,9 @@ export default function UploadForm() {
           body: JSON.stringify({ image: base64Image })
         });
   
-        if (!response.ok) throw new Error('Image upload failed');
+        if (!response.ok) throw new Error('Image upload and labeling failed');
   
-        // After upload, use the base64Image to get labels from '/api/gpt4ImageLabeling'
-        response = await fetch('/api/gpt4ImageLabeling', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ image: base64Image })
-        });
-  
-        if (!response.ok) throw new Error('Image labeling failed');
-  
-        // Extract the labels from the response and update the state
+        // Extract the new image data with labels from the response
         const result = await response.json();
         setLabels(result.labels); // Update labels state with the received labels
   
@@ -63,6 +51,7 @@ export default function UploadForm() {
       setUploading(false);
     };
   };
+  
   
 
   return (
