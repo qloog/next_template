@@ -1,4 +1,3 @@
-
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
 
@@ -11,7 +10,11 @@ export async function POST(req) {
     const { image } = await req.json();
 
     try {
-        const newImage = new Image({ data: image });
+        // Call GPT-4 Vision API to get labels for the image
+        const labels = await getLabelsFromGPT4Vision(image);
+
+        // Create a new image document with the image data and labels
+        const newImage = new Image({ data: image, labels: labels });
         await newImage.save();
 
         return new Response(JSON.stringify(newImage), {
@@ -52,6 +55,28 @@ export async function GET(req) {
         });
     }
 }
+
+// Function to call GPT-4 Vision API and get labels for the image
+async function getLabelsFromGPT4Vision(image) {
+    // Replace 'YOUR_GPT4_VISION_API_ENDPOINT' with your GPT-4 Vision API endpoint
+    // Replace 'YOUR_API_KEY' with your API key
+    const response = await fetch('/api/gpt4ImageLabeling', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': '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',
+        },
+        body: JSON.stringify({ image: image }),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to get labels from GPT-4 Vision API');
+    }
+
+    const data = await response.json();
+    return data.labels; // Assuming the response contains a 'labels' array
+}
+
 
 
 /* 

@@ -5,6 +5,7 @@ const imageSchema = new mongoose.Schema({
     type: String,
     required: true, // Base64 encoded image data
   },
+  labels: [String], // Array of labels
 }, {
   timestamps: true, // Automatically adds createdAt and updatedAt fields
 });
