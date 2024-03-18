@@ -15,7 +15,6 @@ export async function POST(req) {
   const { image } = await req.json();
 
   try {
-
     // Get labels from GPT-4 Vision
     const response = await openai.chat.completions.create({
       model: "gpt-4-vision-preview",
