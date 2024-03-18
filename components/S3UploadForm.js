@@ -60,7 +60,6 @@ export default function UploadForm() {
       </form>
       {labels && (
         <div>
-          <h3>Image Labels:</h3>
           <ul>
             {labels.map((label, index) => (
               <li key={index}>{label}</li>

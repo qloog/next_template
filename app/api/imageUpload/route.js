@@ -9,7 +9,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-async function getLabelsFromGPT4Vision(image) {
+export async function getLabelsFromGPT4Vision(image) {
   const response = await openai.chat.completions.create({
     model: "gpt-4-vision-preview",
     messages: [
