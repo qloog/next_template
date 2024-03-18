@@ -1,8 +1,5 @@
 import { useState } from 'react';
 
-export const maxDuration = 120;
-export const dynamic = 'force-dynamic'
-
 export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -12,19 +9,20 @@ export default function UploadForm() {
     setFile(e.target.files[0]);
     setLabels(null); // Reset labels when file changes
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) return alert('Please select a file to upload');
-  
+
     setUploading(true);
     const reader = new FileReader();
-  
+
     reader.readAsDataURL(file);
     reader.onload = async () => {
       try {
         const base64Image = reader.result;
-  
-        // Combine upload and labeling in a single API call
+
+        // Upload the image and get labels in one API call
         const response = await fetch('/api/imageUpload', {
           method: 'POST',
           headers: {
@@ -32,37 +30,35 @@ export default function UploadForm() {
           },
           body: JSON.stringify({ image: base64Image })
         });
-  
-        if (!response.ok) throw new Error('Image upload and labeling failed');
-  
-        // Extract the new image data with labels from the response
-        const result = await response.json();
-        setLabels(result.labels); // Update labels state with the received labels
-  
+
+        if (!response.ok) throw new Error('Image upload failed');
+
+        // Extract the labels from the response and update the state
+        const { labels } = await response.json();
+        setLabels(labels); // Update labels state with the received labels
+
       } catch (error) {
         console.error('Upload error:', error);
       } finally {
         setUploading(false);
       }
     };
-  
+
     reader.onerror = (error) => {
       console.error('Error converting image to Base64:', error);
       setUploading(false);
     };
   };
-  
-  
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input type="file" accept="image/*" onChange={handleFileChange} />
         <button type="submit" disabled={uploading}>
-          {uploading ? 'Uploading and Labeling...' : 'Upload Image'}
+          {uploading ? 'Uploading...' : 'Upload Image'}
         </button>
       </form>
-      {labels && labels.length > 0 && (
+      {labels && (
         <div>
           <h3>Image Labels:</h3>
           <ul>
@@ -75,6 +71,7 @@ export default function UploadForm() {
     </div>
   );
 }
+
 
 
 

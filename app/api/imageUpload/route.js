@@ -3,88 +3,93 @@ export const dynamic = 'force-dynamic';
 
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
+import OpenAI from 'openai';
 
-// Function to call GPT-4 Vision API and get labels for the image
- export async function getLabelsFromGPT4Vision(image) {
-    const response = await fetch('https://tattooswithai.com/api/gpt4ImageLabeling', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            apiKey: process.env.OPENAI_API_KEY,
-        },
-        body: JSON.stringify({ image: image }),
-    });
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
-    if (!response.ok) {
-        throw new Error('Failed to get labels from GPT-4 Vision API');
-    }
+async function getLabelsFromGPT4Vision(image) {
+  const response = await openai.chat.completions.create({
+    model: "gpt-4-vision-preview",
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "Provide 3 specific labels that accurately categorize the content of this image." },
+          { type: "image_url", image_url: image }
+        ],
+      },
+    ],
+  });
 
-    const data = await response.json();
-    return data.labels; // Assuming the response contains a 'labels' array
+  // Assuming the response format is correct and contains the expected data
+  const labels = response.choices[0].message.content.split(', ');
+  return labels;
 }
 
 export async function POST(req) {
-    await connectMongo();
+  await connectMongo();
 
-    const { image } = await req.json();
+  const { image } = await req.json();
 
-    try {
-        // Call GPT-4 Vision API to get labels for the image
-        const labels = await getLabelsFromGPT4Vision(image);
-
-        // Check if an image with the same data already exists to prevent duplicates
-        const existingImage = await Image.findOne({ data: image });
-        if (existingImage) {
-            // If image already exists, return it without creating a new one
-            return new Response(JSON.stringify(existingImage), {
-                status: 200,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-        }
-
-        // If the image does not exist, create a new one
-        const newImage = new Image({ data: image, labels: labels });
-        await newImage.save();
-
-        return new Response(JSON.stringify(newImage), {
-            status: 201,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    } catch (error) {
-        console.error('Error saving image:', error);
-        return new Response(JSON.stringify({ error: 'Error saving image' }), {
-            status: 500,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+  try {
+    // Check if an image with the same data already exists
+    const existingImage = await Image.findOne({ data: image });
+    if (existingImage) {
+      // If image already exists, just return it
+      return new Response(JSON.stringify(existingImage), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
     }
+
+    // Get labels from GPT-4 Vision
+    const labels = await getLabelsFromGPT4Vision(image);
+
+    // Save image and labels in MongoDB
+    const newImage = new Image({ data: image, labels });
+    await newImage.save();
+
+    return new Response(JSON.stringify({ imageId: newImage._id, labels, message: 'Image processed successfully' }), {
+      status: 201,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error processing image:', error);
+    return new Response(JSON.stringify({ error: 'Error processing image' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
 
 export async function GET(req) {
-    await connectMongo();
+  await connectMongo();
 
-    try {
-        const images = await Image.find({});
-        return new Response(JSON.stringify(images), {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    } catch (error) {
-        console.error('Error fetching images:', error);
-        return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
-            status: 500,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    }
+  try {
+    const images = await Image.find({});
+    return new Response(JSON.stringify(images), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching images:', error);
+    return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
 
 

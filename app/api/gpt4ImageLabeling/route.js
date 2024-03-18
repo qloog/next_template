@@ -78,6 +78,7 @@ export async function GET(req) {
 
 
 /*
+
 export const maxDuration = 120
 export const dynamic = "force-dynamic"
 
@@ -95,10 +96,6 @@ export async function POST(req) {
   const { image } = await req.json();
 
   try {
-    const testImage = new Image({ data: image, labels: ['label1', 'label2', 'label3'] });
-    await testImage.save();
-    console.log('Test image saved with hardcoded labels');
-
     // Get labels from GPT-4 Vision
     const response = await openai.chat.completions.create({
       model: "gpt-4-vision-preview",
@@ -118,7 +115,7 @@ export async function POST(req) {
     const newImage = new Image({ data: image, labels });
     await newImage.save();
 
-    return new Response(JSON.stringify(newImage), {
+    return new Response(JSON.stringify({ imageId: newImage._id, message: 'Image processed successfully' }), {
       status: 201,
       headers: {
         'Content-Type': 'application/json',
