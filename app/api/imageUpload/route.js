@@ -16,7 +16,7 @@ export async function getLabelsFromGPT4Vision(image) {
       {
         role: "user",
         content: [
-          { type: "text", text: "Provide 3 specific labels that accurately categorize the content of this image." },
+          { type: "text", text: "List three labels that categorize this image. Make them super accurate and do not give any labels that are long or description wise. Also, for example, if i upload picture of a greek god like zeus, labels should be like 'zeus, greek god, mythology', no description at all. ensure the 3 labels are as accurate as possible and you're sure they're correct"},
           { type: "image_url", image_url: image }
         ],
       },
