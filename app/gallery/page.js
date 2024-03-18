@@ -12,7 +12,7 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/getImages');
+        const response = await fetch('/api/imageUpload');
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }

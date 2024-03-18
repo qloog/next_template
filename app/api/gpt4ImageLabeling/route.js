@@ -1,5 +1,3 @@
-
-// /api/gpt4ImageLabeling.js
 export const maxDuration = 120
 export const dynamic = "force-dynamic"
 
@@ -14,12 +12,12 @@ const openai = new OpenAI({
 export async function POST(req) {
   await connectMongo();
 
-  const { imageId } = await req.json();
+  const { image } = await req.json();
 
   try {
-    // Retrieve the image from the database
-    const imageDoc = await Image.findById(imageId);
-    if (!imageDoc) throw new Error('Image not found');
+    const testImage = new Image({ data: image, labels: ['label1', 'label2', 'label3'] });
+    await testImage.save();
+    console.log('Test image saved with hardcoded labels');
 
     // Get labels from GPT-4 Vision
     const response = await openai.chat.completions.create({
@@ -29,19 +27,19 @@ export async function POST(req) {
           role: "user",
           content: [
             { type: "text", text: "Provide 3 specific labels that accurately categorize the content of this image." },
-            { type: "image_url", image_url: imageDoc.data } // Use the base64 image data from the database
+            { type: "image_url", image_url: image }
           ],
         },
       ],
     });
     const labels = response.choices[0].message.content.split(', ');
 
-    // Update the image document in the database with the labels
-    imageDoc.labels = labels;
-    await imageDoc.save();
+    // Save image and labels in MongoDB
+    const newImage = new Image({ data: image, labels });
+    await newImage.save();
 
-    return new Response(JSON.stringify(imageDoc), {
-      status: 200,
+    return new Response(JSON.stringify(newImage), {
+      status: 201,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -57,6 +55,27 @@ export async function POST(req) {
   }
 }
 
+export async function GET(req) {
+  await connectMongo();
+
+  try {
+    const images = await Image.find({});
+    return new Response(JSON.stringify(images), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching images:', error);
+    return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+}
 
 
 
