@@ -64,7 +64,7 @@ async function getLabelsFromGPT4Vision(image) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': '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',
+            apiKey: process.env.OPENAI_API_KEY,
         },
         body: JSON.stringify({ image: image }),
     });
