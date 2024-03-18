@@ -1,9 +1,7 @@
-
-
 import { useState } from 'react';
 
 export const maxDuration = 120;
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'
 
 export default function UploadForm() {
   const [file, setFile] = useState(null);
@@ -18,56 +16,54 @@ export default function UploadForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) return alert('Please select a file to upload');
-
+  
     setUploading(true);
     const reader = new FileReader();
-
+  
     reader.readAsDataURL(file);
     reader.onload = async () => {
       try {
         const base64Image = reader.result;
-
-        // Use the base64Image to get labels from '/api/gpt4ImageLabeling'
-        const response = await fetch('/api/gpt4ImageLabeling', {
+  
+        // First, upload the image to your '/api/imageUpload' endpoint
+        let response = await fetch('/api/imageUpload', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({ image: base64Image })
         });
-
-        if (!response.ok) throw new Error('Image labeling failed');
-
-        // Extract the labels from the response
-        const result = await response.json();
-        const extractedLabels = result.labels; // Assuming the response contains a 'labels' array
-
-        // Save the image and extracted labels to MongoDB
-        const saveResponse = await fetch('/api/imageUpload', {
+  
+        if (!response.ok) throw new Error('Image upload failed');
+  
+        // After upload, use the base64Image to get labels from '/api/gpt4ImageLabeling'
+        response = await fetch('/api/gpt4ImageLabeling', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ image: base64Image, labels: extractedLabels })
+          body: JSON.stringify({ image: base64Image })
         });
-
-        if (!saveResponse.ok) throw new Error('Image save failed');
-
-        // Update the state with the extracted labels
-        setLabels(extractedLabels);
-
+  
+        if (!response.ok) throw new Error('Image labeling failed');
+  
+        // Extract the labels from the response and update the state
+        const result = await response.json();
+        setLabels(result.labels); // Update labels state with the received labels
+  
       } catch (error) {
         console.error('Upload error:', error);
       } finally {
         setUploading(false);
       }
     };
-
+  
     reader.onerror = (error) => {
       console.error('Error converting image to Base64:', error);
       setUploading(false);
     };
   };
+  
 
   return (
     <div>
@@ -90,7 +86,6 @@ export default function UploadForm() {
     </div>
   );
 }
-
 
 
 
