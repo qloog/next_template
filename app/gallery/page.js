@@ -30,7 +30,7 @@ export default function Gallery() {
     fetchImages();
   }, []);
   
-
+/* new */
   return (
     <>
       <div className="gallery">
