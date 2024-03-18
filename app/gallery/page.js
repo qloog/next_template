@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic'
+
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
