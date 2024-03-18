@@ -1,11 +1,11 @@
 
 
+export const maxDuration = 120
+export const dynamic = "force-dynamic"
+
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
-
-export const maxDuration = 120
-export const dynamic = "force-dynamic"
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -36,7 +36,7 @@ export async function POST(req) {
     const newImage = new Image({ data: image, labels });
     await newImage.save();
 
-    return new Response(JSON.stringify(newImage), {
+    return new Response(JSON.stringify({ imageId: newImage._id, message: 'Image processed successfully' }), {
       status: 201,
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,6 @@ export async function GET(req) {
     });
   }
 }
-
 
 
 
