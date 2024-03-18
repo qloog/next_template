@@ -1,3 +1,5 @@
+
+
 import { useState } from 'react';
 
 export const maxDuration = 120;
@@ -7,7 +9,6 @@ export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [labels, setLabels] = useState(null); // Initialize labels as null
-  const [uploadedImages, setUploadedImages] = useState([]); // Keep track of uploaded images
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -18,11 +19,6 @@ export default function UploadForm() {
     e.preventDefault();
     if (!file) return alert('Please select a file to upload');
 
-    // Check if the file has already been uploaded
-    if (uploadedImages.includes(file.name)) {
-      return alert('This file has already been uploaded.');
-    }
-
     setUploading(true);
     const reader = new FileReader();
 
@@ -31,19 +27,8 @@ export default function UploadForm() {
       try {
         const base64Image = reader.result;
 
-        // First, upload the image to your '/api/imageUpload' endpoint
-        let response = await fetch('/api/imageUpload', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ image: base64Image })
-        });
-
-        if (!response.ok) throw new Error('Image upload failed');
-
-        // After upload, use the base64Image to get labels from '/api/gpt4ImageLabeling'
-        response = await fetch('/api/gpt4ImageLabeling', {
+        // Use the base64Image to get labels from '/api/gpt4ImageLabeling'
+        const response = await fetch('/api/gpt4ImageLabeling', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -53,12 +38,23 @@ export default function UploadForm() {
 
         if (!response.ok) throw new Error('Image labeling failed');
 
-        // Extract the labels from the response and update the state
+        // Extract the labels from the response
         const result = await response.json();
-        setLabels(result.labels); // Update labels state with the received labels
+        const extractedLabels = result.labels; // Assuming the response contains a 'labels' array
 
-        // Add the uploaded image to the list of uploaded images
-        setUploadedImages([...uploadedImages, file.name]);
+        // Save the image and extracted labels to MongoDB
+        const saveResponse = await fetch('/api/imageUpload', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ image: base64Image, labels: extractedLabels })
+        });
+
+        if (!saveResponse.ok) throw new Error('Image save failed');
+
+        // Update the state with the extracted labels
+        setLabels(extractedLabels);
 
       } catch (error) {
         console.error('Upload error:', error);
@@ -94,6 +90,7 @@ export default function UploadForm() {
     </div>
   );
 }
+
 
 
 
