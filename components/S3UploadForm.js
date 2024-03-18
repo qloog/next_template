@@ -18,16 +18,15 @@ export default function UploadForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) return alert('Please select a file to upload');
-  
+
     setUploading(true);
-    
-    try {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-  
-      reader.onload = async () => {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      try {
         const base64Image = reader.result;
-  
+
         // First, upload the image to your '/api/imageUpload' endpoint
         let response = await fetch('/api/imageUpload', {
           method: 'POST',
@@ -36,9 +35,9 @@ export default function UploadForm() {
           },
           body: JSON.stringify({ image: base64Image })
         });
-  
+
         if (!response.ok) throw new Error('Image upload failed');
-  
+
         // After upload, use the base64Image to get labels from '/api/gpt4ImageLabeling'
         response = await fetch('/api/gpt4ImageLabeling', {
           method: 'POST',
@@ -47,24 +46,26 @@ export default function UploadForm() {
           },
           body: JSON.stringify({ image: base64Image })
         });
-  
+
         if (!response.ok) throw new Error('Image labeling failed');
-  
+
         // Extract the labels from the response and update the state
         const result = await response.json();
         setLabels(result.labels); // Update labels state with the received labels
-      };
-  
-      reader.onerror = (error) => {
-        console.error('Error converting image to Base64:', error);
-      };
-    } catch (error) {
-      console.error('Upload error:', error);
-    } finally {
+
+      } catch (error) {
+        console.error('Upload error:', error);
+      } finally {
+        setUploading(false);
+      }
+    };
+
+    reader.onerror = (error) => {
+      console.error('Error converting image to Base64:', error);
       setUploading(false);
-    }
+    };
   };
-  
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
