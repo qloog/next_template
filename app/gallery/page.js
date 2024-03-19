@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
+  const [filteredImages, setFilteredImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchImages = async (retryCount = 0) => {
@@ -17,37 +19,52 @@ export default function Gallery() {
         }
         const images = await response.json();
         setGalleryImages(images);
+        setFilteredImages(images); // Initialize filteredImages with all images
       } catch (err) {
         setError(err.message);
         console.error(err);
-        if (retryCount < 3) { // Retry up to 3 times
+        if (retryCount < 3) {
           fetchImages(retryCount + 1);
         }
       } finally {
         setIsLoading(false);
       }
     };
-  
+
     fetchImages();
   }, []);
-  
+
+  useEffect(() => {
+    if (searchTerm) {
+      const filtered = galleryImages.filter((image) =>
+        image.labels.includes(searchTerm)
+      );
+      setFilteredImages(filtered);
+    } else {
+      setFilteredImages(galleryImages);
+    }
+  }, [searchTerm, galleryImages]);
 
   return (
     <>
       <div className="gallery">
         <h1>Gallery</h1>
+        <input
+          type="text"
+          placeholder="Search by label..."
+          className="search-bar"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         {isLoading ? (
           <div className="loader">Loading...</div>
         ) : error ? (
           <div className="error">Error: {error}</div>
         ) : (
           <div className="grid">
-            {galleryImages.map((image) => (
+            {filteredImages.map((image) => (
               <div key={image._id} className="image-container">
-                <img
-                  src={image.data}
-                  alt="Gallery item"
-                />
+                <img src={image.data} alt="Gallery item" />
                 {image.labels && image.labels.length > 0 && (
                   <div className="labels">
                     {image.labels.map((label, index) => (
@@ -67,9 +84,13 @@ export default function Gallery() {
           text-align: center;
         }
 
-        .gallery h1 {
+        .search-bar {
           margin-bottom: 20px;
-          color: #333;
+          padding: 10px;
+          border-radius: 20px;
+          border: 1px solid #ccc;
+          outline: none;
+          width: 200px;
         }
 
         .grid {
@@ -131,6 +152,7 @@ export default function Gallery() {
     </>
   );
 }
+
 
 
 
