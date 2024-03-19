@@ -36,14 +36,16 @@ export default function Gallery() {
 
   useEffect(() => {
     if (searchTerm) {
+      const lowerCaseSearchTerm = searchTerm.toLowerCase();
       const filtered = galleryImages.filter((image) =>
-        image.labels.includes(searchTerm)
+        image.labels.some(label => label.toLowerCase().includes(lowerCaseSearchTerm))
       );
       setFilteredImages(filtered);
     } else {
       setFilteredImages(galleryImages);
     }
   }, [searchTerm, galleryImages]);
+  
 
   return (
     <>
