@@ -10,6 +10,10 @@ const imageSchema = new mongoose.Schema({
   timestamps: true, // Automatically adds createdAt and updatedAt fields
 });
 
+// Creating an index on the createdAt field in descending order
+// This will ensure that when you sort by this field, MongoDB can do it efficiently
+imageSchema.index({ createdAt: -1 });
+
 const Image = mongoose.models.Image || mongoose.model('Image', imageSchema);
 
 export default Image;
