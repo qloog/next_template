@@ -10,20 +10,25 @@ const openai = new OpenAI({
 });
 
 export async function getLabelsFromGPT4Vision(image) {
-    const response = await openai.chat.completions.create({
-        model: "gpt-4-vision-preview",
-        messages: [
+  const response = await openai.chat.completions.create({
+    model: "gpt-4-vision-preview",
+    messages: [
+      {
+        role: "user",
+        content: [
           {
-            role: "user",
-            content: [
-              { type: "text", text: "List three labels that categorize this image. Make them super accurate and do not give any labels that are long or description wise. Also, for example, if i upload picture of a greek god like zeus, labels should be like 'zeus, greek god, mythology', no description at all. ensure the 3 labels are as accurate as possible and you're sure they're correct"},
-              { type: "image_url", image_url: image }
-            ],
+            type: "text",
+            text: "List three labels that categorize this image. Make them super accurate and do not give any labels that are long or description wise. Also, for example, if I upload a picture of a Greek god like Zeus, labels should be like 'Zeus, Greek god, mythology', no description at all. Ensure the 3 labels are as accurate as possible and you're sure they're correct"
           },
+          {
+            type: "image_url",
+            image_url: image
+          }
         ],
-      });
+      },
+    ],
+  });
 
-  // Assuming the response format is correct and contains the expected data
   const labels = response.choices[0].message.content.split(', ');
   return labels;
 }
@@ -34,10 +39,8 @@ export async function POST(req) {
   const { image } = await req.json();
 
   try {
-    // Check if an image with the same data already exists
     const existingImage = await Image.findOne({ data: image });
     if (existingImage) {
-      // If image already exists, just return it
       return new Response(JSON.stringify(existingImage), {
         status: 200,
         headers: {
@@ -46,10 +49,8 @@ export async function POST(req) {
       });
     }
 
-    // Get labels from GPT-4 Vision
     const labels = await getLabelsFromGPT4Vision(image);
 
-    // Save image and labels in MongoDB
     const newImage = new Image({ data: image, labels });
     await newImage.save();
 
@@ -74,7 +75,8 @@ export async function GET(req) {
   await connectMongo();
 
   try {
-    const images = await Image.find({});
+    // Images are now sorted by createdAt in descending order, so the newest images come first
+    const images = await Image.find({}).sort({ createdAt: -1 }).exec();
     return new Response(JSON.stringify(images), {
       status: 200,
       headers: {
