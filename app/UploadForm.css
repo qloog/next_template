@@ -66,3 +66,8 @@
   margin-bottom: 8px;
   border-radius: 5px;
 }
+
+.file-name {
+  margin-left: 10px;
+  font-style: italic;
+}

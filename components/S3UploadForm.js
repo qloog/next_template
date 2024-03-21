@@ -3,11 +3,14 @@ import '@/app/UploadForm.css';
 
 export default function UploadForm() {
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState('');
   const [uploading, setUploading] = useState(false);
   const [labels, setLabels] = useState(null);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    setFileName(selectedFile.name);
     setLabels(null);
   };
 
@@ -55,6 +58,7 @@ export default function UploadForm() {
           <input type="file" accept="image/*" onChange={handleFileChange} className="file-input" />
           Choose File
         </label>
+        {fileName && <span className="file-name">{fileName}</span>}
         <button type="submit" disabled={uploading} className="upload-button">
           {uploading ? 'Uploading...' : 'Upload Image'}
         </button>
