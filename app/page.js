@@ -21,10 +21,6 @@ import TattooEditor from "@/components/EditTattoo";
 import ImageGenerator from "@/components/RedesignedTattoo"
 import styles from '@/app/images.module.css'
 import S3UploadForm from '@/components/S3UploadForm'
-import Create from '@/components/Create';
-import Convert from '@/components/Convert';
-import Explore from '@/components/Explore';
-import HelpMe from '@/components/HelpMe';
 import "@/app/new.style.css"
 
 export default function Home() {
