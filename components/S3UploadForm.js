@@ -4,11 +4,11 @@ import '@/app/UploadForm.css';
 export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const [labels, setLabels] = useState(null); // Initialize labels as null
+  const [labels, setLabels] = useState(null);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
-    setLabels(null); // Reset labels when file changes
+    setLabels(null);
   };
 
   const handleSubmit = async (e) => {
@@ -23,21 +23,18 @@ export default function UploadForm() {
       try {
         const base64Image = reader.result;
 
-        // Upload the image and get labels in one API call
         const response = await fetch('/api/imageUpload', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ image: base64Image })
+          body: JSON.stringify({ image: base64Image }),
         });
 
         if (!response.ok) throw new Error('Image upload failed');
 
-        // Extract the labels from the response and update the state
         const { labels } = await response.json();
-        setLabels(labels); // Update labels state with the received labels
-
+        setLabels(labels);
       } catch (error) {
         console.error('Upload error:', error);
       } finally {
@@ -52,18 +49,21 @@ export default function UploadForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="file" accept="image/*" onChange={handleFileChange} />
-        <button type="submit" disabled={uploading}>
+    <div className="upload-form-container">
+      <form onSubmit={handleSubmit} className="upload-form">
+        <label className="file-input-label">
+          <input type="file" accept="image/*" onChange={handleFileChange} className="file-input" />
+          Choose File
+        </label>
+        <button type="submit" disabled={uploading} className="upload-button">
           {uploading ? 'Uploading...' : 'Upload Image'}
         </button>
       </form>
       {labels && (
-        <div>
-          <ul>
+        <div className="labels-container">
+          <ul className="labels-list">
             {labels.map((label, index) => (
-              <li key={index}>{label}</li>
+              <li key={index} className="label-item">{label}</li>
             ))}
           </ul>
         </div>
