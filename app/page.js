@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import React, { useState } from "react";
@@ -18,10 +16,10 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Script from "next/script";
 import TattooEditor from "@/components/EditTattoo";
-import ImageGenerator from "@/components/RedesignedTattoo"
-import styles from '@/app/images.module.css'
-import S3UploadForm from '@/components/S3UploadForm'
-import "@/app/new.style.css"
+import ImageGenerator from "@/components/RedesignedTattoo";
+import styles from "@/app/images.module.css";
+import S3UploadForm from "@/components/S3UploadForm";
+import "@/app/new.style.css";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -33,7 +31,7 @@ export default function Home() {
   const { data: session } = useSession();
   const [showLoginSignupPrompt, setShowLoginSignupPrompt] = useState(false);
   const [uploadToGallery, setUploadToGallery] = useState(false);
-  const [activeTab, setActiveTab] = useState('create');
+  const [activeTab, setActiveTab] = useState("create");
 
   async function onGenerate(e) {
     e.preventDefault();
@@ -66,13 +64,11 @@ export default function Home() {
       const results = await res.json();
       setFinalData(results.imageUrl);
       setIsLoading(false); // End loading
-
     } catch (error) {
       console.error("Error generating image:", error);
       setIsLoading(false);
     }
   }
-  
 
   const selectStyle = {
     backgroundColor: "#ffffff", // Consistent with the textarea
@@ -136,7 +132,6 @@ export default function Home() {
 
   return (
     <>
-    
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -175,7 +170,7 @@ export default function Home() {
           `}
       </Script>
       <Header></Header>
-      
+
       <style jsx>{`
         .login-signup-prompt {
           background-color: #f8f9fa;
@@ -186,10 +181,6 @@ export default function Home() {
           margin-top: 20px;
         }
       `}</style>
-
-
-  
-      
 
       {showLoginSignupPrompt && (
         <div className="login-signup-prompt">
@@ -203,40 +194,6 @@ export default function Home() {
 
       <Modal isModalOpen={showPopup} setIsModalOpen={setShowPopup} />
       <main className="bg-white text-black">
-      <div className="container">
-      <div className="tab-header">
-        <div
-          className={`tab-item ${activeTab === 'create' ? 'active' : ''}`}
-          onClick={() => setActiveTab('create')}
-        >
-          Create
-        </div>
-        <div
-          className={`tab-item ${activeTab === 'convert' ? 'active' : ''}`}
-          onClick={() => setActiveTab('convert')}
-        >
-          Convert
-        </div>
-        <div
-          className={`tab-item ${activeTab === 'explore' ? 'active' : ''}`}
-          onClick={() => setActiveTab('explore')}
-        >
-          Explore
-        </div>
-        <div
-          className={`tab-item ${activeTab === 'helpMe' ? 'active' : ''}`}
-          onClick={() => setActiveTab('helpMe')}
-        >
-          Help Me
-        </div>
-      </div>
-      <div className="tab-content">
-        {activeTab === 'create' && <Create />}
-        {activeTab === 'convert' && <Convert />}
-        {activeTab === 'explore' && <Explore />}
-        {activeTab === 'helpMe' && <HelpMe />}
-      </div>
-    </div>
         <Hero />
 
         <section
@@ -269,7 +226,6 @@ export default function Home() {
             <option value="Realism">Realism</option>
           </select>
 
-
           <button
             className="btn w-full max-w-xs space-y-3 "
             style={buttonStyle}
@@ -282,11 +238,11 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
-        
+
         <ImageGenerator />
-         <div className={styles.main}>
-      <S3UploadForm/>
-    </div>
+        <div className={styles.main}>
+          <S3UploadForm />
+        </div>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
         <section>
@@ -307,5 +263,3 @@ export default function Home() {
     </>
   );
 }
-
-
