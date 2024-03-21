@@ -6,6 +6,7 @@ import connectMongo from '@/libs/mongoose';
 import User from '@/models/User';
 
 export const maxDuration = 120;
+export const dynamic = "force-dynamic"
 
 const openai = new OpenAI();
 
