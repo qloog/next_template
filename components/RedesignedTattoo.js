@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '@/app/RedesignTattoo.css';
 
 function RedesignTattoo() {
   const [imageUrl, setImageUrl] = useState('');
@@ -36,31 +37,27 @@ function RedesignTattoo() {
   };
 
   return (
-    <div className="redesign-tattoo-container" style={{ textAlign: 'center', padding: '20px', backgroundColor: '#fff', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+    <div className="redesign-tattoo-container">
       <h2>Redesign Your Tattoo</h2>
-      <input type="file" onChange={handleImageUpload} />
-      <div>
-        <textarea
-          placeholder="Describe how you want to redesign the tattoo..."
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          style={{ margin: '10px 0', width: '300px', height: '100px', padding: '10px' }}
-        ></textarea>
-      </div>
-      <button onClick={handleRedesign} style={{ padding: '10px 20px', cursor: 'pointer', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>
+      <input type="file" onChange={handleImageUpload} className="file-input" />
+      <textarea
+        placeholder="Describe how you want to redesign the tattoo..."
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        className="prompt-textarea"
+      ></textarea>
+      <button onClick={handleRedesign} className="redesign-button">
         Redesign Tattoo
       </button>
-      <div className="images-container" style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
-        {imageUrl && <img src={imageUrl} alt="Reference Tattoo" style={{ maxWidth: '200px', maxHeight: '200px', borderRadius: '10px' }} />}
-        {generatedImageUrl && <img src={generatedImageUrl} alt="Redesigned Tattoo" style={{ maxWidth: '200px', maxHeight: '200px', borderRadius: '10px' }} />}
+      <div className="images-container">
+        {imageUrl && <img src={imageUrl} alt="Reference Tattoo" className="tattoo-image" />}
+        {generatedImageUrl && <img src={generatedImageUrl} alt="Redesigned Tattoo" className="tattoo-image" />}
       </div>
     </div>
   );
 }
 
 export default RedesignTattoo;
-
-
 
 
 /*
