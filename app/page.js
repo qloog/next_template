@@ -238,9 +238,23 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
+        <section>
+          <p
+            className="font-medium text-sm mb-2"
+            style={{ color: "rgb(23, 34, 190)" }}
+          >
+            EDIT YOUR TATTOO
+          </p>
+          <ImageGenerator />
+        </section>
 
-        <ImageGenerator />
         <div className={styles.main}>
+          <p
+            className="font-medium text-sm mb-2"
+            style={{ color: "rgb(23, 34, 190)" }}
+          >
+            SHOWCASE YOUR TATTOO
+          </p>
           <S3UploadForm />
         </div>
         <Problem></Problem>
