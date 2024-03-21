@@ -29,24 +29,24 @@ export async function POST(req) {
     try {
         const { image, prompt } = await req.json();
 
-        // Get the description of the image
+        // Get the description of the image with a more detailed and specific prompt
         const response = await openai.chat.completions.create({
             model: "gpt-4-vision-preview",
             messages: [
                 {
                     role: "user",
                     content: [
-                        { type: "text", text: "What's in this image?" },
+                        { type: "text", text: "Provide a detailed description of the elements in this image, focusing on the main subject and any specific details that should be preserved or modified." },
                         { type: "image_url", image_url: image }
                     ],
                 },
             ],
         });
 
-        const textPrompt = response.choices[0].message.content;
-        const combinedPrompt = `${textPrompt}. ${prompt}`;
+        const detailedDescription = response.choices[0].message.content;
+        const combinedPrompt = `${detailedDescription}. Based on the user's request: ${prompt}`;
 
-        // Generate a new image based on the description
+        // Generate a new image based on the detailed description and user's prompt
         const imageResponse = await openai.images.generate({
             model: "dall-e-3",
             prompt: combinedPrompt,
@@ -67,8 +67,6 @@ export async function POST(req) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
-
-
 
 
 
