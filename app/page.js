@@ -238,7 +238,7 @@ export default function Home() {
           </button>
           <GeneratedImageCard finalData={finalData} isLoading={isLoading} />
         </section>
-        <section>
+        <section className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black">
           <p
             className="font-medium text-sm mb-2"
             style={{ color: "rgb(23, 34, 190)" }}
@@ -247,7 +247,7 @@ export default function Home() {
           </p>
           <ImageGenerator />
         </section>
-
+        <section className="max-w-7xl mx-auto flex flex-col lg:flex-row text-left gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-white text-black">
         <div className={styles.main}>
           <p
             className="font-medium text-sm mb-2"
@@ -257,6 +257,7 @@ export default function Home() {
           </p>
           <S3UploadForm />
         </div>
+        </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
         <section>
