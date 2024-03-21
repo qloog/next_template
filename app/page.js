@@ -254,7 +254,16 @@ export default function Home() {
           >
             SHOWCASE YOUR TATTOO
           </p>
+          <h3
+            className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:center"
+            style={{
+              fontFamily: "'Poppins', sans-serif",
+            }}
+          >
+            Share Your Creations in the Gallery
+          </h3>
           <S3UploadForm />
+          
         </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
