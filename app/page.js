@@ -71,8 +71,12 @@ export default function Home() {
       setFinalData(results.imageUrl);
       setIsLoading(false); // End loading
 
+    } catch (error) {
+      console.error("Error generating image:", error);
+      setIsLoading(false);
+    }
   }
-}
+  
 
   const selectStyle = {
     backgroundColor: "#ffffff", // Consistent with the textarea
