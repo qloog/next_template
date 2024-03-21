@@ -41,7 +41,6 @@ function RedesignTattoo() {
 
   return (
     <div className="redesign-tattoo-container">
-      <h2>Redesign Your Tattoo</h2>
       <input type="file" onChange={handleImageUpload} className="file-input" />
       <textarea
         placeholder="Describe how you want to redesign the tattoo..."
