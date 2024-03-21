@@ -5,6 +5,7 @@ function RedesignTattoo() {
   const [imageUrl, setImageUrl] = useState('');
   const [generatedImageUrl, setGeneratedImageUrl] = useState('');
   const [prompt, setPrompt] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -16,6 +17,7 @@ function RedesignTattoo() {
   };
 
   const handleRedesign = async () => {
+    setIsLoading(true);
     const response = await fetch('/api/editUserImage', {
       method: 'POST',
       headers: {
@@ -34,6 +36,7 @@ function RedesignTattoo() {
       // Handle errors
       console.error('Error redesigning tattoo:', await response.text());
     }
+    setIsLoading(false);
   };
 
   return (
@@ -46,8 +49,8 @@ function RedesignTattoo() {
         onChange={(e) => setPrompt(e.target.value)}
         className="prompt-textarea"
       ></textarea>
-      <button onClick={handleRedesign} className="redesign-button">
-        Redesign Tattoo
+      <button onClick={handleRedesign} className="redesign-button" disabled={isLoading}>
+        {isLoading ? 'Redesigning...' : 'Redesign Tattoo'}
       </button>
       <div className="images-container">
         {imageUrl && <img src={imageUrl} alt="Reference Tattoo" className="tattoo-image" />}
@@ -58,6 +61,7 @@ function RedesignTattoo() {
 }
 
 export default RedesignTattoo;
+
 
 
 /*
