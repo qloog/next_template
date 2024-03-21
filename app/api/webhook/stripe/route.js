@@ -49,15 +49,8 @@ export async function POST(req) {
 
         if (!plan) break;
 
-        const newCredits = plan.credits
-        user.currentCredits = user.currentCredits + newCredits
-
-        const customer = await stripe.customers.retrieve(customerId);
-
-        let user;
-
-        // Get or create the user. userId is normally pass in the checkout session (clientReferenceID) to identify the user when we get the webhook event
-        if (userId) {
+         // Get or create the user. userId is normally pass in the checkout session (clientReferenceID) to identify the user when we get the webhook event
+         if (userId) {
           user = await User.findById(userId);
         } else if (customer.email) {
           user = await User.findOne({ email: customer.email });
@@ -74,6 +67,17 @@ export async function POST(req) {
           console.error("No user found");
           throw new Error("No user found");
         }
+
+        const customer = await stripe.customers.retrieve(customerId);
+
+        let user;
+
+        const newCredits = plan.credits
+        user.currentCredits = user.currentCredits + newCredits
+
+       
+
+       
 
         // Update user data + Grant user access to your product. It's a boolean in the database, but could be a number of credits, etc...
         user.priceId = priceId;

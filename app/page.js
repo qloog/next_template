@@ -82,25 +82,6 @@ export default function Home() {
   }
   
 
-  async function uploadImageToGallery(imageUrl) {
-    try {
-        const response = await fetch("/api/uploadToGallery", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ imageUrl }),
-        });
-        if (!response.ok) {
-            throw new Error('Failed to upload image to gallery');
-        }
-        // Optionally, process the response here
-        console.log("Image uploaded successfully");
-    } catch (error) {
-        console.error("Error uploading image to gallery:", error);
-    }
-}
-
   const selectStyle = {
     backgroundColor: "#ffffff", // Consistent with the textarea
     border: "1px solid #cccccc", // Light border for a delicate look

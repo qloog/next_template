@@ -1,10 +1,31 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/libs/next-auth";
+import connectMongo from '@/libs/mongoose';
+import User from '@/models/User';
+
 export const maxDuration = 120;
 
 const openai = new OpenAI();
 
 export async function POST(req) {
+    const session = await getServerSession(authOptions);
+
+    if (!session || !session.user) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { id } = session.user;
+
+    await connectMongo();
+
+    const user = await User.findById(id);
+
+    if (!user || !user.currentCredits || user.currentCredits === 0) {
+        return NextResponse.json({ error: 'Not enough credits' }, { status: 403 });
+    }
+
     try {
         const { image, prompt } = await req.json();
 
@@ -22,7 +43,7 @@ export async function POST(req) {
             ],
         });
 
-        const textPrompt = response.choices[0].message.content
+        const textPrompt = response.choices[0].message.content;
         const combinedPrompt = `${textPrompt}. ${prompt}`;
 
         // Generate a new image based on the description
@@ -35,21 +56,15 @@ export async function POST(req) {
         // Assuming the image data is in imageResponse.data
         const generatedImageUrl = imageResponse.data[0].url;
 
+        // Deduct one credit from the user's account
+        user.currentCredits = user.currentCredits - 1;
+        await user.save();
+
         // Return the generated image URL in the response
-        return new NextResponse(JSON.stringify({ imageUrl: generatedImageUrl }), {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        return NextResponse.json({ imageUrl: generatedImageUrl });
     } catch (error) {
         console.error('Error in API:', error);
-        return new NextResponse(JSON.stringify({ error: error.message }), {
-            status: 500,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 
