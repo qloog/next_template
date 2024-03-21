@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import '@/app/UploadForm.css';
 
 export default function UploadForm() {
@@ -7,7 +6,6 @@ export default function UploadForm() {
   const [fileName, setFileName] = useState('');
   const [uploading, setUploading] = useState(false);
   const [labels, setLabels] = useState(null);
-  const navigate = useNavigate(); // Create a navigate function using useNavigate
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -74,9 +72,6 @@ export default function UploadForm() {
           </ul>
         </div>
       )}
-      <button className="go-to-gallery-button" onClick={() => navigate('/gallery')}>
-        Go to Gallery
-      </button>
     </div>
   );
 }
