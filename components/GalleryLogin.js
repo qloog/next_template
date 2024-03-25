@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import config from "@/config";
                 
-const SigninButton = () => {
+const GalleryButton = () => {
   return (
     <button
       className="btn btn-primary"
@@ -14,4 +14,4 @@ const SigninButton = () => {
   );
 };
                 
-export default SigninButton;
+export default GalleryButton;
