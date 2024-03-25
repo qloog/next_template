@@ -1,28 +1,23 @@
 "use client"
-
-
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const [userDesigns, setUserDesigns] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchUserDesigns = async () => {
-            if (status !== "authenticated") return;
+            if (!session) return;
 
             setIsLoading(true);
             setError(null);
             try {
                 const response = await fetch('/api/personalUserDesigns', {
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    credentials: 'include', // Include credentials for session cookie
+                    credentials: 'include' // Include credentials for session cookie
                 });
                 if (!response.ok) {
                     throw new Error('Failed to fetch designs');
@@ -38,32 +33,31 @@ export default function Dashboard() {
         };
 
         fetchUserDesigns();
-    }, [session, status]);
+    }, [session]);
 
     const handleDelete = async (designId) => {
-      try {
-          const response = await fetch('/api/deleteDesign', {
-              method: 'DELETE',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              credentials: 'include',
-              body: JSON.stringify({ designId }),
-          });
-          if (!response.ok) {
-              throw new Error('Failed to delete design');
-          }
-          // Remove the design from the state
-          setUserDesigns(userDesigns.filter((design) => design._id !== designId));
-      } catch (err) {
-          console.error(err);
-          setError(err.message);
-      }
-  };
-  
+        try {
+            const response = await fetch(`/api/deleteDesign?designId=${designId}`, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+            if (!response.ok) {
+                throw new Error('Failed to delete design');
+            }
+            setUserDesigns(userDesigns.filter(design => design._id !== designId));
+        } catch (err) {
+            console.error(err);
+            setError(err.message);
+        }
+    };
 
     return (
         <main className="bg-white text-black min-h-screen p-8 pb-24">
+            <section className="max-w-xl mx-auto space-y-8" id="about">
+                <h1 className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}>
+                    Our mission is to usher in a new era of human creativity through artificial intelligence.
+                </h1>
+            </section>
             <section>
                 <h2 className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}>
                     Your Uploaded Designs
@@ -76,13 +70,13 @@ export default function Dashboard() {
                     <div className="grid">
                         {userDesigns.map((design) => (
                             <div key={design._id} className="image-container">
-                                <img src={design.data} alt="Uploaded Design" />
+                                <img src={design.data} alt="Gallery item" />
                                 <button onClick={() => handleDelete(design._id)}>Delete</button>
                             </div>
                         ))}
                     </div>
                 ) : (
-                    <p>You haven&apos;t uploaded any designs yet.</p>
+                    <p>You haven&apos;t uploaded any public designs yet.</p>
                 )}
             </section>
             <style jsx>{`
@@ -109,6 +103,18 @@ export default function Dashboard() {
                     width: 100%;
                     height: auto;
                     object-fit: cover;
+                }
+
+                h2 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    font-family: 'Poppins', sans-serif;
+                    font-weight: 600;
+                }
+
+                p {
+                    text-align: center;
+                    font-family: 'Poppins', sans-serif;
                 }
             `}</style>
         </main>
