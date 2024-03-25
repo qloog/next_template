@@ -54,7 +54,6 @@ const ButtonSignin = ({ extraStyle, callbackUrl }) => {
       className={`btn ${extraStyle ? extraStyle : ""}`}
       onClick={handleClick}
     >
-      {text}
     </button>
   );
 };
