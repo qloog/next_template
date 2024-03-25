@@ -8,6 +8,9 @@ export const maxDuration = 120;
 export const dynamic = "force-dynamic"
 
 export async function POST(req) {
+    // Your POST logic here
+    // This is just a template; adjust it according to your actual implementation for posting an image
+
     const session = await getSession({ req });
 
     if (!session || !session.user) {
@@ -21,9 +24,15 @@ export async function POST(req) {
 
     try {
         await connectMongo();
-        // Dummy response for demonstration
-        return new Response(JSON.stringify([{ _id: '1', data: 'https://example.com/design1.jpg', uploaderId: session.user.id }]), {
-            status: 200,
+        // Assuming you have data to insert into the database.
+        // You will get this data from `req.body` after parsing it.
+
+        const data = req.body; // Make sure to validate and sanitize this data.
+        const newImage = new Image({ ...data, uploaderId: session.user.id }); // Add other required fields as necessary.
+        await newImage.save();
+
+        return new Response(JSON.stringify(newImage), {
+            status: 201,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -54,8 +63,7 @@ export async function GET(req) {
     await connectMongo();
 
     try {
-        // Retrieve images uploaded by the current user
-        const images = await Image.find({ uploaderId: session.user.id }).sort({ createdAt: -1 }).exec();
+        const images = await Image.find({ uploaderId: session.user.id }).sort({ createdAt: -1 });
         return new Response(JSON.stringify(images), {
             status: 200,
             headers: {

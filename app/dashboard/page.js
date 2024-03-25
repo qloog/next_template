@@ -1,22 +1,28 @@
-"use client";
+"use client"
 
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 
 export default function Dashboard() {
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const [userDesigns, setUserDesigns] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchUserDesigns = async () => {
-            if (!session) return;
+            if (status !== "authenticated") return;
 
             setIsLoading(true);
             setError(null);
             try {
-                const response = await fetch('/api/personalUserDesigns');
+                const response = await fetch('/api/personalUserDesigns', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include', // Include credentials for session cookie
+                });
                 if (!response.ok) {
                     throw new Error('Failed to fetch designs');
                 }
@@ -31,7 +37,7 @@ export default function Dashboard() {
         };
 
         fetchUserDesigns();
-    }, [session]);
+    }, [session, status]);
 
     return (
         <main className="bg-white text-black min-h-screen p-8 pb-24">
@@ -53,8 +59,10 @@ export default function Dashboard() {
                         ))}
                     </div>
                 ) : (
-                    <p>You haven&apos;t uploaded any public designs yet.</p>
+                    <p>You haven&apos;t uploaded any designs yet.</p>
                 )}
+           
+
             </section>
             <style jsx>{`
                 .grid {
