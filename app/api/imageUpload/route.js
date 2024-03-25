@@ -1,9 +1,10 @@
-export const maxDuration = 120;
-export const dynamic = 'force-dynamic';
 
+import mongoose from 'mongoose';
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -31,11 +32,11 @@ export async function getLabelsFromGPT4Vision(image) {
 export async function POST(req) {
   await connectMongo();
 
-  const { image } = await req.json();
+  const { image, userEmail } = await req.json();  // Assume userEmail is being sent with the request
 
   try {
-    // Check if an image with the same data already exists
-    const existingImage = await Image.findOne({ data: image });
+    // Check if an image with the same data already exists for the user
+    const existingImage = await Image.findOne({ data: image, userEmail });
     if (existingImage) {
       // If image already exists, just return it
       return new Response(JSON.stringify(existingImage), {
@@ -49,8 +50,8 @@ export async function POST(req) {
     // Get labels from GPT-4 Vision
     const labels = await getLabelsFromGPT4Vision(image);
 
-    // Save image and labels in MongoDB
-    const newImage = new Image({ data: image, labels });
+    // Save image, labels, and userEmail in MongoDB
+    const newImage = new Image({ data: image, labels, userEmail });
     await newImage.save();
 
     return new Response(JSON.stringify({ imageId: newImage._id, labels, message: 'Image processed successfully' }), {
@@ -74,9 +75,10 @@ export async function GET(req) {
     await connectMongo();
   
     try {
-      // Retrieve images and sort them by creation date in descending order
-      const images = await Image.find({}).sort({ createdAt: -1 }).exec();
-      return new Response(JSON.stringify(images), {
+      // Retrieve images for the user based on their email
+      const userEmail = req.user.email; // Replace this with your method of retrieving the user's email
+      const userImages = await Image.find({ userEmail }).sort({ createdAt: -1 }).exec();
+      return new Response(JSON.stringify(userImages), {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +94,7 @@ export async function GET(req) {
       });
     }
   }
-  
+
 
 
 
