@@ -8,14 +8,17 @@ import config from "@/config";
 // A simple button to sign in with our providers (Google & Magic Links).
 // It automatically redirects user to callbackUrl (config.auth.callbackUrl) after login, which is normally a private page for users to manage their accounts.
 // If the user is already logged in, it will show their profile picture & redirect them to callbackUrl immediately.
-const ButtonSignin = ({ text = "Get started", extraStyle, callbackUrl }) => {
+const ButtonSignin = ({ extraStyle, callbackUrl }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
   const handleClick = () => {
     const redirectTo = callbackUrl || config.auth.callbackUrl;
     if (status === "authenticated") {
-      router.push(redirectTo);
+      // Check if the router is ready before using it
+      if (router.isReady) {
+        router.push(redirectTo);
+      }
     } else {
       signIn(undefined, { callbackUrl: redirectTo });
     }
