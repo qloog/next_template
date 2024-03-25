@@ -1,3 +1,5 @@
+"use client"
+
 import connectMongo from "@/libs/mongoose";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/libs/next-auth";
