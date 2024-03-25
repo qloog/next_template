@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react";
+import ButtonAccount from '@/components/ButtonAccount';
 
 export default function Dashboard() {
     const { data: session } = useSession();
@@ -55,6 +56,7 @@ export default function Dashboard() {
     return (
         <main className="bg-white text-black min-h-screen p-8 pb-24">
             <section>
+                <ButtonAccount></ButtonAccount>
                 <h2 className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}>
                     Your Uploaded Designs
                 </h2>
