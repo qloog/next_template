@@ -3,15 +3,17 @@ import mongoose from "mongoose";
 
 const imageSchema = new mongoose.Schema(
   {
+    userEmail: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      private: true,
+    },
     data: {
       type: String,
       required: true, // Base64 encoded image data
     },
     labels: [String], // Array of labels
-    userEmail: {
-      type: String,
-      required: false, // Not required so that existing images without an email won't cause issues
-    },
   },
   {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
