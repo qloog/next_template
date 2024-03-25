@@ -267,7 +267,7 @@ export default function Home() {
           
         </section>
         <section>
-        <ButtonSignin></ButtonSignin>
+        <ButtonSignin text="View your public designs" extraStyle="your-style" callbackUrl="/dashboard" />
         </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>

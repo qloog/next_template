@@ -2,21 +2,22 @@
 
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router"; // Corrected import
 import config from "@/config";
 
 // A simple button to sign in with our providers (Google & Magic Links).
 // It automatically redirects user to callbackUrl (config.auth.callbackUrl) after login, which is normally a private page for users to manage their accounts.
 // If the user is already logged in, it will show their profile picture & redirect them to callbackUrl immediately.
-const ButtonSignin = ({ text = "Get started", extraStyle }) => {
+const ButtonSignin = ({ text = "Get started", extraStyle, callbackUrl }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
   const handleClick = () => {
+    const redirectTo = callbackUrl || config.auth.callbackUrl;
     if (status === "authenticated") {
-      router.push(config.auth.callbackUrl);
+      router.push(redirectTo);
     } else {
-      signIn(undefined, { callbackUrl: config.auth.callbackUrl });
+      signIn(undefined, { callbackUrl: redirectTo });
     }
   };
 
