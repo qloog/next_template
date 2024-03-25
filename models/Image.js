@@ -10,7 +10,7 @@ const imageSchema = new mongoose.Schema(
     userEmail: {
       // Adding a field for the user's email
       type: String,
-      required: true,
+      required: false,
     },
   },
   {
