@@ -53,7 +53,7 @@ export default function Dashboard() {
                         ))}
                     </div>
                 ) : (
-                    <p>You haven't uploaded any public designs yet.</p>
+                    <p>You haven&apos;t uploaded any public designs yet.</p>
                 )}
             </section>
             <style jsx>{`
