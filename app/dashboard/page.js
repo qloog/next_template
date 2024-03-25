@@ -15,10 +15,11 @@ export default function Dashboard() {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await fetch('/api/personalUserDesigns', {
-                    method: 'GET',
-                    credentials: 'include' // Include credentials for session cookie
-                });
+              const response = await fetch('/api/personalUserDesigns', {
+                method: 'GET',
+                credentials: 'include',
+              });
+              
                 if (!response.ok) {
                     throw new Error('Failed to fetch designs');
                 }

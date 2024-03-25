@@ -12,7 +12,8 @@ export async function POST(req) {
     // This is just a template; adjust it according to your actual implementation for posting an image
 
     const session = await getSession({ req });
-
+    console.log("Session:", session);
+    
     if (!session || !session.user) {
         return new Response(JSON.stringify({ error: 'Unauthorized' }), {
             status: 401,
