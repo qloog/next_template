@@ -6,7 +6,7 @@ const ButtonLead= () => {
 
   const redirectToExistingPage = () => {
     // Redirect to the existing page
-    router.push('/https://www.findrr.ca/dashboard');
+    router.push('/https://www.tattooswithai.com/dashboard');
   };
 
   return (

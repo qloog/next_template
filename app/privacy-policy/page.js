@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
         >
         {`Last Updated: 2023-11-23
 
-Welcome to Findrr ("we," "us," or "our"). At Findrr, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website, findrr.ca, and use our services.
+Welcome to TattooswithAI ("we," "us," or "our"). At TattooswithAI, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website, .TattooswithAI.com, and use our services.
 
 1. Information We Collect
 

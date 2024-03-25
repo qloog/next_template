@@ -117,17 +117,3 @@ const config = {
 export default config;
 
 
-/*
-priceId:
-          process.env.NODE_ENV === "development"
-            ? "price_1O5KtcAxyNprDp7iftKnrrpw"
-            : "price_1OXnshHa8820Uqe5dOQdkXfI",
-        name: "Pro",
-        description: "30 credits added to your account",
-        price: 9.99,
-        credits: 30,
-        priceAnchor: 16.99,
-        features: [
-          { name: "Unlimited tattoo history" },
-          { name: "Generate 30 unique designs" },
-          */ 
