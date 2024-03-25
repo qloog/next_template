@@ -1,4 +1,3 @@
-
 "use client";
 
 import { signIn } from "next-auth/react";
@@ -13,7 +12,7 @@ const GalleryButton = () => {
         fontWeight: 600, 
         backgroundColor: 'rgb(50, 61, 214)'
       }}
-      onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
+      onClick={() => signIn(undefined, { callbackUrl: "/app/dashboard" })}
     >
       View your design history
     </button>
