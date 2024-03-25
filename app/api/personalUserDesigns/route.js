@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import connectMongo from "@/libs/mongoose";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/libs/next-auth";
+import { getSession } from 'next-auth/react';
 import User from "@/models/User";
-// Import your Design model or equivalent here
 
 export async function POST(req) {
     const session = await getServerSession({ req, ...authOptions });
