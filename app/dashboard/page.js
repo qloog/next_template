@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import { useSession } from "next-auth/react";
+import { useSession } from 'next-auth/react';
 
 export default function Dashboard() {
     const { data: session } = useSession();
@@ -16,7 +16,7 @@ export default function Dashboard() {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await fetch('/api/personalUserDesigns', { method: 'POST' });
+                const response = await fetch('/api/personalUserDesigns');
                 if (!response.ok) {
                     throw new Error('Failed to fetch designs');
                 }
@@ -35,6 +35,11 @@ export default function Dashboard() {
 
     return (
         <main className="bg-white text-black min-h-screen p-8 pb-24">
+            <section className="max-w-xl mx-auto space-y-8" id="about">
+                <h1 className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}>
+                    Our mission is to usher in a new era of human creativity through artificial intelligence.
+                </h1>
+            </section>
             <section>
                 <h2 className="text-black text-4xl lg:text-6xl tracking-tight md:-mb-4 text-align:left" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}>
                     Your Uploaded Designs
@@ -47,13 +52,13 @@ export default function Dashboard() {
                     <div className="grid">
                         {userDesigns.map((design) => (
                             <div key={design._id} className="image-container">
-                                <img src={design.data} alt="Gallery item" />
+                                <img src={design.data} alt="Uploaded Design" />
                                 {/* Add a delete button or functionality here */}
                             </div>
                         ))}
                     </div>
                 ) : (
-                    <p>You haven&apos;t uploaded any public designs yet.</p>
+                    <p>You haven't uploaded any public designs yet.</p>
                 )}
             </section>
             <style jsx>{`
@@ -81,19 +86,8 @@ export default function Dashboard() {
                     height: auto;
                     object-fit: cover;
                 }
-
-                h2 {
-                    text-align: center;
-                    margin-bottom: 20px;
-                    font-family: 'Poppins', sans-serif;
-                    font-weight: 600;
-                }
-
-                p {
-                    text-align: center;
-                    font-family: 'Poppins', sans-serif;
-                }
             `}</style>
         </main>
     );
 }
+
