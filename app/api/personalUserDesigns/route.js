@@ -1,29 +1,27 @@
-// pages/api/userDesigns.js
+import { NextResponse } from 'next/server';
 import connectMongo from "@/libs/mongoose";
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/libs/next-auth";
+import User from "@/models/User";
+// Import your Design model or equivalent here
 
 export async function POST(req) {
-  if (req.method === 'GET') {
-    try {
-      const session = await getSession({ req });
-      if (!session) {
-        return res.status(401).json({ message: 'Unauthorized' });
-      }
+    const session = await getServerSession({ req, ...authOptions });
 
-      await connectMongo();
-      // Fetch user designs from the database
-      // For example:
-      // const userDesigns = await Design.find({ userId: session.user.id });
-      // res.status(200).json(userDesigns);
-
-      // Dummy response for demonstration
-      res.status(200).json([{ _id: '1', data: 'https://example.com/design1.jpg', uploaderId: session.user.id }]);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
+    if (!session || !session.user) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-  } else {
-    res.setHeader('Allow', ['GET']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
+
+    try {
+        await connectMongo();
+        // Fetch user designs from the database
+        // const userDesigns = await Design.find({ userId: session.user.id });
+        // return NextResponse.json(userDesigns);
+
+        // Dummy response for demonstration
+        return NextResponse.json([{ _id: '1', data: 'https://example.com/design1.jpg', uploaderId: session.user.id }]);
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    }
 }
