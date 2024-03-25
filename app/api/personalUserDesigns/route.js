@@ -1,12 +1,11 @@
+// pages/api/personalUserDesigns.js
 import { NextResponse } from 'next/server';
 import connectMongo from "@/libs/mongoose";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/libs/next-auth";
 import { getSession } from 'next-auth/react';
 import User from "@/models/User";
 
 export async function POST(req) {
-    const session = await getServerSession({ req, ...authOptions });
+    const session = await getSession({ req });
 
     if (!session || !session.user) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -42,7 +41,7 @@ export async function GET(req) {
   
     try {
       // Retrieve designs uploaded by the current user
-      const designs = await Design.find({ userId: session.user.id }).sort({ createdAt: -1 }).exec();
+      const designs = await User.find({ userId: session.user.id }).sort({ createdAt: -1 }).exec();
       return new Response(JSON.stringify(designs), {
         status: 200,
         headers: {
@@ -58,5 +57,4 @@ export async function GET(req) {
         },
       });
     }
-  }
-  
+}
