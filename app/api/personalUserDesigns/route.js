@@ -47,11 +47,12 @@ export async function POST(req) {
         });
     }
 }
-
 export async function GET(req) {
     const session = await getSession({ req });
+    console.log("Session:", session); // Log the session to see what's inside
 
     if (!session || !session.user) {
+        console.log("No session or user found"); // Log if no session or user is found
         return new Response(JSON.stringify({ error: 'Unauthorized' }), {
             status: 401,
             headers: {
