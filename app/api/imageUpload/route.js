@@ -53,11 +53,7 @@ export async function POST(req) {
     const labels = await getLabelsFromGPT4Vision(image);
 
     // Save image and labels in MongoDB, including userEmail if it's provided
-    const imageDocument = { data: image, labels };
-    if (userEmail) {
-      imageDocument.userEmail = userEmail;
-    }
-
+    const imageDocument = { data: image, labels, userEmail };
     const newImage = new Image(imageDocument);
     await newImage.save();
 
