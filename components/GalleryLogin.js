@@ -2,7 +2,7 @@
 
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/router"; // Corrected import
+import { useRouter } from 'next/navigation';
 import config from "@/config";
 
 // A simple button to sign in with our providers (Google & Magic Links).
