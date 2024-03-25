@@ -12,7 +12,7 @@ const SigninButton = () => {
     fontWeight: 600, 
       backgroundColor: 'rgb(50, 61, 214)'
     }}
-      onClick={() => signIn(undefined, { callbackUrl: config.auth.loginUrl })}
+      onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
     >
      Sign up for 2 free credits
     </button>
