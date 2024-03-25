@@ -1,12 +1,7 @@
-"use client"
-
-import connectMongo from "@/libs/mongoose";
+"use client";
+import { useState, useEffect } from 'react';
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/libs/next-auth";
-import User from "@/models/User";
-import { useState, useEffect } from 'react';
-
-export const dynamic = "force-dynamic";
 
 export default function Dashboard() {
   const [userDesigns, setUserDesigns] = useState([]);
@@ -37,6 +32,15 @@ export default function Dashboard() {
     fetchUserDesigns();
   }, []);
 
+  const deleteDesign = async (designId) => {
+    try {
+      await fetch(`/api/deleteDesign/${designId}`, { method: 'DELETE' });
+      setUserDesigns(userDesigns.filter(design => design._id !== designId));
+    } catch (error) {
+      console.error('Failed to delete design:', error);
+    }
+  };
+
   return (
     <main className="bg-white text-black min-h-screen p-8 pb-24">
       {/* Your existing dashboard content */}
@@ -52,7 +56,7 @@ export default function Dashboard() {
             {userDesigns.map((design) => (
               <div key={design._id} className="image-container">
                 <img src={design.data} alt="Gallery item" />
-                {/* Add a delete button or functionality here */}
+                <button onClick={() => deleteDesign(design._id)}>Delete</button>
               </div>
             ))}
           </div>
@@ -85,6 +89,22 @@ export default function Dashboard() {
           width: 100%;
           height: auto;
           object-fit: cover;
+        }
+
+        .image-container button {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background-color: #dc3545;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          padding: 5px 10px;
+          cursor: pointer;
+        }
+
+        .image-container button:hover {
+          background-color: #c82333;
         }
 
         h2 {
