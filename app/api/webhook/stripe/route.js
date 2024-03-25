@@ -72,14 +72,10 @@ export async function POST(req) {
 
         let user;
 
+    
+        // Update user data + Grant user access to your product. It's a boolean in the database, but could be a number of credits, etc...
         const newCredits = plan.credits
         user.currentCredits = user.currentCredits + newCredits
-
-       
-
-       
-
-        // Update user data + Grant user access to your product. It's a boolean in the database, but could be a number of credits, etc...
         user.priceId = priceId;
         user.planType = plan.type
         user.customerId = customerId;
