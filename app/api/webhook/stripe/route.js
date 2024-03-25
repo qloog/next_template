@@ -84,7 +84,6 @@ export async function POST(req) {
         user.planType = plan.type
         user.customerId = customerId;
         user.hasAccess = true;
-        user.currentCredits = user.currentCredits + newCredits
 
         await user.save();
 
