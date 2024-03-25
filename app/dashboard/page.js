@@ -10,7 +10,7 @@ export default async function Dashboard() {
   await connectMongo();
 
   const session = await getServerSession(authOptions);
-  const user = await User.findById(session.user.id);
+  const user = await user.findById(session.user.id);
 
   return (
     <main className="bg-white text-black min-h-screen p-8 pb-24">
