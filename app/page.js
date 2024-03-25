@@ -20,7 +20,7 @@ import ImageGenerator from "@/components/RedesignedTattoo";
 import styles from "@/app/images.module.css";
 import S3UploadForm from "@/components/S3UploadForm";
 import "@/app/new.style.css";
-import ButtonSignin from "@/components/GalleryLogin";
+import GalleryButton from "@/components/GalleryLogin";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -267,7 +267,7 @@ export default function Home() {
           
         </section>
         <section>
-        <ButtonSignin text="View your public designs" extraStyle="your-style" callbackUrl="/dashboard" />
+        <GalleryButton />
         </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>

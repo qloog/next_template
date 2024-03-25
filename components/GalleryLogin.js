@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import config from "@/config";
                 
-const SigninButton = () => {
+const GalleryButton = () => {
   return (
     <button
       className="btn w-full max-w-xs space-y-3 text-white"
@@ -19,4 +19,4 @@ const SigninButton = () => {
   );
 };
 
-export default SigninButton;
+export default GalleryButton;
