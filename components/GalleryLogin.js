@@ -1,5 +1,4 @@
 
-/*
 "use client";
 
 import { signIn } from "next-auth/react";
@@ -22,4 +21,3 @@ const GalleryButton = () => {
 };
 
 export default GalleryButton;
-*/
