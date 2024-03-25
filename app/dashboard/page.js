@@ -1,5 +1,6 @@
 "use client"
 
+
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 
@@ -39,6 +40,28 @@ export default function Dashboard() {
         fetchUserDesigns();
     }, [session, status]);
 
+    const handleDelete = async (designId) => {
+      try {
+          const response = await fetch('/api/deleteDesign', {
+              method: 'DELETE',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              credentials: 'include',
+              body: JSON.stringify({ designId }),
+          });
+          if (!response.ok) {
+              throw new Error('Failed to delete design');
+          }
+          // Remove the design from the state
+          setUserDesigns(userDesigns.filter((design) => design._id !== designId));
+      } catch (err) {
+          console.error(err);
+          setError(err.message);
+      }
+  };
+  
+
     return (
         <main className="bg-white text-black min-h-screen p-8 pb-24">
             <section>
@@ -54,15 +77,13 @@ export default function Dashboard() {
                         {userDesigns.map((design) => (
                             <div key={design._id} className="image-container">
                                 <img src={design.data} alt="Uploaded Design" />
-                                {/* Add a delete button or functionality here */}
+                                <button onClick={() => handleDelete(design._id)}>Delete</button>
                             </div>
                         ))}
                     </div>
                 ) : (
                     <p>You haven&apos;t uploaded any designs yet.</p>
                 )}
-           
-
             </section>
             <style jsx>{`
                 .grid {
