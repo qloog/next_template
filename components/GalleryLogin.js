@@ -7,7 +7,7 @@ const GalleryButton = () => {
   return (
     <button
       className="btn btn-primary"
-      onClick={() => signIn(undefined, { callbackUrl: config.auth.callbackUrl })}
+      onClick={() => signIn(undefined, { callbackUrl: config.auth.sendtodashboardUrl})}
     >
       Login
     </button>
