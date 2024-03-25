@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import connectMongo from "@/libs/mongoose";
 import { getSession } from 'next-auth/react';
-import User from "@/models/User";
+import Image from "@/models/Image"; // Import the Image model
 
 export async function POST(req) {
     const session = await getSession({ req });
@@ -27,34 +27,34 @@ export async function POST(req) {
 
 export async function GET(req) {
     const session = await getSession({ req });
-  
+
     if (!session || !session.user) {
-      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-        status: 401,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+        return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+            status: 401,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
     }
-  
+
     await connectMongo();
-  
+
     try {
-      // Retrieve designs uploaded by the current user
-      const designs = await User.find({ userId: session.user.id }).sort({ createdAt: -1 }).exec();
-      return new Response(JSON.stringify(designs), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+        // Retrieve images uploaded by the current user
+        const images = await Image.find({ uploaderId: session.user.id }).sort({ createdAt: -1 }).exec();
+        return new Response(JSON.stringify(images), {
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
     } catch (error) {
-      console.error('Error fetching user designs:', error);
-      return new Response(JSON.stringify({ error: 'Failed to fetch user designs' }), {
-        status: 500,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+        console.error('Error fetching user images:', error);
+        return new Response(JSON.stringify({ error: 'Failed to fetch user images' }), {
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
     }
 }
