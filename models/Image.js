@@ -7,7 +7,6 @@ const imageSchema = new mongoose.Schema(
       type: String,
       trim: true,
       lowercase: true,
-      private: true,
     },
     data: {
       type: String,

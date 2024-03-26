@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
+import { getSession } from 'next-auth/react';
 
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
@@ -34,7 +35,9 @@ export async function getLabelsFromGPT4Vision(image) {
 export async function POST(req) {
   await connectMongo();
 
-  const { image, userEmail } = await req.json();  // userEmail is now optional
+  const session = await getSession({ req });
+  const userEmail = session?.user?.email; 
+  const { image } = await req.json();  // userEmail is now optional
 
   try {
     // Check if an image with the same data already exists
