@@ -13,7 +13,7 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/imageUpload/all'); // Change the endpoint to fetch all images
+        const response = await fetch('/api/imageUpload'); // Change the endpoint to fetch all images
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
