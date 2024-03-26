@@ -1,7 +1,8 @@
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from "next-auth/next";
+import { authOptions } from '@/libs/next-auth'; // Ensure this path is correct
 
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
@@ -11,71 +12,47 @@ const openai = new OpenAI({
 });
 
 export async function getLabelsFromGPT4Vision(image) {
-    const response = await openai.chat.completions.create({
-        model: "gpt-4-vision-preview",
-        messages: [
-          {
-            role: "user",
-            content: [
-              { type: "text", text: "List three labels that categorize this image. Make them super accurate and do not give any labels that are long or description wise. Also, for example, if i upload picture of a greek god like zeus, labels should be like 'zeus, greek god, mythology', no description at all. ensure the 3 labels are as accurate as possible and you're sure they're correct"},
-              { type: "image_url", image_url: image }
-            ],
-          },
-        ],
-      });
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: `List three labels that categorize this image: ${image}`,
+    max_tokens: 30,
+    n: 1,
+    stop: null,
+    temperature: 0.7,
+  });
 
-    const labels = response.choices[0].message.content.split(', ');
-    return labels;
+  const labels = response.data.choices[0].text.split(', ').map(label => label.trim());
+  return labels;
 }
 
-export async function POST(req) {
+export async function POST(req, res) {
   await connectMongo();
-  const session = await getSession({ req });
+  const session = await getServerSession({ req }, res, authOptions);
   const userEmail = session?.user?.email;
-  const { image } = await req.json();
+  const { image } = req.body;
 
   try {
     const labels = await getLabelsFromGPT4Vision(image);
     const newImage = new Image({ data: image, labels, userEmail });
     await newImage.save();
-    return new Response(JSON.stringify({ imageId: newImage._id, labels, message: 'Image processed successfully' }), {
-      status: 201,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    res.status(201).json({ imageId: newImage._id, labels, message: 'Image processed successfully' });
   } catch (error) {
     console.error('Error processing image:', error);
-    return new Response(JSON.stringify({ error: 'Error processing image' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    res.status(500).json({ error: 'Error processing image' });
   }
 }
 
-export async function GET(req) {
+export async function GET(req, res) {
   await connectMongo();
-  const session = await getSession({ req });
+  const session = await getServerSession({ req }, res, authOptions);
   const userEmail = session?.user?.email;
 
   try {
     const images = userEmail ? await Image.find({ userEmail }) : [];
-    return new Response(JSON.stringify(images), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    res.status(200).json(images);
   } catch (error) {
     console.error('Error fetching images:', error);
-    return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    res.status(500).json({ error: 'Failed to fetch images' });
   }
 }
 
