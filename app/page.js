@@ -20,7 +20,6 @@ import ImageGenerator from "@/components/RedesignedTattoo";
 import styles from "@/app/images.module.css";
 import S3UploadForm from "@/components/S3UploadForm";
 import "@/app/new.style.css";
-import GalleryButton from "@/components/GalleryLogin";
 
 export default function Home() {
   const [style, setStyle] = useState("tattoo");
@@ -265,9 +264,6 @@ export default function Home() {
           </h3>
           <S3UploadForm />
           
-        </section>
-        <section>
-        <GalleryButton />
         </section>
         <Problem></Problem>
         <FeaturesAccordion></FeaturesAccordion>
