@@ -30,19 +30,11 @@ export async function getLabelsFromGPT4Vision(image) {
 }
 
 export async function POST(req, res) {
-  await connectMongo();
-  const session = await getServerSession({ req }, authOptions);
-  const userEmail = session?.user?.email;
-  const { image } = await req.json();
-
   try {
-    const labels = await getLabelsFromGPT4Vision(image);
-    const newImage = new Image({ data: image, labels, userEmail });
-    await newImage.save();
-    res.status(201).json({ imageId: newImage._id, labels, message: 'Image processed successfully' });
+    res.status(200).json({ message: 'Test response' });
   } catch (error) {
-    console.error('Error processing image:', error);
-    res.status(500).json({ error: 'Error processing image' });
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
