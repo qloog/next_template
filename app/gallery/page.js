@@ -14,7 +14,7 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/gallerDisplay');
+        const response = await fetch('/api/galleryDisplay');
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
