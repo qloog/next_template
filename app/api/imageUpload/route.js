@@ -3,6 +3,7 @@ import Image from '@/models/Image';
 import OpenAI from 'openai';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/libs/next-auth';
+import { NextResponse } from 'next/server';
 
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
@@ -29,26 +30,34 @@ export async function getLabelsFromGPT4Vision(image) {
   return labels;
 }
 
-export async function POST(req, res) {
+export async function POST(req) {
+  await connectMongo();
+  const session = await getServerSession({ req }, authOptions);
+  const userEmail = session?.user?.email;
+  const { image } = await req.json();
+
   try {
-    res.status(200).json({ message: 'Test response' });
+    const labels = await getLabelsFromGPT4Vision(image);
+    const newImage = new Image({ data: image, labels, userEmail });
+    await newImage.save();
+    return NextResponse.json({ imageId: newImage._id, labels, message: 'Image processed successfully' }, { status: 201 });
   } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error processing image:', error);
+    return NextResponse.json({ error: 'Error processing image' }, { status: 500 });
   }
 }
 
-export async function GET(req, res) {
+export async function GET(req) {
   await connectMongo();
   const session = await getServerSession({ req }, authOptions);
   const userEmail = session?.user?.email;
 
   try {
     const images = userEmail ? await Image.find({ userEmail }) : await Image.find({});
-    res.status(200).json(images);
+    return NextResponse.json(images, { status: 200 });
   } catch (error) {
     console.error('Error fetching images:', error);
-    res.status(500).json({ error: 'Failed to fetch images' });
+    return NextResponse.json({ error: 'Failed to fetch images' }, { status: 500 });
   }
 }
 
