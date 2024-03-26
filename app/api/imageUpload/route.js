@@ -1,8 +1,8 @@
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
-import { getServerSession } from "next-auth/next";
-import { authOptions } from '@/libs/next-auth'; // Ensure this path is correct
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/libs/next-auth'; // make sure this path is correct and authOptions is exported from there
 
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
@@ -12,24 +12,28 @@ const openai = new OpenAI({
 });
 
 export async function getLabelsFromGPT4Vision(image) {
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: `List three labels that categorize this image: ${image}`,
-    max_tokens: 30,
-    n: 1,
-    stop: null,
-    temperature: 0.7,
+  const response = await openai.chat.completions.create({
+    model: "gpt-4-vision-preview",
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "List three labels that categorize this image. Make them super accurate and do not give any labels that are long or description wise. Also, for example, if i upload picture of a greek god like zeus, labels should be like 'zeus, greek god, mythology', no description at all. ensure the 3 labels are as accurate as possible and you're sure they're correct"},
+          { type: "image_url", image_url: image }
+        ],
+      },
+    ],
   });
 
-  const labels = response.data.choices[0].text.split(', ').map(label => label.trim());
+  const labels = response.choices[0].message.content.split(', ').map(label => label.trim());
   return labels;
 }
 
 export async function POST(req, res) {
   await connectMongo();
-  const session = await getServerSession({ req }, res, authOptions);
+  const session = await getServerSession({ req }, authOptions);
   const userEmail = session?.user?.email;
-  const { image } = req.body;
+  const { image } = req.body; // Changed from await req.json() to req.body for Next.js API route handling
 
   try {
     const labels = await getLabelsFromGPT4Vision(image);
@@ -44,17 +48,18 @@ export async function POST(req, res) {
 
 export async function GET(req, res) {
   await connectMongo();
-  const session = await getServerSession({ req }, res, authOptions);
+  const session = await getServerSession({ req }, authOptions);
   const userEmail = session?.user?.email;
 
   try {
-    const images = userEmail ? await Image.find({ userEmail }) : [];
+    const images = userEmail ? await Image.find({ userEmail }).exec() : await Image.find({}).exec();
     res.status(200).json(images);
   } catch (error) {
     console.error('Error fetching images:', error);
     res.status(500).json({ error: 'Failed to fetch images' });
   }
 }
+
 
 
 
