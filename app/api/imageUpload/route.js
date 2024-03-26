@@ -4,6 +4,8 @@ export const dynamic = 'force-dynamic';
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/libs/next-auth";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
