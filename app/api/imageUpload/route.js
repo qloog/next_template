@@ -58,7 +58,7 @@ export async function POST(req) {
     const newImage = new Image({
       data: image,
       labels,
-      userEmail: req.session.user.email,
+      userEmail: req.session.user.email, // Ensure userEmail is set to the user's email from the session
     });
     await newImage.save();
 
@@ -85,6 +85,7 @@ export async function POST(req) {
     });
   }
 }
+
 
 export async function GET(req) {
   await connectMongo();
