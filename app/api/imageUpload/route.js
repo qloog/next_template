@@ -51,9 +51,10 @@ export async function POST(req) {
     // Get labels from GPT-4 Vision
     const labels = await getLabelsFromGPT4Vision(image);
 
-    // Save image and labels in MongoDB
-    const newImage = new Image({ data: image, labels });
-    await newImage.save();
+   // Save image and labels in MongoDB
+const newImage = new Image({ data: image, labels, userEmail: req.session.user.email });
+await newImage.save();
+
 
     return new Response(JSON.stringify({ imageId: newImage._id, labels, message: 'Image processed successfully' }), {
       status: 201,
@@ -74,11 +75,10 @@ export async function POST(req) {
 
 export async function GET(req) {
   await connectMongo();
-  const session = await getServerSession({ req }, authOptions);
-  const userEmail = session?.user?.email;
 
   try {
-    const images = userEmail ? await Image.find({ userEmail }) : [];
+    const { email } = req.session.user; // Retrieve the user's email from the session
+    const images = await Image.find({ userEmail: email }); // Fetch images associated with the user's email
     return new Response(JSON.stringify(images), {
       status: 200,
       headers: {
@@ -95,6 +95,7 @@ export async function GET(req) {
     });
   }
 }
+
 
 
 
