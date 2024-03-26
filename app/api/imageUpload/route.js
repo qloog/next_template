@@ -1,11 +1,9 @@
-import mongoose from 'mongoose';
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic';
+
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
-import { getSession } from 'next-auth/react';
-
-export const maxDuration = 120;
-export const dynamic = 'force-dynamic';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -31,12 +29,9 @@ export async function getLabelsFromGPT4Vision(image) {
 }
 
 export async function POST(req) {
-  
   await connectMongo();
-  const session = await getSession({ req });
-  console.log("Session:", session);
-  const userEmail = session?.user?.email; 
-  const { image } = await req.json();  // userEmail is now optional
+
+  const { image } = await req.json();
 
   try {
     // Check if an image with the same data already exists
@@ -54,9 +49,8 @@ export async function POST(req) {
     // Get labels from GPT-4 Vision
     const labels = await getLabelsFromGPT4Vision(image);
 
-    // Save image and labels in MongoDB, including userEmail if it's provided
-    const imageDocument = { data: image, labels, userEmail };
-    const newImage = new Image(imageDocument);
+    // Save image and labels in MongoDB
+    const newImage = new Image({ data: image, labels });
     await newImage.save();
 
     return new Response(JSON.stringify({ imageId: newImage._id, labels, message: 'Image processed successfully' }), {
@@ -77,27 +71,26 @@ export async function POST(req) {
 }
 
 export async function GET(req) {
-    await connectMongo();
-  
-    try {
-      // Retrieve images and sort them by creation date in descending order
-      const images = await Image.find({}).sort({ createdAt: -1 }).exec();
-      return new Response(JSON.stringify(images), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } catch (error) {
-      console.error('Error fetching images:', error);
-      return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
-        status: 500,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    }
+  await connectMongo();
+
+  try {
+    const images = await Image.find({});
+    return new Response(JSON.stringify(images), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching images:', error);
+    return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
+}
 
 
 
