@@ -1,6 +1,9 @@
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   await connectMongo();
 
