@@ -72,9 +72,11 @@ export async function POST(req) {
 
 export async function GET(req) {
   await connectMongo();
+  const session = await getServerSession({ req }, authOptions);
+  const userEmail = session?.user?.email;
 
   try {
-    const images = await Image.find({});
+    const images = userEmail ? await Image.find({ userEmail }) : [];
     return new Response(JSON.stringify(images), {
       status: 200,
       headers: {
@@ -91,6 +93,7 @@ export async function GET(req) {
     });
   }
 }
+
 
 
 /* 

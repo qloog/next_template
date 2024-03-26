@@ -19,13 +19,13 @@ export default function Dashboard() {
             setIsLoading(true);
             setError(null);
             try {
-              const response = await fetch(`/api/imageUpload?email=${session.user.email}`);
-              
+                const response = await fetch(`/api/imageUpload`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch designs');
                 }
                 const designs = await response.json();
-                setUserDesigns(designs);
+                const userUploadedDesigns = designs.filter(design => design.userEmail === session.user.email);
+                setUserDesigns(userUploadedDesigns);
             } catch (err) {
                 setError(err.message);
                 console.error(err);
