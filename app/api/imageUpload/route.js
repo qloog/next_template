@@ -33,9 +33,11 @@ export async function getLabelsFromGPT4Vision(image) {
 }
 
 export async function POST(req) {
+  
   await connectMongo();
-
+  console.log("Received request:", req.body);
   const session = await getSession({ req });
+  console.log("Session:", session);
   const userEmail = session?.user?.email; 
   const { image } = await req.json();  // userEmail is now optional
 
