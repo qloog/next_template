@@ -1,4 +1,3 @@
-
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
@@ -76,33 +75,20 @@ export async function POST(req) {
 export async function GET(req) {
   await connectMongo();
 
-  const { type } = req.query;
+  const session = await getServerSession({ req });
 
   try {
-    if (type === 'dashboard') {
-      const session = await getServerSession({ req });
-      const userEmail = session?.user?.email;
-      if (!userEmail) {
-        throw new Error('User email not found in session');
-      }
-      const images = await Image.find({ userEmail });
-      return new Response(JSON.stringify(images), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } else if (type === 'gallery') {
-      const images = await Image.find({});
-      return new Response(JSON.stringify(images), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } else {
-      throw new Error('Invalid request type');
+    const userEmail = session?.user?.email;
+    if (!userEmail) {
+      throw new Error('User email not found in session');
     }
+    const images = await Image.find({ userEmail });
+    return new Response(JSON.stringify(images), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   } catch (error) {
     console.error('Error fetching images:', error);
     return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
@@ -113,7 +99,6 @@ export async function GET(req) {
     });
   }
 }
-
 
 
 
