@@ -29,7 +29,7 @@ export async function getLabelsFromGPT4Vision(image) {
   return labels;
 }
 
-export async function POST(req) {
+export async function POST(req, res) {
   await connectMongo();
   const session = await getServerSession({ req }, authOptions);
   const userEmail = session?.user?.email;
@@ -39,44 +39,24 @@ export async function POST(req) {
     const labels = await getLabelsFromGPT4Vision(image);
     const newImage = new Image({ data: image, labels, userEmail });
     await newImage.save();
-    return new Response(JSON.stringify({ imageId: newImage._id, labels, message: 'Image processed successfully' }), {
-      status: 201,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    res.status(201).json({ imageId: newImage._id, labels, message: 'Image processed successfully' });
   } catch (error) {
     console.error('Error processing image:', error);
-    return new Response(JSON.stringify({ error: 'Error processing image' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    res.status(500).json({ error: 'Error processing image' });
   }
 }
 
-export async function GET(req) {
+export async function GET(req, res) {
   await connectMongo();
   const session = await getServerSession({ req }, authOptions);
   const userEmail = session?.user?.email;
 
   try {
-    const images = userEmail ? await Image.find({ userEmail }) : [];
-    return new Response(JSON.stringify(images), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const images = userEmail ? await Image.find({ userEmail }) : await Image.find({});
+    res.status(200).json(images);
   } catch (error) {
     console.error('Error fetching images:', error);
-    return new Response(JSON.stringify({ error: 'Failed to fetch images' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    res.status(500).json({ error: 'Failed to fetch images' });
   }
 }
 
