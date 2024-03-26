@@ -2,24 +2,26 @@ import mongoose from "mongoose";
 
 const imageSchema = new mongoose.Schema(
   {
+    userEmail: {
+      type: String,
+      required: false,
+    },
     data: {
       type: String,
-      required: true, // Base64 encoded image data
+      required: true,
     },
-    labels: [String], // Array of labels
+    labels: [String],
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
+    timestamps: true,
   }
 );
 
-// Creating an index on the createdAt field in descending order
-// This will ensure that when you sort by this field, MongoDB can do it efficiently
 imageSchema.index({ createdAt: -1 });
-imageSchema.index({ userEmail: 1 });
 const Image = mongoose.models.Image || mongoose.model("Image", imageSchema);
 
 export default Image;
+
 
 
 /*

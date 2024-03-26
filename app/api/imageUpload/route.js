@@ -1,9 +1,9 @@
-export const maxDuration = 120;
-export const dynamic = 'force-dynamic';
-
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
+import { getSession } from 'next-auth/react';
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -23,36 +23,20 @@ export async function getLabelsFromGPT4Vision(image) {
         ],
       });
 
-  // Assuming the response format is correct and contains the expected data
-  const labels = response.choices[0].message.content.split(', ');
-  return labels;
+    const labels = response.choices[0].message.content.split(', ');
+    return labels;
 }
 
 export async function POST(req) {
   await connectMongo();
-
+  const session = await getSession({ req });
+  const userEmail = session?.user?.email;
   const { image } = await req.json();
 
   try {
-    // Check if an image with the same data already exists
-    const existingImage = await Image.findOne({ data: image });
-    if (existingImage) {
-      // If image already exists, just return it
-      return new Response(JSON.stringify(existingImage), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    }
-
-    // Get labels from GPT-4 Vision
     const labels = await getLabelsFromGPT4Vision(image);
-
-    // Save image and labels in MongoDB
-    const newImage = new Image({ data: image, labels });
+    const newImage = new Image({ data: image, labels, userEmail });
     await newImage.save();
-
     return new Response(JSON.stringify({ imageId: newImage._id, labels, message: 'Image processed successfully' }), {
       status: 201,
       headers: {
@@ -72,9 +56,11 @@ export async function POST(req) {
 
 export async function GET(req) {
   await connectMongo();
+  const session = await getSession({ req });
+  const userEmail = session?.user?.email;
 
   try {
-    const images = await Image.find({});
+    const images = userEmail ? await Image.find({ userEmail }) : [];
     return new Response(JSON.stringify(images), {
       status: 200,
       headers: {
@@ -91,6 +77,7 @@ export async function GET(req) {
     });
   }
 }
+
 
 
 

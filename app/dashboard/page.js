@@ -1,4 +1,3 @@
-"use client"
 import { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react";
 import ButtonAccount from '@/components/ButtonAccount';
@@ -16,10 +15,7 @@ export default function Dashboard() {
             setIsLoading(true);
             setError(null);
             try {
-              const response = await fetch('/api/personalUserDesigns', {
-                method: 'GET',
-                credentials: 'include',
-              });
+              const response = await fetch(`/api/imageUpload?email=${session.user.email}`);
               
                 if (!response.ok) {
                     throw new Error('Failed to fetch designs');
@@ -37,22 +33,6 @@ export default function Dashboard() {
         fetchUserDesigns();
     }, [session]);
 
-    const handleDelete = async (designId) => {
-        try {
-            const response = await fetch(`/api/deleteDesign?designId=${designId}`, {
-                method: 'DELETE',
-                credentials: 'include'
-            });
-            if (!response.ok) {
-                throw new Error('Failed to delete design');
-            }
-            setUserDesigns(userDesigns.filter(design => design._id !== designId));
-        } catch (err) {
-            console.error(err);
-            setError(err.message);
-        }
-    };
-
     return (
         <main className="bg-white text-black min-h-screen p-8 pb-24">
             <section>
@@ -69,7 +49,6 @@ export default function Dashboard() {
                         {userDesigns.map((design) => (
                             <div key={design._id} className="image-container">
                                 <img src={design.data} alt="Gallery item" />
-                                <button onClick={() => handleDelete(design._id)}>Delete</button>
                             </div>
                         ))}
                     </div>
