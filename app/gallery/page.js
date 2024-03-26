@@ -2,56 +2,64 @@
 
 import { useEffect, useState } from 'react';
 
-export const maxDuration = 120;
-export const dynamic = 'force-dynamic'
-
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
+  const [filteredImages, setFilteredImages] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchImages = async (retryCount = 0) => {
+    const fetchImages = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/galleryDisplay');
+        const response = await fetch('/api/gallerDisplay');
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
         const images = await response.json();
         setGalleryImages(images);
+        setFilteredImages(images);
       } catch (err) {
         setError(err.message);
         console.error(err);
-        if (retryCount < 3) { // Retry up to 3 times
-          fetchImages(retryCount + 1);
-        }
       } finally {
         setIsLoading(false);
       }
     };
-  
+
     fetchImages();
   }, []);
-  
+
+  useEffect(() => {
+    const filtered = galleryImages.filter(image =>
+      image.labels.some(label => label.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+    setFilteredImages(filtered);
+  }, [searchTerm, galleryImages]);
 
   return (
     <>
       <div className="gallery">
         <h1>Gallery</h1>
+        <input
+          type="text"
+          placeholder="Search by label..."
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+          className="search-bar"
+        />
         {isLoading ? (
           <div className="loader">Loading...</div>
         ) : error ? (
           <div className="error">Error: {error}</div>
         ) : (
           <div className="grid">
-            {galleryImages.map((image) => (
+            {filteredImages.map((image) => (
               <div key={image._id} className="image-container">
-                <img
-                  src={image.data}
-                  alt="Gallery item"
-                />
+                <img src={image.data} alt="Gallery item" />
+                <div className="labels">{image.labels.join(', ')}</div>
               </div>
             ))}
           </div>
@@ -67,6 +75,14 @@ export default function Gallery() {
         .gallery h1 {
           margin-bottom: 20px;
           color: #333;
+        }
+
+        .search-bar {
+          margin-bottom: 20px;
+          padding: 10px;
+          width: 300px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
         }
 
         .grid {
@@ -91,6 +107,16 @@ export default function Gallery() {
           width: 100%;
           height: auto;
           object-fit: cover;
+        }
+
+        .labels {
+          background-color: rgba(0, 0, 0, 0.7);
+          color: white;
+          padding: 5px;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
         }
 
         .loader,
