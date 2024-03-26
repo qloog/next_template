@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useEffect, useState } from 'react';
 
@@ -15,7 +15,7 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/imageUpload');
+        const response = await fetch('/api/imageUpload?type=gallery');
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
@@ -114,6 +114,7 @@ export default function Gallery() {
     </>
   );
 }
+
 
 
 
