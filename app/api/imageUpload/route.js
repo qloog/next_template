@@ -2,7 +2,8 @@ import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/libs/next-auth'; // Ensure this path is correct and authOptions is exported from there
+import { authOptions } from '@/libs/next-auth';
+import { NextResponse } from 'next/server';
 
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
@@ -18,7 +19,7 @@ export async function getLabelsFromGPT4Vision(image) {
       {
         role: "user",
         content: [
-          { type: "text", text: "List three labels that categorize this image. Make them super accurate and do not give any labels that are long or description wise. Also, for example, if I upload a picture of a greek god like Zeus, labels should be like 'Zeus, Greek god, mythology', no description at all. Ensure the 3 labels are as accurate as possible and you're sure they're correct."},
+          { type: "text", text: "List three labels that categorize this image. Make them super accurate and do not give any labels that are long or description wise. Also, for example, if I upload a picture of a Greek god like Zeus, labels should be like 'Zeus, Greek god, mythology', no description at all. Ensure the 3 labels are as accurate as possible and you're sure they're correct."},
           { type: "image_url", image_url: image }
         ],
       },
@@ -33,16 +34,16 @@ export async function POST(req) {
   await connectMongo();
   const session = await getServerSession({ req }, authOptions);
   const userEmail = session?.user?.email;
-  const { image } = req.body;
+  const { image } = await req.json();
 
   try {
     const labels = await getLabelsFromGPT4Vision(image);
     const newImage = new Image({ data: image, labels, userEmail });
     await newImage.save();
-    return res.status(201).json({ imageId: newImage._id, labels, message: 'Image processed successfully' });
+    return NextResponse.json({ imageId: newImage._id, labels, message: 'Image processed successfully' }, { status: 201 });
   } catch (error) {
     console.error('Error processing image:', error);
-    return res.status(500).json({ error: 'Error processing image' });
+    return NextResponse.json({ error: 'Error processing image' }, { status: 500 });
   }
 }
 
@@ -52,14 +53,13 @@ export async function GET(req) {
   const userEmail = session?.user?.email;
 
   try {
-    const images = userEmail ? await Image.find({ userEmail }) : [];
-    return res.status(200).json(images);
+    const images = userEmail ? await Image.find({ userEmail }).exec() : await Image.find({}).exec();
+    return NextResponse.json(images, { status: 200 });
   } catch (error) {
     console.error('Error fetching images:', error);
-    return res.status(500).json({ error: 'Failed to fetch images' });
+    return NextResponse.json({ error: 'Failed to fetch images' }, { status: 500 });
   }
 }
-
 
 
 
