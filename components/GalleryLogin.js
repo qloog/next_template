@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router"; // Corrected from "next/navigation" to "next/router"
 import config from "@/config";
 
-const ButtonSignin = ({ text = "View Design History", extraStyle = "btn w-full max-w-xs space-y-3 text-white" }) => {
+const GallerySignIn = ({ text = "View Design History", extraStyle = "btn w-full max-w-xs space-y-3 text-white" }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
@@ -62,4 +62,4 @@ const ButtonSignin = ({ text = "View Design History", extraStyle = "btn w-full m
   );
 };
 
-export default ButtonSignin;
+export default GallerySignIn;
