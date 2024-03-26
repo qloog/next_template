@@ -2,7 +2,7 @@
 
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Corrected from "next/navigation" to "next/router"
+import { useRouter } from "next/navigation"; 
 import config from "@/config";
 
 const GallerySignIn = ({ text = "View Design History", extraStyle = "btn w-full max-w-xs space-y-3 text-white" }) => {
