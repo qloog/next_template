@@ -1,80 +1,57 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
+
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic'
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
-  const [filteredImages, setFilteredImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchImages = async (retryCount = 0) => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/imageUpload'); // Change the endpoint to fetch all images
+        const response = await fetch('/api/imageUpload');
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
         const images = await response.json();
         setGalleryImages(images);
-        setFilteredImages(images); // Initialize filteredImages with all images
       } catch (err) {
         setError(err.message);
         console.error(err);
-        if (retryCount < 3) {
+        if (retryCount < 3) { // Retry up to 3 times
           fetchImages(retryCount + 1);
         }
       } finally {
         setIsLoading(false);
       }
     };
-    
-
+  
     fetchImages();
   }, []);
-
-  useEffect(() => {
-    if (searchTerm) {
-      const lowerCaseSearchTerm = searchTerm.toLowerCase();
-      const filtered = galleryImages.filter((image) =>
-        image.labels.some(label => label.toLowerCase().includes(lowerCaseSearchTerm))
-      );
-      setFilteredImages(filtered);
-    } else {
-      setFilteredImages(galleryImages);
-    }
-  }, [searchTerm, galleryImages]);
   
 
   return (
     <>
       <div className="gallery">
         <h1>Gallery</h1>
-        <input
-          type="text"
-          placeholder="Search by label..."
-          className="search-bar"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
         {isLoading ? (
           <div className="loader">Loading...</div>
         ) : error ? (
           <div className="error">Error: {error}</div>
         ) : (
           <div className="grid">
-            {filteredImages.map((image) => (
+            {galleryImages.map((image) => (
               <div key={image._id} className="image-container">
-                <img src={image.data} alt="Gallery item" />
-                {image.labels && image.labels.length > 0 && (
-                  <div className="labels">
-                    {image.labels.map((label, index) => (
-                      <span key={index} className="label">{label}</span>
-                    ))}
-                  </div>
-                )}
+                <img
+                  src={image.data}
+                  alt="Gallery item"
+                />
               </div>
             ))}
           </div>
@@ -87,13 +64,9 @@ export default function Gallery() {
           text-align: center;
         }
 
-        .search-bar {
+        .gallery h1 {
           margin-bottom: 20px;
-          padding: 10px;
-          border-radius: 20px;
-          border: 1px solid #ccc;
-          outline: none;
-          width: 200px;
+          color: #333;
         }
 
         .grid {
@@ -118,20 +91,6 @@ export default function Gallery() {
           width: 100%;
           height: auto;
           object-fit: cover;
-        }
-
-        .labels {
-          margin-top: 10px;
-        }
-
-        .label {
-          display: inline-block;
-          background-color: #007bff;
-          color: #fff;
-          padding: 5px 10px;
-          border-radius: 20px;
-          margin: 2px;
-          font-size: 12px;
         }
 
         .loader,
