@@ -60,7 +60,7 @@ export async function POST(req) {
     const newImage = new Image(imageDocument);
     await newImage.save();
 
-    return new Response(JSON.stringify({ imageId: newImage._id, labels, message: 'Image processed successfully' }), {
+    return new Response(JSON.stringify({ imageId: newImage._id, labels, userEmail, message: 'Image processed successfully' }), {
       status: 201,
       headers: {
         'Content-Type': 'application/json',
