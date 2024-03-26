@@ -2,6 +2,7 @@ import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import OpenAI from 'openai';
 import { getSession } from 'next-auth/react';
+
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
 

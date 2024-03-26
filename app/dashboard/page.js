@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react";
 import ButtonAccount from '@/components/ButtonAccount';
 
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic';
+
 export default function Dashboard() {
     const { data: session } = useSession();
     const [userDesigns, setUserDesigns] = useState([]);
