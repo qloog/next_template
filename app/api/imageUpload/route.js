@@ -112,6 +112,7 @@ export async function GET(req) {
   }
 }
 
+
 /* 
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
