@@ -1,4 +1,3 @@
-
 import mongoose from 'mongoose';
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
@@ -11,7 +10,6 @@ export const dynamic = 'force-dynamic';
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
 
 export async function getLabelsFromGPT4Vision(image) {
     const response = await openai.chat.completions.create({
@@ -35,7 +33,6 @@ export async function getLabelsFromGPT4Vision(image) {
 export async function POST(req) {
   
   await connectMongo();
-  console.log("Received request:", req.body);
   const session = await getSession({ req });
   console.log("Session:", session);
   const userEmail = session?.user?.email; 
@@ -101,6 +98,7 @@ export async function GET(req) {
       });
     }
   }
+
 
 
 
