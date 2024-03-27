@@ -6,7 +6,7 @@ import { authOptions } from '@/libs/next-auth';
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
 
-export default async function handler(req, res) {
+export async function DELETE(req) {
   if (req.method !== 'DELETE') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
