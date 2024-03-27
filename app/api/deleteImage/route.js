@@ -1,33 +1,11 @@
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/libs/next-auth';
 
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
 
 export async function DELETE(req) {
-  if (req.method !== 'DELETE') {
-    return new Response(JSON.stringify({ error: 'Method Not Allowed' }), {
-      status: 405,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-
   await connectMongo();
-
-  const session = await getServerSession({ req }, authOptions);
-
-  if (!session || !session.user) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-      status: 401,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
 
   const { imageId } = await req.json();
 
