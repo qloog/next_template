@@ -1,11 +1,11 @@
-"use client"
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+"use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,9 +14,9 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/galleryDisplay');
+        const response = await fetch("/api/galleryDisplay");
         if (!response.ok) {
-          throw new Error('Failed to fetch images');
+          throw new Error("Failed to fetch images");
         }
         const images = await response.json();
         // Sort images by createdAt in descending order
@@ -35,8 +35,10 @@ export default function Gallery() {
   }, []);
 
   useEffect(() => {
-    const filtered = galleryImages.filter(image =>
-      image.labels.some(label => label.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filtered = galleryImages.filter((image) =>
+      image.labels.some((label) =>
+        label.toLowerCase().includes(searchTerm.toLowerCase())
+      )
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
@@ -49,7 +51,7 @@ export default function Gallery() {
           type="text"
           placeholder="Search by label..."
           value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)}
           className="search-bar"
         />
         {isLoading ? (
@@ -67,8 +69,9 @@ export default function Gallery() {
                   height={250}
                   layout="responsive"
                   objectFit="cover"
+                  priority={true} // Eager loading
                 />
-                <div className="labels">{image.labels.join(', ')}</div>
+                <div className="labels">{image.labels.join(", ")}</div>
               </div>
             ))}
           </div>
@@ -145,17 +148,6 @@ export default function Gallery() {
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 "use client"
@@ -280,9 +272,9 @@ export default function Gallery() {
           width: 100%;
           text-align: center;
           font-size: calc(10px + 0.5vw); /* Responsive font size */
-       // }
+// }
 
-       /* .loader,
+/* .loader,
         .error {
           display: flex;
           justify-content: center;
@@ -304,4 +296,3 @@ export default function Gallery() {
   );
 }
 */
-
