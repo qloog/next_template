@@ -1,9 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
 
-export const maxDuration = 120;
-export const dynamic = 'force-dynamic';
-
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
@@ -62,7 +59,7 @@ export default function Gallery() {
           <div className="grid">
             {filteredImages.map((image) => (
               <div key={image._id} className="image-container">
-                <img src={image.data} alt="Gallery item" />
+                <img src={image.data} alt="Gallery item" loading="lazy" />
                 <div className="labels">{image.labels.join(', ')}</div>
               </div>
             ))}
