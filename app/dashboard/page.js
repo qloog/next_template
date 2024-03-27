@@ -36,6 +36,12 @@ export default function Dashboard() {
     }, [session]);
 
     const handleDelete = async (imageId) => {
+        const confirmation = prompt('To confirm deletion, type "delete":');
+        if (confirmation !== 'delete') {
+            console.log('Deletion canceled.');
+            return;
+        }
+    
         try {
             const response = await fetch('/api/deleteImage', {
                 method: 'DELETE',
@@ -44,11 +50,11 @@ export default function Dashboard() {
                 },
                 body: JSON.stringify({ imageId }),
             });
-
+    
             if (!response.ok) {
                 throw new Error('Failed to delete image');
             }
-
+    
             // Remove the deleted image from the userDesigns array
             setUserDesigns(userDesigns.filter(design => design._id !== imageId));
         } catch (err) {
@@ -56,6 +62,7 @@ export default function Dashboard() {
             console.error(err);
         }
     };
+    
 
     return (
         <main className="bg-white text-black min-h-screen p-8 pb-24">
