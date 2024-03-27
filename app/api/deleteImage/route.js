@@ -1,10 +1,13 @@
-// File: app/api/deleteImage.js
+
 
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import { authOptions } from '@/libs/next-auth';
+
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic';
 
 
 export default async function handler(req) {
