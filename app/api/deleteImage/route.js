@@ -3,9 +3,6 @@ import Image from '@/models/Image';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/libs/next-auth';
 
-export const maxDuration = 120;
-export const dynamic = 'force-dynamic';
-
 export async function DELETE(req, res) {
   await connectMongo();
 
