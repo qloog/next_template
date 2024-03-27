@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from 'react';
 
 export default function Gallery() {
@@ -19,6 +18,8 @@ export default function Gallery() {
           throw new Error('Failed to fetch images');
         }
         const images = await response.json();
+        // Sort images by createdAt in descending order
+        images.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setGalleryImages(images);
         setFilteredImages(images);
       } catch (err) {
@@ -117,6 +118,7 @@ export default function Gallery() {
           bottom: 0;
           width: 100%;
           text-align: center;
+          font-size: calc(10px + 0.5vw); /* Responsive font size */
         }
 
         .loader,
