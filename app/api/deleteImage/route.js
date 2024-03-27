@@ -3,13 +3,21 @@ import Image from '@/models/Image';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/libs/next-auth';
 
-export async function DELETE(req, res) {
+export const maxDuration = 120;
+export const dynamic = 'force-dynamic';
+
+export async function DELETE(req) {
   await connectMongo();
 
   const session = await getServerSession({ req }, authOptions);
 
   if (!session || !session.user) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   const { imageId } = await req.json();
@@ -17,11 +25,26 @@ export async function DELETE(req, res) {
   try {
     const deletedImage = await Image.findByIdAndDelete(imageId);
     if (!deletedImage) {
-      return res.status(404).json({ error: 'Image not found' });
+      return new Response(JSON.stringify({ error: 'Image not found' }), {
+        status: 404,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
     }
-    return res.status(200).json({ message: 'Image deleted successfully' });
+    return new Response(JSON.stringify({ message: 'Image deleted successfully' }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   } catch (error) {
     console.error('Error deleting image:', error);
-    return res.status(500).json({ error: 'Failed to delete image' });
+    return new Response(JSON.stringify({ error: 'Failed to delete image' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 }
