@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 import { getServerSession } from 'next-auth/next';
@@ -7,28 +8,25 @@ export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
 
 export async function DELETE(req) {
-  if (req.method !== 'DELETE') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
-  }
-
   await connectMongo();
 
-  const session = await getServerSession({ req }, authOptions);
+  const session = await getServerSession(req, authOptions);
 
   if (!session || !session.user) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { imageId } = req.body;
+  const body = await req.json();
+  const { imageId } = body;
 
   try {
     const deletedImage = await Image.findByIdAndDelete(imageId);
     if (!deletedImage) {
-      return res.status(404).json({ error: 'Image not found' });
+      return NextResponse.json({ error: 'Image not found' }, { status: 404 });
     }
-    return res.status(200).json({ message: 'Image deleted successfully' });
+    return NextResponse.json({ message: 'Image deleted successfully' }, { status: 200 });
   } catch (error) {
     console.error('Error deleting image:', error);
-    return res.status(500).json({ error: 'Failed to delete image' });
+    return NextResponse.json({ error: 'Failed to delete image' }, { status: 500 });
   }
 }
