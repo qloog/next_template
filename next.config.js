@@ -11,6 +11,9 @@ const nextConfig = {
       "toppng.com",
     ],
   },
+  images: {
+    minimumCacheTTL: 31536000,
+}
 };
 
 module.exports = nextConfig;
