@@ -18,7 +18,7 @@ export default function Gallery() {
       try {
         const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`;
         const response = await fetch(url, {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
