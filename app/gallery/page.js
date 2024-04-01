@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from 'react';
 
 export default function Gallery() {
@@ -7,22 +7,23 @@ export default function Gallery() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [imagesPerPage] = useState(30);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const fetchImages = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('/api/galleryDisplay');
+        const response = await fetch(`/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`);
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
-        const images = await response.json();
-        // Sort images by createdAt in descending order
-        images.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        setGalleryImages(images);
-        setFilteredImages(images);
+        const data = await response.json();
+        setGalleryImages(data.images);
+        setFilteredImages(data.images);
+        setTotalPages(data.totalPages);
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -32,7 +33,7 @@ export default function Gallery() {
     };
 
     fetchImages();
-  }, []);
+  }, [currentPage, imagesPerPage]);
 
   useEffect(() => {
     const filtered = galleryImages.filter(image =>
@@ -66,6 +67,15 @@ export default function Gallery() {
             ))}
           </div>
         )}
+        <div className="pagination">
+          <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+            Previous
+          </button>
+          <span>Page {currentPage} of {totalPages}</span>
+          <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
+            Next
+          </button>
+        </div>
       </div>
       <style jsx>{`
         .gallery {
@@ -120,9 +130,9 @@ export default function Gallery() {
           width: 100%;
           text-align: center;
           font-size: calc(10px + 0.5vw); /* Responsive font size */
- }
+        }
 
- .loader,
+        .loader,
         .error {
           display: flex;
           justify-content: center;
@@ -139,12 +149,45 @@ export default function Gallery() {
         .error {
           color: #dc3545;
         }
+
+        .pagination {
+          margin-top: 20px;
+        }
+
+        .pagination button {
+          padding: 10px 20px;
+          margin: 0 10px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .pagination button:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+
+        .pagination span {
+          font-size: 16px;
+        }
       `}</style>
     </>
   );
 }
+
+
+
+
+
+
+
+
+
 
 /*
+
 "use client"
 import { useEffect, useState } from 'react';
 
@@ -267,9 +310,9 @@ export default function Gallery() {
           width: 100%;
           text-align: center;
           font-size: calc(10px + 0.5vw); /* Responsive font size */
-// }
+ //}
 
-/* .loader,
+ /*.loader,
         .error {
           display: flex;
           justify-content: center;
@@ -290,4 +333,5 @@ export default function Gallery() {
     </>
   );
 }
+
 */
