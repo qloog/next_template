@@ -9,7 +9,6 @@ export default function Gallery() {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [imagesPerPage] = useState(32);
-  const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -22,7 +21,6 @@ export default function Gallery() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ alreadyDisplayedIds }),
         });
 
         if (!response.ok) {
@@ -30,11 +28,6 @@ export default function Gallery() {
         }
         const data = await response.json();
         setGalleryImages((prevImages) => [...prevImages, ...data.images]);
-        setFilteredImages((prevImages) => [...prevImages, ...data.images]);
-        setAlreadyDisplayedIds((prevIds) => [
-          ...prevIds,
-          ...data.images.map((img) => img._id),
-        ]);
       } catch (err) {
         setError(err.message);
         console.error(err);
