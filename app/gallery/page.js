@@ -1,5 +1,5 @@
 "use client"
-// components/Gallery.js
+
 import { useEffect, useState } from 'react';
 
 export default function Gallery() {
@@ -9,7 +9,7 @@ export default function Gallery() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [imagesPerPage] = useState(30);
+  const [imagesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState(0);
   const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
@@ -30,12 +30,12 @@ export default function Gallery() {
         }
         const data = await response.json();
         console.log('Images from backend:', data.images);
-        setGalleryImages(data.images);
-        setFilteredImages(data.images);
+        setGalleryImages([...galleryImages, ...data.images]);
+        setFilteredImages([...filteredImages, ...data.images]);
         setTotalPages(data.totalPages);
 
         const newIds = data.images.map(image => image._id);
-        setAlreadyDisplayedIds(prevIds => [...prevIds, ...newIds]);
+        setAlreadyDisplayedIds([...alreadyDisplayedIds, ...newIds]);
       } catch (err) {
         setError(err.message);
         console.error(err);
