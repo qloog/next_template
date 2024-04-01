@@ -8,7 +8,7 @@ export default function Gallery() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [imagesPerPage] = useState(30);
+  const [imagesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState(0);
   const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
@@ -43,8 +43,13 @@ export default function Gallery() {
       }
     };
 
+    if (currentPage > totalPages) {
+      // Stop fetching if current page exceeds total pages
+      return;
+    }
+
     fetchImages();
-  }, [currentPage, imagesPerPage, alreadyDisplayedIds]);
+  }, [currentPage, imagesPerPage, alreadyDisplayedIds, totalPages]);
 
   useEffect(() => {
     const filtered = galleryImages.filter(image =>
@@ -189,6 +194,7 @@ export default function Gallery() {
     </>
   );
 }
+
 
 
         
