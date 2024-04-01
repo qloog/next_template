@@ -10,9 +10,8 @@ export async function GET({ url }) {
   // Get query parameters for pagination
   const params = new URLSearchParams(url.search);
   const page = parseInt(params.get('page')) || 1;
+  const limit = parseInt(params.get('limit')) || 32; // Define the 'limit' variable
   const skip = (page - 1) * limit;
-  const images = await Image.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
-  
 
   try {
     const images = await Image.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
