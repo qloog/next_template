@@ -1,10 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,11 +16,9 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch(
-          `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`
-        );
+        const response = await fetch(`/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch images");
+          throw new Error('Failed to fetch images');
         }
         const data = await response.json();
         setGalleryImages(data.images);
@@ -38,10 +36,8 @@ export default function Gallery() {
   }, [currentPage, imagesPerPage]);
 
   useEffect(() => {
-    const filtered = galleryImages.filter((image) =>
-      image.labels.some((label) =>
-        label.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+    const filtered = galleryImages.filter(image =>
+      image.labels.some(label => label.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
@@ -54,7 +50,7 @@ export default function Gallery() {
           type="text"
           placeholder="Search by label..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(e.target.value)}
           className="search-bar"
         />
         {isLoading ? (
@@ -66,30 +62,25 @@ export default function Gallery() {
             {filteredImages.map((image) => (
               <div key={image._id} className="image-container">
                 <img src={image.data} alt="Gallery item" />
-                <div className="labels">{image.labels.join(", ")}</div>
+                <div className="labels">{image.labels.join(', ')}</div>
               </div>
             ))}
           </div>
         )}
         <div className="pagination">
-          <button
-            onClick={() => {
-              console.log("Current Page Before:", currentPage);
-              setCurrentPage(currentPage - 1);
-              console.log("Current Page After:", currentPage);
-            }}
-            disabled={currentPage === 1}
-          >
+          <button onClick={() => {
+            console.log('Current Page Before:', currentPage);
+            setCurrentPage(currentPage - 1);
+            console.log('Current Page After:', currentPage);
+          }} disabled={currentPage === 1}>
             Previous
           </button>
-          <button
-            onClick={() => {
-              console.log("Current Page Before:", currentPage);
-              setCurrentPage(currentPage + 1);
-              console.log("Current Page After:", currentPage);
-            }}
-            disabled={currentPage === totalPages}
-          >
+          <span>Page {currentPage} of {totalPages}</span>
+          <button onClick={() => {
+            console.log('Current Page Before:', currentPage);
+            setCurrentPage(currentPage + 1);
+            console.log('Current Page After:', currentPage);
+          }} disabled={currentPage === totalPages}>
             Next
           </button>
         </div>
@@ -194,6 +185,7 @@ export default function Gallery() {
   );
 }
 
+        
 /*
 
 "use client"
