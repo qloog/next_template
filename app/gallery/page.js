@@ -8,10 +8,15 @@ export default function Gallery() {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [filteredImages, setFilteredImages] = useState([]);
+  const [loadedPages, setLoadedPages] = useState([]);
+
 
 
   useEffect(() => {
     const fetchImages = async () => {
+      if (loadedPages.includes(page)) {
+        return; // Skip fetching if the page has already been loaded
+      }
       setIsLoading(true);
       setError(null);
       try {
@@ -21,6 +26,7 @@ export default function Gallery() {
         }
         const images = await response.json();
         setGalleryImages(prevImages => [...prevImages, ...images]);
+        setLoadedPages(prevPages => [...prevPages, page]); // Add the current page to the list of loaded pages
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -28,9 +34,10 @@ export default function Gallery() {
         setIsLoading(false);
       }
     };
-
+  
     fetchImages();
-  }, [page]);
+  }, [page, loadedPages]);
+  
 
   // Load more images when the user scrolls to the bottom of the page
   useEffect(() => {
