@@ -16,11 +16,14 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch(`/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`);
+        const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`;
+        console.log('API Request URL:', url);
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
         const data = await response.json();
+        console.log('Images from backend:', data.images);
         setGalleryImages(data.images);
         setFilteredImages(data.images);
         setTotalPages(data.totalPages);
@@ -68,19 +71,11 @@ export default function Gallery() {
           </div>
         )}
         <div className="pagination">
-          <button onClick={() => {
-            console.log('Current Page Before:', currentPage);
-            setCurrentPage(currentPage - 1);
-            console.log('Current Page After:', currentPage);
-          }} disabled={currentPage === 1}>
+          <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
             Previous
           </button>
           <span>Page {currentPage} of {totalPages}</span>
-          <button onClick={() => {
-            console.log('Current Page Before:', currentPage);
-            setCurrentPage(currentPage + 1);
-            console.log('Current Page After:', currentPage);
-          }} disabled={currentPage === totalPages}>
+          <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
             Next
           </button>
         </div>
