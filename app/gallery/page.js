@@ -7,6 +7,8 @@ export default function Gallery() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
+  const [filteredImages, setFilteredImages] = useState([]);
+
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -49,6 +51,7 @@ export default function Gallery() {
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
+  
 
   return (
     <>
@@ -67,13 +70,14 @@ export default function Gallery() {
           <div className="error">Error: {error}</div>
         ) : (
           <div className="grid">
-            {galleryImages.map((image) => (
-              <div key={image._id} className="image-container">
-                <img src={image.data} alt="Gallery item" />
-                <div className="labels">{image.labels.join(', ')}</div>
-              </div>
-            ))}
-          </div>
+          {filteredImages.map((image) => (
+            <div key={image._id} className="image-container">
+              <img src={image.data} alt="Gallery item" />
+              <div className="labels">{image.labels.join(', ')}</div>
+            </div>
+          ))}
+        </div>
+        
         )}
       </div>
       <style jsx>{`
