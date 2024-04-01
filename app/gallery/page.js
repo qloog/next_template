@@ -19,6 +19,7 @@ export default function Gallery() {
       try {
         const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}&alreadyDisplayedIds=${encodeURIComponent(JSON.stringify(alreadyDisplayedIds))}`;
         const response = await fetch(url, {
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
