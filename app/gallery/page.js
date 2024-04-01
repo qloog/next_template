@@ -8,25 +8,14 @@ export default function Gallery() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [imagesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState(0);
-  const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`;
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ alreadyDisplayedIds }),
-        });
-        
-
+        const response = await fetch(`/api/galleryDisplay?page=${currentPage}&limit=32`);
         if (!response.ok) {
           throw new Error("Failed to fetch images");
         }
@@ -34,10 +23,6 @@ export default function Gallery() {
         setGalleryImages((prevImages) => [...prevImages, ...data.images]);
         setFilteredImages((prevImages) => [...prevImages, ...data.images]);
         setTotalPages(data.totalPages);
-        setAlreadyDisplayedIds((prevIds) => [
-          ...prevIds,
-          ...data.images.map((img) => img._id),
-        ]);
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -47,7 +32,7 @@ export default function Gallery() {
     };
 
     fetchImages();
-  }, [currentPage, imagesPerPage, alreadyDisplayedIds]);
+  }, [currentPage]);
 
   useEffect(() => {
     const filtered = galleryImages.filter((image) =>
@@ -57,6 +42,12 @@ export default function Gallery() {
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
+
+  const loadMoreImages = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
 
   return (
     <>
@@ -74,14 +65,17 @@ export default function Gallery() {
         ) : error ? (
           <div className="error">Error: {error}</div>
         ) : (
-          <div className="grid">
-            {filteredImages.map((image) => (
-              <div key={image._id} className="image-container">
-                <img src={image.data} alt="Gallery item" />
-                <div className="labels">{image.labels.join(", ")}</div>
-              </div>
-            ))}
-          </div>
+          <>
+            <div className="grid">
+              {filteredImages.map((image) => (
+                <div key={image._id} className="image-container">
+                  <img src={image.data} alt="Gallery item" />
+                  <div className="labels">{image.labels.join(", ")}</div>
+                </div>
+              ))}
+            </div>
+            <button onClick={loadMoreImages}>Load More</button>
+          </>
         )}
       </div>
       <style jsx>{`
@@ -116,6 +110,7 @@ export default function Gallery() {
           border-radius: 8px;
           overflow: hidden;
           transition: transform 0.3s ease;
+          position: relative;
         }
 
         .image-container:hover {
@@ -134,7 +129,8 @@ export default function Gallery() {
           padding: 5px;
           position: absolute;
           bottom: 0;
-          width: 100%;
+          left: 0;
+          right: 0;
           text-align: center;
           font-size: calc(10px + 0.5vw); /* Responsive font size */
         }
@@ -156,10 +152,25 @@ export default function Gallery() {
         .error {
           color: #dc3545;
         }
+
+        button {
+          margin-top: 20px;
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
       `}</style>
     </>
   );
 }
+
 
 /*
 
