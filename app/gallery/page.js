@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useEffect, useState } from 'react';
 
 export default function Gallery() {
@@ -10,6 +10,7 @@ export default function Gallery() {
   const [currentPage, setCurrentPage] = useState(1);
   const [imagesPerPage] = useState(30);
   const [totalPages, setTotalPages] = useState(0);
+  const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -18,7 +19,11 @@ export default function Gallery() {
       try {
         const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`;
         console.log('API Request URL:', url);
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            'Already-Displayed-Ids': JSON.stringify(alreadyDisplayedIds),
+          },
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
@@ -27,6 +32,9 @@ export default function Gallery() {
         setGalleryImages(data.images);
         setFilteredImages(data.images);
         setTotalPages(data.totalPages);
+
+        const newIds = data.images.map(image => image._id);
+        setAlreadyDisplayedIds(prevIds => [...prevIds, ...newIds]);
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -36,7 +44,7 @@ export default function Gallery() {
     };
 
     fetchImages();
-  }, [currentPage, imagesPerPage]);
+  }, [currentPage, imagesPerPage, alreadyDisplayedIds]);
 
   useEffect(() => {
     const filtered = galleryImages.filter(image =>
@@ -112,6 +120,7 @@ export default function Gallery() {
           border-radius: 8px;
           overflow: hidden;
           transition: transform 0.3s ease;
+          position: relative; /* Added to position labels correctly */
         }
 
         .image-container:hover {
@@ -130,7 +139,8 @@ export default function Gallery() {
           padding: 5px;
           position: absolute;
           bottom: 0;
-          width: 100%;
+          left: 0; /* Centered labels */
+          right: 0; /* Centered labels */
           text-align: center;
           font-size: calc(10px + 0.5vw); /* Responsive font size */
         }
@@ -179,6 +189,7 @@ export default function Gallery() {
     </>
   );
 }
+
 
         
 /*

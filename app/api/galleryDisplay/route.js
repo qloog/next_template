@@ -1,20 +1,26 @@
+
 import connectMongo from '@/libs/mongoose';
 import Image from '@/models/Image';
 
 export const maxDuration = 120;
 export const dynamic = 'force-dynamic';
 
-export async function GET({ url }) {
+export async function GET({ url, headers }) {
   await connectMongo();
 
-  // Get query parameters for pagination
   const params = new URLSearchParams(url.search);
   const page = parseInt(params.get('page')) || 1;
-  const limit = parseInt(params.get('limit')) || 32; // Define the 'limit' variable
+  const limit = parseInt(params.get('limit')) || 32;
   const skip = (page - 1) * limit;
 
   try {
-    const images = await Image.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
+    const alreadyDisplayedIds = JSON.parse(headers.get('Already-Displayed-Ids')) || [];
+
+    const images = await Image.find({ _id: { $nin: alreadyDisplayedIds } })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
     const totalImages = await Image.countDocuments();
     const totalPages = Math.ceil(totalImages / limit);
 
@@ -34,8 +40,6 @@ export async function GET({ url }) {
     });
   }
 }
-
-
 
 
 
