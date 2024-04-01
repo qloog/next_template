@@ -17,14 +17,16 @@ export default function Gallery() {
       setIsLoading(true);
       setError(null);
       try {
-        const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}&alreadyDisplayedIds=${encodeURIComponent(JSON.stringify(alreadyDisplayedIds))}`;
+        const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}&alreadyDisplayedIds=${encodeURIComponent(
+          JSON.stringify(alreadyDisplayedIds)
+        )}`;
         const response = await fetch(url, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ alreadyDisplayedIds }),
         });
+
         if (!response.ok) {
           throw new Error("Failed to fetch images");
         }
@@ -158,7 +160,6 @@ export default function Gallery() {
     </>
   );
 }
-
 
 /*
 
