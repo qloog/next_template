@@ -35,7 +35,7 @@ export default function Gallery() {
         setTotalPages(data.totalPages);
 
         const newIds = data.images.map(image => image._id);
-        setAlreadyDisplayedIds([...alreadyDisplayedIds, ...newIds]);
+        setAlreadyDisplayedIds(prevIds => [...prevIds, ...newIds]);        
       } catch (err) {
         setError(err.message);
         console.error(err);

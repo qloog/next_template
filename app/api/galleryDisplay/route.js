@@ -15,6 +15,8 @@ export async function GET({ url, headers }) {
 
   try {
     const alreadyDisplayedIds = JSON.parse(headers.get('Already-Displayed-Ids')) || [];
+    console.log('Already Displayed IDs:', alreadyDisplayedIds);
+    
 
     const images = await Image.find({ _id: { $nin: alreadyDisplayedIds } })
       .sort({ createdAt: -1 })
