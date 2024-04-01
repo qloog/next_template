@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 
 export default function Gallery() {
@@ -11,6 +10,7 @@ export default function Gallery() {
   const [currentPage, setCurrentPage] = useState(1);
   const [imagesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState(0);
+  const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -18,16 +18,24 @@ export default function Gallery() {
       setError(null);
       try {
         const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`;
-        console.log("API Request URL:", url);
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ alreadyDisplayedIds }),
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch images");
         }
         const data = await response.json();
-        console.log("Images from backend:", data.images);
-        setGalleryImages(data.images);
-        setFilteredImages(data.images);
+        setGalleryImages((prevImages) => [...prevImages, ...data.images]);
+        setFilteredImages((prevImages) => [...prevImages, ...data.images]);
         setTotalPages(data.totalPages);
+        setAlreadyDisplayedIds((prevIds) => [
+          ...prevIds,
+          ...data.images.map((img) => img._id),
+        ]);
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -37,7 +45,7 @@ export default function Gallery() {
     };
 
     fetchImages();
-  }, [currentPage, imagesPerPage]);
+  }, [currentPage, imagesPerPage, alreadyDisplayedIds]);
 
   useEffect(() => {
     const filtered = galleryImages.filter((image) =>
@@ -73,27 +81,84 @@ export default function Gallery() {
             ))}
           </div>
         )}
-        <div className="pagination">
-          <button
-            onClick={() => setCurrentPage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </div>
       </div>
+      <style jsx>{`
+        .gallery {
+          padding: 20px;
+          background-color: #f5f5f5;
+          text-align: center;
+        }
+
+        .gallery h1 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+
+        .search-bar {
+          margin-bottom: 20px;
+          padding: 10px;
+          width: 300px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          justify-content: center;
+        }
+
+        .image-container {
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+          transform: scale(1.05);
+        }
+
+        .image-container img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+
+        .labels {
+          background-color: rgba(0, 0, 0, 0.7);
+          color: white;
+          padding: 5px;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          font-size: calc(10px + 0.5vw); /* Responsive font size */
+        }
+
+        .loader,
+        .error {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 200px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        .loader {
+          color: #007bff;
+        }
+
+        .error {
+          color: #dc3545;
+        }
+      `}</style>
     </>
   );
 }
+
 
 /*
 
