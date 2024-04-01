@@ -1,28 +1,39 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [imagesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState(0);
+  const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch(`/api/galleryDisplay?page=${currentPage}&limit=32`);
+        const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}&alreadyDisplayedIds=${encodeURIComponent(JSON.stringify(alreadyDisplayedIds))}`;
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
         if (!response.ok) {
-          throw new Error("Failed to fetch images");
+          throw new Error('Failed to fetch images');
         }
         const data = await response.json();
-        setGalleryImages((prevImages) => [...prevImages, ...data.images]);
-        setFilteredImages((prevImages) => [...prevImages, ...data.images]);
+        const newImages = data.images.filter(image => !alreadyDisplayedIds.includes(image._id));
+        setGalleryImages([...galleryImages, ...newImages]);
+        setFilteredImages([...filteredImages, ...newImages]);
         setTotalPages(data.totalPages);
+        setAlreadyDisplayedIds([...alreadyDisplayedIds, ...newImages.map(img => img._id)]);
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -32,21 +43,17 @@ export default function Gallery() {
     };
 
     fetchImages();
-  }, [currentPage]);
+  }, [currentPage]); // Only fetch images when currentPage changes
 
   useEffect(() => {
-    const filtered = galleryImages.filter((image) =>
-      image.labels.some((label) =>
-        label.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+    const filtered = galleryImages.filter(image =>
+      image.labels.some(label => label.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
 
-  const loadMoreImages = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
+  const loadMore = () => {
+    setCurrentPage(prevPage => prevPage + 1);
   };
 
   return (
@@ -57,7 +64,7 @@ export default function Gallery() {
           type="text"
           placeholder="Search by label..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(e.target.value)}
           className="search-bar"
         />
         {isLoading ? (
@@ -70,102 +77,20 @@ export default function Gallery() {
               {filteredImages.map((image) => (
                 <div key={image._id} className="image-container">
                   <img src={image.data} alt="Gallery item" />
-                  <div className="labels">{image.labels.join(", ")}</div>
+                  <div className="labels">{image.labels.join(', ')}</div>
                 </div>
               ))}
             </div>
-            <button onClick={loadMoreImages}>Load More</button>
+            {currentPage < totalPages && (
+              <button onClick={loadMore} className="load-more-button">
+                Load More
+              </button>
+            )}
           </>
         )}
       </div>
       <style jsx>{`
-        .gallery {
-          padding: 20px;
-          background-color: #f5f5f5;
-          text-align: center;
-        }
-
-        .gallery h1 {
-          margin-bottom: 20px;
-          color: #333;
-        }
-
-        .search-bar {
-          margin-bottom: 20px;
-          padding: 10px;
-          width: 300px;
-          border-radius: 5px;
-          border: 1px solid #ccc;
-        }
-
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 20px;
-          justify-content: center;
-        }
-
-        .image-container {
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-          border-radius: 8px;
-          overflow: hidden;
-          transition: transform 0.3s ease;
-          position: relative;
-        }
-
-        .image-container:hover {
-          transform: scale(1.05);
-        }
-
-        .image-container img {
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-        }
-
-        .labels {
-          background-color: rgba(0, 0, 0, 0.7);
-          color: white;
-          padding: 5px;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          text-align: center;
-          font-size: calc(10px + 0.5vw); /* Responsive font size */
-        }
-
-        .loader,
-        .error {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 200px;
-          font-size: 18px;
-          font-weight: bold;
-        }
-
-        .loader {
-          color: #007bff;
-        }
-
-        .error {
-          color: #dc3545;
-        }
-
-        button {
-          margin-top: 20px;
-          padding: 10px 20px;
-          background-color: #007bff;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-
-        button:hover {
-          background-color: #0056b3;
-        }
+        // Your styles here...
       `}</style>
     </>
   );
