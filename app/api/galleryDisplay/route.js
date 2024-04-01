@@ -7,11 +7,11 @@ export const dynamic = 'force-dynamic';
 export async function GET({ query }) {
   await connectMongo();
 
-  const { page = 1, limit = 32, alreadyDisplayedIds = [] } = query || {};
+  const { page = 1, limit = 32 } = query || {};
   const skip = (page - 1) * limit;
 
   try {
-    const images = await Image.find({ _id: { $nin: alreadyDisplayedIds } })
+    const images = await Image.find()
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);

@@ -10,30 +10,20 @@ export default function Gallery() {
   const [currentPage, setCurrentPage] = useState(1);
   const [imagesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState(0);
-  const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}&alreadyDisplayedIds=${encodeURIComponent(JSON.stringify(alreadyDisplayedIds))}`;
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
+        const response = await fetch(`/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`);
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
         const data = await response.json();
-        const newImages = data.images.filter(image => !alreadyDisplayedIds.includes(image._id));
-        setGalleryImages([...galleryImages, ...newImages]);
-        setFilteredImages([...filteredImages, ...newImages]);
+        setGalleryImages(prevImages => [...prevImages, ...data.images]);
+        setFilteredImages(prevImages => [...prevImages, ...data.images]);
         setTotalPages(data.totalPages);
-        setAlreadyDisplayedIds([...alreadyDisplayedIds, ...newImages.map(img => img._id)]);
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -43,7 +33,7 @@ export default function Gallery() {
     };
 
     fetchImages();
-  }, [currentPage]); // Only fetch images when currentPage changes
+  }, [currentPage]);
 
   useEffect(() => {
     const filtered = galleryImages.filter(image =>
@@ -95,6 +85,7 @@ export default function Gallery() {
     </>
   );
 }
+
 
 
 /*
