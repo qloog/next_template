@@ -1,29 +1,40 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [imagesPerPage] = useState(32);
-  const [totalPages, setTotalPages] = useState(0);
+  const [alreadyDisplayedIds, setAlreadyDisplayedIds] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch(`/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`);
+        const url = `/api/galleryDisplay?page=${currentPage}&limit=${imagesPerPage}`;
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ alreadyDisplayedIds }),
+        });
+
         if (!response.ok) {
-          throw new Error('Failed to fetch images');
+          throw new Error("Failed to fetch images");
         }
         const data = await response.json();
-        setGalleryImages(prevImages => [...prevImages, ...data.images]);
-        setFilteredImages(prevImages => [...prevImages, ...data.images]);
-        setTotalPages(data.totalPages);
+        setGalleryImages((prevImages) => [...prevImages, ...data.images]);
+        setFilteredImages((prevImages) => [...prevImages, ...data.images]);
+        setAlreadyDisplayedIds((prevIds) => [
+          ...prevIds,
+          ...data.images.map((img) => img._id),
+        ]);
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -33,17 +44,19 @@ export default function Gallery() {
     };
 
     fetchImages();
-  }, [currentPage]);
+  }, [currentPage, imagesPerPage]);
 
   useEffect(() => {
-    const filtered = galleryImages.filter(image =>
-      image.labels.some(label => label.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filtered = galleryImages.filter((image) =>
+      image.labels.some((label) =>
+        label.toLowerCase().includes(searchTerm.toLowerCase())
+      )
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
 
   const loadMore = () => {
-    setCurrentPage(prevPage => prevPage + 1);
+    setCurrentPage((prevPage) => prevPage + 1);
   };
 
   return (
@@ -54,7 +67,7 @@ export default function Gallery() {
           type="text"
           placeholder="Search by label..."
           value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)}
           className="search-bar"
         />
         {isLoading ? (
@@ -67,20 +80,16 @@ export default function Gallery() {
               {filteredImages.map((image) => (
                 <div key={image._id} className="image-container">
                   <img src={image.data} alt="Gallery item" />
-                  <div className="labels">{image.labels.join(', ')}</div>
+                  <div className="labels">{image.labels.join(", ")}</div>
                 </div>
               ))}
             </div>
-            {currentPage < totalPages && (
-              <button onClick={loadMore} className="load-more-button">
-                Load More
-              </button>
-            )}
+            <button onClick={loadMore}>Load More</button>
           </>
         )}
       </div>
       <style jsx>{`
-        // Your styles here...
+        /* Your CSS styles here */
       `}</style>
     </>
   );
