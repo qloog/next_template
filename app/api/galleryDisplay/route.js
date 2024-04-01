@@ -4,7 +4,7 @@ import Image from "@/models/Image";
 export const maxDuration = 120;
 export const dynamic = "force-dynamic";
 
-export async function POST({ request }) {
+export async function GET({ request }) {
   await connectMongo();
 
   const { page, limit, alreadyDisplayedIds } = await request.json();
