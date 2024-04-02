@@ -8,15 +8,9 @@ export default function Gallery() {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [filteredImages, setFilteredImages] = useState([]);
-  const [loadedPages, setLoadedPages] = useState([]);
-
-
 
   useEffect(() => {
     const fetchImages = async () => {
-      if (loadedPages.includes(page)) {
-        return; // Skip fetching if the page has already been loaded
-      }
       setIsLoading(true);
       setError(null);
       try {
@@ -26,7 +20,6 @@ export default function Gallery() {
         }
         const images = await response.json();
         setGalleryImages(prevImages => [...prevImages, ...images]);
-        setLoadedPages(prevPages => [...prevPages, page]); // Add the current page to the list of loaded pages
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -34,22 +27,9 @@ export default function Gallery() {
         setIsLoading(false);
       }
     };
-  
+
     fetchImages();
-  }, [page, loadedPages]);
-  
-
-  // Load more images when the user scrolls to the bottom of the page
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-        setPage(prevPage => prevPage + 1);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [page]);
 
   // Filter images based on search term
   useEffect(() => {
@@ -58,7 +38,6 @@ export default function Gallery() {
     );
     setFilteredImages(filtered);
   }, [searchTerm, galleryImages]);
-  
 
   return (
     <>
@@ -77,15 +56,15 @@ export default function Gallery() {
           <div className="error">Error: {error}</div>
         ) : (
           <div className="grid">
-          {filteredImages.map((image) => (
-            <div key={image._id} className="image-container">
-              <img src={image.data} alt="Gallery item" />
-              <div className="labels">{image.labels.join(', ')}</div>
-            </div>
-          ))}
-        </div>
-        
+            {filteredImages.map((image) => (
+              <div key={image._id} className="image-container">
+                <img src={image.data} alt="Gallery item" />
+                <div className="labels">{image.labels.join(', ')}</div>
+              </div>
+            ))}
+          </div>
         )}
+        <button onClick={() => setPage(page + 1)} className="next-button">Next</button>
       </div>
       <style jsx>{`
         .gallery {
@@ -159,10 +138,24 @@ export default function Gallery() {
         .error {
           color: #dc3545;
         }
+
+        .next-button {
+          margin-top: 20px;
+          padding: 10px 20px;
+          font-size: 16px;
+          border: none;
+          border-radius: 5px;
+          background-color: #007bff;
+          color: white;
+          cursor: pointer;
+        }
+
+        .next-button:hover {
+          background-color: #0056b3;
+        }
       `}</style>
     </>
   );
-  
 }
 
 
