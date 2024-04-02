@@ -17,7 +17,7 @@ const imageSchema = new mongoose.Schema(
   }
 );
 
-imageSchema.index({ createdAt: -1 });
+//imageSchema.index({ createdAt: -1 });
 const Image = mongoose.models.Image || mongoose.model("Image", imageSchema);
 
 export default Image;
