@@ -9,12 +9,11 @@ export async function GET({ url }) {
 
   const params = new URLSearchParams(url.search);
   const page = parseInt(params.get('page') || '1', 10);
-  const limit = parseInt(params.get('limit') || '30', 10);
+  const limit = parseInt(params.get('limit') || 'Infinity', 10); // Set a high limit to fetch all images
   const skip = (page - 1) * limit;
 
   try {
-    // Images are sorted from oldest to newest now
-    const images = await Image.find().sort({ createdAt: 1 }).skip(skip).limit(limit);
+    const images = await Image.find().skip(skip).limit(limit);
     return new Response(JSON.stringify(images), {
       status: 200,
       headers: {

@@ -1,60 +1,73 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const loader = useRef(null);
 
-  // Function to load images
-  const loadImages = async (pageNum) => {
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch(`/api/galleryDisplay?page=${pageNum}&limit=30`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      setError('Failed to load images: ' + error.message);
-      console.error('Failed to load images:', error);
-      return []; // Return empty array on error to prevent further state update
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Initial load
   useEffect(() => {
-    loadImages(1).then(images => {
-      setGalleryImages(images);
-      setHasMore(images.length === 30);
+    const fetchImages = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(`/api/galleryDisplay?page=${page}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch images');
+        }
+        const images = await response.json();
+        setGalleryImages((prevImages) => [...prevImages, ...images]);
+      } catch (err) {
+        setError(err.message);
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchImages();
+  }, [page]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setPage((prevPage) => prevPage + 1);
+      }
     });
+
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+
+    return () => {
+      if (loader.current) {
+        observer.unobserve(loader.current);
+      }
+    };
   }, []);
 
-  // Load images for the new page
-  const handlePageChange = async (newPage) => {
-    const newImages = await loadImages(newPage);
-    setGalleryImages(newImages);
-    setPage(newPage);
-    setHasMore(newImages.length === 30);
-  };
+  useEffect(() => {
+    const filtered = galleryImages.filter((image) =>
+      image.labels.some((label) => label.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+    setGalleryImages(filtered);
+  }, [searchTerm, galleryImages]);
 
   return (
     <>
       <div className="gallery">
         <h1>Gallery</h1>
-        {isLoading && (
-          <div className="loader">Loading...</div>
-        )}
-        {error && (
-          <div className="error">{error}</div>
-        )}
+        <input
+          type="text"
+          placeholder="Search by label..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-bar"
+        />
+        {error && <div className="error">Error: {error}</div>}
         <div className="grid">
           {galleryImages.map((image) => (
             <div key={image._id} className="image-container">
@@ -63,119 +76,75 @@ export default function Gallery() {
             </div>
           ))}
         </div>
-        <div className="page-controls">
-          <button 
-            disabled={page <= 1 || isLoading} 
-            onClick={() => handlePageChange(page - 1)}
-          >
-            Previous
-          </button>
-          <button 
-            disabled={!hasMore || isLoading} 
-            onClick={() => handlePageChange(page + 1)}
-          >
-            Next
-          </button>
-        </div>
+        {isLoading && <div className="loader">Loading...</div>}
+        <div ref={loader} />
       </div>
-       <style jsx>{`
-       .gallery {
-         padding: 20px;
-         background-color: #f5f5f5;
-         text-align: center;
-       }
-     
-       .gallery h1 {
-         margin-bottom: 20px;
-         color: #333;
-       }
-     
-       .grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-         gap: 20px;
-         justify-content: center;
-       }
-     
-       .image-container {
-         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-         border-radius: 8px;
-         overflow: hidden;
-         transition: transform 0.3s ease;
-       }
-     
-       .image-container:hover {
-         transform: scale(1.05);
-       }
-     
-       .image-container img {
-         width: 100%;
-         height: auto;
-         display: block;
-         object-fit: cover;
-       }
-     
-       .labels {
-         background-color: rgba(0, 0, 0, 0.7);
-         color: white;
-         padding: 5px;
-         position: absolute;
-         bottom: 0;
-         width: 100%;
-         text-align: center;
-         font-size: calc(10px + 0.5vw);
-       }
-     
-       .loader,
-       .error {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         height: 200px;
-         font-size: 18px;
-         font-weight: bold;
-       }
-     
-       .loader {
-         color: #007bff;
-       }
-     
-       .error {
-         color: #dc3545;
-       }
-     
-       .page-controls {
-         display: flex;
-         justify-content: center;
-         margin-top: 20px;
-       }
-     
-       .page-controls button {
-         padding: 10px 20px;
-         margin: 0 10px;
-         font-size: 16px;
-         border: none;
-         border-radius: 5px;
-         background-color: #007bff;
-         color: white;
-         cursor: pointer;
-         transition: background-color 0.3s;
-       }
-     
-       .page-controls button:hover {
-         background-color: #0056b3;
-       }
-     
-       .page-controls button:disabled {
-         opacity: 0.5;
-         cursor: not-allowed;
-       }
-     `}</style>
-     
+      <style jsx>{`
+        .gallery {
+          padding: 20px;
+          background-color: #f5f5f5;
+          text-align: center;
+        }
+        .gallery h1 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+        .search-bar {
+          margin-bottom: 20px;
+          padding: 10px;
+          width: 300px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          justify-content: center;
+        }
+        .image-container {
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        }
+        .image-container:hover {
+          transform: scale(1.05);
+        }
+        .image-container img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+        .labels {
+          background-color: rgba(0, 0, 0, 0.7);
+          color: white;
+          padding: 5px;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          font-size: calc(10px + 0.5vw);
+        }
+        .loader,
+        .error {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 200px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .loader {
+          color: #007bff;
+        }
+        .error {
+          color: #dc3545;
+        }
+      `}</style>
     </>
   );
 }
-
 
 
 
