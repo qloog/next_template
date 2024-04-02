@@ -1,61 +1,71 @@
 "use client";
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
+  const [displayedImages, setDisplayedImages] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
   const loader = useRef(null);
+  const page = useRef(1);
+  const lastSearchTerm = useRef('');
 
-  useEffect(() => {
-    const fetchImages = async () => {
+  const loadImages = useCallback(async () => {
+    if (searchTerm === lastSearchTerm.current) {
       setIsLoading(true);
-      setError(null);
       try {
-        const response = await fetch(`/api/galleryDisplay?page=${page}`);
+        const response = await fetch(`/api/galleryDisplay?page=${page.current}`);
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
         const images = await response.json();
-        // Sort images by createdAt in descending order
-        images.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        setGalleryImages((prevImages) => [...prevImages, ...images]);
+        setGalleryImages((prevImages) => {
+          // Combine the new images with the previously loaded images
+          const allImages = [...prevImages, ...images];
+          // Sort images by createdAt in descending order
+          allImages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          return allImages;
+        });
+        setIsLoading(false);
       } catch (err) {
         setError(err.message);
         console.error(err);
-      } finally {
         setIsLoading(false);
       }
-    };
-
-    fetchImages();
-  }, [page]);
+    }
+  }, [searchTerm]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setPage((prevPage) => prevPage + 1);
+      if (entries[0].isIntersecting && !isLoading && searchTerm === lastSearchTerm.current) {
+        page.current += 1;
+        loadImages();
       }
-    });
+    }, { threshold: 0.1 });
 
-    if (loader.current) {
-      observer.observe(loader.current);
-    }
+    loader.current && observer.observe(loader.current);
 
-    return () => {
-      if (loader.current) {
-        observer.unobserve(loader.current);
-      }
-    };
-  }, []);
+    return () => observer.disconnect();
+  }, [loadImages, isLoading]);
 
   useEffect(() => {
-    const filtered = galleryImages.filter((image) =>
-      image.labels.some((label) => label.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
-    setGalleryImages(filtered);
+    if (searchTerm !== lastSearchTerm.current) {
+      lastSearchTerm.current = searchTerm;
+      page.current = 1;
+      setGalleryImages([]);
+    }
+    const delayDebounce = setTimeout(() => {
+      setDisplayedImages(
+        galleryImages.filter((image) =>
+          image.labels.some((label) =>
+            label.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        )
+      );
+    }, 300);
+
+    return () => clearTimeout(delayDebounce);
   }, [searchTerm, galleryImages]);
 
   return (
@@ -71,79 +81,87 @@ export default function Gallery() {
         />
         {error && <div className="error">Error: {error}</div>}
         <div className="grid">
-          {galleryImages.map((image) => (
+          {displayedImages.map((image) => (
             <div key={image._id} className="image-container">
               <img src={image.data} alt="Gallery item" />
               <div className="labels">{image.labels.join(', ')}</div>
             </div>
           ))}
         </div>
-        <div ref={loader} />
         {isLoading && <div className="loader">Loading...</div>}
+        <div ref={loader} className="loading-indicator" />
       </div>
       <style jsx>{`
-        .gallery {
-          padding: 20px;
-          background-color: #f5f5f5;
-          text-align: center;
-        }
-        .gallery h1 {
-          margin-bottom: 20px;
-          color: #333;
-        }
-        .search-bar {
-          margin-bottom: 20px;
-          padding: 10px;
-          width: 300px;
-          border-radius: 5px;
-          border: 1px solid #ccc;
-        }
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 20px;
-          justify-content: center;
-        }
-        .image-container {
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-          border-radius: 8px;
-          overflow: hidden;
-          transition: transform 0.3s ease;
-        }
-        .image-container:hover {
-          transform: scale(1.05);
-        }
-        .image-container img {
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-        }
-        .labels {
-          background-color: rgba(0, 0, 0, 0.7);
-          color: white;
-          padding: 5px;
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-          text-align: center;
-          font-size: calc(10px + 0.5vw); /* Responsive font size */
-        }
-        .loader,
-        .error {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 200px;
-          font-size: 18px;
-          font-weight: bold;
-        }
-        .loader {
-          color: #007bff;
-        }
-        .error {
-          color: #dc3545;
-        }
-      `}</style>
+  .gallery {
+    padding: 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+  .gallery h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .search-bar {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+  }
+  .image-container {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .image-container:hover {
+    transform: scale(1.05);
+  }
+  .image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .labels {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: calc(10px + 0.5vw); /* Responsive font size */
+  }
+  .loader,
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .loader {
+    color: #007bff;
+  }
+  .error {
+    color: #dc3545;
+  }
+  .loading-indicator {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`}</style>
+
     </>
   );
 }
