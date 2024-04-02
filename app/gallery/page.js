@@ -78,8 +78,8 @@ export default function Gallery() {
             </div>
           ))}
         </div>
-        {isLoading && <div className="loader">Loading...</div>}
         <div ref={loader} />
+        {isLoading && <div className="loader">Loading...</div>}
       </div>
       <style jsx>{`
         .gallery {
@@ -126,7 +126,7 @@ export default function Gallery() {
           bottom: 0;
           width: 100%;
           text-align: center;
-          font-size: calc(10px + 0.5vw);
+          font-size: calc(10px + 0.5vw); /* Responsive font size */
         }
         .loader,
         .error {
