@@ -19,6 +19,8 @@ export default function Gallery() {
           throw new Error('Failed to fetch images');
         }
         const images = await response.json();
+        // Sort images by createdAt in descending order
+        images.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setGalleryImages((prevImages) => [...prevImages, ...images]);
       } catch (err) {
         setError(err.message);
