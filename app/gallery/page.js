@@ -19,7 +19,7 @@ export default function Gallery() {
           throw new Error('Failed to fetch images');
         }
         const newImages = await response.json();
-        setGalleryImages(prevImages => [...prevImages, ...newImages]);
+        setGalleryImages(newImages);
         setHasMore(newImages.length === 30);
       } catch (err) {
         setError(err.message);
@@ -29,17 +29,14 @@ export default function Gallery() {
       }
     };
 
-    if (hasMore) {
-      fetchImages();
-    }
+    fetchImages();
   }, [page]);
 
-  useEffect(() => {
-    const filtered = galleryImages.filter(image =>
-      image.labels.some(label => label.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
-    setGalleryImages(filtered);
-  }, [searchTerm, galleryImages]);
+  const handlePreviousClick = () => {
+    if (!isLoading && page > 1) {
+      setPage(prevPage => prevPage - 1);
+    }
+  };
 
   const handleNextClick = () => {
     if (!isLoading && hasMore) {
@@ -72,7 +69,10 @@ export default function Gallery() {
             ))}
           </div>
         )}
-        <button onClick={handleNextClick} disabled={isLoading || !hasMore} className="next-button">Next</button>
+        <div className="navigation-buttons">
+          <button onClick={handlePreviousClick} disabled={isLoading || page === 1} className="prev-button">Previous</button>
+          <button onClick={handleNextClick} disabled={isLoading || !hasMore} className="next-button">Next</button>
+        </div>
       </div>
       <style jsx>{`
         .gallery {
@@ -80,12 +80,10 @@ export default function Gallery() {
           background-color: #f5f5f5;
           text-align: center;
         }
-
         .gallery h1 {
           margin-bottom: 20px;
           color: #333;
         }
-
         .search-bar {
           margin-bottom: 20px;
           padding: 10px;
@@ -93,31 +91,26 @@ export default function Gallery() {
           border-radius: 5px;
           border: 1px solid #ccc;
         }
-
         .grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
           gap: 20px;
           justify-content: center;
         }
-
         .image-container {
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
           border-radius: 8px;
           overflow: hidden;
           transition: transform 0.3s ease;
         }
-
         .image-container:hover {
           transform: scale(1.05);
         }
-
         .image-container img {
           width: 100%;
           height: auto;
           object-fit: cover;
         }
-
         .labels {
           background-color: rgba(0, 0, 0, 0.7);
           color: white;
@@ -128,7 +121,6 @@ export default function Gallery() {
           text-align: center;
           font-size: calc(10px + 0.5vw); /* Responsive font size */
         }
-
         .loader,
         .error {
           display: flex;
@@ -138,40 +130,39 @@ export default function Gallery() {
           font-size: 18px;
           font-weight: bold;
         }
-
         .loader {
           color: #007bff;
         }
-
         .error {
           color: #dc3545;
         }
-
-        .next-button {
+        .navigation-buttons {
+          display: flex;
+          justify-content: center;
           margin-top: 20px;
+        }
+        .prev-button, .next-button {
           padding: 10px 20px;
+          margin: 0 10px;
           font-size: 16px;
           border: none;
           border-radius: 5px;
           background-color: #007bff;
           color: white;
           cursor: pointer;
-          opacity: 0.7; /* Lower opacity when disabled */
-          transition: background-color 0.3s, opacity 0.3s;
         }
-
-        .next-button:hover {
+        .prev-button:hover, .next-button:hover {
           background-color: #0056b3;
         }
-
-        .next-button:disabled {
-          cursor: default;
-          opacity: 0.4; /* Even lower opacity when disabled */
+        .prev-button:disabled, .next-button:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
         }
       `}</style>
     </>
   );
 }
+
 
 
 

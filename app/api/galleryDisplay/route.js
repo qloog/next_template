@@ -13,7 +13,8 @@ export async function GET({ url }) {
   const skip = (page - 1) * limit;
 
   try {
-    const images = await Image.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
+    // Images are sorted from oldest to newest now
+    const images = await Image.find().sort({ createdAt: 1 }).skip(skip).limit(limit);
     return new Response(JSON.stringify(images), {
       status: 200,
       headers: {
@@ -30,6 +31,7 @@ export async function GET({ url }) {
     });
   }
 }
+
 
 
 
