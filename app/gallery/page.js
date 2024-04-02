@@ -21,9 +21,7 @@ export default function Gallery() {
         }
         const images = await response.json();
         setGalleryImages((prevImages) => {
-          // Combine the new images with the previously loaded images
           const allImages = [...prevImages, ...images];
-          // Sort images by createdAt in descending order
           allImages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
           return allImages;
         });
@@ -92,76 +90,75 @@ export default function Gallery() {
         <div ref={loader} className="loading-indicator" />
       </div>
       <style jsx>{`
-  .gallery {
-    padding: 20px;
-    background-color: #f5f5f5;
-    text-align: center;
-  }
-  .gallery h1 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  .search-bar {
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    justify-content: center;
-  }
-  .image-container {
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  .image-container:hover {
-    transform: scale(1.05);
-  }
-  .image-container img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  .labels {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    font-size: calc(10px + 0.5vw); /* Responsive font size */
-  }
-  .loader,
-  .error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .loader {
-    color: #007bff;
-  }
-  .error {
-    color: #dc3545;
-  }
-  .loading-indicator {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`}</style>
-
+        .gallery {
+          padding: 20px;
+          background-color: #f5f5f5;
+          text-align: center;
+        }
+        .gallery h1 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+        .search-bar {
+          margin-bottom: 20px;
+          padding: 10px;
+          width: 300px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          justify-content: center;
+        }
+        .image-container {
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        }
+        .image-container:hover {
+          transform: scale(1.05);
+        }
+        .image-container img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+        .labels {
+          background-color: rgba(0, 0, 0, 0.7);
+          color: white;
+          padding: 5px;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          font-size: calc(10px + 0.5vw); /* Responsive font size */
+        }
+        .loader,
+        .error {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 200px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .loader {
+          color: #007bff;
+        }
+        .error {
+          color: #dc3545;
+        }
+        .loading-indicator {
+          width: 100%;
+          height: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      `}</style>
     </>
   );
 }
