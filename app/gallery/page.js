@@ -78,9 +78,100 @@ export default function Gallery() {
           </button>
         </div>
       </div>
-      <style jsx>{`
-        // ... your CSS styles ...
-      `}</style>
+       <style jsx>{`
+       .gallery {
+         padding: 20px;
+         background-color: #f5f5f5;
+         text-align: center;
+       }
+     
+       .gallery h1 {
+         margin-bottom: 20px;
+         color: #333;
+       }
+     
+       .grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+         gap: 20px;
+         justify-content: center;
+       }
+     
+       .image-container {
+         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+         border-radius: 8px;
+         overflow: hidden;
+         transition: transform 0.3s ease;
+       }
+     
+       .image-container:hover {
+         transform: scale(1.05);
+       }
+     
+       .image-container img {
+         width: 100%;
+         height: auto;
+         display: block;
+         object-fit: cover;
+       }
+     
+       .labels {
+         background-color: rgba(0, 0, 0, 0.7);
+         color: white;
+         padding: 5px;
+         position: absolute;
+         bottom: 0;
+         width: 100%;
+         text-align: center;
+         font-size: calc(10px + 0.5vw);
+       }
+     
+       .loader,
+       .error {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 200px;
+         font-size: 18px;
+         font-weight: bold;
+       }
+     
+       .loader {
+         color: #007bff;
+       }
+     
+       .error {
+         color: #dc3545;
+       }
+     
+       .page-controls {
+         display: flex;
+         justify-content: center;
+         margin-top: 20px;
+       }
+     
+       .page-controls button {
+         padding: 10px 20px;
+         margin: 0 10px;
+         font-size: 16px;
+         border: none;
+         border-radius: 5px;
+         background-color: #007bff;
+         color: white;
+         cursor: pointer;
+         transition: background-color 0.3s;
+       }
+     
+       .page-controls button:hover {
+         background-color: #0056b3;
+       }
+     
+       .page-controls button:disabled {
+         opacity: 0.5;
+         cursor: not-allowed;
+       }
+     `}</style>
+     
     </>
   );
 }
